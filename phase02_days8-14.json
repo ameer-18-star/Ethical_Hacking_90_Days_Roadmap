@@ -1,0 +1,895 @@
+[
+  {
+    "day": 8,
+    "cover": {
+      "title": "Intro to Security+ & __CIA Triad__",
+      "hook": "Security+ is the #1 entry-level security cert. Week 2 starts NOW.",
+      "tags": ["#SecurityPlus", "#CIATriad", "#Day8of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "CIA Triad",
+        "tag": "Foundation",
+        "method": "WHAT — The CIA Triad Explained",
+        "heading": "CIA Triad: The __Core of Security__",
+        "body": [
+          {"type": "para", "text": "The **CIA Triad** is the foundational model of information security. Every security control, policy, and technology maps to one or more of its three pillars."},
+          {"type": "bullet", "text": "**Confidentiality** — only authorised users can access the data. Enforced by encryption, access controls, and classification."},
+          {"type": "bullet", "text": "**Integrity** — data has not been tampered with or altered. Enforced by hashing, digital signatures, and checksums."},
+          {"type": "bullet", "text": "**Availability** — systems and data are accessible when needed. Enforced by redundancy, backups, and failover systems."},
+          {"type": "para", "text": "**Every security decision starts here.** If you cannot map a control to C, I, or A — question whether it is actually a security control."}
+        ],
+        "pills": [
+          {"text": "Confidentiality", "t": "r"},
+          {"text": "Integrity", "t": "y"},
+          {"text": "Availability", "t": "o"}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 Playlist"
+      },
+      {
+        "type": "red",
+        "label": "CIA Attack Mapping",
+        "tag": "Critical Concept",
+        "method": "WHY — Every Attack Violates CIA",
+        "heading": "Every Attack Maps to __CIA__",
+        "body": [
+          {"type": "para", "text": "Every cyberattack violates at least one CIA principle. Knowing the mapping is essential for Security+ scenario questions — and for thinking like a security professional."},
+          {"type": "bullet", "text": "**Ransomware** → Availability violation. Encrypts files — users cannot access data until ransom is paid."},
+          {"type": "bullet", "text": "**Data breach** → Confidentiality violation. Sensitive data exposed to unauthorised parties."},
+          {"type": "bullet", "text": "**Man-in-the-Middle** → Integrity violation. Attacker intercepts and modifies data in transit."},
+          {"type": "bullet", "text": "**DDoS attack** → Availability violation. Floods a server until it cannot respond to legitimate users."},
+          {"type": "para", "text": "**Exam tip:** Security+ scenario questions will describe an attack — you must identify which CIA principle is violated. Practice this mapping until it is automatic."}
+        ],
+        "time": "25 min · Prof. Messer SY0-701 — Threats Section"
+      },
+      {
+        "type": "dark",
+        "label": "Authentication vs Authorization",
+        "tag": "AAA Framework",
+        "method": "WHAT — AuthN vs AuthZ vs Accounting",
+        "heading": "AAA Framework: __Never Confuse These__",
+        "body": [
+          {"type": "para", "text": "**Authentication (AuthN):** Verifying identity — 'Who are you?' Proved by passwords, biometrics, tokens, or certificates."},
+          {"type": "para", "text": "**Authorisation (AuthZ):** Verifying permissions — 'What can you do?' Granted by access control lists, roles, and policies after authentication."},
+          {"type": "para", "text": "**Accounting:** Tracking what you did — 'What did you do?' Logs, audit trails, and SIEM events record all activity for forensics and compliance."},
+          {"type": "para", "text": "**NEVER confuse AuthN and AuthZ** on the exam. A user can be authenticated (we know who they are) but not authorised (they cannot access that resource)."}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 AAA Section"
+      },
+      {
+        "type": "white",
+        "label": "Non-Repudiation",
+        "tag": "Key Concept",
+        "method": "WHAT — Non-Repudiation Explained",
+        "heading": "Non-Repudiation: __You Cannot Deny It__",
+        "body": [
+          {"type": "para", "text": "**Non-repudiation** ensures that a party cannot deny having sent a message or performed an action. It is the digital equivalent of a signed contract."},
+          {"type": "para", "text": "**How it works:** Digital signatures use the sender's private key to sign a message. Anyone can verify the signature with the sender's public key — proving the sender cannot deny it."},
+          {"type": "para", "text": "**Why it matters:** Critical for legal evidence, financial transactions, software code signing, and forensic investigations. Without non-repudiation, attackers can claim 'I didn't do it' — and you cannot prove otherwise."}
+        ],
+        "time": "15 min · Prof. Messer SY0-701 Cryptography Section"
+      },
+      {
+        "type": "dark",
+        "label": "SY0-701 Exam Format",
+        "tag": "Exam Info",
+        "method": "WHAT — Security+ Exam Details",
+        "heading": "CompTIA Security+ __SY0-701__ Exam",
+        "body": [
+          {"type": "bullet", "text": "**Questions:** Up to 90 questions — multiple choice and performance-based simulations (PBQs)"},
+          {"type": "bullet", "text": "**Time limit:** 90 minutes — approximately 1 minute per question"},
+          {"type": "bullet", "text": "**Passing score:** 750 out of 900 — approximately 83%"},
+          {"type": "bullet", "text": "**Domains:** Threats/Attacks (22%) · Architecture (18%) · Implementation (28%) · Operations & IR (17%) · Governance (15%)"},
+          {"type": "para", "text": "**Security+ is scenario-based.** Questions do not ask 'what is AES?' — they ask 'a company needs to encrypt data at rest — which algorithm is MOST appropriate?' Practice applying concepts."}
+        ],
+        "time": "15 min · Read CompTIA SY0-701 Official Exam Objectives"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 8 Learning Targets",
+        "heading": "Day 8 Checklist",
+        "steps": [
+          "Memorise the **CIA Triad** — define each pillar in one sentence without notes",
+          "Map **5 real-world attacks** to C, I, or A — ransomware, DDoS, MITM, breach, spoofing",
+          "Explain **AuthN vs AuthZ vs Accounting** — the 3 pillars of AAA framework",
+          "Understand **non-repudiation** and how digital signatures provide it",
+          "Read the **SY0-701 exam objectives PDF** — highlight the top 3 domains by weight"
+        ],
+        "time": "Total Day 8 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Free Resources for Day 8",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Primary", "name": "Prof. Messer — SY0-701 Full Free Playlist", "url": "professormesser.com/security-plus/sy0-701"},
+          {"label": "📺 Alternative", "name": "Pete Zerger — SY0-701 Security+ Playlist", "url": "youtube.com/@insidecloudandsecurity"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Pre-Security' Path (free)", "url": "tryhackme.com/path/outline/presecurity"},
+          {"label": "🎯 Objectives", "name": "CompTIA SY0-701 Official Exam Objectives PDF", "url": "comptia.org/certifications/security"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 8",
+        "heading": "Your Hands-On __Task__ for Day 8",
+        "steps": [
+          "**Research** 5 real-world breaches on Google — classify each as C, I, or A violation",
+          "**Create** a table: Attack Type | CIA Principle Violated | Why — this trains exam thinking",
+          "**Watch** Prof. Messer SY0-701 Playlist 1 — CIA Triad and AAA sections (45 min)",
+          "**Download** the SY0-701 exam objectives PDF — read domain weights and key topics"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 8",
+        "quote": "Security+ questions are scenario-based — not definition-based. Practice applying the CIA Triad to real situations, not just reciting what each letter stands for.",
+        "sub": "The exam will describe a company scenario and ask 'which security principle is MOST at risk?' You must think in context, not just theory. Every practice question you do this week should be mapped to CIA automatically.",
+        "mistake": "Treating Security+ as pure memorisation. Students who only memorise definitions fail scenario questions. Students who practice applying concepts to real situations pass on the first attempt."
+      }
+    ]
+  },
+
+  {
+    "day": 9,
+    "cover": {
+      "title": "Threats, Attacks & __Malware Types__",
+      "hook": "Know your enemy. 8 malware types every security pro must memorise.",
+      "tags": ["#SecurityPlus", "#Malware", "#Day9of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Malware Overview",
+        "tag": "Foundation",
+        "method": "WHAT — What is Malware?",
+        "heading": "Malware: __8 Types__ You Must Know",
+        "body": [
+          {"type": "para", "text": "**Malware (Malicious Software)** is any software intentionally designed to damage systems, gain unauthorised access, steal data, or disrupt operations."},
+          {"type": "para", "text": "The SY0-701 exam tests your ability to **identify malware type from a scenario description** — not just recall definitions. You must recognise behaviour, not just names."},
+          {"type": "para", "text": "**The 8 malware types you must master:** Virus, Worm, Trojan, RAT, Rootkit, Ransomware, Spyware/Keylogger, and Adware. Each has distinct behaviour, spread mechanism, and impact."}
+        ],
+        "pills": [
+          {"text": "Virus", "t": "r"},
+          {"text": "Worm", "t": "y"},
+          {"text": "Ransomware", "t": "o"}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 Threats Section"
+      },
+      {
+        "type": "red",
+        "label": "Virus vs Worm",
+        "tag": "Critical Distinction",
+        "method": "WHAT — Virus vs Worm Compared",
+        "heading": "Virus vs Worm: __Critical Difference__",
+        "body": [
+          {"type": "para", "text": "**Virus:** Requires a host file to attach to. Spreads only when a user takes action — opening an infected file, running a program, or inserting infected media. Cannot spread on its own."},
+          {"type": "para", "text": "**Worm:** Self-replicating. Spreads automatically across networks without user interaction. Exploits vulnerabilities in services or protocols to move machine-to-machine."},
+          {"type": "bullet", "text": "**Real example — Worm:** WannaCry (2017) — exploited EternalBlue (SMB vulnerability) and spread to 200,000 systems across 150 countries in 72 hours. Zero user interaction required."},
+          {"type": "bullet", "text": "**Real example — Virus:** ILOVEYOU / Love Letter (2000) — spread via email attachment. Activated only when the victim opened the attached file."}
+        ],
+        "time": "25 min · Prof. Messer SY0-701 Malware Section"
+      },
+      {
+        "type": "dark",
+        "label": "Trojans, RATs & Rootkits",
+        "tag": "Stealth Malware",
+        "method": "WHAT — Hidden Malware Types",
+        "heading": "Trojans, RATs & __Rootkits__",
+        "body": [
+          {"type": "bullet", "text": "**Trojan:** Disguised as legitimate software. User willingly installs it. Once active, it performs malicious actions in the background — downloading additional malware, opening backdoors."},
+          {"type": "bullet", "text": "**RAT (Remote Access Trojan):** A Trojan that gives the attacker full remote control of the victim's machine — screen capture, file access, webcam access, keylogging, and command execution."},
+          {"type": "bullet", "text": "**Rootkit:** Hides itself and other malware at the OS or kernel level. Extremely difficult to detect because it manipulates the operating system to hide its own presence from antivirus tools."},
+          {"type": "para", "text": "**Key exam distinction:** A Trojan deceives. A RAT controls. A Rootkit hides. All three often work together in advanced attacks."}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 Malware Section"
+      },
+      {
+        "type": "white",
+        "label": "Ransomware Deep Dive",
+        "tag": "Most Dangerous",
+        "method": "WHAT — Ransomware Explained",
+        "heading": "Ransomware: The __Most Devastating__ Threat",
+        "body": [
+          {"type": "para", "text": "**Ransomware** encrypts all files on a victim's system and demands payment — typically in cryptocurrency — for the decryption key. Modern ransomware also exfiltrates data before encrypting (double extortion)."},
+          {"type": "para", "text": "**Common attack vectors:** Phishing email attachments, malicious macros in Word documents, exposed RDP (port 3389), and unpatched vulnerabilities in internet-facing systems."},
+          {"type": "para", "text": "**CIA mapping:** Ransomware primarily violates **Availability** (you cannot access your files) and often **Confidentiality** (data is stolen in double extortion attacks)."},
+          {"type": "para", "text": "**Defence:** Offline backups (3-2-1 rule), network segmentation, patching, MFA on RDP, email filtering, and endpoint detection and response (EDR) tools."}
+        ],
+        "time": "20 min · Read Verizon DBIR ransomware section (free)"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 9 Learning Targets",
+        "heading": "Day 9 Checklist",
+        "steps": [
+          "Define all **8 malware types** from memory — no notes — one sentence each",
+          "Explain the **exact difference between Virus and Worm** — spread mechanism is the key",
+          "Identify the **distinction between Trojan, RAT, and Rootkit** — deceive vs control vs hide",
+          "Map each malware type to its **CIA violation** — ransomware = availability, keylogger = confidentiality",
+          "Create a **detection/prevention table** — 8 malware types, how to detect each, how to prevent each"
+        ],
+        "time": "Total Day 9 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 9",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Video", "name": "Prof. Messer SY0-701 — Threats & Malware Section", "url": "professormesser.com/security-plus/sy0-701"},
+          {"label": "📊 Stats", "name": "AV-TEST — Real Malware Statistics & Research", "url": "av-test.org"},
+          {"label": "🔬 Samples", "name": "MalwareBazaar — Safe Malware Sample Repository", "url": "bazaar.abuse.ch"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Intro to Malware Analysis' Room", "url": "tryhackme.com/room/intromalwareanalysis"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 9",
+        "heading": "Your Hands-On __Task__ for Day 9",
+        "steps": [
+          "**Create** a 2-column table: Malware Type | How to Detect / How to Prevent — all 8 types",
+          "**Research** WannaCry — understand exactly how it spread and why it was so effective",
+          "**Watch** Prof. Messer SY0-701 Threats section (45 min) — pause on each malware type",
+          "**Quiz yourself** — cover the table and recite all 8 types with behaviour from memory"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 9",
+        "quote": "Exam questions describe a scenario without naming the malware type. You must identify it from behaviour alone. Practice scenario-to-type mapping — not definition recall.",
+        "sub": "The exam will say: 'A user installs what appears to be a free video player. Afterwards, an attacker begins accessing the user's files remotely.' You must recognise this as a RAT delivered via Trojan — without being told either term.",
+        "mistake": "Confusing Trojan and RAT. A Trojan is the delivery mechanism — disguised software. A RAT is the payload — remote control capability. Many RATs are delivered via Trojans, but they are distinct concepts on the exam."
+      }
+    ]
+  },
+
+  {
+    "day": 10,
+    "cover": {
+      "title": "Social Engineering & __Phishing__ Attacks",
+      "hook": "90% of cyberattacks start with a single email. Learn to spot them.",
+      "tags": ["#SecurityPlus", "#Phishing", "#Day10of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Social Engineering",
+        "tag": "Foundation",
+        "method": "WHAT — What is Social Engineering?",
+        "heading": "Social Engineering: __Hacking Humans__",
+        "body": [
+          {"type": "para", "text": "**Social engineering** is the art of manipulating people into revealing confidential information or performing actions that benefit an attacker — without any technical exploit."},
+          {"type": "para", "text": "It works because it **bypasses all technical security controls** by targeting the one vulnerability that cannot be patched: human psychology. Trust, authority, urgency, and fear are the attack vectors."},
+          {"type": "para", "text": "**Kevin Mitnick**, the world's most famous hacker, stated that the majority of his successful attacks relied on social engineering — not technical exploitation. The human is always the weakest link."}
+        ],
+        "pills": [
+          {"text": "Phishing", "t": "r"},
+          {"text": "Pretexting", "t": "y"},
+          {"text": "Vishing", "t": "o"}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 Social Engineering Section"
+      },
+      {
+        "type": "red",
+        "label": "Phishing Types",
+        "tag": "Attack Types",
+        "method": "WHAT — 6 Phishing Variants",
+        "heading": "6 Phishing Variants __You Must Know__",
+        "body": [
+          {"type": "bullet", "text": "**Phishing** — mass email campaign impersonating trusted brands (PayPal, Microsoft, your bank) to steal credentials or deliver malware via malicious attachments."},
+          {"type": "bullet", "text": "**Spear Phishing** — targeted phishing using personal information about the victim. References their name, job title, or recent activity. Far more convincing than generic phishing."},
+          {"type": "bullet", "text": "**Whaling** — spear phishing that specifically targets executives (CEOs, CFOs). High-value targets, highly personalised, often involves wire transfer fraud."},
+          {"type": "bullet", "text": "**Vishing** — voice phishing via phone call. Attacker impersonates IT support, bank, or government agency to extract credentials or payment."},
+          {"type": "bullet", "text": "**Smishing** — phishing via SMS text message. 'Your package is delayed — click to reschedule delivery.' Link leads to credential harvester."},
+          {"type": "bullet", "text": "**Pharming** — DNS-based attack that redirects users from a legitimate domain to a fake site without them clicking any link. Harder to detect than standard phishing."}
+        ],
+        "time": "25 min · Prof. Messer SY0-701 Social Engineering"
+      },
+      {
+        "type": "dark",
+        "label": "Pretexting & Baiting",
+        "tag": "Techniques",
+        "method": "WHAT — Physical Social Engineering",
+        "heading": "Pretexting, Baiting & __Physical Attacks__",
+        "body": [
+          {"type": "bullet", "text": "**Pretexting:** Attacker creates a fabricated, believable scenario to gain trust. 'I am from IT — we need your credentials to fix your account.' The pretext is the story that makes the request seem legitimate."},
+          {"type": "bullet", "text": "**Baiting:** Leaving infected USB drives in car parks, lobbies, or public areas. Human curiosity does the rest — someone plugs it in and the malware executes automatically."},
+          {"type": "bullet", "text": "**Tailgating:** Following an authorised person through a secured door without using credentials. Exploits politeness — most people hold doors open for others."},
+          {"type": "bullet", "text": "**Piggybacking:** Like tailgating, but the authorised person is aware and consents to letting the attacker through — often deceived into thinking they have legitimate access."}
+        ],
+        "time": "20 min · social-engineer.org resources"
+      },
+      {
+        "type": "white",
+        "label": "Defence Strategies",
+        "tag": "Defence",
+        "method": "HOW — Defending Against Social Engineering",
+        "heading": "Defending Against __Social Engineering__",
+        "steps": [
+          "**Security awareness training** — the most effective defence. Regular phishing simulations reduce click rates from ~30% to ~5%.",
+          "**Email filtering** — block suspicious domains, scan attachments, flag external senders with banners.",
+          "**DMARC / SPF / DKIM** — email authentication protocols that prevent domain spoofing and sender impersonation.",
+          "**Multi-Factor Authentication (MFA)** — even if credentials are stolen via phishing, MFA prevents account access without the second factor.",
+          "**Verify before acting** — call back on a known number to verify any unusual request. Never trust caller ID — it can be spoofed."
+        ],
+        "time": "20 min · Read CISA phishing guidance (free)"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 10 Learning Targets",
+        "heading": "Day 10 Checklist",
+        "steps": [
+          "Name and define all **6 phishing types** — phishing, spear, whaling, vishing, smishing, pharming",
+          "Explain **pretexting, baiting, tailgating, and piggybacking** with a real scenario for each",
+          "Understand **how SPF, DKIM, and DMARC** protect against email spoofing at a conceptual level",
+          "Know **why MFA is the single best technical control** against phishing credential theft",
+          "Analyse **5 real phishing email examples** — identify the manipulation technique used in each"
+        ],
+        "time": "Total Day 10 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 10",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Video", "name": "Prof. Messer SY0-701 — Social Engineering Section", "url": "professormesser.com/security-plus/sy0-701"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Phishing' Room (free)", "url": "tryhackme.com/room/phishingyl"},
+          {"label": "🔧 Tool", "name": "GoPhish — Open Source Phishing Simulation Framework", "url": "getgophish.com"},
+          {"label": "🎯 Quiz", "name": "Google Phishing Quiz — Test Your Detection Skills", "url": "phishingquiz.withgoogle.com"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 10",
+        "heading": "Your Hands-On __Task__ for Day 10",
+        "steps": [
+          "**Take** Google's phishing quiz at phishingquiz.withgoogle.com — score yourself honestly",
+          "**Analyse** 5 phishing email examples from PhishTank.com — list every red flag you find",
+          "**Research** the 2020 Twitter Hack — identify every social engineering technique used",
+          "**Analyse** an email header using mxtoolbox.com — find the real sending server behind a spoofed address"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 10",
+        "quote": "Security+ performance-based tasks often simulate phishing email analysis. Practice identifying red flags: sender domain mismatch, urgency language, mismatched hover URLs.",
+        "sub": "On the exam, you will be shown an email and asked to identify whether it is a phishing attempt and which type. Practise analysing real phishing examples from PhishTank — that direct experience transfers directly to exam performance.",
+        "mistake": "Never test social engineering or phishing simulations on real people or systems without explicit written authorisation. Even sending a test phishing email to a colleague without permission is a disciplinary — and potentially legal — offence."
+      }
+    ]
+  },
+
+  {
+    "day": 11,
+    "cover": {
+      "title": "Cryptography & __PKI__ Basics",
+      "hook": "Without cryptography, the internet does not exist. Here is how it works.",
+      "tags": ["#SecurityPlus", "#Cryptography", "#Day11of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Symmetric vs Asymmetric",
+        "tag": "Foundation",
+        "method": "WHAT — Two Types of Encryption",
+        "heading": "Symmetric vs __Asymmetric__ Encryption",
+        "body": [
+          {"type": "para", "text": "**Symmetric encryption** uses the same key to encrypt and decrypt data. It is fast and efficient — ideal for encrypting large amounts of data. The challenge: how do you securely share the key?"},
+          {"type": "para", "text": "**Asymmetric encryption** uses a key pair — a public key (shared with anyone) to encrypt, and a private key (kept secret) to decrypt. Slower than symmetric, but solves the key exchange problem."},
+          {"type": "bullet", "text": "**Symmetric algorithms:** AES (Advanced Encryption Standard — current gold standard), DES (broken), 3DES (deprecated), RC4 (broken)."},
+          {"type": "bullet", "text": "**Asymmetric algorithms:** RSA (most common), ECC (Elliptic Curve — smaller keys, stronger), Diffie-Hellman (key exchange), DSA (digital signatures)."}
+        ],
+        "pills": [
+          {"text": "AES", "t": "r"},
+          {"text": "RSA", "t": "y"},
+          {"text": "PKI", "t": "o"}
+        ],
+        "time": "25 min · Prof. Messer SY0-701 Cryptography Section"
+      },
+      {
+        "type": "red",
+        "label": "Hashing",
+        "tag": "Critical Concept",
+        "method": "WHAT — Hashing vs Encryption",
+        "heading": "Hashing: __Integrity, Not Secrecy__",
+        "body": [
+          {"type": "para", "text": "**Hashing** is a one-way mathematical function that converts any input into a fixed-length output (the hash or digest). It cannot be reversed — you cannot get the original data from a hash."},
+          {"type": "para", "text": "**Purpose:** Verify data integrity, not encrypt data. If two files produce the same hash, they are identical. If the hash changes — the file was tampered with."},
+          {"type": "bullet", "text": "**MD5** — 128-bit. Broken. Cracked in seconds with a GPU. Still found in legacy systems — always flag as a vulnerability."},
+          {"type": "bullet", "text": "**SHA-1** — 160-bit. Deprecated. Weak. Browsers no longer accept SHA-1 certificates."},
+          {"type": "bullet", "text": "**SHA-256** — 256-bit. Current standard. Used in TLS, digital signatures, blockchain."},
+          {"type": "bullet", "text": "**bcrypt** — Designed specifically for password hashing. Intentionally slow. Resistant to GPU-based cracking."}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 Hashing Section"
+      },
+      {
+        "type": "dark",
+        "label": "PKI Explained",
+        "tag": "Infrastructure",
+        "method": "WHAT — Public Key Infrastructure",
+        "heading": "PKI: The __Trust System__ of the Internet",
+        "body": [
+          {"type": "para", "text": "**PKI (Public Key Infrastructure)** is the system of Certificate Authorities (CAs), digital certificates, and policies that enables trusted encryption across the internet."},
+          {"type": "para", "text": "**How it works:** A CA (like DigiCert or Let's Encrypt) issues a digital certificate that binds a public key to an identity (a domain, a person, or a company). Browsers trust CAs by default."},
+          {"type": "para", "text": "**Digital certificate = public key + identity + CA signature.** When you see the padlock on HTTPS, your browser has verified the site's certificate was signed by a trusted CA."},
+          {"type": "para", "text": "**Certificate chain of trust:** Root CA → Intermediate CA → End-entity certificate. If any certificate in the chain is revoked or expired — the connection fails."}
+        ],
+        "time": "25 min · Prof. Messer SY0-701 PKI Section"
+      },
+      {
+        "type": "white",
+        "label": "Digital Signatures & Key Exchange",
+        "tag": "Applications",
+        "method": "WHAT — How Signatures and TLS Work",
+        "heading": "Digital Signatures & __Key Exchange__",
+        "body": [
+          {"type": "para", "text": "**Digital Signatures:** Sender hashes the message, then encrypts the hash with their **private key** — creating a signature. Recipient decrypts with sender's **public key** and compares hashes. Provides authenticity + non-repudiation."},
+          {"type": "para", "text": "**Diffie-Hellman Key Exchange:** Allows two parties to generate a shared secret key over an unsecured channel — without ever transmitting the key itself. Powers the TLS handshake for every HTTPS connection."},
+          {"type": "code", "text": "TLS Handshake (simplified):\n1. Client sends supported cipher suites\n2. Server sends certificate (public key)\n3. Key exchange (Diffie-Hellman)\n4. Shared session key generated\n5. Encrypted communication begins"}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 TLS Section"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 11 Learning Targets",
+        "heading": "Day 11 Checklist",
+        "steps": [
+          "Explain **symmetric vs asymmetric** — key difference, use case, and one algorithm each",
+          "Know which algorithms are **broken** — MD5, DES, SHA-1, RC4 — and why to avoid them",
+          "Understand **hashing vs encryption** — this distinction appears directly on the exam",
+          "Explain **PKI and certificate chain of trust** — Root CA → Intermediate → End-entity",
+          "Hash 'password' with MD5, SHA-1, and SHA-256 on CyberChef — observe the difference"
+        ],
+        "time": "Total Day 11 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 11",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Video", "name": "Prof. Messer SY0-701 — Cryptography Section", "url": "professormesser.com/security-plus/sy0-701"},
+          {"label": "🔧 Tool", "name": "CyberChef — Free Online Cryptography Toolkit", "url": "gchq.github.io/CyberChef"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Cryptography for Beginners' Room", "url": "tryhackme.com/room/cryptographyintro"},
+          {"label": "📖 Reference", "name": "NIST — Approved Algorithm List (FIPS Standards)", "url": "csrc.nist.gov/projects/cryptographic-standards-and-guidelines"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 11",
+        "heading": "Your Hands-On __Task__ for Day 11",
+        "steps": [
+          "**Go to** CyberChef.io — hash 'password' with MD5, SHA-1, and SHA-256 — compare all three outputs",
+          "**Then hash** 'password1' with each — notice how a tiny change creates a completely different hash",
+          "**Complete** TryHackMe Cryptography for Beginners room — hands-on practice (60 min)",
+          "**Write** from memory: 3 symmetric algorithms, 3 asymmetric algorithms, 4 hash algorithms — with status (safe/broken)"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 11",
+        "quote": "Know which cryptographic algorithms are broken. The exam will test whether you can identify weak cryptography in a scenario — MD5, DES, SHA-1, and RC4 are always wrong answers.",
+        "sub": "The single most tested distinction in the cryptography domain: hashing is NOT encryption. Hashing is one-way — it verifies integrity. Encryption is two-way — it protects confidentiality. Getting this wrong on the exam costs points you cannot afford.",
+        "mistake": "Confusing hashing with encryption. Hashing cannot be reversed — it produces a digest for integrity verification. Encryption can be reversed with the correct key — it protects data confidentiality. These are fundamentally different operations with different purposes."
+      }
+    ]
+  },
+
+  {
+    "day": 12,
+    "cover": {
+      "title": "Identity & Access Management (__IAM__)",
+      "hook": "The #1 rule of security: give the LEAST access possible. Here is why.",
+      "tags": ["#SecurityPlus", "#IAM", "#Day12of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Least Privilege",
+        "tag": "Foundation",
+        "method": "WHAT — Principle of Least Privilege",
+        "heading": "Least Privilege: __The #1 IAM Rule__",
+        "body": [
+          {"type": "para", "text": "**Principle of Least Privilege (PoLP):** Users, applications, and systems should be granted only the minimum level of access required to perform their job function — nothing more."},
+          {"type": "para", "text": "**Why it matters:** If an attacker compromises a low-privilege account, the blast radius is limited. If they compromise an admin account with no privilege restrictions — they own everything."},
+          {"type": "para", "text": "**Related concept — Need to Know:** Users should only access information directly relevant to their role, even if they technically have permission to view more. Least privilege is about access. Need to know is about information."}
+        ],
+        "pills": [
+          {"text": "Least Privilege", "t": "r"},
+          {"text": "MFA", "t": "y"},
+          {"text": "RBAC", "t": "o"}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 IAM Section"
+      },
+      {
+        "type": "red",
+        "label": "MFA Explained",
+        "tag": "Critical Control",
+        "method": "WHAT — Multi-Factor Authentication",
+        "heading": "MFA: The __Single Best Security Control__",
+        "body": [
+          {"type": "para", "text": "**MFA (Multi-Factor Authentication)** requires two or more different types of authentication factors before granting access. Compromising one factor is not enough."},
+          {"type": "bullet", "text": "**Something you know** — password, PIN, security question. The weakest factor — can be stolen, guessed, or phished."},
+          {"type": "bullet", "text": "**Something you have** — smartphone authenticator app, hardware token, smart card. Requires physical possession."},
+          {"type": "bullet", "text": "**Something you are** — fingerprint, facial recognition, retina scan, voice recognition. Biometric — hardest to replicate."},
+          {"type": "para", "text": "**Exam distinction:** Two factors from the SAME category = NOT MFA. A PIN + a password are both 'something you know' — that is single-factor with two instances, not true MFA."}
+        ],
+        "time": "25 min · Prof. Messer SY0-701 Authentication Section"
+      },
+      {
+        "type": "dark",
+        "label": "Access Control Models",
+        "tag": "Models",
+        "method": "WHAT — 4 Access Control Models",
+        "heading": "4 Access Control __Models__",
+        "body": [
+          {"type": "bullet", "text": "**DAC (Discretionary Access Control):** The owner of a resource controls who can access it. Most flexible, least secure. Common in personal file systems — you control sharing on your own files."},
+          {"type": "bullet", "text": "**MAC (Mandatory Access Control):** Labels and clearance levels control access. Government/military classification systems. Users cannot override — the system enforces access based on labels (Top Secret, Secret, Unclassified)."},
+          {"type": "bullet", "text": "**RBAC (Role-Based Access Control):** Access granted based on job role. Most common in enterprise environments. HR gets HR data. Finance gets finance data. Easy to manage at scale."},
+          {"type": "bullet", "text": "**ABAC (Attribute-Based Access Control):** Most flexible. Access based on multiple attributes — user role + time of day + location + device type. Used in Zero Trust architectures."}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 Access Control Section"
+      },
+      {
+        "type": "white",
+        "label": "SSO & Privileged Accounts",
+        "tag": "Advanced IAM",
+        "method": "WHAT — SSO and PAM",
+        "heading": "SSO & __Privileged Account__ Management",
+        "body": [
+          {"type": "para", "text": "**SSO (Single Sign-On):** One set of credentials grants access to multiple applications. Protocols: SAML (enterprise federated identity), OAuth 2.0 (third-party app authorisation), OpenID Connect (authentication layer on OAuth)."},
+          {"type": "para", "text": "**SSO trade-off:** Massive convenience improvement — one login for everything. One massive risk — if that one account is compromised, every connected application is breached simultaneously."},
+          {"type": "para", "text": "**PAM (Privileged Access Management):** Controls and monitors admin accounts. Admin credentials stored in a secure vault, checked out when needed, all activity recorded. Never use admin accounts for daily tasks."}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 Identity Management"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 12 Learning Targets",
+        "heading": "Day 12 Checklist",
+        "steps": [
+          "Explain **Least Privilege** — define it and give a real enterprise example of applying it",
+          "Know all **3 MFA factor categories** — and why two passwords do NOT equal MFA",
+          "Compare all **4 access control models** — DAC, MAC, RBAC, ABAC — use case for each",
+          "Understand **SSO protocols** — SAML vs OAuth 2.0 vs OpenID Connect at a conceptual level",
+          "Run `net user` (Windows) or `cat /etc/passwd` (Linux) — identify all accounts on your machine"
+        ],
+        "time": "Total Day 12 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 12",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Video", "name": "Prof. Messer SY0-701 — Identity & Access Management", "url": "professormesser.com/security-plus/sy0-701"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'IAM' Room (free)", "url": "tryhackme.com/room/iam"},
+          {"label": "☁️ Tool", "name": "Microsoft Entra ID (Azure AD) — Free Tier Available", "url": "microsoft.com/en-us/security/business/identity-access/microsoft-entra-id"},
+          {"label": "📖 Reference", "name": "NIST SP 800-63 — Digital Identity Guidelines", "url": "pages.nist.gov/800-63-3"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 12",
+        "heading": "Your Hands-On __Task__ for Day 12",
+        "steps": [
+          "**Run** `net user` (Windows) or `cat /etc/passwd` (Linux) — list all accounts and identify admin accounts",
+          "**Audit** your own online accounts — which ones use MFA? Enable it on any that do not",
+          "**Create** a comparison table: DAC vs MAC vs RBAC vs ABAC — real use case for each",
+          "**Complete** TryHackMe IAM room — apply access control concepts in a lab environment"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 12",
+        "quote": "RBAC is the most tested IAM concept on Security+. Know how roles are assigned, inherited, and revoked — and why role explosion is a real enterprise problem.",
+        "sub": "Role explosion occurs when an organisation creates too many fine-grained roles over time — making the access control system unmanageable. The exam tests whether you recognise this and know that role reviews and ABAC can solve it.",
+        "mistake": "Confusing authentication token types. A hardware token (physical device like a YubiKey) and a software token (authenticator app) are both 'something you have' — but they have very different security profiles. Hardware tokens cannot be phished. Software tokens can be via SIM swapping or malware."
+      }
+    ]
+  },
+
+  {
+    "day": 13,
+    "cover": {
+      "title": "Risk Management & __Incident Response__",
+      "hook": "Every company will be breached. The question is: do they have a plan?",
+      "tags": ["#SecurityPlus", "#IncidentResponse", "#Day13of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Risk Management",
+        "tag": "Foundation",
+        "method": "WHAT — Risk Management Concepts",
+        "heading": "Risk Management: __Calculated Decisions__",
+        "body": [
+          {"type": "para", "text": "**Risk = Threat × Vulnerability × Asset Value.** A threat with no vulnerability to exploit = no risk. A vulnerability with no threat actor = no risk. Both must exist for risk to be present."},
+          {"type": "para", "text": "**4 Risk Response Strategies:**"},
+          {"type": "bullet", "text": "**Accept** — risk is too low or mitigation too expensive. Document it and move on."},
+          {"type": "bullet", "text": "**Transfer** — shift financial impact to another party. Cyber insurance transfers risk."},
+          {"type": "bullet", "text": "**Avoid** — eliminate the activity that creates the risk entirely."},
+          {"type": "bullet", "text": "**Mitigate** — implement controls to reduce probability or impact of the risk."}
+        ],
+        "pills": [
+          {"text": "Risk", "t": "r"},
+          {"text": "NIST IR", "t": "y"},
+          {"text": "SIEM", "t": "o"}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 Risk Management Section"
+      },
+      {
+        "type": "red",
+        "label": "Business Continuity",
+        "tag": "Critical Concepts",
+        "method": "WHAT — BCP, DRP, RTO, RPO",
+        "heading": "BCP · DRP · RTO · __RPO__",
+        "body": [
+          {"type": "bullet", "text": "**BCP (Business Continuity Plan):** The overall strategy for keeping business operations running during and after a disaster or major incident."},
+          {"type": "bullet", "text": "**DRP (Disaster Recovery Plan):** The specific technical plan for restoring IT systems, data, and infrastructure after a disaster. A subset of BCP."},
+          {"type": "bullet", "text": "**RTO (Recovery Time Objective):** Maximum acceptable time to restore a system after an outage. 'We must restore email within 4 hours.' The speed target."},
+          {"type": "bullet", "text": "**RPO (Recovery Point Objective):** Maximum acceptable data loss measured in time. 'We can afford to lose no more than 1 hour of data.' Drives backup frequency decisions."},
+          {"type": "para", "text": "**Exam tip:** RTO is about time to restore. RPO is about data loss tolerance. Know both cold — they appear in scenario questions regularly."}
+        ],
+        "time": "25 min · Prof. Messer SY0-701 Business Continuity"
+      },
+      {
+        "type": "dark",
+        "label": "NIST IR Framework",
+        "tag": "Incident Response",
+        "method": "WHAT — The 6 NIST IR Phases",
+        "heading": "NIST IR Framework: __6 Phases__",
+        "body": [
+          {"type": "bullet", "text": "**1. Preparation** — Build the IR team, create runbooks, deploy detection tools, conduct tabletop exercises before an incident occurs."},
+          {"type": "bullet", "text": "**2. Detection & Analysis** — Identify and confirm an incident has occurred. Analyse indicators, determine scope and severity."},
+          {"type": "bullet", "text": "**3. Containment** — Stop the spread. Isolate affected systems. Short-term containment (disconnect from network) then long-term containment (patch, rebuild)."},
+          {"type": "bullet", "text": "**4. Eradication** — Remove the threat completely. Delete malware, close backdoors, revoke compromised credentials."},
+          {"type": "bullet", "text": "**5. Recovery** — Restore systems to normal operation. Verify functionality. Monitor for reinfection."},
+          {"type": "bullet", "text": "**6. Post-Incident Activity** — Lessons learned meeting. Update IR plan. Document timeline and evidence for legal or compliance purposes."}
+        ],
+        "time": "30 min · NIST SP 800-61 (free PDF)"
+      },
+      {
+        "type": "white",
+        "label": "SIEM & Vulnerability Management",
+        "tag": "Tools",
+        "method": "WHAT — SIEM and VA vs Pentest",
+        "heading": "SIEM, VA & __Pentest__ — Key Differences",
+        "body": [
+          {"type": "para", "text": "**SIEM (Security Information & Event Management):** Aggregates and correlates logs from firewalls, servers, endpoints, and applications. Detects patterns that indicate incidents. Tools: Splunk, IBM QRadar, Microsoft Sentinel."},
+          {"type": "para", "text": "**Vulnerability Assessment (VA):** Scans systems to identify known vulnerabilities. Non-disruptive. Does not exploit — only identifies. Produces a list of findings with CVSS scores."},
+          {"type": "para", "text": "**Penetration Test:** Goes further than VA by actively attempting to exploit vulnerabilities — with written permission. Proves that a vulnerability is actually exploitable, not just theoretically present."},
+          {"type": "para", "text": "**Key exam distinction:** VA finds weaknesses. A pentest proves they are exploitable. Different purpose, different authorisation requirement, different deliverable."}
+        ],
+        "time": "20 min · Prof. Messer SY0-701 Security Operations"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 13 Learning Targets",
+        "heading": "Day 13 Checklist",
+        "steps": [
+          "Explain **all 4 risk responses** — Accept, Transfer, Avoid, Mitigate — with a real scenario for each",
+          "Define **BCP vs DRP** — and explain the difference between RTO and RPO with numbers",
+          "Memorise the **6 NIST IR phases** in order — write them from memory 3 times",
+          "Explain the difference between **VA and Penetration Testing** — purpose and authorisation",
+          "Understand what a **SIEM does** — log aggregation, correlation, alert generation"
+        ],
+        "time": "Total Day 13 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 13",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Video", "name": "Prof. Messer SY0-701 — Risk & Incident Response", "url": "professormesser.com/security-plus/sy0-701"},
+          {"label": "📖 Guide", "name": "NIST SP 800-61 — Incident Handling Guide (free PDF)", "url": "nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'SIEM' Room (free)", "url": "tryhackme.com/room/introtosiem"},
+          {"label": "📖 Reference", "name": "NIST SP 800-30 — Risk Assessment Guide (free)", "url": "nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-30r1.pdf"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 13",
+        "heading": "Your Hands-On __Task__ for Day 13",
+        "steps": [
+          "**Download** NIST SP 800-61 — skim Section 3 (Handling Process) — 30 minutes",
+          "**Write** the 6 IR phases from memory 3 times — until you can recite them without hesitation",
+          "**Create** a risk register for your personal digital life — 5 risks, response strategy for each",
+          "**Complete** TryHackMe SIEM room — understand how log correlation detects incidents"
+        ],
+        "time": "Hands-On Task: 60 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 13",
+        "quote": "Incident Response order is heavily tested on Security+. The sequence is always: Containment before Eradication before Recovery. Never skip steps — this is the exam answer every time.",
+        "sub": "Memorise the NIST IR phases as: P-D-C-E-R-P — Preparation, Detection, Containment, Eradication, Recovery, Post-Incident. Exam scenario questions will describe an IR situation and ask what the NEXT step should be. Knowing the order cold means instant correct answers.",
+        "mistake": "Skipping the Post-Incident Activity phase. Students think IR ends at Recovery — it does not. The Lessons Learned meeting is where the IR plan gets updated, where legal documentation is finalised, and where the organisation improves. The exam tests this phase specifically."
+      }
+    ]
+  },
+
+  {
+    "day": 14,
+    "cover": {
+      "title": "Security+ Week __Recap__ & Exam Strategy",
+      "hook": "2 Weeks Down. Security+ week complete. Here is your full exam strategy.",
+      "tags": ["#SecurityPlus", "#ExamPrep", "#Day14of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Week 2 Recap",
+        "tag": "Summary",
+        "method": "WHAT — Everything Covered This Week",
+        "heading": "Week 2: __Everything You Learned__",
+        "body": [
+          {"type": "bullet", "text": "**Day 8:** CIA Triad — Confidentiality, Integrity, Availability. AAA Framework. Non-Repudiation."},
+          {"type": "bullet", "text": "**Day 9:** Malware Types — Virus, Worm, Trojan, RAT, Rootkit, Ransomware, Spyware, Keylogger."},
+          {"type": "bullet", "text": "**Day 10:** Social Engineering — 6 phishing types, pretexting, baiting, tailgating, defence strategies."},
+          {"type": "bullet", "text": "**Day 11:** Cryptography — Symmetric vs Asymmetric, Hashing, PKI, Digital Signatures, TLS."},
+          {"type": "bullet", "text": "**Day 12:** IAM — Least Privilege, MFA, Access Control Models (DAC/MAC/RBAC/ABAC), SSO."},
+          {"type": "bullet", "text": "**Day 13:** Risk Management — 4 responses, BCP/DRP/RTO/RPO, NIST IR 6 phases, SIEM, VA vs Pentest."}
+        ],
+        "pills": [
+          {"text": "Recap", "t": "r"},
+          {"text": "SY0-701", "t": "y"},
+          {"text": "Exam Strategy", "t": "o"}
+        ],
+        "time": "30 min · Review all 6 days of notes"
+      },
+      {
+        "type": "red",
+        "label": "SY0-701 Domain Weights",
+        "tag": "Exam Priority",
+        "method": "WHAT — Where to Focus Study Time",
+        "heading": "SY0-701 __Domain Weights__: Study Smart",
+        "body": [
+          {"type": "bullet", "text": "**Implementation (28%)** — highest weight. Cryptography, identity, access management, network security controls."},
+          {"type": "bullet", "text": "**Threats, Attacks & Vulnerabilities (22%)** — malware, social engineering, application attacks, threat intelligence."},
+          {"type": "bullet", "text": "**Architecture & Design (18%)** — security models, cloud, virtualisation, Zero Trust, network segmentation."},
+          {"type": "bullet", "text": "**Operations & Incident Response (17%)** — NIST IR phases, digital forensics, SIEM, vulnerability scanning."},
+          {"type": "bullet", "text": "**Governance, Risk & Compliance (15%)** — risk management, frameworks (NIST, ISO), policies, regulations."},
+          {"type": "para", "text": "**Strategy:** Focus the most time on Implementation and Threats — they represent 50% of the total exam score."}
+        ],
+        "time": "15 min · Read CompTIA SY0-701 Exam Objectives"
+      },
+      {
+        "type": "dark",
+        "label": "Performance-Based Questions",
+        "tag": "PBQ Strategy",
+        "method": "HOW — Approaching Performance-Based Tasks",
+        "heading": "Performance-Based Questions: __PBQ Strategy__",
+        "body": [
+          {"type": "para", "text": "**PBQs (Performance-Based Questions)** simulate real-world security tasks — configuring firewalls, identifying phishing emails, ordering IR steps, dragging and dropping ACL rules. They appear at the START of the exam."},
+          {"type": "para", "text": "**Strategy: Skip PBQs on first pass.** They are time-consuming and may take 10–15 minutes each. Answer all multiple-choice questions first, then return to PBQs with remaining time."},
+          {"type": "para", "text": "**How to practice PBQs:** Professor Messer sells PBQ practice kits. Mike Chapple on LinkedIn Learning includes PBQ simulations. TryHackMe rooms simulate the hands-on component in a live lab environment."}
+        ],
+        "time": "20 min · Professor Messer PBQ practice kit"
+      },
+      {
+        "type": "white",
+        "label": "Exam Strategy",
+        "tag": "Test-Taking",
+        "method": "HOW — Exam Day Strategy",
+        "heading": "Security+ __Exam Day__ Strategy",
+        "steps": [
+          "**Skip PBQs on first pass** — flag them, answer all multiple choice first, return with remaining time",
+          "**Eliminate wrong answers first** — Security+ always has 2 obviously wrong options, leaving 2 plausible ones",
+          "**Read the scenario carefully** — the correct answer depends on context, not just the definition",
+          "**Never leave blanks** — there is no penalty for wrong answers. Guess intelligently on anything uncertain",
+          "**Time management** — 90 questions in 90 minutes = 1 minute per question. Track your pace every 20 questions"
+        ],
+        "time": "Take a full 90-question timed mock exam today"
+      },
+      {
+        "type": "yellow",
+        "label": "Top Free Study Resources",
+        "tag": "Study Resources",
+        "method": "WHERE — Best Free SY0-701 Resources",
+        "heading": "Day 14 Checklist",
+        "steps": [
+          "Take a **full 90-question Security+ mock exam** under timed conditions — no notes, no pausing",
+          "**Score yourself** honestly — write down every domain where you scored below 75%",
+          "**Review** those weak domains from your Days 8–13 notes — targeted review, not re-reading everything",
+          "**Understand the exam strategy** — PBQ skip technique, elimination method, time pacing",
+          "**You do not need to pass Security+ before Day 15** — the learning matters more than the cert right now"
+        ],
+        "time": "Total Day 14 Study Time: 120 – 150 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 14",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Full Course", "name": "Prof. Messer — Free SY0-701 Video Course", "url": "professormesser.com/security-plus/sy0-701"},
+          {"label": "📖 Practice", "name": "ExamCompass — Free SY0-701 Practice Tests", "url": "examcompass.com"},
+          {"label": "💬 Community", "name": "Reddit r/CompTIA — Study Tips & Exam Reports", "url": "reddit.com/r/CompTIA"},
+          {"label": "🎯 Objectives", "name": "CompTIA SY0-701 Official Exam Objectives PDF", "url": "comptia.org/certifications/security"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 14",
+        "heading": "Your Hands-On __Task__ for Day 14",
+        "steps": [
+          "**Take** a full SY0-701 mock exam at ExamCompass — 90 questions, 90 minutes, no notes",
+          "**Score** every domain separately — identify your weakest two domains specifically",
+          "**Review** your Days 8–13 cheat sheets — create one master reference page covering all 6 days",
+          "**Post** your progress with #Day14of90 — accountability is a legitimate performance accelerator"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes"
+      },
+      {
+        "type": "stats",
+        "label": "Week 2 Achievement",
+        "tag": "Progress Stats",
+        "method": "WHY — The Value of Week 2",
+        "heading": "Week 2 __Complete__ — Your Progress",
+        "stats": [
+          {"value": "14", "label": "Days of consistent learning completed"},
+          {"value": "6", "label": "Core Security+ domains covered this week"},
+          {"value": "8", "label": "Malware types you can now identify by behaviour"},
+          {"value": "76", "label": "Days remaining on your 90-day journey"}
+        ]
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 14",
+        "quote": "You do not need to pass Security+ before Day 15. Use these two weeks as a study foundation, then certify when ready. The learning matters most — the cert follows the knowledge.",
+        "sub": "The study method that produces first-attempt passes: Watch → Notes → Practice questions → Review wrong answers → Repeat. Students who only watch videos fail. Students who practice questions under timed conditions consistently pass on the first attempt.",
+        "mistake": "Skipping mock exams because you feel unprepared. Mock exams are how you find out what you do not know — not a test of what you do know. A bad mock exam score today is infinitely more valuable than a bad real exam score on exam day."
+      }
+    ]
+  }
+]

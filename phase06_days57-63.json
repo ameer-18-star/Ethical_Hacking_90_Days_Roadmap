@@ -1,0 +1,869 @@
+[
+  {
+    "day": 57,
+    "cover": {
+      "title": "Git Basics: Why Every Security Pro __Needs Git__",
+      "hook": "Every script, rule, config, and policy you write needs version control. Git week starts now.",
+      "tags": ["#Git", "#VersionControl", "#Day57of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Git?",
+        "tag": "Foundation",
+        "method": "WHAT — Git Explained for Security Professionals",
+        "heading": "Git: __Version Control__ for Security Work",
+        "body": [
+          {"type": "para", "text": "**Git** is a distributed version control system that tracks every change ever made to every file in a project. Every security script, detection rule, incident playbook, hardening configuration, and policy document should live in Git."},
+          {"type": "para", "text": "**Why security professionals need Git:** It creates an auditable history of every change — who made it, when, and why. This is non-repudiation applied to your own work. Every professional security environment uses Git without exception."},
+          {"type": "para", "text": "**Git is not optional.** In 2026, submitting scripts or tools without Git history is the equivalent of submitting work with no version history, no collaboration capability, and no audit trail. It signals junior-level thinking regardless of technical skill."}
+        ],
+        "pills": [
+          {"text": "Commits", "t": "r"},
+          {"text": "Branches", "t": "y"},
+          {"text": "GitHub", "t": "o"}
+        ],
+        "time": "20 min · git-scm.com/book — free Pro Git book"
+      },
+      {
+        "type": "red",
+        "label": "Core Git Concepts",
+        "tag": "Key Terminology",
+        "method": "WHAT — Essential Git Vocabulary",
+        "heading": "Git Vocabulary: __6 Concepts to Know Cold__",
+        "body": [
+          {"type": "bullet", "text": "**Repository (repo):** The project folder with complete change history. Contains all versions of every file since the project began. Your entire project's memory."},
+          {"type": "bullet", "text": "**Commit:** A named snapshot of your project at a specific moment. Includes a message describing what changed and why. The fundamental unit of Git history."},
+          {"type": "bullet", "text": "**Branch:** A parallel version of the codebase. Create a branch to develop a new scanner feature or detection rule without touching the stable main version."},
+          {"type": "bullet", "text": "**Merge:** Combine two branches back together. Integrates completed work into the main codebase after review."},
+          {"type": "bullet", "text": "**Remote:** A hosted copy of the repository (GitHub, GitLab, Bitbucket). Where your team collaborates and where your portfolio lives publicly."},
+          {"type": "bullet", "text": "**Clone:** Your local copy of a remote repository. What you get when you `git clone` someone else's project."}
+        ],
+        "time": "20 min · try.github.io — GitHub's official 25-minute interactive tutorial"
+      },
+      {
+        "type": "dark",
+        "label": "First-Time Setup",
+        "tag": "Configuration",
+        "method": "HOW — Configuring Git on a New Machine",
+        "heading": "First-Time Git __Setup__: One Machine, Once",
+        "body": [
+          {"type": "code", "text": "# Run these once per machine — stored in ~/.gitconfig:\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"you@email.com\"\ngit config --global core.editor \"nano\"  # or 'vim' or 'code'"},
+          {"type": "code", "text": "# Verify your configuration:\ngit config --list\n# Output:\n# user.name=Your Name\n# user.email=you@email.com\n# core.editor=nano"},
+          {"type": "code", "text": "# Generate SSH key for GitHub auth (recommended over HTTPS):\nssh-keygen -t ed25519 -C \"you@email.com\"\ncat ~/.ssh/id_ed25519.pub  # Copy this to GitHub Settings → SSH Keys"},
+          {"type": "para", "text": "**Skipping setup creates problems:** Without name/email config, your commits have no author attribution — making git blame and audit trails useless in team environments."}
+        ],
+        "time": "15 min · Set up Git on your machine right now"
+      },
+      {
+        "type": "white",
+        "label": "The Daily Git Workflow",
+        "tag": "Core Commands",
+        "method": "HOW — The 4 Commands That Cover 90% of Git",
+        "heading": "Daily Workflow: __4 Commands__, Endless Power",
+        "body": [
+          {"type": "code", "text": "# 1. Create a new repository:\ngit init my-security-tools\ncd my-security-tools"},
+          {"type": "code", "text": "# 2. Stage changes for commit:\ngit add scanner.py          # Stage one file\ngit add .                   # Stage ALL changes\ngit status                  # See what is staged"},
+          {"type": "code", "text": "# 3. Commit staged changes with a message:\ngit commit -m \"Add threaded port scanner with banner grabbing\"\n# Message format: verb + what + brief why"},
+          {"type": "code", "text": "# 4. Push to GitHub remote:\ngit remote add origin git@github.com:user/repo.git\ngit push -u origin main     # First push sets upstream\ngit push                    # Every push after that"}
+        ],
+        "time": "25 min · git-scm.com/book Chapter 2 — Git Basics"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 57 Learning Targets",
+        "heading": "Day 57 Checklist",
+        "steps": [
+          "**Install Git** and run `git config --global` setup — verify with `git config --list`",
+          "**Create a GitHub account** if you do not have one — set up SSH key authentication",
+          "**Create a repo** called `cybersecurity-tools` — push your Python port scanner from Day 30",
+          "**Write a README.md** — tool name, description, installation steps, usage example with output",
+          "Understand **why every security file needs Git** — audit trail, collaboration, non-repudiation"
+        ],
+        "time": "Total Day 57 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 57",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Book", "name": "Pro Git Book — Free, Definitive Git Reference", "url": "git-scm.com/book"},
+          {"label": "🧪 Interactive", "name": "try.github.io — GitHub's Official 25-Min Tutorial", "url": "try.github.io"},
+          {"label": "📺 Course", "name": "Codecademy — Learn Git & GitHub (free track)", "url": "codecademy.com/learn/learn-git"},
+          {"label": "🧪 Labs", "name": "GitImmersion.com — 53 Hands-On Git Labs", "url": "gitimmersion.com"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 57",
+        "heading": "Your Hands-On __Task__ for Day 57",
+        "steps": [
+          "**Create** a GitHub account → generate an SSH key → add the public key to GitHub Settings",
+          "**Create** a new public repo: `cybersecurity-tools` — initialise with a README",
+          "**Clone** the repo locally → add your port scanner from Day 30 → write a proper README.md",
+          "**Commit and push:** `git add .` → `git commit -m 'Add port scanner with banner grabbing'` → `git push`"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 57",
+        "quote": "Your GitHub profile IS your security portfolio. Hiring managers and recruiters check GitHub before interviews. Consistent commits over 90 days are visible proof of dedication that no cover letter can replicate.",
+        "sub": "Write commit messages that explain WHY a change was made, not just WHAT. 'Fix port scanner' is useless. 'Fix port scanner timeout causing false FILTERED results on firewalled hosts' tells a story. Good commit messages are searchable, reviewable, and demonstrate engineering maturity to every recruiter who reads your history.",
+        "mistake": "Committing API keys, passwords, or .env files. Create a `.gitignore` file BEFORE your very first commit on any project. GitHub secret scanning finds exposed keys within seconds of a push — and so do automated scrapers. Exposed keys get abused within minutes. Prevention is infinitely easier than rotation and damage control."
+      }
+    ]
+  },
+
+  {
+    "day": 58,
+    "cover": {
+      "title": "Branching, Merging & __Pull Requests__",
+      "hook": "Branches let you experiment without breaking production. The safety net every team needs.",
+      "tags": ["#Git", "#Branching", "#Day58of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Why Branches?",
+        "tag": "Foundation",
+        "method": "WHAT — The Purpose of Git Branches",
+        "heading": "Branches: __Safe Experimentation__ at Scale",
+        "body": [
+          {"type": "para", "text": "**A branch is a parallel, isolated copy of your codebase.** Changes on a branch do not affect any other branch until you explicitly merge them. This makes it safe to experiment, develop, and test without risk to working code."},
+          {"type": "bullet", "text": "**Security engineering use:** Test a new Suricata detection rule on a branch — if it causes false positives, delete the branch with zero impact on production rules."},
+          {"type": "bullet", "text": "**Development use:** Build a new scanner feature in isolation — commit frequently without breaking the working version that others depend on."},
+          {"type": "bullet", "text": "**Emergency use:** Apply a critical hotfix on a dedicated branch — merge it immediately without waiting for incomplete feature work to be ready."},
+          {"type": "para", "text": "**The fundamental rule:** `main` branch is always stable and deployable. Work happens on branches. This is universal across every professional engineering team."}
+        ],
+        "pills": [
+          {"text": "git checkout -b", "t": "r"},
+          {"text": "git merge", "t": "y"},
+          {"text": "Pull Request", "t": "o"}
+        ],
+        "time": "20 min · learngitbranching.js.org — free visual interactive tutorial"
+      },
+      {
+        "type": "red",
+        "label": "Branch Commands",
+        "tag": "Essential Commands",
+        "method": "HOW — Creating and Managing Branches",
+        "heading": "Branch Commands: __Create, Switch, Delete__",
+        "body": [
+          {"type": "code", "text": "# Create a new branch AND switch to it:\ngit checkout -b feature-dns-scanner\n# Equivalent to: git branch feature-dns-scanner && git checkout feature-dns-scanner"},
+          {"type": "code", "text": "# List all local branches (* = current):\ngit branch\n# List all branches including remote:\ngit branch -a"},
+          {"type": "code", "text": "# Switch between existing branches:\ngit checkout main              # Back to main\ngit checkout feature-dns-scanner  # Back to feature"},
+          {"type": "code", "text": "# Delete a branch after merging:\ngit branch -d feature-dns-scanner   # Safe delete\ngit branch -D feature-dns-scanner   # Force delete (even if unmerged)"},
+          {"type": "code", "text": "# Push a new branch to GitHub:\ngit push -u origin feature-dns-scanner"}
+        ],
+        "time": "20 min · learngitbranching.js.org — complete levels 1–4"
+      },
+      {
+        "type": "dark",
+        "label": "Merging",
+        "tag": "Combining Work",
+        "method": "HOW — Merging Branches and Resolving Conflicts",
+        "heading": "Merging: __Combining Branches__ Back Together",
+        "body": [
+          {"type": "code", "text": "# Merge feature branch into main:\ngit checkout main                     # Switch to target branch\ngit merge feature-dns-scanner         # Merge the feature in\ngit branch -d feature-dns-scanner     # Clean up after merge"},
+          {"type": "code", "text": "# Two merge types:\n# Fast-forward (clean, no divergence):\n# main: A---B\n# feature: A---B---C\n# Result: A---B---C (linear)\n\n# 3-way merge (branches diverged):\n# main: A---B---D\n# feature: A---B---C\n# Result: A---B---D---E (merge commit)"},
+          {"type": "para", "text": "**Merge conflicts** happen when the same line was edited differently in both branches. Git marks the conflict with `<<<<<<` and `>>>>>>>` markers. Open the file, choose the correct version, delete the markers, then `git add filename` + `git commit` to complete the merge."}
+        ],
+        "time": "25 min · Practice merging two branches with a deliberate conflict"
+      },
+      {
+        "type": "white",
+        "label": "Pull Requests",
+        "tag": "Team Collaboration",
+        "method": "WHAT — The Professional Review Workflow",
+        "heading": "Pull Requests: __Code Review Before Deployment__",
+        "body": [
+          {"type": "step", "num": "1", "text": "**Create branch** — `git checkout -b feature-ioc-checker` — write your code and commit to the branch."},
+          {"type": "step", "num": "2", "text": "**Push branch** to GitHub — `git push -u origin feature-ioc-checker` — the branch now exists on the remote."},
+          {"type": "step", "num": "3", "text": "**Open Pull Request** on GitHub — navigate to the repo → 'Compare & pull request' → write a description of what changed and why → submit for review."},
+          {"type": "step", "num": "4", "text": "**Review & discuss** — teammates review the diff, leave comments, request changes. Discussion is preserved permanently in the PR thread — full audit trail."},
+          {"type": "step", "num": "5", "text": "**Merge** — once approved, merge the PR into main. In security teams, ALL changes to detection rules, scripts, and policies go through PR review. No exceptions."}
+        ],
+        "time": "20 min · Open a PR on your cybersecurity-tools repo"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 58 Learning Targets",
+        "heading": "Day 58 Checklist",
+        "steps": [
+          "Create a branch **`feature-banner-grabber`** — add your Day 31 banner grabber script to it",
+          "**Push the branch** to GitHub — open a Pull Request describing what the tool does",
+          "**Review your own PR** — leave a comment, then merge it into main",
+          "Practice **resolving a merge conflict** — edit the same line in both branches, merge, and resolve",
+          "Complete **learngitbranching.js.org levels 1–6** — visual mastery of branch concepts"
+        ],
+        "time": "Total Day 58 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 58",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🧪 Visual", "name": "learngitbranching.js.org — Best Visual Branch Tutorial", "url": "learngitbranching.js.org"},
+          {"label": "📖 Guide", "name": "Atlassian Git Branching Tutorial", "url": "atlassian.com/git/tutorials/using-branches"},
+          {"label": "🧪 Labs", "name": "GitImmersion.com — Labs 18–30 (Branching)", "url": "gitimmersion.com"},
+          {"label": "📖 Docs", "name": "GitHub Docs — About Pull Requests", "url": "docs.github.com/en/pull-requests"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 58",
+        "heading": "Your Hands-On __Task__ for Day 58",
+        "steps": [
+          "**Create** branch `feature-banner-grabber` → add banner grabber script → commit with a descriptive message",
+          "**Push** the branch to GitHub → open a Pull Request with title and description",
+          "**Review** your own PR → add one comment → merge → delete the feature branch",
+          "**Practice** a conflict: edit README.md in both main and a test branch → merge → resolve conflict manually"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 58",
+        "quote": "In your first security job, every script, rule, and policy change will go through a Pull Request for peer review before it touches production. Learning this workflow now means Day 1 feels natural.",
+        "sub": "Git Flow branching strategy is the professional standard: `main` (always stable) → `develop` (integration) → `feature/*` (one branch per feature) → `hotfix/*` (emergency production fixes). When you use this naming convention in personal projects, it signals that you have worked in professional team environments — even if you have not yet.",
+        "mistake": "Never push directly to `main` in any team environment. Feature branches and PRs are non-negotiable professional practice. Even for solo projects, using branches and PRs trains the habit. The first time you push a breaking change directly to production main in a real job, you will understand why this rule exists."
+      }
+    ]
+  },
+
+  {
+    "day": 59,
+    "cover": {
+      "title": "GitHub Portfolio & __Secret Scanning__",
+      "hook": "Your GitHub profile IS your security resume. Here is how to make it impossible to ignore.",
+      "tags": ["#GitHub", "#Portfolio", "#Day59of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "GitHub Profile Optimization",
+        "tag": "Foundation",
+        "method": "WHAT — Building a Professional GitHub Profile",
+        "heading": "GitHub Profile: __Your Security Resume__",
+        "body": [
+          {"type": "para", "text": "**GitHub profile = professional identity.** Security engineering hiring managers and technical recruiters check GitHub profiles before scheduling interviews. A well-crafted profile with documented projects communicates competence before you say a single word."},
+          {"type": "bullet", "text": "**Profile README:** Create a repository named EXACTLY the same as your username — GitHub automatically renders its README.md on your profile page. This is your professional headline."},
+          {"type": "bullet", "text": "**Pinned repositories:** Pin your 6 best projects. These are the first things visitors see. Choose projects that demonstrate breadth — scanner, log analyser, OSINT tool, incident report, Sigma rule, automation script."},
+          {"type": "bullet", "text": "**Contribution graph:** The green square grid. Consistent daily commits over 90 days creates a dense, impressive pattern. Employers see this as visible proof of sustained effort — something impossible to fake."},
+          {"type": "bullet", "text": "**Professional headline:** Target role + key skills. 'Security Engineer | Python | Wireshark | Suricata | CTF Player' tells the whole story in one line."}
+        ],
+        "pills": [
+          {"text": "Profile README", "t": "r"},
+          {"text": "Secret Scanning", "t": "y"},
+          {"text": ".gitignore", "t": "o"}
+        ],
+        "time": "20 min · docs.github.com/en/account-and-profile"
+      },
+      {
+        "type": "red",
+        "label": "Writing a Great README",
+        "tag": "Documentation",
+        "method": "HOW — README That Gets Noticed",
+        "heading": "README: The __First Impression__ of Every Repo",
+        "body": [
+          {"type": "bullet", "text": "**Tool name + one-line description:** What does this tool do? Who is it for? Make it specific — 'Threaded port scanner with service banner grabbing and NVD CVE correlation' beats 'port scanner'."},
+          {"type": "bullet", "text": "**Features list:** 3–5 bullet points showing specific capabilities. Use action verbs: Scans, Extracts, Correlates, Generates, Alerts."},
+          {"type": "bullet", "text": "**Installation:** Exact commands from zero to running. `git clone`, `pip install -r requirements.txt`, done. Never assume the reader has anything pre-installed."},
+          {"type": "bullet", "text": "**Usage with real output:** Show the actual terminal output. Screenshots or ASCII blocks showing real results build immediate credibility."},
+          {"type": "bullet", "text": "**Ethical use disclaimer:** 'For authorised security testing only. Do not use against systems you do not own or have explicit permission to test.' This signals professional maturity and legal awareness."}
+        ],
+        "time": "25 min · Write or rewrite 3 READMEs using this structure"
+      },
+      {
+        "type": "dark",
+        "label": "GitHub Secret Scanning",
+        "tag": "Security",
+        "method": "WHAT — Protecting Secrets in Git",
+        "heading": "Secret Scanning: __Find Exposed Keys__",
+        "body": [
+          {"type": "para", "text": "**GitHub automatically scans every public push** for exposed secrets — AWS access keys, API tokens, private keys, database credentials. If found, GitHub notifies you and the service provider immediately."},
+          {"type": "code", "text": "# Enable secret scanning for private repos:\n# GitHub repo → Settings → Security → Secret scanning\n# → Enable secret scanning\n# → Enable push protection (blocks pushes with secrets)"},
+          {"type": "para", "text": "**Push Protection** (free for public repos) blocks the push entirely before the secret is exposed. This is the correct setting — prevention over detection."},
+          {"type": "para", "text": "**If a secret IS exposed:** Rotate it IMMEDIATELY — assume it was scraped by automated bots within 60 seconds of exposure. Changing the secret in your codebase and revoking the old one are both required. The exposed secret in git history must also be removed with `git filter-repo`."}
+        ],
+        "time": "15 min · Enable secret scanning on all your repos now"
+      },
+      {
+        "type": "white",
+        "label": "Pre-commit Hooks & .gitignore",
+        "tag": "Prevention",
+        "method": "HOW — Preventing Secret Exposure",
+        "heading": "Pre-commit Hooks: __Block Secrets Before Commit__",
+        "body": [
+          {"type": "code", "text": "# Install detect-secrets (blocks secrets before commit):\npip install detect-secrets\n\n# Scan your repo for existing secrets:\ndetect-secrets scan > .secrets.baseline\ndetect-secrets audit .secrets.baseline"},
+          {"type": "code", "text": "# Essential .gitignore entries for security projects:\n.env\n*.pem\n*.key\n*.p12\nconfig/secrets*\n*credentials*\nvenv/\n__pycache__/\n.DS_Store\n*.log\nreports/\n.secrets.baseline"},
+          {"type": "code", "text": "# Generate complete .gitignore automatically:\n# Visit gitignore.io → select Python, Linux, macOS, VS Code\n# → copy the generated file to your project root\n# ALWAYS create .gitignore BEFORE the very first commit"},
+          {"type": "para", "text": "**Critical rule:** `.gitignore` only prevents FUTURE commits. If a secret was already committed, it lives in git history forever until you use `git filter-repo` to surgically remove it."}
+        ],
+        "time": "20 min · Set up .gitignore and detect-secrets on all projects"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 59 Learning Targets",
+        "heading": "Day 59 Checklist",
+        "steps": [
+          "Create your **GitHub Profile README** — skills, current learning, top 3 projects, LinkedIn link",
+          "**Pin 6 repositories** on your profile — choose projects that show breadth of skills",
+          "Add **.gitignore** to every repo that does not have one — use gitignore.io to generate it",
+          "Enable **secret scanning and push protection** on all your repositories",
+          "Run `git log --all -p | grep -i 'password\\|api_key\\|secret'` — audit all repos for exposed secrets"
+        ],
+        "time": "Total Day 59 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 59",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🔧 Tool", "name": "gitignore.io — Auto-Generate .gitignore Files", "url": "gitignore.io"},
+          {"label": "🏷️ Badges", "name": "shields.io — Add Professional Badges to READMEs", "url": "shields.io"},
+          {"label": "📖 Guide", "name": "makeareadme.com — README Writing Guide", "url": "makeareadme.com"},
+          {"label": "📖 Docs", "name": "GitHub Docs — Secret Scanning Setup", "url": "docs.github.com/en/code-security/secret-scanning"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 59",
+        "heading": "Your Hands-On __Task__ for Day 59",
+        "steps": [
+          "**Create** your GitHub Profile README — repository named exactly the same as your username",
+          "**Audit** every repo: add .gitignore, add requirements.txt (Python repos), rewrite README with usage examples",
+          "**Run** the secret search: `git log --all -p | grep -i 'password\\|api_key\\|secret'` — fix any findings",
+          "**Enable** push protection on all repos: Settings → Security → Secret scanning → Push protection"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 59",
+        "quote": "If you find a secret in git history, deleting the file does not help — it is still in every commit. Use `git filter-repo` to surgically remove it, force-push, then rotate the credential immediately.",
+        "sub": "Add shields.io badges to every README — Python version badge, license badge, last-commit badge. They take 5 minutes per repo and immediately signal that the project is maintained and professional. Recruiters who see a repo with proper badges, a clear README, and a GitHub Actions status badge make an instant positive assessment before reading a single line of code.",
+        "mistake": "Running `git rm` to delete a file containing a secret and thinking the problem is solved. `git rm` removes the file from the working tree and stages the deletion — but the file still exists in every previous commit in the history. Anyone who clones the repo and runs `git log -p` can still see the secret. Use `git filter-repo` for real removal."
+      }
+    ]
+  },
+
+  {
+    "day": 60,
+    "cover": {
+      "title": "Advanced Git: __log, bisect, stash & blame__",
+      "hook": "Senior engineers use these Git commands daily. Master them and stand out in every technical interview.",
+      "tags": ["#Git", "#AdvancedGit", "#Day60of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "git log — Audit Trail",
+        "tag": "Foundation",
+        "method": "WHAT — git log for Forensic History",
+        "heading": "git log: __Complete Audit Trail__",
+        "body": [
+          {"type": "code", "text": "# Compact one-line history:\ngit log --oneline\n# a3f2b1c Add DNS scanner with subdomain enumeration\n# 8d4e7f2 Fix timeout causing false FILTERED results\n# 2c1a9b8 Initial port scanner — TCP threaded version"},
+          {"type": "code", "text": "# Visual branch tree:\ngit log --graph --all --oneline\n\n# Every change ever made to one file:\ngit log -p scanner.py\n\n# Filter by author and date:\ngit log --since='1 week ago' --author='Alice'\ngit log --since='2026-01-01' --until='2026-04-01'"},
+          {"type": "para", "text": "**Security forensic use:** In incident response on a compromised codebase, `git log -p filename` shows every change ever made to a specific file — including who made it, when, and exactly what bytes changed. This is your first step when investigating suspicious code changes."}
+        ],
+        "pills": [
+          {"text": "git log", "t": "r"},
+          {"text": "git blame", "t": "y"},
+          {"text": "git bisect", "t": "o"}
+        ],
+        "time": "20 min · git-scm.com/book Chapter 2 · ohshitgit.com"
+      },
+      {
+        "type": "red",
+        "label": "git blame",
+        "tag": "Accountability",
+        "method": "WHAT — Who Changed What and When",
+        "heading": "git blame: __Who Changed This Line?__",
+        "body": [
+          {"type": "code", "text": "# Show who last changed every line of a file:\ngit blame firewall_rules.py\n\n# Output format:\n# commit_hash (Author Date Time Timezone LineNum) Code\n# a3f2b1c (Alice 2026-03-15 14:22:01 +0000   1) #!/usr/bin/env python3\n# 8d4e7f2 (Bob   2026-04-01 09:15:43 +0000   2) import socket"},
+          {"type": "code", "text": "# Blame a specific range of lines:\ngit blame -L 10,25 scanner.py\n\n# Blame with commit context:\ngit blame -e scanner.py  # Show email instead of name"},
+          {"type": "para", "text": "**Security audit use cases:** 'Who changed this authentication check on November 3rd?' 'Who removed the input validation from this API endpoint?' 'Who added this suspicious function?' Answers in seconds — non-repudiation through version history, the same CIA principle from Day 8 applied to code."}
+        ],
+        "time": "20 min · Run git blame on your own security scripts"
+      },
+      {
+        "type": "dark",
+        "label": "git stash",
+        "tag": "Context Switching",
+        "method": "HOW — Saving Work in Progress",
+        "heading": "git stash: __Save Work, Switch Context__",
+        "body": [
+          {"type": "code", "text": "# Save uncommitted work to a temporary stack:\ngit stash\n# Your working directory is now clean\n# Switch to main to apply an urgent hotfix\ngit checkout main\ngit checkout -b hotfix-critical-vuln"},
+          {"type": "code", "text": "# After fixing and merging the hotfix:\ngit checkout feature-dns-scanner\n\n# Restore your stashed work:\ngit stash pop    # Restore latest stash (removes from stack)\ngit stash apply  # Restore latest stash (keeps in stack)"},
+          {"type": "code", "text": "# Manage multiple stashes:\ngit stash list           # See all saved stashes\ngit stash show stash@{1} # See what is in stash 1\ngit stash drop stash@{0} # Delete a specific stash\ngit stash clear          # Delete ALL stashes"}
+        ],
+        "note": "**SOC analyst use:** A critical incident interrupts feature development mid-commit. Stash current work → respond to incident → pop stash when done. No lost work, no dirty commit history.",
+        "time": "15 min · Practice stash during a simulated context switch"
+      },
+      {
+        "type": "white",
+        "label": "git bisect",
+        "tag": "Security Gold",
+        "method": "HOW — Binary Search Through History",
+        "heading": "git bisect: __Find the Breaking Commit__",
+        "body": [
+          {"type": "code", "text": "# Start bisect session:\ngit bisect start\ngit bisect bad              # Current version is broken\ngit bisect good v1.2.0      # This version was working fine\n# Git automatically checks out the midpoint commit"},
+          {"type": "code", "text": "# At each midpoint — test the code, then tell Git:\ngit bisect good  # This commit is fine\ngit bisect bad   # This commit is broken\n# Git halves the search space and checks out the next midpoint\n# Repeat until Git identifies the exact culprit commit"},
+          {"type": "code", "text": "# Git shows the exact commit:\n# 'a3f2b1c is the first bad commit'\n# Now examine that commit:\ngit show a3f2b1c\n\n# Clean up after bisect:\ngit bisect reset  # Returns to original HEAD position"},
+          {"type": "para", "text": "**Security use case:** 'When was this backdoor introduced?' `git bisect` finds the exact commit in O(log n) steps — 1000 commits requires only ~10 bisect steps. Invaluable for security audits of suspicious repositories."}
+        ],
+        "time": "25 min · Practice git bisect on your own repo"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 60 Learning Targets",
+        "heading": "Day 60 Checklist",
+        "steps": [
+          "Run **`git log --graph --all --oneline`** on your cybersecurity-tools repo — understand the visual output",
+          "Use **`git blame`** on your port scanner — identify exactly when each section was written",
+          "Practice **`git stash`** — stash uncommitted changes, switch branches, pop stash on return",
+          "Practice **`git bisect`** — introduce a deliberate bug, make commits, find the breaking commit",
+          "Memorise **3 critical Git interview answers** — reset, revert, bisect (see Pro Tip)"
+        ],
+        "time": "Total Day 60 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 60",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🆘 Reference", "name": "ohshitgit.com — Fix Every Common Git Mistake", "url": "ohshitgit.com"},
+          {"label": "📖 Book", "name": "Pro Git — Chapter 7: Git Tools (bisect, blame, stash)", "url": "git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git"},
+          {"label": "📖 Tutorial", "name": "Atlassian Advanced Git Tutorial", "url": "atlassian.com/git/tutorials/advanced-overview"},
+          {"label": "🧪 Labs", "name": "GitImmersion.com — Labs 40–53 (Advanced Git)", "url": "gitimmersion.com"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 60",
+        "heading": "Your Hands-On __Task__ for Day 60",
+        "steps": [
+          "**Introduce** a deliberate bug — remove a required import — commit it — make 3–4 more commits after",
+          "**Use** `git bisect start` → `git bisect bad` → `git bisect good v1.0` → test → good/bad → find the culprit",
+          "**Record** how many bisect steps it took — run `git bisect reset` to restore",
+          "**Memorise** these 3 interview answers: undo last commit = `git reset HEAD~1` / undo pushed commit = `git revert HEAD` / find breaking commit = `git bisect`"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 60",
+        "quote": "Three Git answers to memorise cold for interviews: undo last commit keeping changes = `git reset HEAD~1` | undo a pushed commit safely = `git revert HEAD` | find which commit broke things = `git bisect`.",
+        "sub": "When searching git history for historically committed secrets or suspicious code, use `git log -S 'api_key'` (capital S, called the 'pickaxe'). It finds every commit that added or removed the exact string — not just commits that mention it in the message. This is the forensic command for security audits of repositories.",
+        "mistake": "Using `git push --force` when you need to rewrite history. Force push overwrites the remote branch completely — destroying any commits your teammates pushed since you last pulled. Use `git push --force-with-lease` instead — it fails safely if anyone else has pushed since your last pull, preventing accidental destruction of teammates' work."
+      }
+    ]
+  },
+
+  {
+    "day": 61,
+    "cover": {
+      "title": "GitHub Actions & __DevSecOps Pipelines__",
+      "hook": "Every commit triggers automated security checks. This is DevSecOps — and it starts free on GitHub.",
+      "tags": ["#GitHubActions", "#DevSecOps", "#Day61of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What are GitHub Actions?",
+        "tag": "Foundation",
+        "method": "WHAT — GitHub Actions for Security Automation",
+        "heading": "GitHub Actions: __Automate Everything__",
+        "body": [
+          {"type": "para", "text": "**GitHub Actions** are automated workflows triggered by Git events — a push, a pull request, a schedule, or a manual trigger. They run on GitHub's servers — zero infrastructure required. Free for public repos, 2,000 minutes per month free for private repos."},
+          {"type": "para", "text": "**DevSecOps principle: Shift Left.** Move security checks earlier in the development process — from 'check after deployment' to 'check at every commit.' GitHub Actions makes this free and automatic."},
+          {"type": "code", "text": "# Workflow files live at:\n.github/workflows/security.yml\n\n# Basic structure:\nname: Security Scan\non: [push, pull_request]  # Trigger on any push or PR\njobs:\n  scan:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - name: Run security scan\n        run: echo 'Security check runs here'"}
+        ],
+        "pills": [
+          {"text": "YAML Workflow", "t": "r"},
+          {"text": "bandit SAST", "t": "y"},
+          {"text": "pip-audit", "t": "o"}
+        ],
+        "time": "20 min · docs.github.com/en/actions"
+      },
+      {
+        "type": "red",
+        "label": "Security Use Cases",
+        "tag": "Security Automation",
+        "method": "WHAT — Security Checks You Can Automate",
+        "heading": "Security Automation: __Free on Every Commit__",
+        "body": [
+          {"type": "bullet", "text": "**bandit:** Python SAST scanner — finds hardcoded passwords, use of `eval()`, SQL injection risks, weak cryptography usage. Runs in 10 seconds on any Python codebase."},
+          {"type": "bullet", "text": "**pip-audit:** Scans requirements.txt for known CVEs in Python dependencies. Alerts you when a library you use has a newly disclosed vulnerability."},
+          {"type": "bullet", "text": "**truffleHog:** Deep secret scanner — detects API keys, tokens, and credentials in code and git history. More thorough than GitHub's built-in scanning."},
+          {"type": "bullet", "text": "**semgrep:** SAST for 20+ languages — finds security bugs using pattern-based rules. Free for open source. Has pre-built rule packs for OWASP Top 10."},
+          {"type": "bullet", "text": "**trivy:** Container image vulnerability scanner — checks Docker images for known CVE-affected packages. Essential for any containerised security tool."}
+        ],
+        "time": "20 min · github.com/marketplace — browse free security Actions"
+      },
+      {
+        "type": "dark",
+        "label": "Your First Security Workflow",
+        "tag": "Implementation",
+        "method": "HOW — Building a Security CI/CD Pipeline",
+        "heading": "Your First __Security Workflow__: bandit + pip-audit",
+        "body": [
+          {"type": "code", "text": "# .github/workflows/security.yml\nname: Security Checks\n\non:\n  push:\n    branches: [ main, develop ]\n  pull_request:\n    branches: [ main ]\n\njobs:\n  security-scan:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v3\n      \n      - name: Set up Python\n        uses: actions/setup-python@v4\n        with:\n          python-version: '3.11'\n      \n      - name: Install security tools\n        run: pip install bandit pip-audit\n      \n      - name: Run bandit SAST\n        run: bandit -r . -ll -x ./tests/  # -ll = medium+ severity\n      \n      - name: Run pip-audit CVE check\n        run: pip-audit -r requirements.txt"}
+        ],
+        "time": "30 min · Create this workflow in your cybersecurity-tools repo"
+      },
+      {
+        "type": "white",
+        "label": "Scheduled Scans & GitHub Secrets",
+        "tag": "Advanced Configuration",
+        "method": "HOW — Continuous Security Automation",
+        "heading": "Scheduled Scans & __Secure__ API Key Storage",
+        "body": [
+          {"type": "code", "text": "# Schedule weekly scans (even without new commits):\non:\n  schedule:\n    - cron: '0 6 * * 1'  # Every Monday at 6:00 AM UTC\n  push:\n    branches: [ main ]"},
+          {"type": "code", "text": "# Use GitHub Secrets for API keys (NEVER hardcode in YAML):\n# GitHub repo → Settings → Secrets → Actions → New secret\n# Name: VT_API_KEY\n# Value: your_actual_virustotal_api_key\n\n# Reference in workflow YAML:\nsteps:\n  - name: Check IOCs against VirusTotal\n    env:\n      VT_KEY: ${{ secrets.VT_API_KEY }}\n    run: python ioc_checker.py --vt-key $VT_KEY"},
+          {"type": "para", "text": "**Scheduled scans catch new CVEs** in existing dependencies that appear AFTER your last commit. A library you installed 6 months ago may have a critical vulnerability disclosed today. Scheduled weekly scanning is the only way to know."}
+        ],
+        "time": "20 min · Add scheduled scanning to your security workflow"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 61 Learning Targets",
+        "heading": "Day 61 Checklist",
+        "steps": [
+          "Create `.github/workflows/security.yml` with **bandit and pip-audit** steps",
+          "**Push it** to your cybersecurity-tools repo → watch the Actions tab — see the workflow run",
+          "Fix any **bandit findings** the scan reports — understand what vulnerability each finding represents",
+          "Add a **scheduled scan** using cron syntax — every Monday at 6:00 AM UTC",
+          "Store your **VirusTotal API key** in GitHub Secrets — reference it from the workflow file"
+        ],
+        "time": "Total Day 61 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 61",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Docs", "name": "GitHub Actions — Official Documentation", "url": "docs.github.com/en/actions"},
+          {"label": "🛒 Marketplace", "name": "GitHub Marketplace — 3000+ Security Actions", "url": "github.com/marketplace?type=actions&query=security"},
+          {"label": "🔧 Tool", "name": "bandit — Python Security Linter", "url": "bandit.readthedocs.io"},
+          {"label": "🔧 Tool", "name": "pip-audit — Python Dependency CVE Checker", "url": "github.com/pypa/pip-audit"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 61",
+        "heading": "Your Hands-On __Task__ for Day 61",
+        "steps": [
+          "**Create** `.github/workflows/security.yml` with bandit + pip-audit steps exactly as shown",
+          "**Push** to your cybersecurity-tools repo → go to Actions tab → watch the workflow execute",
+          "**Read** the bandit output — identify any security findings — fix the highest severity ones",
+          "**Add** your VT_API_KEY to GitHub Secrets → reference it in the workflow → push and verify"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 61",
+        "quote": "Being able to say 'I set up a GitHub Actions CI/CD pipeline with automated security scanning' in an interview is DevSecOps experience — even from a personal project. It demonstrates shift-left security philosophy.",
+        "sub": "The GitHub Actions marketplace has over 3,000 pre-built Actions — many from major security vendors (Snyk, Semgrep, Checkmarx, SonarCloud). Every one of them has a free tier for public repos. Adding 2–3 security Actions to your pipeline transforms it from a basic YAML file into a professional-grade DevSecOps demonstration.",
+        "mistake": "Storing real secrets in workflow YAML files. Even if you think the file is private, workflow files are code — they get reviewed, forked, and versioned. Always use GitHub Secrets (Settings → Secrets → Actions) and reference them as `${{ secrets.SECRET_NAME }}` in YAML. This is the only acceptable way to use credentials in CI/CD pipelines."
+      }
+    ]
+  },
+
+  {
+    "day": 62,
+    "cover": {
+      "title": "Detection-as-Code: __Sigma Rules & Git__",
+      "hook": "Detection rules are code. Version them, review them, deploy them — like code. This is the future of security operations.",
+      "tags": ["#Sigma", "#DetectionEngineering", "#Day62of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Detection-as-Code?",
+        "tag": "Foundation",
+        "method": "WHAT — Detection Engineering with Git",
+        "heading": "Detection-as-Code: __Rules in Git__",
+        "body": [
+          {"type": "para", "text": "**Detection-as-Code** applies software engineering practices to security detection rules. Write detection rules as YAML/JSON files → store in Git → review via Pull Requests → auto-convert and deploy to SIEM. Rules are versioned, auditable, peer-reviewed, and portable."},
+          {"type": "para", "text": "**Sigma** is the universal detection rule format. Write a rule once in Sigma's vendor-neutral YAML format. Convert to any supported SIEM platform — Splunk SPL, Elastic KQL, Microsoft Sentinel KQL, IBM QRadar AQL — with a single command. One source of truth, infinite platform targets."},
+          {"type": "para", "text": "**Why Git for detection rules:** Every rule change has an author, a timestamp, and a reason. A rule that generates 10,000 false positives can be reverted in seconds. Rules can be tested on branches before deployment to production. This is how mature SOC teams operate."}
+        ],
+        "pills": [
+          {"text": "Sigma YAML", "t": "r"},
+          {"text": "sigma-cli", "t": "y"},
+          {"text": "ATT&CK Tags", "t": "o"}
+        ],
+        "time": "20 min · github.com/SigmaHQ/sigma · sigmahq.io"
+      },
+      {
+        "type": "red",
+        "label": "Sigma Rule Anatomy",
+        "tag": "Rule Structure",
+        "method": "WHAT — Every Sigma Field Explained",
+        "heading": "Sigma Rule: __Every Field Explained__",
+        "body": [
+          {"type": "code", "text": "title: SSH Brute Force Detection\nid: a8f2c3e1-4b7d-4f9a-b2c1-8e3d7f2a1b4c\nstatus: stable           # stable / test / experimental\ndescription: Detects SSH brute force from single IP\nauthor: Your Name\ndate: 2026/04/23\nreferences:\n  - https://attack.mitre.org/techniques/T1110/001"},
+          {"type": "code", "text": "logsource:\n  product: linux\n  service: auth\n\ndetection:\n  keywords:\n    - 'Failed password'\n  filter_legit:\n    - '127.0.0.1'  # Exclude localhost\n  condition: keywords and not filter_legit\n\nfalsepositives:\n  - Legitimate users with forgotten passwords\n  - Password managers with wrong stored passwords\n\nlevel: medium\ntags:\n  - attack.credential_access\n  - attack.t1110.001"}
+        ],
+        "time": "25 min · Analyse 5 rules from SigmaHQ/sigma — identify each field"
+      },
+      {
+        "type": "dark",
+        "label": "Sigma Rule Example",
+        "tag": "Real Detection",
+        "method": "WHAT — PowerShell Encoded Command Detection",
+        "heading": "Real Rule: __PowerShell Encoded Command__ (T1059.001)",
+        "body": [
+          {"type": "code", "text": "title: PowerShell Encoded Command Execution\nid: b9d3c4f2-5e8a-4c1b-a3d2-9f4e8c3b2a5d\nstatus: stable\ndescription: Detects PowerShell execution with encoded commands.\n  Attackers use -EncodedCommand to obfuscate malicious scripts.\nauthor: Security Team\ntags:\n  - attack.execution\n  - attack.t1059.001"},
+          {"type": "code", "text": "logsource:\n  category: process_creation\n  product: windows\n\ndetection:\n  selection:\n    Image|endswith: '\\powershell.exe'\n    CommandLine|contains:\n      - '-EncodedCommand'\n      - '-enc '\n      - '-ec '\n  condition: selection\n\nfalsepositives:\n  - Legitimate administrative scripts using encoding\n  - Software installation scripts\n\nlevel: high\nfields:\n  - CommandLine\n  - ParentImage\n  - User"}
+        ],
+        "time": "20 min · Write this rule and convert it using uncoder.io"
+      },
+      {
+        "type": "white",
+        "label": "Converting with sigma-cli",
+        "tag": "Platform Deployment",
+        "method": "HOW — One Rule, Many Platforms",
+        "heading": "sigma-cli: __One Rule, Every Platform__",
+        "body": [
+          {"type": "code", "text": "# Install sigma-cli:\npip install sigma-cli\n\n# List available backends (target platforms):\nsigma list backends"},
+          {"type": "code", "text": "# Convert Sigma rule to different platforms:\nsigma convert -t splunk rules/windows/powershell_encoded.yml\n# Output: Splunk SPL query ready to paste\n\nsigma convert -t elasticsearch rules/windows/powershell_encoded.yml\n# Output: Elasticsearch query in JSON\n\nsigma convert -t sentinel rules/windows/powershell_encoded.yml\n# Output: Microsoft Sentinel KQL"},
+          {"type": "para", "text": "**Free online alternative:** uncoder.io converts Sigma rules in the browser — no installation needed. Paste your YAML, select target platform, get the converted query instantly. Perfect for exploring conversion output without CLI setup."},
+          {"type": "para", "text": "**3,000+ free community rules** in the SigmaHQ GitHub repo — covering Windows, Linux, cloud, network, web, and application log sources. Clone the repo and you have a detection library that enterprise SOC teams pay for."}
+        ],
+        "time": "20 min · Convert your SSH brute-force rule to 3 different platforms"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 62 Learning Targets",
+        "heading": "Day 62 Checklist",
+        "steps": [
+          "**Clone** github.com/SigmaHQ/sigma — browse `rules/linux/` and `rules/windows/process_creation/`",
+          "Pick **3 rules** mapped to ATT&CK techniques from earlier weeks — read every field carefully",
+          "**Convert** each rule using uncoder.io — to Elasticsearch, Splunk, and Sentinel formats",
+          "**Write your own** SSH brute-force rule — all required fields, proper ATT&CK tags",
+          "**Store** your rule in your GitHub repo in a `sigma-rules/` directory — version control your detections"
+        ],
+        "time": "Total Day 62 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 62",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📦 Rules", "name": "SigmaHQ — 3000+ Free Community Detection Rules", "url": "github.com/SigmaHQ/sigma"},
+          {"label": "🔄 Converter", "name": "uncoder.io — Free Online Sigma Rule Converter", "url": "uncoder.io"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Sigma' Room (free)", "url": "tryhackme.com/room/sigma"},
+          {"label": "📖 Docs", "name": "Sigma HQ — Official Sigma Documentation", "url": "sigmahq.io"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 62",
+        "heading": "Your Hands-On __Task__ for Day 62",
+        "steps": [
+          "**Clone** SigmaHQ/sigma repo — browse `rules/linux/auditd/` and `rules/windows/process_creation/`",
+          "**Pick** 3 rules you recognise from earlier phases — document what each detects and what log source",
+          "**Convert** each rule at uncoder.io — paste the Elasticsearch output and note the query structure",
+          "**Write** the SSH brute-force Sigma rule — store it in `sigma-rules/` in your GitHub repo with a commit"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 62",
+        "quote": "Detection Engineering is one of the fastest-growing, highest-paying security specialisations — $100–140k entry level at top companies. It combines SIEM + Sigma/YARA + Git + MITRE ATT&CK. Contributing even one PR to the SigmaHQ repo gives you public, verifiable proof of detection engineering skill.",
+        "sub": "The SigmaHQ repository accepts community contributions. If you write a quality detection rule that is not already covered in the repo — for a new malware technique, a novel attack pattern, or a cloud service not yet represented — submit a PR. A merged PR to SigmaHQ on your GitHub profile is a credential that no certification replicates.",
+        "mistake": "Deploying Sigma rules to production SIEM without testing against real log samples first. An untested rule with a broad pattern can fire thousands of false positive alerts — burying legitimate detections and burning out the SOC team investigating them. Always test against a representative sample of your logs before enabling in production."
+      }
+    ]
+  },
+
+  {
+    "day": 63,
+    "cover": {
+      "title": "Git Week __Recap__ & Portfolio Push",
+      "hook": "Git week complete. 63 days in. Your GitHub is now your loudest professional statement. Let us finalise it.",
+      "tags": ["#Git", "#Portfolio", "#Day63of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Git Week Full Recap",
+        "tag": "Summary",
+        "method": "WHAT — 7 Days of Git Covered",
+        "heading": "7 Days of Git: __Everything You Learned__",
+        "body": [
+          {"type": "bullet", "text": "**Day 57:** Git init, add, commit, push — the 4 core commands. First-time setup. GitHub account and SSH keys. First portfolio repo live."},
+          {"type": "bullet", "text": "**Day 58:** Branching (`checkout -b`), merging, conflict resolution. Full Pull Request workflow on GitHub. Git Flow branching strategy."},
+          {"type": "bullet", "text": "**Day 59:** GitHub profile optimisation, professional README structure, secret scanning, push protection, pre-commit hooks, .gitignore essentials."},
+          {"type": "bullet", "text": "**Day 60:** git log (audit trail), git blame (accountability), git stash (context switching), git bisect (binary search for breaking commits)."},
+          {"type": "bullet", "text": "**Day 61:** GitHub Actions CI/CD — bandit SAST, pip-audit dependency scanning, scheduled weekly scans, GitHub Secrets for API keys."},
+          {"type": "bullet", "text": "**Day 62:** Detection-as-Code with Sigma — rule anatomy, PowerShell detection example, sigma-cli conversion to Splunk/Elasticsearch/Sentinel, SigmaHQ community repo."}
+        ],
+        "pills": [
+          {"text": "Git Mastery", "t": "r"},
+          {"text": "GitHub Actions", "t": "y"},
+          {"text": "Next: ELK Stack", "t": "o"}
+        ],
+        "time": "30 min · Review all 7 days of notes — git-scm.com/book for lifetime reference"
+      },
+      {
+        "type": "red",
+        "label": "Portfolio Checklist",
+        "tag": "Audit",
+        "method": "WHAT — Your GitHub Must Show This",
+        "heading": "Portfolio Checklist: __Audit Your GitHub__",
+        "body": [
+          {"type": "bullet", "text": "✅ **6 repos pinned** on your profile — covering port scanner, banner grabber, OSINT tool, IOC enricher, log parser, Sigma rules"},
+          {"type": "bullet", "text": "✅ **Every repo has a README** with tool description, installation, usage example, and ethical use disclaimer"},
+          {"type": "bullet", "text": "✅ **Every Python repo has requirements.txt** — generated with `pip freeze > requirements.txt`"},
+          {"type": "bullet", "text": "✅ **.gitignore on every repo** — no secrets, no venv, no __pycache__"},
+          {"type": "bullet", "text": "✅ **GitHub Actions security pipeline** on at least one repo — bandit + pip-audit running on every push"},
+          {"type": "bullet", "text": "✅ **Profile README** — skills, current 90-day progress, top 3 projects, LinkedIn link"},
+          {"type": "bullet", "text": "✅ **Consistent commit history** — green squares spanning 63+ days — visible proof of dedication"}
+        ],
+        "time": "30 min · Audit every repo against this checklist right now"
+      },
+      {
+        "type": "dark",
+        "label": "What Your GitHub Should Show",
+        "tag": "Projects",
+        "method": "WHAT — The 7 Projects That Tell Your Story",
+        "heading": "Your 7 Portfolio Projects: __The Full Story__",
+        "body": [
+          {"type": "bullet", "text": "**Port scanner** (Day 30) — threaded TCP scanner with banner grabbing and service detection"},
+          {"type": "bullet", "text": "**Domain OSINT tool** (Day 36) — WHOIS + DNS record enumeration + subdomain brute-force"},
+          {"type": "bullet", "text": "**IOC enricher** (Day 39) — VirusTotal + AbuseIPDB + GreyNoise multi-source enrichment"},
+          {"type": "bullet", "text": "**Apache log parser** (Day 40) — Pandas analysis with matplotlib charts and anomaly detection"},
+          {"type": "bullet", "text": "**System audit script** (Day 28) — Bash script: hostname, IPs, open ports, auth failures, SUID binaries"},
+          {"type": "bullet", "text": "**Sigma rules collection** (Day 62) — SSH brute-force + PowerShell encoded command rules"},
+          {"type": "bullet", "text": "**Network forensics reports** (Days 52–56) — 3 malware pcap investigations as Markdown case studies"}
+        ],
+        "time": "20 min · Ensure all 7 projects are in your GitHub with proper documentation"
+      },
+      {
+        "type": "white",
+        "label": "Adding Badges & ELK Preview",
+        "tag": "Final Polish",
+        "method": "HOW — Professional Final Touches",
+        "heading": "README Badges & __ELK Stack Preview__",
+        "body": [
+          {"type": "code", "text": "# Add shields.io badges to every README:\n![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python)\n![License](https://img.shields.io/badge/License-MIT-green)\n![Last Commit](https://img.shields.io/github/last-commit/yourusername/reponame)\n![GitHub Actions](https://img.shields.io/github/actions/workflow/status/yourusername/reponame/security.yml)"},
+          {"type": "para", "text": "**Phase 7 Preview — ELK Stack (Days 64–70):** This is the convergence week. Your Python log parsing skills (Phase 4) + Linux administration (Phase 3) + Git workflow (this week) + traffic analysis (Phase 5) all combine into building a complete, professional SIEM with Elasticsearch, Logstash, and Kibana."},
+          {"type": "para", "text": "**ELK is the most transformative week of the entire 90-day series.** You will build a real-time security monitoring platform from scratch — ingesting your own system logs, visualising attacks in Kibana dashboards, and alerting on threats. This is exactly what enterprise SOC teams use."}
+        ],
+        "time": "20 min · Add badges to top 3 repos — preview ELK documentation"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 63 Learning Targets",
+        "heading": "Day 63 Checklist",
+        "steps": [
+          "**Complete** the portfolio checklist — every item must be checked before you move to Phase 7",
+          "Write or update your **GitHub Profile README** — skills, current progress, top 3 projects, contact",
+          "Push **every remaining project** from this week that is not yet on GitHub",
+          "Add **shields.io badges** to your top 3 repos — version, license, last commit, Actions status",
+          "Find a **first contribution** opportunity at goodfirstissue.dev — submit a PR to a security OSS project"
+        ],
+        "time": "Total Day 63 Study Time: 120 – 150 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Resources to Complete",
+        "tag": "Completion Resources",
+        "method": "WHERE — Final Git Phase Resources",
+        "heading": "Resources to __Complete__ This Phase",
+        "resources": [
+          {"label": "🏷️ Badges", "name": "shields.io — README Badge Generator", "url": "shields.io"},
+          {"label": "📊 Stats", "name": "github-readme-stats — Dynamic GitHub Profile Stats Card", "url": "github.com/anuraghazra/github-readme-stats"},
+          {"label": "🌱 OSS", "name": "goodfirstissue.dev — Find Beginner-Friendly OSS Contributions", "url": "goodfirstissue.dev"},
+          {"label": "📖 Book", "name": "Pro Git — Full Reference (bookmark for life)", "url": "git-scm.com/book"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Complete",
+        "method": "HOW — Step-by-Step for Day 63",
+        "heading": "Your __Final Git Phase__ Task",
+        "steps": [
+          "**Write** your GitHub Profile README — it must include skills, 90-day progress, top 3 projects, LinkedIn URL",
+          "**Add** shields.io badges to all 6 pinned repos — 5 minutes per repo, massive visual impact",
+          "**Push** all remaining projects — the portfolio must fully reflect 63 days of work",
+          "**Share** your GitHub link in the community — mutual follows and stars compound your profile visibility"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes"
+      },
+      {
+        "type": "stats",
+        "label": "Phase 6 Complete",
+        "tag": "Progress Stats",
+        "method": "WHY — The Value of Phase 6",
+        "heading": "Phase 6 __Complete__ — Your Progress",
+        "stats": [
+          {"value": "63", "label": "Days of consistent learning — 70% of the journey done"},
+          {"value": "7", "label": "Portfolio projects live on GitHub with documentation"},
+          {"value": "1", "label": "GitHub Actions security pipeline running on every commit"},
+          {"value": "27", "label": "Days remaining — ELK Stack SIEM starts tomorrow"}
+        ]
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 63",
+        "quote": "A GitHub profile with 6+ documented security projects, a professional README, active commit history, and a GitHub Actions pipeline is worth more in technical hiring than most entry-level certifications.",
+        "sub": "Security engineering managers at top-tier companies explicitly say this: a strong GitHub portfolio with demonstrated, working tools beats a list of certifications from candidates who cannot write a working script. The reason is simple — certifications test knowledge, GitHub shows capability. Both are needed, but capability is rarer and more immediately valuable.",
+        "mistake": "Quantity over quality in your GitHub portfolio. Three exceptional, fully documented, working tools beat twenty empty repos with no README every single time. Employers click through. They open the code. They run the README instructions. A broken installation process, a missing requirements.txt, or an empty README immediately signals that the tool was built for show, not for use. Build fewer things, build them properly."
+      }
+    ]
+  }
+]

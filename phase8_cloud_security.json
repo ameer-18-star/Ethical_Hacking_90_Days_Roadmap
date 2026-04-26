@@ -1,0 +1,1682 @@
+[
+  {
+    "day": 71,
+    "cover": {
+      "title": "Cloud Security Fundamentals & __Shared Responsibility__",
+      "hook": "95% of cloud breaches are caused by the customer, not the provider. Know exactly where your responsibility starts.",
+      "tags": ["#CloudSecurity", "#SharedResponsibility", "#Day71of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "The Shared Responsibility Model",
+        "tag": "Foundation",
+        "method": "WHAT — Who Secures What in the Cloud",
+        "heading": "Shared Responsibility: __Your Line in the Sand__",
+        "body": [
+          {"type": "para", "text": "**The Shared Responsibility Model** defines the exact boundary between what the cloud provider secures and what you secure. The provider owns physical infrastructure, hypervisor, and global network. You own everything on top — OS configurations, application code, data, IAM policies, network settings, and encryption choices."},
+          {"type": "para", "text": "**The model shifts by service type:** IaaS (EC2, GCE, Azure VM) gives you the most control and the most responsibility — you manage OS, runtime, app, and data. PaaS (App Engine, Elastic Beanstalk) hands the runtime and OS to the provider so you focus on app and data. SaaS (Gmail, Office 365) means the provider manages nearly everything — your job is user access and data governance only."},
+          {"type": "para", "text": "**Why this matters for your career:** Every cloud breach investigation starts with the same question — whose responsibility was the misconfigured setting? Analysts who can answer that immediately are far more valuable than those who have to look it up."}
+        ],
+        "pills": [
+          {"text": "IaaS", "t": "r"},
+          {"text": "PaaS", "t": "y"},
+          {"text": "SaaS", "t": "o"}
+        ],
+        "time": "20 min · aws.amazon.com/compliance/shared-responsibility-model · cloud.google.com/architecture/framework/security"
+      },
+      {
+        "type": "red",
+        "label": "Top Cloud Attack Vectors",
+        "tag": "Threats",
+        "method": "WHAT — How Cloud Environments Get Breached",
+        "heading": "Cloud Attack Vectors: __How Breaches Actually Happen__",
+        "body": [
+          {"type": "bullet", "text": "**Misconfigured S3 buckets set to public read** — the single most common cloud breach cause. Millions of records exposed from companies that clicked the wrong toggle."},
+          {"type": "bullet", "text": "**Over-privileged IAM roles with wildcard permissions** — granting `*` on everything when only `s3:GetObject` on one bucket was needed. The blast radius of a stolen credential becomes catastrophic."},
+          {"type": "bullet", "text": "**SSRF exploiting the metadata endpoint at 169.254.169.254** — a vulnerable web app on EC2 can be tricked into returning the instance's IAM temporary credentials to an attacker."},
+          {"type": "bullet", "text": "**API keys committed to GitHub** — automated bots scan every public commit within seconds. Keys found this way are exploited within minutes of exposure."},
+          {"type": "bullet", "text": "**Default credentials never changed after provisioning** — databases, dashboards, and management panels spun up and forgotten with factory-default passwords."}
+        ],
+        "time": "20 min · Study each vector — you will see all five in cloud penetration tests"
+      },
+      {
+        "type": "dark",
+        "label": "Cloud Security Posture Management",
+        "tag": "CSPM",
+        "method": "WHAT — Continuous Cloud Misconfiguration Detection",
+        "heading": "CSPM: __Automated Audit of Your Cloud__",
+        "body": [
+          {"type": "para", "text": "**Cloud Security Posture Management (CSPM)** is continuous automated auditing of cloud configurations for misconfigurations and compliance violations. Instead of manual spot checks, CSPM tools run constantly and alert the moment a dangerous setting appears."},
+          {"type": "para", "text": "**Three free open-source CSPM tools every security professional should know:** Prowler (AWS-focused, github.com/prowler-cloud/prowler — over 300 checks aligned to CIS, PCI DSS, and GDPR) · Scout Suite (multi-cloud, github.com/nccgroup/ScoutSuite — generates an HTML report of every misconfiguration across AWS, Azure, and GCP) · CloudSploit (GitHub — lightweight and beginner-friendly)."},
+          {"type": "para", "text": "**The rule:** run a CSPM tool against your own account on Day 1 of any cloud project before writing a single line of code. The findings on a brand new account are always surprising — and always educational."}
+        ],
+        "time": "20 min · github.com/prowler-cloud/prowler — install and run today"
+      },
+      {
+        "type": "white",
+        "label": "Choose Your Cloud Platform",
+        "tag": "Setup",
+        "method": "HOW — Picking Your Primary Cloud Focus",
+        "heading": "Cloud Platform: __Pick One and Go Deep__",
+        "body": [
+          {"type": "step", "num": "1", "text": "**AWS (Amazon Web Services):** 32% global market share, most job postings, richest free security lab ecosystem (flaws.cloud, CloudGoat, cloud-specific CTFs). The safest career choice if you are deciding blind."},
+          {"type": "step", "num": "2", "text": "**GCP (Google Cloud Platform):** Excellent free tier, genuinely the best free training via Cloud Skills Boost (monthly lab credits, no credit card needed), strong in data and ML environments."},
+          {"type": "step", "num": "3", "text": "**Azure (Microsoft):** Dominant in enterprise environments. SC-200 is one of the most in-demand certifications right now. If your target employers run Microsoft infrastructure — and most large enterprises do — Azure is the choice."}
+        ],
+        "note": "**Strategy:** Pick ONE and go deep this phase. Breadth comes after depth. A shallow understanding of three clouds is worth less than expert-level knowledge of one.",
+        "time": "15 min · Create a free account on your chosen platform today"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 71 Learning Targets",
+        "heading": "Day 71 Checklist",
+        "steps": [
+          "**Create** a free account on your chosen cloud platform — AWS free tier / GCP free tier / Azure $200 credit",
+          "**Enable MFA** on the root/owner account immediately — before anything else",
+          "**Install the CLI** — aws-cli, gcloud, or az — and authenticate successfully from your terminal",
+          "**Run Scout Suite or Prowler** against your fresh account — document every finding",
+          "**Read** the Shared Responsibility Model page for your chosen provider — note exactly what YOU are responsible for"
+        ],
+        "time": "Total Day 71 Study Time: 120 – 150 minutes (account setup day)"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 71",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 AWS", "name": "AWS Shared Responsibility Model — Official Explanation", "url": "aws.amazon.com/compliance/shared-responsibility-model"},
+          {"label": "📖 GCP", "name": "Google Cloud Architecture Framework — Security Section", "url": "cloud.google.com/architecture/framework/security"},
+          {"label": "🔧 Tool", "name": "Prowler — Free Multi-Cloud Security Auditing Tool", "url": "github.com/prowler-cloud/prowler"},
+          {"label": "🔧 Tool", "name": "Scout Suite — Free Multi-Cloud Security Auditor", "url": "github.com/nccgroup/ScoutSuite"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 71",
+        "heading": "Your Hands-On __Task__ for Day 71",
+        "steps": [
+          "**Create** your cloud account and immediately enable MFA on the root account — do not skip this",
+          "**Install** the CLI tool for your platform — authenticate with `aws configure` / `gcloud init` / `az login`",
+          "**Run** Scout Suite or Prowler — `pip install scoutsuite && scout aws` — save the HTML report",
+          "**Document** every finding — even on a fresh account — and note what misconfiguration each finding represents"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes (includes account and CLI setup)"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 71",
+        "quote": "Cloud security is the single fastest-growing and highest-paying security specialization. Average cloud security engineer salary in the US: $130–160k. Every skill built in the past 70 days — Linux, Python, networking, SIEM — applies directly in cloud environments. You are not starting over. You are adding a critical layer on top of everything you already know.",
+        "sub": "The three attack vectors worth memorising cold before any cloud interview: misconfigured public S3 buckets, over-privileged IAM roles, and SSRF against the instance metadata service. These three alone account for the majority of real-world cloud breaches documented in public breach disclosures over the past five years. Know each one, know the attacker's exact technique, and know the one configuration change that prevents it.",
+        "mistake": "Starting cloud labs without enabling billing alerts. Accidental charges from forgotten resources are extremely common — a NAT Gateway left running overnight, an EC2 instance left on for a week, a forgotten Elasticsearch cluster. Enable a billing alert at $5 on AWS and Azure BEFORE running any lab. This is the first thing, not an afterthought."
+      }
+    ]
+  },
+
+  {
+    "day": 72,
+    "cover": {
+      "title": "AWS IAM: Users, Roles, Policies & __Least Privilege__",
+      "hook": "AWS IAM is where 90% of cloud breaches begin. Master it and you prevent most attacks before they start.",
+      "tags": ["#AWSIAM", "#LeastPrivilege", "#Day72of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "IAM Core Components",
+        "tag": "Foundation",
+        "method": "WHAT — The Four Building Blocks of AWS IAM",
+        "heading": "IAM: __The Four Components You Must Know__",
+        "body": [
+          {"type": "para", "text": "**AWS Identity and Access Management (IAM)** controls who can do what to which AWS resource. Four core components build the entire system: **Users** (long-term credentials for humans) · **Groups** (collections of users sharing a policy) · **Roles** (temporary credentials for services, applications, and cross-account access) · **Policies** (JSON documents defining Allow or Deny for specific actions on specific resources)."},
+          {"type": "para", "text": "**The golden rule of AWS IAM:** never use the root account after initial setup. The root account has unrestricted access to everything in the account and cannot be limited by any policy. Create an admin IAM user immediately after account creation and lock root credentials away permanently. Any SOC analyst who sees root account activity in CloudTrail logs treats it as a critical alert."},
+          {"type": "para", "text": "**Explicit Deny always beats Allow** — regardless of what other policies say. If a Deny exists anywhere in the policy evaluation chain, the action is blocked. Understanding this evaluation order is the key to debugging unexpected IAM permission errors without guessing."}
+        ],
+        "pills": [
+          {"text": "Users", "t": "r"},
+          {"text": "Roles", "t": "y"},
+          {"text": "Policies", "t": "o"}
+        ],
+        "time": "20 min · docs.aws.amazon.com/IAM/latest/UserGuide"
+      },
+      {
+        "type": "red",
+        "label": "IAM Policy Structure",
+        "tag": "Policy Anatomy",
+        "method": "WHAT — Reading and Writing IAM Policies",
+        "heading": "Policy Structure: __Read Any AWS Policy__",
+        "body": [
+          {"type": "code", "text": "# Every IAM policy is JSON with four key fields:\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",          # Allow or Deny\n      \"Action\": \"s3:GetObject\",   # Which API call (avoid * always)\n      \"Resource\": \"arn:aws:s3:::my-bucket/*\",  # Which resource\n      \"Condition\": {               # Optional restrictions\n        \"IpAddress\": {\n          \"aws:SourceIp\": \"203.0.113.0/24\"\n        }\n      }\n    }\n  ]\n}"},
+          {"type": "para", "text": "**Condition blocks** are the most underused IAM feature. You can restrict actions to specific IP ranges, require MFA, limit to specific time windows, or enforce encryption headers on S3 uploads — all without changing the core Allow. Policies without Conditions are almost always broader than they need to be."},
+          {"type": "para", "text": "**Resource ARN specificity matters:** `arn:aws:s3:::*` grants access to every bucket in your account. `arn:aws:s3:::my-bucket/*` grants access to only one bucket. The difference between these two is the difference between a contained breach and a total data loss."}
+        ],
+        "time": "25 min · Use IAM Policy Simulator at console.aws.amazon.com/policysim"
+      },
+      {
+        "type": "dark",
+        "label": "IAM Roles for EC2",
+        "tag": "Critical Practice",
+        "method": "WHAT — Temporary Credentials vs Long-Lived Keys",
+        "heading": "IAM Roles: __Never Store Keys on EC2__",
+        "body": [
+          {"type": "para", "text": "**The single most important IAM security practice:** never store AWS access keys on an EC2 instance as environment variables, config files, or in application code. Assign an IAM Role to the instance instead. The application retrieves temporary, automatically-rotating credentials via the metadata service at runtime — no long-lived secret exists to steal, rotate, or accidentally expose."},
+          {"type": "code", "text": "# WRONG — hardcoded keys on EC2:\nexport AWS_ACCESS_KEY_ID=AKIA...\nexport AWS_SECRET_ACCESS_KEY=abc123...\n\n# RIGHT — IAM Role attached to EC2 instance:\n# Assign the role at launch, then in your application:\nimport boto3\n# Credentials are retrieved automatically from the role\ns3 = boto3.client('s3')  # No keys needed anywhere"},
+          {"type": "para", "text": "**IAM Access Analyzer** is a free AWS service that identifies roles, S3 buckets, KMS keys, and Lambda functions shared with external accounts or the internet. Run `aws accessanalyzer list-findings` monthly. Enable it in every region simultaneously — external access findings routinely appear in regions that are assumed to be unused."}
+        ],
+        "time": "20 min · Enable IAM Access Analyzer in your account now"
+      },
+      {
+        "type": "white",
+        "label": "Auditing IAM with CLI",
+        "tag": "Security Audit",
+        "method": "HOW — Finding IAM Weaknesses Immediately",
+        "heading": "IAM Audit: __Find Problems Before Attackers Do__",
+        "body": [
+          {"type": "code", "text": "# Generate and retrieve the full IAM credential report:\naws iam generate-credential-report\naws iam get-credential-report --query 'Content' \\\n  --output text | base64 -d > iam_report.csv\n\n# The CSV contains every IAM user with:\n# - Last access dates for console and API\n# - MFA enabled status\n# - Access key ages and last used dates\n# - Password last changed date\n\n# Red flags to immediately investigate:\n# Any user: mfa_active = false\n# Any access_key: last_used_date > 90 days ago\n# Root account: access_key_1_active = true\n# Root account: mfa_active = false"},
+          {"type": "para", "text": "**Run this audit monthly at minimum.** Any IAM user with console access and no MFA is a critical finding — the equivalent of leaving an admin account with no password on the public internet. Any access key unused for 90+ days should be deactivated immediately — dormant credentials are prime targets for credential-stuffing attacks."}
+        ],
+        "time": "20 min · Run the credential report against your account right now"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 72 Learning Targets",
+        "heading": "Day 72 Checklist",
+        "steps": [
+          "**Complete** flaws.cloud Levels 1–4 — each level teaches one real S3 or IAM misconfiguration by letting you exploit it safely",
+          "**Run** `aws iam generate-credential-report` — review the output for MFA gaps and stale access keys",
+          "**Create** an IAM user with least-privilege policy — only the permissions needed for one specific task",
+          "**Enable** IAM Access Analyzer — run `aws accessanalyzer list-findings` and review every result",
+          "**Understand** the Explicit Deny evaluation rule — test it with the IAM Policy Simulator"
+        ],
+        "time": "Total Day 72 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 72",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🧪 Lab", "name": "flaws.cloud — Free AWS Security Challenges (Real Pentest Findings)", "url": "flaws.cloud"},
+          {"label": "📖 Docs", "name": "AWS IAM Official User Guide", "url": "docs.aws.amazon.com/IAM/latest/UserGuide"},
+          {"label": "🔧 Tool", "name": "IAM Policy Simulator — Test Policies Before Deploying", "url": "console.aws.amazon.com/policysim"},
+          {"label": "🔧 Tool", "name": "cloudsplaining — IAM Policy Risk Analyzer (Salesforce)", "url": "github.com/salesforce/cloudsplaining"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 72",
+        "heading": "Your Hands-On __Task__ for Day 72",
+        "steps": [
+          "**Complete** flaws.cloud Levels 1–4 — for each level: write the misconfiguration, the CLI command that revealed it, the one-line fix",
+          "**Run** the IAM credential report — flag every user without MFA and every key unused for 90+ days",
+          "**Create** a restrictive IAM policy for S3 read-only on one bucket — test it with the Policy Simulator",
+          "**Enable** IAM Access Analyzer — document every external access finding in your account"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes (flaws.cloud is the main lab today)"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 72",
+        "quote": "flaws.cloud was built by Scott Piper, a former Netflix cloud security engineer. Every level represents a misconfiguration found on real client engagements. Completing all six levels and explaining each finding and fix is a genuine interview differentiator — it shows practical hands-on knowledge rather than just certification studying.",
+        "sub": "The IAM Roles vs Access Keys distinction is the most important security architecture decision in AWS. Long-lived access keys are static credentials — they do not expire, they can be stolen silently, and they appear in breach after breach. IAM Roles issue temporary credentials with automatic rotation via STS. There is almost never a legitimate reason to use access keys on an EC2 instance. In any cloud architecture review, access keys stored on instances are an immediate critical finding.",
+        "mistake": "Enabling billing alerts after starting labs instead of before. Cloud bills from forgotten resources accumulate silently. A single NAT Gateway left running generates $30–40/month in AWS with zero usage. Set a billing alarm at $1 in CloudWatch before running any lab session. Check the billing console at the end of every session. This discipline saves real money and teaches cost awareness — a skill cloud security engineers are expected to have."
+      }
+    ]
+  },
+
+  {
+    "day": 73,
+    "cover": {
+      "title": "AWS S3 Security, VPC & __Security Groups__",
+      "hook": "Misconfigured S3 buckets and open security groups have leaked billions of records. Here's how to get both right permanently.",
+      "tags": ["#AWSS3", "#VPCSecurity", "#Day73of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "S3 Bucket Security Essentials",
+        "tag": "Foundation",
+        "method": "WHAT — Securing S3 from Day One",
+        "heading": "S3 Security: __Four Settings That Prevent Breaches__",
+        "body": [
+          {"type": "para", "text": "**S3 buckets are private by default.** Public access is a setting you must explicitly enable — and almost never should. The 'Block Public Access' setting has four independent toggles that must ALL be switched on for complete protection. A single unchecked toggle is the misconfiguration responsible for multiple billion-record data breaches in the past five years."},
+          {"type": "code", "text": "# Check a bucket's public access block settings via CLI:\naws s3api get-public-access-block --bucket BUCKETNAME\n\n# Expected output (all must be true):\n# BlockPublicAcls: true\n# IgnorePublicAcls: true\n# BlockPublicPolicy: true\n# RestrictPublicBuckets: true\n\n# Audit bucket ACL permissions:\naws s3api get-bucket-acl --bucket BUCKETNAME\n\n# Enable block public access if not set:\naws s3api put-public-access-block \\\n  --bucket BUCKETNAME \\\n  --public-access-block-configuration \\\n  BlockPublicAcls=true,IgnorePublicAcls=true,\\\nBlockPublicPolicy=true,RestrictPublicBuckets=true"},
+          {"type": "para", "text": "**Enable versioning and MFA Delete on critical buckets.** Versioning keeps copies of every object version. MFA Delete requires a physical MFA token to permanently delete any version — this single control prevents ransomware from destroying your S3 data even if full AWS credentials are compromised."}
+        ],
+        "pills": [
+          {"text": "Block Public Access", "t": "r"},
+          {"text": "Versioning", "t": "y"},
+          {"text": "Encryption", "t": "o"}
+        ],
+        "time": "20 min · docs.aws.amazon.com/AmazonS3/latest/userguide/security-best-practices.html"
+      },
+      {
+        "type": "red",
+        "label": "VPC Architecture Best Practice",
+        "tag": "Network Architecture",
+        "method": "WHAT — The Production VPC Pattern",
+        "heading": "VPC Architecture: __Keep Your Workloads Off the Internet__",
+        "body": [
+          {"type": "bullet", "text": "**Public subnets for load balancers only** — the only tier that ever needs a public IP. No application server, database, or internal service should ever be here directly."},
+          {"type": "bullet", "text": "**Private subnets for EC2, RDS, Lambda** — all compute and data resources live here with no direct internet route. The only path in is through the load balancer."},
+          {"type": "bullet", "text": "**NAT Gateway for outbound-only internet** — private subnet resources can initiate outbound connections (for software updates, API calls) but inbound connections from the internet are impossible."},
+          {"type": "bullet", "text": "**No Internet Gateway attached to private subnet route tables** — the most common VPC misconfiguration. A single accidental route entry makes a 'private' subnet fully public."},
+          {"type": "para", "text": "This architecture pattern alone prevents the majority of direct attacks against application and database tiers. A misconfigured EC2 database with a public IP in a public subnet is a direct attack surface — this pattern makes that impossible by design."}
+        ],
+        "time": "20 min · Draw this architecture on paper before building it in AWS"
+      },
+      {
+        "type": "dark",
+        "label": "Security Groups",
+        "tag": "Virtual Firewall",
+        "method": "WHAT — Stateful Firewall Rules for Every Resource",
+        "heading": "Security Groups: __Your Last Line of Host Defence__",
+        "body": [
+          {"type": "para", "text": "**Security groups** are stateful virtual firewalls attached to EC2 instances and other AWS resources. Rules define allowed traffic by protocol, port range, and source or destination. Stateful means return traffic is automatically allowed — you only define inbound rules for accepted connections."},
+          {"type": "code", "text": "# Audit every security group open to the internet:\naws ec2 describe-security-groups \\\n  --filters \"Name=ip-permission.cidr,Values=0.0.0.0/0\" \\\n  --query 'SecurityGroups[*].{ID:GroupId,Name:GroupName,\\\nRules:IpPermissions}'\n\n# Critical rules — NEVER allow from 0.0.0.0/0:\n# Port 22  (SSH)\n# Port 3389 (RDP)\n# Port 3306 (MySQL)\n# Port 5432 (PostgreSQL)\n\n# Correct approach — restrict SSH to your IP only:\n# Source: 203.0.113.45/32   (your static IP)\n# Or: reference another security group ID instead of CIDR\n# Security group references auto-update when instances change"},
+          {"type": "para", "text": "**Use security group references instead of CIDR ranges** wherever possible. Referencing another security group ID means the rule automatically applies to all instances in that group — regardless of their IP addresses. This scales perfectly and never requires manual updates when instances are replaced."}
+        ],
+        "time": "25 min · Run the CLI audit and fix every 0.0.0.0/0 finding"
+      },
+      {
+        "type": "white",
+        "label": "S3 Encryption Standards",
+        "tag": "Data Protection",
+        "method": "HOW — Encryption Options and When to Use Each",
+        "heading": "S3 Encryption: __AES-256 is the Floor, Not the Ceiling__",
+        "body": [
+          {"type": "para", "text": "**Server-side encryption is now the default on all new S3 buckets** — SSE-S3 with AES-256 is applied automatically. This is the minimum acceptable baseline for all data. For regulated data (healthcare, financial, government), the requirements go further."},
+          {"type": "para", "text": "**SSE-KMS** uses your own KMS Customer Managed Key and logs every single decryption event via CloudTrail. This creates a complete audit trail of every access to sensitive data — required for HIPAA, PCI DSS, and SOC 2 compliance. You can revoke the key and immediately make encrypted data unreadable, even to AWS itself."},
+          {"type": "para", "text": "**SSE-C** lets you supply your own encryption keys entirely. AWS never stores your key — you must send it with every request. Maximum control, maximum operational burden. Used only when regulatory requirements specifically demand customer-controlled keys with zero cloud provider access."}
+        ],
+        "note": "**CloudMapper** (github.com/duo-labs/cloudmapper) generates a visual diagram of your entire VPC topology and attack paths. Run it after building your VPC to immediately see any unintended exposure paths.",
+        "time": "15 min · Verify encryption is enabled on every bucket in your account"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 73 Learning Targets",
+        "heading": "Day 73 Checklist",
+        "steps": [
+          "**Create** an S3 bucket — upload a test file — verify it is NOT publicly accessible via browser URL",
+          "**Create** a VPC with one public subnet and one private subnet — draw the diagram before building",
+          "**Launch** an EC2 t2.micro in the private subnet — confirm it has no public IP",
+          "**Create** a security group allowing SSH only from your specific IP address — not 0.0.0.0/0",
+          "**Run** the CLI command to audit all security groups for open 0.0.0.0/0 rules — document every finding"
+        ],
+        "time": "Total Day 73 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 73",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Docs", "name": "AWS S3 Security Best Practices — Official Guide", "url": "docs.aws.amazon.com/AmazonS3/latest/userguide/security-best-practices.html"},
+          {"label": "🧪 Lab", "name": "flaws.cloud Level 2 — S3 Bucket Misconfiguration", "url": "flaws.cloud"},
+          {"label": "🔧 Tool", "name": "CloudMapper — Free VPC Attack Path Visualisation", "url": "github.com/duo-labs/cloudmapper"},
+          {"label": "📖 Docs", "name": "AWS VPC Documentation — Official Reference", "url": "aws.amazon.com/vpc"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 73",
+        "heading": "Your Hands-On __Task__ for Day 73",
+        "steps": [
+          "**Build** the VPC: create public subnet + private subnet + Internet Gateway + NAT Gateway + separate route tables for each",
+          "**Create** an S3 bucket with all 4 Block Public Access toggles enabled — attempt browser access and confirm 403",
+          "**Create** a security group: SSH allowed ONLY from your IP (x.x.x.x/32) — run the CLI audit and confirm no 0.0.0.0/0 appears",
+          "**Screenshot** each step — document the exact misconfiguration each setting prevents"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 73",
+        "quote": "When designing a VPC, draw the architecture on paper first — public subnets, private subnets, NAT Gateways, route tables, Internet Gateway, and security group boundaries. Engineers who can draw their cloud infrastructure from memory in interviews consistently outperform those who only know the console clicks. Architecture fluency is a seniority signal.",
+        "sub": "The security group audit command — `aws ec2 describe-security-groups --filters Name=ip-permission.cidr,Values=0.0.0.0/0` — is one of the first commands cloud security engineers run on a new engagement. Wide-open security groups are the second most common finding in AWS penetration tests after IAM over-privilege. Running this in your own account and fixing every result is the exact work a cloud security engineer does on Day 1 of any assessment.",
+        "mistake": "Leaving NAT Gateways running after finishing a lab. NAT Gateways cost approximately $0.045 per hour even when completely idle with zero traffic passing through them. That is $32/month for a gateway doing nothing. Always delete NAT Gateways at the end of every lab session. They are the single most common source of unexpected AWS bills among security learners."
+      }
+    ]
+  },
+
+  {
+    "day": 74,
+    "cover": {
+      "title": "AWS CloudTrail, GuardDuty & __Security Hub__",
+      "hook": "AWS gives you powerful native threat detection tools. Most people never turn them on. Today you do.",
+      "tags": ["#CloudTrail", "#GuardDuty", "#Day74of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "AWS CloudTrail",
+        "tag": "Foundation",
+        "method": "WHAT — Your Forensic Audit Trail for Every API Call",
+        "heading": "CloudTrail: __Every AWS Action, Recorded Forever__",
+        "body": [
+          {"type": "para", "text": "**AWS CloudTrail** records every single AWS API call made in your account — who called it, from which IP address, at what time, with what parameters, and whether it succeeded or failed. It is the forensic audit trail for every action taken in your cloud environment. In any AWS breach investigation, CloudTrail is always the first data source every analyst examines."},
+          {"type": "para", "text": "**Configuration that matters:** enable CloudTrail in all regions simultaneously — not just your primary region. Attacks frequently originate from regions that appear unused. Store logs in an S3 bucket with log file integrity validation turned on — this detects any tampering with audit logs before the evidence reaches investigators."},
+          {"type": "code", "text": "# Essential CloudTrail queries via CloudWatch Logs Insights:\n\n# Who deleted a security group:\nfilter EventName = 'DeleteSecurityGroup'\n\n# All IAM changes (critical — any IAM modification is suspicious):\nfilter EventSource = 'iam.amazonaws.com'\n\n# Root account usage (should always be zero):\nfilter userIdentity.type = 'Root'\n\n# Failed console logins — brute force detection:\nfilter EventName = 'ConsoleLogin'\n  AND errorMessage = 'Failed authentication'"}
+        ],
+        "pills": [
+          {"text": "CloudTrail", "t": "r"},
+          {"text": "GuardDuty", "t": "y"},
+          {"text": "Security Hub", "t": "o"}
+        ],
+        "time": "20 min · docs.aws.amazon.com/awscloudtrail/latest/userguide"
+      },
+      {
+        "type": "red",
+        "label": "AWS GuardDuty",
+        "tag": "ML-Based Threat Detection",
+        "method": "WHAT — Automated Threat Detection Without Rules",
+        "heading": "GuardDuty: __ML Threat Detection Running 24/7__",
+        "body": [
+          {"type": "bullet", "text": "**What it analyses automatically:** CloudTrail management events, VPC Flow Logs, and DNS query logs — no agent installation, no configuration required, no log shipping setup."},
+          {"type": "bullet", "text": "**Cryptocurrency mining detection** — identifies EC2 instances communicating with known mining pools. Often the first sign of a compromised instance being monetised."},
+          {"type": "bullet", "text": "**Credential exfiltration** — detects API calls from known malicious IP addresses, TOR exit nodes, and impossible-travel scenarios (login from Pakistan and Singapore within 30 minutes)."},
+          {"type": "bullet", "text": "**C2 communication** — detects outbound connections to known command-and-control infrastructure from your instances."},
+          {"type": "bullet", "text": "**Anomalous API call patterns** — machine learning baseline of normal API usage detects sudden spikes or unusual API calls from compromised credentials."},
+          {"type": "para", "text": "**Free 30-day trial. Approximately $4/month after for small accounts.** Enable it — it catches entire categories of attacks that signature-based tools miss entirely. Never running GuardDuty is the cloud equivalent of running a server with no IDS."}
+        ],
+        "time": "20 min · aws.amazon.com/guardduty — enable the free trial right now"
+      },
+      {
+        "type": "dark",
+        "label": "AWS Security Hub",
+        "tag": "Central Aggregator",
+        "method": "WHAT — Your Single Pane of Glass for AWS Security",
+        "heading": "Security Hub: __One Score for Your Entire Posture__",
+        "body": [
+          {"type": "para", "text": "**AWS Security Hub** is the central aggregator for findings from GuardDuty, Inspector, Macie, IAM Access Analyzer, and third-party integrations. Instead of checking six separate dashboards, Security Hub pulls everything into a single view with a unified security score from 0 to 100%."},
+          {"type": "para", "text": "**CIS AWS Foundations Benchmark** checks run automatically inside Security Hub — over 170 automated compliance controls evaluating your account configuration continuously. Each failed check includes a specific severity rating, affected resource, and AWS-authored remediation guidance. The score on a fresh account is almost never above 50%."},
+          {"type": "para", "text": "**MITRE ATT&CK mapping** is built into GuardDuty findings — every detected threat is tagged with the relevant ATT&CK technique. This is the same framework you studied in the detection engineering phase, now applied directly to cloud attack patterns. The concepts transfer exactly."}
+        ],
+        "time": "20 min · aws.amazon.com/security-hub — enable alongside GuardDuty"
+      },
+      {
+        "type": "white",
+        "label": "The Minimum Viable AWS Security Stack",
+        "tag": "Security Baseline",
+        "method": "HOW — The Trio Every AWS Account Needs",
+        "heading": "AWS Security Trio: __Blind Without All Three__",
+        "body": [
+          {"type": "para", "text": "**CloudTrail + GuardDuty + Security Hub** is the minimum viable AWS security monitoring stack. Any AWS environment running without all three is flying completely blind — no audit trail, no threat detection, no compliance visibility."},
+          {"type": "para", "text": "**The interview answer to 'how would you set up security monitoring in a new AWS account?'** starts here. Enable CloudTrail in all regions with S3 storage and integrity validation. Enable GuardDuty with the free trial and all optional data sources. Enable Security Hub with CIS Benchmark checks. This trio takes under 20 minutes to configure and covers the entire basic detection stack."},
+          {"type": "para", "text": "**CloudTrail data events** — S3 object-level logging that records every GetObject and PutObject — are not included in the default trail. They cost extra and generate enormous volumes on busy accounts. Enable them only for your highest-value buckets, not all buckets globally, to prevent surprise billing spikes."}
+        ],
+        "note": "**Cost reality:** GuardDuty 30-day free trial, then ~$4/month. Security Hub 30-day free trial, then ~$1/month for small accounts. CloudTrail first trail free. The entire stack costs less than most security tools charge per hour.",
+        "time": "25 min · Enable all three in your AWS account before moving on"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 74 Learning Targets",
+        "heading": "Day 74 Checklist",
+        "steps": [
+          "**Enable CloudTrail** in all regions — log to S3 with integrity validation turned on",
+          "**Enable GuardDuty** free trial — explore the finding categories in the console",
+          "**Enable Security Hub** with CIS Benchmark checks — note your initial security score",
+          "**Query CloudTrail** for your own recent API calls — find your console logins and S3 actions",
+          "**Document** every Security Hub FAILED check and the specific remediation action for each"
+        ],
+        "time": "Total Day 74 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 74",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Docs", "name": "AWS CloudTrail Official Documentation", "url": "docs.aws.amazon.com/awscloudtrail/latest/userguide"},
+          {"label": "📖 Docs", "name": "AWS GuardDuty — Enable Free 30-Day Trial", "url": "aws.amazon.com/guardduty"},
+          {"label": "📖 Docs", "name": "AWS Security Hub — CIS Benchmark Checks", "url": "aws.amazon.com/security-hub"},
+          {"label": "🧪 Lab", "name": "TryHackMe — AWS Security Rooms (free)", "url": "tryhackme.com"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 74",
+        "heading": "Your Hands-On __Task__ for Day 74",
+        "steps": [
+          "**Enable** CloudTrail: all regions, log to a dedicated S3 bucket, enable log file integrity validation",
+          "**Enable** GuardDuty: free trial, note which data sources it analyses automatically",
+          "**Enable** Security Hub: CIS AWS Foundations Benchmark + AWS Foundational Security Best Practices",
+          "**Wait 15 minutes**, then open CloudTrail and find your own console logins — document the exact event fields you see"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 74",
+        "quote": "CloudTrail + GuardDuty + Security Hub is the minimum viable AWS security monitoring stack. Any AWS environment without all three is flying completely blind. Memorise this trio — 'how would you set up security monitoring in a new AWS account?' is one of the most common cloud security interview questions, and this is the correct first answer.",
+        "sub": "GuardDuty finding severity levels map directly to response priority: HIGH (7.0–8.9) requires immediate investigation — escalate immediately. MEDIUM (4.0–6.9) requires investigation within 24 hours. LOW (1.0–3.9) can be reviewed weekly. Understanding this triage framework and being able to articulate it in an interview demonstrates genuine operational thinking rather than tool knowledge alone.",
+        "mistake": "Enabling CloudTrail data events for all S3 buckets globally. S3 data events log every GetObject call — in a busy account with thousands of objects being accessed daily, this generates millions of log entries per day. The cost scales with volume and can generate $50–200/month on active accounts. Enable data events selectively on your highest-value buckets only: the ones containing PII, credentials, or business-critical data."
+      }
+    ]
+  },
+
+  {
+    "day": 75,
+    "cover": {
+      "title": "GCP Security: IAM, Cloud Logging & __Security Command Center__",
+      "hook": "Google Cloud powers YouTube, Gmail, and thousands of enterprise workloads. Here's the complete GCP security model.",
+      "tags": ["#GCPSecurity", "#CloudIAM", "#Day75of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "GCP IAM Fundamentals",
+        "tag": "Foundation",
+        "method": "WHAT — GCP's Hierarchical Identity Model",
+        "heading": "GCP IAM: __Hierarchy Makes It Powerful and Dangerous__",
+        "body": [
+          {"type": "para", "text": "**GCP IAM** binds three things together: a **Principal** (who) + a **Role** (what permissions) + a **Resource** (which GCP resource the role applies to). Three role types: Basic (Owner/Editor/Viewer — overly broad, avoid in production), Predefined (service-specific, hundreds available), and Custom (you define exactly which permissions are included)."},
+          {"type": "para", "text": "**The critical difference from AWS:** GCP IAM is hierarchical. Policies applied at the Organisation level inherit down through every Folder, then every Project, then every Resource. A single misconfigured org-level binding grants access across every project in the entire organisation — potentially thousands of resources from one mistake."},
+          {"type": "para", "text": "**Service Accounts** are the GCP equivalent of AWS IAM Roles for workloads. Create one dedicated service account per application with only the permissions it needs. Avoid service account JSON key files — they are long-lived credentials that routinely get committed to source control. Use Workload Identity Federation for keyless authentication from outside GCP."}
+        ],
+        "pills": [
+          {"text": "Principals", "t": "r"},
+          {"text": "Roles", "t": "y"},
+          {"text": "Service Accounts", "t": "o"}
+        ],
+        "time": "20 min · cloud.google.com/iam/docs"
+      },
+      {
+        "type": "red",
+        "label": "Cloud Logging & Audit Logs",
+        "tag": "Forensic Visibility",
+        "method": "WHAT — GCP's Audit Trail System",
+        "heading": "Cloud Logging: __Your GCP Forensic Starting Point__",
+        "body": [
+          {"type": "code", "text": "# Admin Activity logs are always on and always free:\n# Records all admin API calls, IAM changes, config modifications\n\n# Find all recent IAM policy changes:\ngcloud logging read \\\n  'protoPayload.methodName=\"SetIamPolicy\"' \\\n  --limit=20\n\n# Find all service account key creations (critical alert):\ngcloud logging read \\\n  'protoPayload.methodName=\"google.iam.admin.v1.\\\nCreateServiceAccountKey\"' --limit=10\n\n# Find all resource deletions in last hour:\ngcloud logging read \\\n  'protoPayload.methodName:\"delete\" \\\n  timestamp>\"2026-04-23T00:00:00Z\"' --limit=20"},
+          {"type": "para", "text": "**Data Access logs must be enabled manually** — they are not on by default. Enable them for Cloud Storage, BigQuery, and any service holding sensitive data. These record every read and write to your data. Without them enabled, an attacker can exfiltrate your entire Cloud Storage bucket and leave no forensic trace."}
+        ],
+        "time": "20 min · Enable Data Access logs for your critical GCP services"
+      },
+      {
+        "type": "dark",
+        "label": "Security Command Center",
+        "tag": "GCP CSPM",
+        "method": "WHAT — GCP's Native Security Posture Platform",
+        "heading": "Security Command Center: __Free CSPM Built into GCP__",
+        "body": [
+          {"type": "para", "text": "**Security Command Center (SCC)** is GCP's native CSPM and threat detection platform. The Standard tier is completely free and available to every GCP project. No installation, no agent, no configuration — enable it and findings appear immediately."},
+          {"type": "para", "text": "**What SCC Standard detects out of the box:** publicly accessible Cloud Storage buckets · overly permissive firewall rules allowing all ingress · over-privileged service accounts with Editor or Owner roles · cryptomining VM activity via anomalous CPU usage patterns · anomalous API call volumes from service accounts."},
+          {"type": "para", "text": "**GCP Firewall Rules** operate at the VPC network level — unlike AWS security groups which attach to individual instances. Best practice: create an explicit deny-all-ingress default rule for every network, then add specific allow rules using network tags. Target-tag-based rules apply to logical groups of instances automatically and scale without manual updates."}
+        ],
+        "time": "20 min · Enable Security Command Center Standard in your GCP project"
+      },
+      {
+        "type": "white",
+        "label": "GCP IAM Recommender",
+        "tag": "Automated Least Privilege",
+        "method": "HOW — Machine Learning Enforces Least Privilege",
+        "heading": "IAM Recommender: __ML Does the Cleanup Work__",
+        "body": [
+          {"type": "para", "text": "**GCP's IAM Recommender** uses machine learning to analyse actual permission usage over 90 days and automatically recommend removing permissions that were never used. In production environments, following Recommender's suggestions typically reduces the blast radius of a compromised account by 60–80%."},
+          {"type": "para", "text": "**How to access it:** GCP Console → IAM & Admin → Recommendations. Every overly-broad binding gets a specific recommendation: 'Replace role roles/editor on project X with roles/storage.objectViewer on bucket Y — this binding has 847 permissions but only 2 were used in the past 90 days.'"},
+          {"type": "para", "text": "**This is what cloud security engineers do in enterprise environments.** IAM Recommender does the discovery work automatically. Your job is reviewing the recommendations, approving sensible ones, and documenting the rationale for any you reject. Enable it in every GCP project you manage."}
+        ],
+        "note": "**Cloud Skills Boost** (cloudskillsboost.google) provides free monthly lab credits — no credit card required. The best free cloud training platform available. Every lab runs in a real GCP environment, not a simulator.",
+        "time": "20 min · cloudskillsboost.google — complete 'Cloud IAM: Qwik Start' lab"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 75 Learning Targets",
+        "heading": "Day 75 Checklist",
+        "steps": [
+          "**Complete** 'Cloud IAM: Qwik Start' lab on Google Cloud Skills Boost — free with monthly credits",
+          "**Enable** Security Command Center Standard tier in your GCP project — review all findings",
+          "**Fix** the top 3 highest-severity SCC findings — document each misconfiguration and what you changed",
+          "**Run** the Cloud Logging query to find all recent IAM policy changes in your project",
+          "**Check** IAM Recommender — note which permissions are flagged as unused"
+        ],
+        "time": "Total Day 75 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 75",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🎓 Labs", "name": "Google Cloud Skills Boost — Free Labs, Monthly Credits", "url": "cloudskillsboost.google"},
+          {"label": "📖 Docs", "name": "GCP IAM Documentation — Official Reference", "url": "cloud.google.com/iam/docs"},
+          {"label": "📖 Security", "name": "GCP Security Command Center — Standard Tier", "url": "cloud.google.com/security-command-center"},
+          {"label": "🔧 Blueprint", "name": "GCP Security Foundations Blueprint — GitHub", "url": "github.com/terraform-google-modules/terraform-example-foundation"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 75",
+        "heading": "Your Hands-On __Task__ for Day 75",
+        "steps": [
+          "**Complete** the Cloud IAM Qwik Start lab on Cloud Skills Boost — use your free monthly credits",
+          "**Enable** Security Command Center Standard — wait 5 minutes — open the Findings dashboard",
+          "**Fix** the three highest-severity findings — for each: write the misconfiguration, the risk, and what you changed",
+          "**Enable** Data Access audit logs for Cloud Storage — verify they appear in Cloud Logging"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 75",
+        "quote": "GCP's IAM Recommender uses ML to analyze actual permission usage and automatically recommend removing permissions unused in 90+ days. In production environments, following Recommender's suggestions typically reduces blast radius of a compromised account by 60–80%. It does the least-privilege enforcement work automatically — enable it in any GCP project you manage.",
+        "sub": "GCP and AWS IAM follow the same underlying principle — least privilege — but the implementation differs in one critical way. AWS evaluates policies per request with explicit Deny overriding Allow. GCP uses policy inheritance down a resource hierarchy, meaning a single org-level binding can grant access to thousands of resources simultaneously. Understanding this hierarchy difference — and being able to articulate it clearly in an interview — demonstrates that you understand both platforms conceptually rather than just knowing the console clicks.",
+        "mistake": "Creating service account JSON key files and storing them locally or in environment variables. Service account JSON keys are long-lived credentials equivalent to a username and password — they do not expire unless manually rotated. If one is committed to any public repository, assume it was found and exploited within 60 seconds. Always use Workload Identity Federation or metadata-based authentication instead. If you must create a key, set an expiry and rotate it monthly."
+      }
+    ]
+  },
+
+  {
+    "day": 76,
+    "cover": {
+      "title": "Azure Security: Entra ID, Defender for Cloud & __Sentinel__",
+      "hook": "Azure dominates enterprise. Microsoft Sentinel is the world's fastest-growing cloud SIEM. Here's the full security stack.",
+      "tags": ["#AzureSecurity", "#MicrosoftSentinel", "#Day76of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Microsoft Entra ID",
+        "tag": "Foundation",
+        "method": "WHAT — The Identity Layer Behind Everything Azure",
+        "heading": "Entra ID: __Compromise This and Everything Falls__",
+        "body": [
+          {"type": "para", "text": "**Microsoft Entra ID** (formerly Azure Active Directory) is the cloud identity platform behind every Azure deployment. It manages users, groups, app registrations, managed identities, and conditional access policies. Entra ID is the authentication layer for the entire Microsoft ecosystem — Azure, Microsoft 365, Teams, SharePoint, and every third-party SaaS that uses 'Sign in with Microsoft'."},
+          {"type": "para", "text": "**Three non-negotiable Entra ID security controls:** MFA enforcement for all users (never optional for admin accounts) · Conditional Access policies that require MFA from untrusted locations and block legacy authentication protocols · Privileged Identity Management (PIM) for just-in-time admin access — admins only have elevated rights for the duration of an approved task, not permanently."},
+          {"type": "para", "text": "**Azure RBAC** scopes at four levels: Management Group → Subscription → Resource Group → individual Resource. Check all current assignments with `az role assignment list --all --output table`. Any Owner-role assignment should be treated as a critical finding requiring review — Owner grants full control including access management."}
+        ],
+        "pills": [
+          {"text": "Entra ID", "t": "r"},
+          {"text": "Conditional Access", "t": "y"},
+          {"text": "PIM", "t": "o"}
+        ],
+        "time": "20 min · learn.microsoft.com/azure"
+      },
+      {
+        "type": "red",
+        "label": "Microsoft Defender for Cloud",
+        "tag": "CSPM and Workload Protection",
+        "method": "WHAT — Azure's Security Posture Score",
+        "heading": "Defender for Cloud: __Your Azure Security Score__",
+        "body": [
+          {"type": "bullet", "text": "**Secure Score (0–100%)** grades your Azure security posture with recommendations ranked by security impact. The initial score on a fresh account is always educational — and almost always below 50%."},
+          {"type": "bullet", "text": "**CSPM at no additional cost** — the free tier covers core posture management across your Azure environment with actionable recommendations and compliance mapping."},
+          {"type": "bullet", "text": "**Multi-cloud coverage** — Defender for Cloud extends to AWS and GCP through cloud connectors. One pane of glass for your security posture across all three major cloud providers simultaneously."},
+          {"type": "bullet", "text": "**Workload Protection Plans** (paid) add runtime threat detection for VMs, containers, databases, Key Vault, and App Service — similar to GuardDuty in AWS but per-resource-type licensing."},
+          {"type": "para", "text": "**Start with the Secure Score.** Every recommendation includes: the specific misconfiguration, the affected resources, the risk it creates, and the exact remediation steps. Work through recommendations from highest impact to lowest — the score goes up visibly with each fix."}
+        ],
+        "time": "20 min · Open Defender for Cloud in your Azure account right now"
+      },
+      {
+        "type": "dark",
+        "label": "Microsoft Sentinel & KQL",
+        "tag": "Cloud SIEM",
+        "method": "WHAT — Azure's Cloud-Native SIEM",
+        "heading": "Sentinel: __The Fastest-Growing Enterprise SIEM__",
+        "body": [
+          {"type": "para", "text": "**Microsoft Sentinel** is a cloud-native SIEM and SOAR built on Azure Log Analytics. Over 200 free data connectors bring in Microsoft 365, Azure services, and third-party tools. Pre-built analytics rules, MITRE ATT&CK coverage map, threat hunting workbooks, and automated response playbooks via Logic Apps — all in one platform."},
+          {"type": "code", "text": "# KQL Queries for Security Analysts in Sentinel:\n\n# Failed login leaderboard — brute force detection:\nSecurityEvent\n| where EventID == 4625\n| summarize FailedLogins=count() by Account, IpAddress\n| sort by FailedLogins desc\n\n# All destructive actions — deletion monitoring:\nAzureActivity\n| where OperationName contains \"delete\"\n| project TimeGenerated, Caller, OperationName\n\n# New Owner role assignments — privilege escalation:\nAuditLogs\n| where OperationName == \"Add member to role\"\n| where TargetResources[0].modifiedProperties contains \"Owner\""},
+          {"type": "para", "text": "**KQL reads almost like English** once you know the core verbs: `where` (filter), `project` (select columns), `summarize` (aggregate), `sort` (order), `join` (combine tables), `extend` (add computed columns). Coming from Kibana KQL, the transition takes days — not weeks."}
+        ],
+        "time": "25 min · learn.microsoft.com/training/paths/sc-200-mitigate-threats-using-microsoft-sentinel"
+      },
+      {
+        "type": "white",
+        "label": "SC-200 Certification",
+        "tag": "Career Credential",
+        "method": "WHY — The Hottest Cloud Security Cert Right Now",
+        "heading": "SC-200: __The Certification That Opens Doors__",
+        "body": [
+          {"type": "para", "text": "**SC-200 (Microsoft Security Operations Analyst)** is built entirely around Microsoft Sentinel, Defender XDR, and Entra ID security. It is one of the most in-demand security certifications in the current job market — particularly for enterprise SOC roles at organisations running Microsoft infrastructure, which is most large enterprises."},
+          {"type": "para", "text": "**The differentiator is KQL.** Most SC-200 candidates have seen Sentinel in a guided lab. Very few can write actual detection queries from scratch. Spending 30 minutes per day on KQL practice for the remainder of this phase directly translates into interview performance — you can demonstrate queries live, not just describe them."},
+          {"type": "para", "text": "**Free study path:** learn.microsoft.com provides the complete SC-200 learning path with free sandbox labs — no Azure subscription required. The GitHub repo github.com/Azure/Azure-Sentinel contains over 1,000 community-contributed detection rules to study and adapt."}
+        ],
+        "note": "**Salary context:** Sentinel experience gets you to $80–120k roles. KQL fluency is the specific skill that separates candidates at that level.",
+        "time": "20 min · Start the SC-200 learning path on Microsoft Learn today"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 76 Learning Targets",
+        "heading": "Day 76 Checklist",
+        "steps": [
+          "**Complete** 'Introduction to Microsoft Sentinel' on Microsoft Learn — free sandbox, no subscription needed",
+          "**Write** three KQL queries: failed sign-ins by user and IP · Owner role assignments · resource deletions",
+          "**Open** Defender for Cloud — check your Secure Score — note the top 5 recommendations",
+          "**Check** all Azure RBAC role assignments with `az role assignment list --all --output table`",
+          "**Enable** MFA for all users in your Azure tenant — this is non-negotiable before any other config"
+        ],
+        "time": "Total Day 76 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 76",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🎓 Course", "name": "Microsoft Learn — SC-200 Free Learning Path with Sandbox", "url": "learn.microsoft.com/training/paths/sc-200-mitigate-threats-using-microsoft-sentinel"},
+          {"label": "📦 Rules", "name": "Azure/Azure-Sentinel — 1000+ Community Detection Rules", "url": "github.com/Azure/Azure-Sentinel"},
+          {"label": "📖 KQL", "name": "KQL Cheat Sheet — Marcus Bakker GitHub", "url": "github.com/marcusbakker/KQL"},
+          {"label": "📖 Docs", "name": "Microsoft Learn — Azure Security Documentation", "url": "learn.microsoft.com/azure"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 76",
+        "heading": "Your Hands-On __Task__ for Day 76",
+        "steps": [
+          "**Complete** the Microsoft Sentinel introduction module on Microsoft Learn — use the free sandbox environment",
+          "**Write** all three KQL queries from the checklist — document what threat scenario each one detects",
+          "**Open** Defender for Cloud → Secure Score → pick the top recommendation and implement the fix",
+          "**Screenshot** each step — your KQL queries and Defender for Cloud score go into your portfolio"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 76",
+        "quote": "SC-200 is one of the most in-demand security certifications currently. Sentinel experience gets you to $80–120k roles. KQL is the key differentiator — most candidates have seen Sentinel, very few can write actual detection queries. Spend 30 minutes per day on KQL practice for the rest of this phase. The investment compounds directly into interview performance.",
+        "sub": "Microsoft Sentinel's MITRE ATT&CK coverage map is one of the most useful features for demonstrating security architecture knowledge in interviews. It shows visually which attack techniques your current detection rules cover and which have gaps. Being able to point to a specific ATT&CK technique, explain what attacker behaviour it represents, and then write a KQL query that detects it is a genuinely impressive demonstration that very few entry-level candidates can perform.",
+        "mistake": "Letting the Azure free $200 credit run out without setting a cost alert first. Azure free resources expire after 12 months or when the credit is exhausted — whichever comes first. Some Azure services are not free after the trial and begin billing immediately when the credit runs out. Set a cost alert at $5 immediately after account creation. Check Azure Cost Management at the end of every lab session without exception."
+      }
+    ]
+  },
+
+  {
+    "day": 77,
+    "cover": {
+      "title": "Zero Trust Architecture & __Secrets Management__",
+      "hook": "Perimeter security is dead. Zero Trust assumes every connection is hostile until proven otherwise. Here's how to build it in the cloud.",
+      "tags": ["#ZeroTrust", "#SecretsManagement", "#Day77of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Zero Trust Core Principles",
+        "tag": "Foundation",
+        "method": "WHAT — NIST SP 800-207 Simplified",
+        "heading": "Zero Trust: __Three Principles, Every Control Maps Here__",
+        "body": [
+          {"type": "para", "text": "**NIST SP 800-207** defines Zero Trust with three core principles that every modern cloud security control maps to: **Verify explicitly** — always authenticate and authorise based on all available signals (identity, location, device health, service, workload) — never trust based on network location alone. Being inside the VPC means nothing."},
+          {"type": "para", "text": "**Use least privilege access** — limit access with just-in-time and just-enough-access. Minimise scope, duration, and permissions for every identity, human or machine. An account that only needs read access to one S3 bucket should have exactly that — not S3 full access, not account-level permissions."},
+          {"type": "para", "text": "**Assume breach** — design as if attackers are already inside the network. Minimise blast radius through segmentation. Encrypt all data in transit and at rest. Use analytics and logging to detect anomalies. Every security control you have built in this 90-day series maps to one of these three principles."}
+        ],
+        "pills": [
+          {"text": "Verify Explicitly", "t": "r"},
+          {"text": "Least Privilege", "t": "y"},
+          {"text": "Assume Breach", "t": "o"}
+        ],
+        "time": "20 min · nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf — free PDF"
+      },
+      {
+        "type": "red",
+        "label": "Secrets Management",
+        "tag": "Credential Protection",
+        "method": "WHAT — The Right Way to Handle Credentials",
+        "heading": "Secrets Management: __No Credential Left in Code__",
+        "body": [
+          {"type": "bullet", "text": "**AWS Secrets Manager** — stores database passwords, API keys, and OAuth tokens with automatic rotation for RDS databases. Applications retrieve secrets at runtime via IAM role — no human ever sees a production password in plaintext."},
+          {"type": "bullet", "text": "**GCP Secret Manager** — version-controlled secrets with IAM-based access control. Every access is logged. Secret versions can be disabled or destroyed independently. Ideal for GCP workloads."},
+          {"type": "bullet", "text": "**Azure Key Vault** — secrets, certificates, and cryptographic keys in a tamper-proof HSM-backed store. Managed identities retrieve secrets without any credentials in code."},
+          {"type": "bullet", "text": "**HashiCorp Vault** — open-source, multi-cloud, self-hosted secret management. More operational complexity than cloud-native options but works across all providers and on-premises environments."},
+          {"type": "para", "text": "**The golden rule:** any credential that appears in source code — even briefly, even in a private repo — must be treated as compromised immediately. Automated secret-scanning bots monitor GitHub continuously. Keys found in commits are typically exploited within minutes of exposure."}
+        ],
+        "time": "20 min · Store your first secret in your cloud's native secret manager today"
+      },
+      {
+        "type": "dark",
+        "label": "Defense in Depth in Cloud",
+        "tag": "Architecture",
+        "method": "WHAT — Layered Security Architecture",
+        "heading": "Defence in Depth: __Seven Layers, Each Independently Defensive__",
+        "body": [
+          {"type": "para", "text": "**Defence in depth** means no single control is your last line of defence. If any layer fails or is bypassed, the next layer provides independent protection. In cloud architecture, this looks like a deliberate stack of controls from the internet edge to the database."},
+          {"type": "code", "text": "Layer 1: WAF → filter malicious HTTP requests at the edge\nLayer 2: Load Balancer → no direct server exposure, TLS termination\nLayer 3: Application in private subnet → zero public IP, no direct route\nLayer 4: Database → no internet route, encrypted at rest (AES-256)\nLayer 5: Encryption in transit → TLS 1.2+ on every connection everywhere\nLayer 6: SIEM detection → CloudTrail + GuardDuty + Security Hub alerting\nLayer 7: Incident response runbook → tested and rehearsed, not theoretical\n\n# An attacker who bypasses Layer 1 still faces Layers 2-7.\n# No single misconfiguration creates a complete breach path."}
+        ],
+        "time": "20 min · Draw your seven-layer defence architecture diagram"
+      },
+      {
+        "type": "white",
+        "label": "Web Application Firewall",
+        "tag": "Edge Protection",
+        "method": "HOW — Filtering Attacks Before They Reach Your App",
+        "heading": "WAF: __OWASP Top 10 Protection at the Edge__",
+        "body": [
+          {"type": "para", "text": "**Web Application Firewalls** filter HTTP/S traffic at the network edge before it reaches your application servers. Every major cloud provider offers a managed WAF: AWS WAF · GCP Cloud Armor · Azure WAF on Application Gateway. Each has managed rule groups providing turnkey OWASP Top 10 protection with no custom rule writing required."},
+          {"type": "para", "text": "**What a WAF blocks automatically with managed rules:** SQL injection patterns in request parameters · Cross-site scripting payloads in headers and body · Known exploit payloads from CVE signatures · Volumetric DDoS at Layer 7 (HTTP flood) · Bad bot signatures and scraper patterns."},
+          {"type": "para", "text": "**The rule to remember:** enable a WAF on any public-facing application from day one — before it receives a single request from the internet. Retroactively adding WAF protection after a breach investigation is a consistently documented finding in post-incident reports. Free tier is available on all three cloud providers."}
+        ],
+        "note": "**HashiCorp Vault is powerful but operationally complex.** For projects under 50 engineers, cloud-native secret managers are simpler, cheaper, fully managed, and more than sufficient. Use Vault when you need multi-cloud or on-premises secret management at scale.",
+        "time": "20 min · Enable WAF on your cloud load balancer or API gateway"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 77 Learning Targets",
+        "heading": "Day 77 Checklist",
+        "steps": [
+          "**Store** a fake API key ('sk-test-abc123') in your cloud's native secret manager — verify you can retrieve it via CLI",
+          "**Write** a Python script using boto3/google-cloud-secret-manager/azure-keyvault that retrieves the secret at runtime",
+          "**Push** the script to GitHub — verify NO credentials appear anywhere in the repository",
+          "**Draw** your seven-layer defence in depth architecture for your cloud lab environment",
+          "**Enable** a WAF on your cloud load balancer with the OWASP Core Rule Set managed group"
+        ],
+        "time": "Total Day 77 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 77",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📄 NIST", "name": "NIST SP 800-207 — Zero Trust Architecture (Free PDF)", "url": "nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf"},
+          {"label": "📖 AWS", "name": "AWS Well-Architected Security Pillar — Free Self-Assessment", "url": "aws.amazon.com/architecture/well-architected"},
+          {"label": "📖 Microsoft", "name": "Microsoft Zero Trust Guidance", "url": "learn.microsoft.com/security/zero-trust"},
+          {"label": "📖 Google", "name": "Google Cloud Architecture Framework — Security Section", "url": "cloud.google.com/architecture/framework/security"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 77",
+        "heading": "Your Hands-On __Task__ for Day 77",
+        "steps": [
+          "**Store** 'sk-test-abc123' in Secrets Manager / Secret Manager / Key Vault — retrieve it via CLI to verify",
+          "**Write** the Python retrieval script: boto3/google-cloud-secret-manager/azure-identity — no hardcoded credentials",
+          "**Push** to GitHub — use `git log -p` and scan for any credential strings before pushing",
+          "**Document** the Python script with a README explaining what it does and why this approach is secure"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 77",
+        "quote": "Cloud security architecture roles ($140–200k+) require combining deep technical security knowledge + cloud-native tooling expertise + the communication ability to explain risk in business terms to non-technical stakeholders. The path is: hands-on labs now → certifications → architecture design projects with documented decision rationale → leadership. You are building the foundation every senior architect once built.",
+        "sub": "The secrets management Python script you build today is a real portfolio artifact. A GitHub repo containing a working Python script that retrieves secrets at runtime via IAM role — with no hardcoded credentials anywhere in the codebase and a clear README explaining the architecture — demonstrates both cloud security knowledge and Python proficiency in a single concrete deliverable. This type of project repo gets mentioned by name in interviews.",
+        "mistake": "Treating Zero Trust as a product you buy rather than an architecture principle you implement. Zero Trust is not a tool or a checkbox. It is a design philosophy applied to every decision: every network connection requires authentication, every identity gets minimum permissions, every data access gets logged, every workload gets isolated. The controls you have been building all phase — IAM least privilege, private subnets, secret managers, WAF, logging — are all Zero Trust in practice."
+      }
+    ]
+  },
+
+  {
+    "day": 78,
+    "cover": {
+      "title": "Container Security: Docker Hardening & __Image Scanning__",
+      "hook": "80% of companies run containers in production. Misconfigured Docker = instant root access to the host. Here's how to harden it.",
+      "tags": ["#DockerSecurity", "#ContainerSecurity", "#Day78of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Container vs VM Security Model",
+        "tag": "Foundation",
+        "method": "WHAT — Why Containers Are Not Isolation Boundaries",
+        "heading": "Containers: __Not a Security Boundary Like VMs__",
+        "body": [
+          {"type": "para", "text": "**The most important container security concept:** containers share the host kernel. A container is NOT a security boundary the way a VM is. A VM runs a completely separate OS kernel — a container escape is impossible without a hypervisor vulnerability. A container escape requires only a kernel vulnerability or a Docker misconfiguration — and there are many."},
+          {"type": "para", "text": "**A successful container escape gives an attacker complete access to the host operating system** and every other container running on it. This means your entire container workload can be compromised from a single vulnerable container if the others are not properly isolated."},
+          {"type": "para", "text": "**Four fundamental Docker hardening controls:** run as non-root user (USER directive in Dockerfile — never run as UID 0) · read-only filesystem (--read-only flag removes write access to the container filesystem) · drop all Linux capabilities (--cap-drop ALL removes 38 capabilities, add back only what the app needs) · prevent privilege escalation (--no-new-privileges flag prevents setuid binaries from gaining elevated rights)."}
+        ],
+        "pills": [
+          {"text": "Non-Root", "t": "r"},
+          {"text": "Read-Only FS", "t": "y"},
+          {"text": "Cap-Drop", "t": "o"}
+        ],
+        "time": "20 min · docs.docker.com/engine/security · CIS Docker Benchmark"
+      },
+      {
+        "type": "red",
+        "label": "The Two Most Dangerous Docker Flags",
+        "tag": "Critical Misconfigurations",
+        "method": "WHAT — Privileged Containers and Docker Socket",
+        "heading": "Two Flags That Break Container Security Entirely",
+        "body": [
+          {"type": "code", "text": "# --privileged: nearly complete host access\n# This single flag gives the container:\n# - All 38 Linux capabilities\n# - Full access to /dev (all devices)\n# - Ability to mount host filesystem\n# - Ability to write /etc/cron.d and execute as root on host\n\ndocker run --privileged myapp  # NEVER do this in production\n\n# Docker socket exposure — full Docker API inside container:\n# /var/run/docker.sock mounted inside container = complete escape\n# From inside the container an attacker can:\n# - Spawn new privileged containers\n# - Read other containers filesystems\n# - Achieve complete host access\n\n# Detection — first command a pentester runs after landing in a container:\nfind / -name docker.sock 2>/dev/null\nls -la /var/run/docker.sock"},
+          {"type": "para", "text": "**In any production Dockerfile or docker-compose.yml, seeing --privileged is an immediate critical finding.** It is almost never necessary for legitimate applications. If an engineer cannot explain exactly why --privileged is required, the correct answer is to remove it and find a scoped alternative using specific capability grants."}
+        ],
+        "time": "20 min · Check every docker-compose.yml you have ever written for these flags"
+      },
+      {
+        "type": "dark",
+        "label": "Trivy Image Scanning",
+        "tag": "Vulnerability Scanning",
+        "method": "HOW — Scanning Every Image Before Deployment",
+        "heading": "Trivy: __CVE Scanning in 30 Seconds Per Image__",
+        "body": [
+          {"type": "code", "text": "# Install Trivy:\nbrew install aquasecurity/trivy/trivy  # macOS\napt install trivy                       # Ubuntu\n\n# Scan any Docker image for CVEs:\ntrivy image nginx:latest\ntrivy image python:3.11-slim\ntrivy image node:18-alpine  # alpine images have far fewer CVEs\n\n# Output shows:\n# Severity: CRITICAL / HIGH / MEDIUM / LOW / UNKNOWN\n# CVE ID: CVE-2024-XXXXX\n# Package: libssl (affected)\n# Fixed Version: 3.0.14-r0 (update to this)\n\n# Scan a Kubernetes cluster:\ntrivy k8s --all-namespaces\n\n# Integrate in GitHub Actions — block CRITICAL findings:\n# trivy image --exit-code 1 --severity CRITICAL myimage:latest"},
+          {"type": "para", "text": "**Alpine-based images consistently have 80–90% fewer CVEs than Debian or Ubuntu-based images.** When building Docker images, always prefer alpine variants unless a specific dependency requires a glibc-based OS. Fewer packages means fewer vulnerabilities — the most effective vulnerability reduction is removing packages that do not need to be there."}
+        ],
+        "time": "25 min · github.com/aquasecurity/trivy — scan nginx:latest right now"
+      },
+      {
+        "type": "white",
+        "label": "Docker Bench for Security",
+        "tag": "CIS Audit",
+        "method": "HOW — Full CIS Benchmark Audit in 60 Seconds",
+        "heading": "Docker Bench: __Your CIS Compliance Scorecard__",
+        "body": [
+          {"type": "code", "text": "# Run the full CIS Docker Benchmark audit:\ndocker run --rm --net host --pid host \\\n  --cap-add audit_control \\\n  -v /etc:/etc:ro \\\n  -v /lib/systemd:/lib/systemd:ro \\\n  -v /usr/bin/containerd:/usr/bin/containerd:ro \\\n  -v /usr/bin/runc:/usr/bin/runc:ro \\\n  -v /usr/lib/systemd:/usr/lib/systemd:ro \\\n  -v /var/lib:/var/lib:ro \\\n  -v /var/run/docker.sock:/var/run/docker.sock:ro \\\n  docker/docker-bench-security\n\n# Output categories:\n# [PASS]  - Compliant with CIS benchmark\n# [WARN]  - Should be reviewed and fixed\n# [INFO]  - Informational finding\n# [NOTE]  - Notable but lower priority\n\n# Run BEFORE and AFTER hardening steps\n# to measure improvement quantitatively"},
+          {"type": "para", "text": "**Docker Bench covers five areas:** Docker daemon configuration security · container runtime settings · Docker image content security · Docker network configuration · Docker security operations practices. A fresh Docker installation on Ubuntu typically shows 30–40 WARN items. Fixing all of them and documenting each remediation is a real security engineering deliverable."}
+        ],
+        "time": "20 min · Run Docker Bench against your lab environment before and after hardening"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 78 Learning Targets",
+        "heading": "Day 78 Checklist",
+        "steps": [
+          "**Scan** nginx:latest with Trivy — count CRITICAL and HIGH CVEs — document the top three findings",
+          "**Run** Docker Bench — note your baseline WARN count before any hardening",
+          "**Harden** a test nginx container: add USER 1001 to Dockerfile, run with --read-only and --cap-drop ALL",
+          "**Re-scan** the hardened image with Trivy — compare CVE count before and after",
+          "**Understand** the three container escape paths: privileged flag · docker.sock mount · writable hostPath"
+        ],
+        "time": "Total Day 78 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 78",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🔧 Tool", "name": "Trivy — Free Container and IaC Vulnerability Scanner", "url": "github.com/aquasecurity/trivy"},
+          {"label": "🔧 Tool", "name": "docker/docker-bench-security — Free CIS Docker Audit", "url": "github.com/docker/docker-bench-security"},
+          {"label": "📄 PDF", "name": "CIS Docker Benchmark — Free Hardening Guide", "url": "cisecurity.org/benchmark/docker"},
+          {"label": "🧪 Lab", "name": "TryHackMe — Container Security Room", "url": "tryhackme.com"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 78",
+        "heading": "Your Hands-On __Task__ for Day 78",
+        "steps": [
+          "**Pull** nginx:latest and scan with Trivy — document CRITICAL CVE count before hardening",
+          "**Run** Docker Bench — record your baseline WARN count",
+          "**Build** a hardened Dockerfile: FROM nginx:alpine + USER 1001 + read-only filesystem + cap-drop all",
+          "**Re-scan** the hardened image and Docker Bench — document the before/after numbers in a comparison table"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 78",
+        "quote": "Container escape techniques are among the most impressive demonstrations in cloud penetration testing. Understanding them makes you a sharper defender — you know exactly what attackers enumerate the moment they land in a container. The three most common container escapes to know by name and exploit path: privileged flag · docker.sock mount · writable host path mount. Knowing all three cold will impress in any cloud security interview.",
+        "sub": "The before-and-after CVE comparison from your Trivy scan is a portfolio artifact worth keeping. 'I scanned nginx:latest and found X critical CVEs, then rebuilt with an Alpine base and hardening controls, reducing the count to Y' is a concrete, quantified security improvement — exactly the kind of work that appears in cloud security engineer job descriptions. Document the numbers and add them to your GitHub portfolio README.",
+        "mistake": "Practising container escape techniques on shared cloud environments. Container escapes in cloud environments affect hypervisor-level host nodes that are shared across multiple tenants. A container escape on a shared cloud instance is a serious security incident regardless of intent. Always practise in completely isolated local environments using Docker Desktop on your own machine — never on any shared or cloud-hosted environment."
+      }
+    ]
+  },
+
+  {
+    "day": 79,
+    "cover": {
+      "title": "Kubernetes Security: RBAC, Network Policies & __kube-bench__",
+      "hook": "Kubernetes runs half the internet's workloads. Misconfigured K8s gives an attacker your entire cluster. Let's fix that.",
+      "tags": ["#KubernetesSecurity", "#K8sSecurity", "#Day79of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Kubernetes Security Model",
+        "tag": "Foundation",
+        "method": "WHAT — K8s is Permissive by Default",
+        "heading": "Kubernetes: __Security is Opt-In at Every Layer__",
+        "body": [
+          {"type": "para", "text": "**Kubernetes has its own IAM (RBAC), network firewall (Network Policies), secrets management, and pod-level security controls (Security Contexts).** Each layer must be explicitly configured — unlike cloud provider services that have secure defaults, Kubernetes is deliberately permissive out of the box to maximise flexibility."},
+          {"type": "para", "text": "**Default Kubernetes is insecure in four specific ways:** all pods can communicate with all other pods on any port across all namespaces (zero network isolation) · ServiceAccounts have broader default permissions than they should · secrets are only base64-encoded in etcd — not encrypted — meaning anyone with etcd access reads all cluster secrets in plaintext · the default ServiceAccount token is automatically mounted into every pod."},
+          {"type": "para", "text": "**The mental model for K8s security:** every default is permissive, every security control is optional, every security decision requires an explicit opt-in. This makes Kubernetes powerful and flexible — and makes misconfigured Kubernetes clusters extremely common in production environments."}
+        ],
+        "pills": [
+          {"text": "RBAC", "t": "r"},
+          {"text": "Network Policies", "t": "y"},
+          {"text": "Security Contexts", "t": "o"}
+        ],
+        "time": "20 min · kubernetes.io/docs/concepts/security"
+      },
+      {
+        "type": "red",
+        "label": "Kubernetes RBAC",
+        "tag": "Access Control",
+        "method": "WHAT — K8s Identity and Permission System",
+        "heading": "K8s RBAC: __Audit the Default SA First__",
+        "body": [
+          {"type": "code", "text": "# Check what the default ServiceAccount can do:\n# (The answer on most default clusters is alarming)\nkubectl auth can-i --list \\\n  --as system:serviceaccount:default:default\n\n# Create a namespace-scoped Role:\nkubectl create role pod-reader \\\n  --verb=get,list,watch \\\n  --resource=pods \\\n  --namespace=production\n\n# Bind it to a ServiceAccount:\nkubectl create rolebinding pod-reader-binding \\\n  --role=pod-reader \\\n  --serviceaccount=production:myapp \\\n  --namespace=production\n\n# Audit all ClusterRoleBindings (cluster-wide permissions):\nkubectl get clusterrolebindings -o wide\n# Look for: system:anonymous, default ServiceAccount bindings\n# to cluster-admin — immediate critical findings"},
+          {"type": "para", "text": "**Role vs ClusterRole:** a Role is namespace-scoped. A ClusterRole applies across the entire cluster. A ClusterRoleBinding attaches a ClusterRole to a subject cluster-wide. Never grant ClusterRoles when a namespace-scoped Role provides sufficient access — the blast radius of a compromised account with cluster-admin is every resource in every namespace."}
+        ],
+        "time": "20 min · Run the auth can-i audit on your minikube cluster now"
+      },
+      {
+        "type": "dark",
+        "label": "Network Policies",
+        "tag": "Pod Isolation",
+        "method": "HOW — Adding L3/L4 Firewall Rules to Kubernetes",
+        "heading": "Network Policies: __Zero Isolation by Default__",
+        "body": [
+          {"type": "code", "text": "# Default: ALL pods can reach ALL pods on ALL ports.\n# The fix: start with deny-all, then add explicit allows.\n\n# Deny-all ingress for a namespace (apply first):\napiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\nmetadata:\n  name: default-deny-ingress\n  namespace: production\nspec:\n  podSelector: {}  # applies to ALL pods in namespace\n  policyTypes:\n  - Ingress\n  # No ingress rules = deny everything\n\n---\n# Allow only frontend pods to reach backend on port 8080:\napiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\nmetadata:\n  name: allow-frontend-to-backend\n  namespace: production\nspec:\n  podSelector:\n    matchLabels:\n      app: backend\n  ingress:\n  - from:\n    - podSelector:\n        matchLabels:\n          app: frontend\n    ports:\n    - port: 8080"},
+          {"type": "para", "text": "**Network Policies require a compatible CNI plugin.** The default Kubernetes networking does not enforce Network Policies even if you create them. Install Calico or Cilium as your CNI — these are the two most widely deployed CNI plugins that fully enforce Network Policies in production clusters."}
+        ],
+        "time": "25 min · Deploy deny-all NetworkPolicy in your minikube namespace"
+      },
+      {
+        "type": "white",
+        "label": "kube-bench CIS Audit",
+        "tag": "Benchmark Compliance",
+        "method": "HOW — Automated CIS Kubernetes Benchmark",
+        "heading": "kube-bench: __Your Cluster Hardening Scorecard__",
+        "body": [
+          {"type": "code", "text": "# Install and run kube-bench against your cluster:\nkubectl apply -f \\\n  https://raw.githubusercontent.com/aquasecurity/\\\nkube-bench/main/job.yaml\n\nkubectl logs job/kube-bench\n\n# Or run directly on minikube:\ndocker run --rm \\\n  -v $(minikube ssh -- cat /etc/kubernetes):/etc/kubernetes:ro \\\n  aquasec/kube-bench:latest \\\n  --config-dir /opt/kube-bench/cfg \\\n  --config /opt/kube-bench/cfg/config.yaml\n\n# Output sections:\n# 1 Master Node Security Configuration\n# 2 Etcd Node Configuration\n# 3 Control Plane Configuration\n# 4 Worker Node Security Configuration\n# 5 Kubernetes Policies\n\n# FAIL count on a fresh minikube: typically 30–50 items"},
+          {"type": "para", "text": "**The six most common Kubernetes attack paths to know by name:** privileged pod escape to host · default ServiceAccount token auto-mount privilege escalation · unauthenticated Kubernetes dashboard giving full cluster access · etcd accessible without mTLS (all secrets readable in plaintext) · writable hostPath volume mount persistent access · container image with CRITICAL CVEs providing initial foothold."}
+        ],
+        "time": "20 min · github.com/aquasecurity/kube-bench — run against minikube"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 79 Learning Targets",
+        "heading": "Day 79 Checklist",
+        "steps": [
+          "**Install** minikube locally and deploy a simple nginx pod",
+          "**Run** `kubectl auth can-i --list --as system:serviceaccount:default:default` — document every permission shown",
+          "**Install** and run kube-bench — count total FAIL results on a default minikube install",
+          "**Create** a deny-all NetworkPolicy for the default namespace — test that pod-to-pod traffic is blocked",
+          "**Write** a short security report: total FAIL count, top 3 critical findings, remediation for each"
+        ],
+        "time": "Total Day 79 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 79",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🔧 Tool", "name": "kube-bench — Free CIS Kubernetes Benchmark Auditor", "url": "github.com/aquasecurity/kube-bench"},
+          {"label": "🎓 Labs", "name": "KodeKloud — Free Kubernetes Labs (Beginner-Friendly)", "url": "kodekloud.com"},
+          {"label": "🧪 Lab", "name": "TryHackMe — Kubernetes Security Room", "url": "tryhackme.com"},
+          {"label": "📖 Docs", "name": "Kubernetes Security Documentation — Official", "url": "kubernetes.io/docs/concepts/security"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 79",
+        "heading": "Your Hands-On __Task__ for Day 79",
+        "steps": [
+          "**Install** minikube: `minikube start` — deploy nginx: `kubectl run nginx --image=nginx`",
+          "**Run** `kubectl auth can-i --list --as system:serviceaccount:default:default` — screenshot the full output",
+          "**Install** kube-bench and run it — record the FAIL count — pick the top 3 most critical findings",
+          "**Apply** the deny-all NetworkPolicy — test with `kubectl exec` that pod-to-pod traffic is now blocked"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 79",
+        "quote": "CKS (Certified Kubernetes Security Specialist) is one of the hardest and most respected certifications in cloud-native security. The path: Docker security fundamentals (Day 78) → CKA (Certified Kubernetes Administrator) → CKS. The skills built today are the exact foundation. Start with concepts before kubectl commands — interviewers will ask 'why' not just 'how'.",
+        "sub": "The `kubectl auth can-i --list --as system:serviceaccount:default:default` command is one of the first things a Kubernetes security assessor runs. On the majority of default cluster configurations, the output shows far more permissions than the default ServiceAccount should have. Being able to run this command, read the output, identify which permissions are excessive, and explain the remediation is a concrete technical demonstration that impresses K8s security interviewers.",
+        "mistake": "Exposing the Kubernetes dashboard on a public IP without authentication. The Kubernetes dashboard has been directly responsible for cryptomining attacks generating $50,000+ in cloud bills within hours of being discovered by automated scanners. The dashboard should never be accessible on a public IP. Access it exclusively via kubectl port-forward to your local machine: `kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:80`."
+      }
+    ]
+  },
+
+  {
+    "day": 80,
+    "cover": {
+      "title": "Cloud Penetration Testing: CloudGoat & __SSRF Attacks__",
+      "hook": "Cloud pentesting is the highest-paid security specialty. Today you do your first real deliberately-vulnerable cloud attack lab.",
+      "tags": ["#CloudPentest", "#CloudGoat", "#Day80of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Cloud Pentest Legal Requirements",
+        "tag": "Foundation",
+        "method": "WHAT — The Legal Framework Before Any Testing",
+        "heading": "Cloud Pentest: __Written Permission First, Always__",
+        "body": [
+          {"type": "para", "text": "**Every cloud provider has a penetration testing policy — read it before any engagement.** AWS pre-authorizes testing your own resources for most services without prior notification. GCP and Azure have similar pre-authorization frameworks. The key word is 'your own' — you must own the account or have written permission from the account owner."},
+          {"type": "para", "text": "**Cloud pentests are governed simultaneously by computer crime law AND the provider's acceptable use policy.** Violating either one creates legal exposure. Even with client permission, testing services outside the pre-authorized list on AWS requires explicit approval in writing from AWS before starting. This is not theoretical — cloud providers actively monitor for attack patterns and have suspended accounts mid-engagement."},
+          {"type": "para", "text": "**The safe approach for learning:** use deliberately vulnerable cloud environments deployed in your OWN AWS account — CloudGoat, flaws.cloud, flaws2.cloud. You own the account, you have permission, you are attacking infrastructure you deployed yourself. This is the only correct way to practise cloud attack techniques without legal exposure."}
+        ],
+        "pills": [
+          {"text": "CloudGoat", "t": "r"},
+          {"text": "SSRF", "t": "y"},
+          {"text": "IAM PrivEsc", "t": "o"}
+        ],
+        "time": "20 min · github.com/RhinoSecurityLabs/cloudgoat"
+      },
+      {
+        "type": "red",
+        "label": "SSRF to AWS Metadata API",
+        "tag": "Critical Cloud Attack",
+        "method": "WHAT — Server-Side Request Forgery in Cloud Environments",
+        "heading": "SSRF: __The Attack That Steals Cloud Credentials__",
+        "body": [
+          {"type": "code", "text": "# The Instance Metadata Service (IMDS) at 169.254.169.254\n# provides the EC2 instance's IAM role credentials.\n\n# Step 1: Discover the role name\ncurl http://169.254.169.254/latest/meta-data/\\\niam/security-credentials/\n# Returns: MyWebAppRole\n\n# Step 2: Steal the temporary credentials\ncurl http://169.254.169.254/latest/meta-data/\\\niam/security-credentials/MyWebAppRole\n# Returns: AccessKeyId, SecretAccessKey, Token, Expiration\n\n# Step 3: Use stolen credentials from attacker machine\nexport AWS_ACCESS_KEY_ID=ASIA...\nexport AWS_SECRET_ACCESS_KEY=...\nexport AWS_SESSION_TOKEN=...\naws s3 ls  # Now operating as the EC2 role"},
+          {"type": "para", "text": "**IMDSv2 mitigates this attack** by requiring a token-based request first — a two-step process that SSRF vulnerabilities typically cannot complete. Enforce IMDSv2 on all EC2 instances by setting HttpTokens=required in the instance metadata options. This single configuration change eliminates the most common cloud credential theft attack vector."}
+        ],
+        "time": "25 min · Enforce IMDSv2 on every EC2 instance in your account"
+      },
+      {
+        "type": "dark",
+        "label": "CloudGoat Lab",
+        "tag": "Hands-On Attack Lab",
+        "method": "WHAT — Deliberately Vulnerable AWS in Your Own Account",
+        "heading": "CloudGoat: __Real Attack Paths in a Safe Lab__",
+        "body": [
+          {"type": "para", "text": "**CloudGoat** is created by Rhino Security Labs — the team that documented most known AWS attack paths. It uses Terraform to deploy intentionally vulnerable AWS environments inside your own account. Completely legal to attack because you own the infrastructure and you deployed it yourself."},
+          {"type": "code", "text": "# CloudGoat setup:\npip install cloudgoat\ncloudgoat config profile default\n\n# Deploy the IAM privilege escalation scenario:\ncloudgoat create iam_privesc_by_rollback\n# Outputs: starting credentials with limited permissions\n\n# The attack path:\n# 1. Enumerate available IAM permissions\naws iam list-attached-user-policies --user-name target\naws iam list-policy-versions --policy-arn arn:aws:iam::...\n\n# 2. Discover a policy version rollback path\n# 3. Roll back to the admin version of the policy\naws iam set-default-policy-version \\\n  --policy-arn arn:aws:iam::... \\\n  --version-id v1\n# Result: you now have AdministratorAccess\n\n# ALWAYS clean up immediately:\ncloudgoat destroy iam_privesc_by_rollback"},
+          {"type": "para", "text": "**Rhino Security Labs documented 21 distinct AWS IAM privilege escalation paths.** The most common in real engagements: iam:CreatePolicyVersion (create a new admin policy version) · iam:AttachUserPolicy (attach AdministratorAccess to yourself) · sts:AssumeRole on a high-privilege role. Tool to automate detection: Pacu."}
+        ],
+        "time": "30 min · Deploy and complete iam_privesc_by_rollback in your own account"
+      },
+      {
+        "type": "white",
+        "label": "Pacu — AWS Attack Framework",
+        "tag": "Cloud Offensive Tool",
+        "method": "HOW — Automated AWS Enumeration and Exploitation",
+        "heading": "Pacu: __Metasploit for AWS__",
+        "body": [
+          {"type": "code", "text": "# Install Pacu:\npip install pacu\npacu\n\n# Set compromised credentials:\nset_keys\n# Enter: AccessKeyId, SecretAccessKey, SessionToken\n\n# Full IAM enumeration:\nrun iam__enum_users_roles_policies_groups\n\n# Automated privilege escalation scan:\nrun iam__privesc_scan\n# Outputs: which escalation paths are available with these creds\n\n# S3 bucket discovery:\nrun s3__bucket_finder\n# Finds all S3 buckets accessible with these credentials\n\n# List all running EC2 across all regions:\nrun ec2__enum"},
+          {"type": "para", "text": "**Pacu automates what manual cloud enumeration takes hours to accomplish.** In a real cloud penetration test, the first step after obtaining initial credentials is enumeration — what can these credentials access? What permissions do they have? What escalation paths are available? Pacu answers all three questions automatically and logs every action taken for the pentest report."}
+        ],
+        "note": "**ONLY use Pacu against accounts you own or have explicit written permission to test.** The tool generates API calls that appear in CloudTrail — testing without permission is immediately detectable and legally actionable.",
+        "time": "20 min · github.com/RhinoSecurityLabs/pacu — study the module list"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 80 Learning Targets",
+        "heading": "Day 80 Checklist",
+        "steps": [
+          "**Deploy** CloudGoat 'iam_privesc_by_rollback' in your AWS account using Terraform",
+          "**Follow** the attack path: enumerate permissions → discover rollback → escalate to admin",
+          "**Document** every AWS CLI command executed and what it revealed at each step",
+          "**Run** `terraform destroy` immediately after completing the scenario",
+          "**Enforce** IMDSv2 on all EC2 instances in your account: HttpTokens=required"
+        ],
+        "time": "Total Day 80 Study Time: 120 – 150 minutes (full attack lab day)"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 80",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🧪 Lab", "name": "CloudGoat — Deliberately Vulnerable AWS (Your Own Account)", "url": "github.com/RhinoSecurityLabs/cloudgoat"},
+          {"label": "🔧 Tool", "name": "Pacu — AWS Exploitation Framework", "url": "github.com/RhinoSecurityLabs/pacu"},
+          {"label": "🧪 Lab", "name": "flaws2.cloud — Free Advanced AWS Attacker-Path Challenge", "url": "flaws2.cloud"},
+          {"label": "📖 Guide", "name": "HackTricks Cloud — AWS Security Attack Paths", "url": "book.hacktricks.xyz/cloud-security/aws-security"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 80",
+        "heading": "Your Hands-On __Task__ for Day 80",
+        "steps": [
+          "**Install** CloudGoat: `pip install cloudgoat` — deploy iam_privesc_by_rollback — follow the README instructions",
+          "**Document** every step: the starting credentials, each enumeration command, the escalation technique, the final admin access",
+          "**Run** `terraform destroy` IMMEDIATELY after completion — verify in AWS console that all resources are gone",
+          "**Check** CloudTrail — find every API call made during the CloudGoat scenario — see exactly what a real attack looks like in logs"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 80",
+        "quote": "Cloud penetration testing commands a 30–50% salary premium over traditional pentesting. The intersection of deep cloud architecture knowledge with offensive security skills is genuinely rare in the job market. Focus on one cloud provider's attack paths entirely before diversifying — AWS has the richest free lab ecosystem (CloudGoat, flaws.cloud, flaws2.cloud) and makes the ideal starting point.",
+        "sub": "Checking CloudTrail logs after completing a CloudGoat scenario is one of the highest-value learning activities of this entire phase. You just performed a real IAM privilege escalation — now look at exactly how it appears in the audit logs. Which API calls fired? What did the `userIdentity` field show? What sequence of events would alert a SOC analyst? This dual attacker-and-defender perspective — seeing the attack from both sides simultaneously — is what makes genuinely effective cloud security engineers.",
+        "mistake": "Forgetting to run terraform destroy after CloudGoat scenarios. A single forgotten NAT Gateway and EC2 instance left running generates $50+ in AWS charges within 24 hours. CloudGoat deploys real, billable AWS resources. After every scenario, run `cloudgoat destroy SCENARIO_NAME` and then verify in the AWS console that no EC2 instances, NAT Gateways, or RDS instances remain running in any region. Check AWS Cost Explorer the next day to confirm zero charges accumulated."
+      }
+    ]
+  },
+
+  {
+    "day": 81,
+    "cover": {
+      "title": "Cloud Compliance: CIS Benchmarks & __IaC Security__",
+      "hook": "Every enterprise cloud deployment must prove compliance. Here are the frameworks every cloud security professional must know cold.",
+      "tags": ["#CloudCompliance", "#CISBenchmark", "#Day81of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "CIS Benchmarks for Cloud",
+        "tag": "Foundation",
+        "method": "WHAT — The Compliance Baseline Every Enterprise Uses",
+        "heading": "CIS Benchmarks: __The Universal Cloud Hardening Standard__",
+        "body": [
+          {"type": "para", "text": "**The Center for Internet Security** publishes free hardening guides for AWS, Azure, and GCP — the CIS Cloud Benchmarks. These are the most widely referenced cloud security standards in enterprise environments. Any cloud security role at a company handling sensitive data will reference CIS Benchmark controls."},
+          {"type": "para", "text": "**CIS AWS Foundations Benchmark v1.4** has four control levels — Level 1 is the required minimum baseline for any production account. It covers IAM configuration, logging requirements, monitoring alerts, networking settings, and S3 security. AWS Security Hub, GCP Security Command Center, and Azure Defender for Cloud all have built-in automated CIS checks — your compliance score is visible in the console right now."},
+          {"type": "para", "text": "**NIST Cybersecurity Framework five functions:** Identify (asset inventory, risk assessment) · Protect (access control, data security) · Detect (anomaly detection, SIEM) · Respond (incident response planning) · Recover (recovery planning, improvements). Every security control built in this 90-day series maps directly to one of these five functions."}
+        ],
+        "pills": [
+          {"text": "CIS Benchmarks", "t": "r"},
+          {"text": "NIST CSF", "t": "y"},
+          {"text": "SOC 2", "t": "o"}
+        ],
+        "time": "20 min · cisecurity.org/benchmark — download the free PDFs"
+      },
+      {
+        "type": "red",
+        "label": "Infrastructure as Code Security",
+        "tag": "Shift Left",
+        "method": "WHAT — Catching Misconfigurations Before Deployment",
+        "heading": "IaC Security: __Find It in Code, Not in a Breach__",
+        "body": [
+          {"type": "para", "text": "**Infrastructure as Code** (Terraform, CloudFormation, Ansible) defines your cloud environment as version-controlled code. The security implication: misconfigurations in IaC files get deployed to production automatically — unless they are caught by scanning first."},
+          {"type": "code", "text": "# Install Checkov — free IaC security scanner:\npip install checkov\n\n# Scan a directory of Terraform files:\ncheckov -d ./terraform/\n\n# Scan a specific file:\ncheckov -f main.tf\n\n# Example findings Checkov catches:\n# CKV_AWS_20: S3 bucket has public read ACL\n# CKV_AWS_23: Security group allows all ports to 0.0.0.0/0\n# CKV_AWS_16: RDS instance is not encrypted\n# CKV_AWS_86: CloudTrail is not enabled\n# CKV_AWS_119: DynamoDB not encrypted with KMS CMK\n\n# Fail build on any HIGH or CRITICAL finding:\ncheckov -d . --check HIGH,CRITICAL --hard-fail-on CRITICAL"},
+          {"type": "para", "text": "**Shift left means catching security issues earlier in the development process.** The cost of fixing a misconfiguration in code review is hours. The cost of fixing it after a breach investigation is measured in millions. Checkov in CI/CD makes this enforcement automatic and frictionless."}
+        ],
+        "time": "25 min · pip install checkov — scan your existing Terraform files"
+      },
+      {
+        "type": "dark",
+        "label": "Checkov in CI/CD",
+        "tag": "DevSecOps",
+        "method": "HOW — Automating Compliance Before Every Deployment",
+        "heading": "Checkov in GitHub Actions: __Block Insecure Merges__",
+        "body": [
+          {"type": "code", "text": "# .github/workflows/security-scan.yml\nname: IaC Security Scan\n\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\n\njobs:\n  checkov-scan:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v3\n\n      - name: Run Checkov IaC scan\n        uses: bridgecrewio/checkov-action@master\n        with:\n          directory: terraform/\n          framework: terraform\n          soft_fail: false       # Block PR on CRITICAL findings\n          output_format: sarif   # Integrate with GitHub Security tab\n\n# Result: every PR with insecure Terraform is blocked\n# automatically before it can be merged to main"},
+          {"type": "para", "text": "**This is DevSecOps in practice.** Security review happens automatically at the code level before any deployment. The engineer gets immediate feedback in the PR — not a security alert three weeks later after a cloud breach. This workflow is the standard at security-mature engineering organisations."}
+        ],
+        "time": "20 min · Add Checkov to your GitHub Actions workflow"
+      },
+      {
+        "type": "white",
+        "label": "SOC 2 in Cloud Environments",
+        "tag": "Enterprise Compliance",
+        "method": "WHAT — Cloud Controls That Satisfy SOC 2",
+        "heading": "SOC 2: __The Compliance Framework Enterprise Sales Demands__",
+        "body": [
+          {"type": "para", "text": "**SOC 2 Type II** is a Service Organization Controls audit evaluating security, availability, processing integrity, confidentiality, and privacy over a 6–12 month observation period. Enterprise SaaS companies require SOC 2 to win contracts with enterprise customers — it is a prerequisite for the sales process at most large organisations."},
+          {"type": "para", "text": "**Cloud-native controls that directly satisfy SOC 2 requirements:** CloudTrail/Cloud Logging for audit trail (CC6.2, CC7.2) · encryption at rest and in transit (CC6.7) · MFA enforcement policies (CC6.1) · Git-versioned change management (CC6.8) · incident response runbooks (CC7.3) · quarterly access reviews (CC6.3)."},
+          {"type": "para", "text": "**Compliance is the floor of security, never the ceiling.** A system can be fully SOC 2 compliant and breached via a zero-day or social engineering the same week. Use compliance frameworks as a starting point for establishing baselines — not as a definition of 'secure'. The mindset is: compliance tells you the minimum. Security engineering tells you what's actually needed."}
+        ],
+        "time": "15 min · Download the CIS AWS Foundations Benchmark PDF — review Level 1 controls"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 81 Learning Targets",
+        "heading": "Day 81 Checklist",
+        "steps": [
+          "**Download** the free CIS AWS Foundations Benchmark PDF — count how many Level 1 controls you have already implemented",
+          "**Install** Checkov: `pip install checkov` — run it against your existing Terraform or CloudFormation files",
+          "**Write** a Terraform file with three intentional misconfigurations: public S3 bucket + open security group + unencrypted RDS",
+          "**Run** `checkov -f main.tf` — verify it flags all three findings with the correct CKV IDs",
+          "**Fix** all three misconfigurations — re-run Checkov and confirm all checks pass"
+        ],
+        "time": "Total Day 81 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 81",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📄 PDF", "name": "CIS Benchmark PDFs — Free for All Cloud Providers", "url": "cisecurity.org/benchmark"},
+          {"label": "🔧 Tool", "name": "Checkov — Free IaC Security Scanner (Terraform/CF/Ansible)", "url": "checkov.io"},
+          {"label": "🔧 Tool", "name": "tfsec — Terraform-Specific Security Scanner", "url": "github.com/aquasecurity/tfsec"},
+          {"label": "📄 NIST", "name": "NIST Cybersecurity Framework — Free Official Site", "url": "csf.nist.gov"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 81",
+        "heading": "Your Hands-On __Task__ for Day 81",
+        "steps": [
+          "**Install** Checkov: `pip install checkov` — verify installation with `checkov --version`",
+          "**Write** main.tf with three misconfigurations: public S3 ACL + security group ingress 0.0.0.0/0 + RDS no encryption",
+          "**Run** `checkov -f main.tf` — screenshot the findings with their CKV IDs and severity levels",
+          "**Fix** all three — re-run Checkov — screenshot the all-pass output — this is your before/after compliance artifact"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 81",
+        "quote": "Compliance knowledge is a significant salary differentiator for cloud security roles at enterprise companies and regulated industries — finance, healthcare, government, and insurance all pay compliance premiums of 15–25%. Being able to say 'I understand CIS Benchmark controls, map them to our cloud environment, and use Checkov in our CI/CD pipeline to enforce them automatically before deployment' is a concrete, verifiable capability that commands higher compensation.",
+        "sub": "The before-and-after Checkov screenshots from today's lab are portfolio artifacts. A GitHub repo with a README showing: 'Initial scan: 3 CRITICAL findings. After remediation: 0 findings. All checks pass.' — with the actual Terraform code — demonstrates DevSecOps competence in a concrete, verifiable way. This type of contribution to a portfolio repo, linked from LinkedIn, consistently generates recruiter outreach from cloud security teams.",
+        "mistake": "Treating compliance as security. A CIS Benchmark Level 1 compliant account can still be breached through social engineering, zero-day vulnerabilities, insider threats, and supply chain attacks — none of which CIS Benchmark checks can detect or prevent. Use CIS as a configuration baseline and compliance starting point. Layer in GuardDuty, Security Hub, CloudTrail analysis, and incident response capability on top. Compliance tells you the minimum acceptable configuration. Security engineering tells you what's actually needed to detect and respond to real attacks."
+      }
+    ]
+  },
+
+  {
+    "day": 82,
+    "cover": {
+      "title": "Cloud Security Automation with __Python & boto3__",
+      "hook": "Manual cloud security checks don't scale. Python + cloud APIs = automated defense running 24/7 without you.",
+      "tags": ["#boto3", "#CloudAutomation", "#Day82of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "boto3 — AWS SDK for Python",
+        "tag": "Foundation",
+        "method": "WHAT — Python Access to the Entire AWS API",
+        "heading": "boto3: __Every AWS Console Action, Now in Python__",
+        "body": [
+          {"type": "para", "text": "**boto3** is the official AWS Python SDK. Every action available in the AWS console — creating resources, modifying configurations, querying data, sending notifications — has an equivalent boto3 call you can automate. The Python skills from Phase 4 of this series apply directly here."},
+          {"type": "code", "text": "# Install and authenticate:\npip install boto3\n\n# Authentication options (use IAM Role in production):\n# 1. IAM Role on EC2/Lambda — credentials automatic, zero config\n# 2. Environment variables:\n#    export AWS_ACCESS_KEY_ID=...\n#    export AWS_SECRET_ACCESS_KEY=...\n# 3. ~/.aws/credentials file: aws configure\n\nimport boto3\n\n# Access different AWS services:\nec2 = boto3.client('ec2')         # EC2 API\ns3 = boto3.resource('s3')          # S3 object-level API\niam = boto3.client('iam')          # IAM API\ncloudtrail = boto3.client('cloudtrail')  # CloudTrail API\n\n# Test your connection:\nprint(boto3.client('sts').get_caller_identity())"},
+          {"type": "para", "text": "**The distinction between boto3.client and boto3.resource:** client provides lower-level API access returning raw JSON responses. resource provides a higher-level, object-oriented interface for supported services (S3, EC2, IAM, DynamoDB). Use resource for S3 operations — it is significantly cleaner to read and write."}
+        ],
+        "pills": [
+          {"text": "boto3", "t": "r"},
+          {"text": "Lambda", "t": "y"},
+          {"text": "EventBridge", "t": "o"}
+        ],
+        "time": "20 min · boto3.amazonaws.com/v1/documentation/api/latest/index.html"
+      },
+      {
+        "type": "red",
+        "label": "S3 Security Auditor",
+        "tag": "Build It",
+        "method": "HOW — Writing Your First Security Automation Script",
+        "heading": "S3 Auditor: __30 Lines That Check Every Bucket__",
+        "body": [
+          {"type": "code", "text": "import boto3\nimport csv\n\ndef audit_s3_security():\n    s3 = boto3.client('s3')\n    buckets = s3.list_buckets()['Buckets']\n    findings = []\n\n    for bucket in buckets:\n        name = bucket['Name']\n        finding = {'bucket': name}\n\n        # Check all 4 public access block settings:\n        try:\n            pab = s3.get_public_access_block(Bucket=name)\n            config = pab['PublicAccessBlockConfiguration']\n            finding['block_public_acls'] = config.get('BlockPublicAcls')\n            finding['block_public_policy'] = config.get('BlockPublicPolicy')\n        except:\n            finding['block_public_acls'] = 'NOT SET'\n\n        # Check encryption:\n        try:\n            enc = s3.get_bucket_encryption(Bucket=name)\n            finding['encryption'] = enc['ServerSideEncryptionConfiguration']\\\n                ['Rules'][0]['ApplyServerSideEncryptionByDefault']['SSEAlgorithm']\n        except:\n            finding['encryption'] = 'NONE'\n\n        # Check versioning:\n        ver = s3.get_bucket_versioning(Bucket=name)\n        finding['versioning'] = ver.get('Status', 'Disabled')\n\n        findings.append(finding)\n        print(f\"{'❌' if finding['encryption']=='NONE' else '✅'} {name}\")\n\n    return findings\n\naudit_s3_security()"}
+        ],
+        "time": "30 min · Build and run this script against your account right now"
+      },
+      {
+        "type": "dark",
+        "label": "Lambda + EventBridge Auto-Remediation",
+        "tag": "Serverless Security",
+        "method": "HOW — Auto-Reverting Misconfigurations in Real Time",
+        "heading": "Auto-Remediation: __Undo Misconfigurations in Seconds__",
+        "body": [
+          {"type": "para", "text": "**The most powerful cloud security automation pattern:** CloudTrail captures a dangerous API call → EventBridge rule triggers immediately → Lambda function checks if the action violates policy → if yes, automatically reverts the change AND sends a Slack alert to the security team."},
+          {"type": "code", "text": "# Lambda function — auto-revert open security group:\nimport boto3\nimport json\n\ndef lambda_handler(event, context):\n    ec2 = boto3.client('ec2')\n    detail = event['detail']\n\n    # Extract the security group change details\n    sg_id = detail['requestParameters']['groupId']\n    ip_permissions = detail['requestParameters']['ipPermissions']\n\n    # Check if any rule allows 0.0.0.0/0 on sensitive ports\n    for perm in ip_permissions.get('items', []):\n        for cidr in perm.get('ipRanges', {}).get('items', []):\n            if cidr.get('cidrIp') == '0.0.0.0/0':\n                # Auto-revert: remove the offending rule\n                ec2.revoke_security_group_ingress(\n                    GroupId=sg_id,\n                    IpPermissions=[perm]\n                )\n                print(f'Auto-reverted open rule on {sg_id}')"},
+          {"type": "para", "text": "**This is how enterprise cloud security teams enforce policy at scale** — not by manually checking consoles, but by automated responses that trigger faster than a human analyst can even read the alert. The entire pattern is serverless, requires no infrastructure maintenance, and costs effectively nothing on the AWS free tier."}
+        ],
+        "time": "20 min · Set up the EventBridge → Lambda auto-remediation pattern"
+      },
+      {
+        "type": "white",
+        "label": "IAM Credential Report Automation",
+        "tag": "Security Engineering",
+        "method": "HOW — Automating Monthly IAM Hygiene",
+        "heading": "IAM Audit Automation: __40 Lines, Real Risk Reduction__",
+        "body": [
+          {"type": "code", "text": "import boto3\nimport base64\nimport csv\nimport io\n\ndef audit_iam_credentials():\n    iam = boto3.client('iam')\n\n    # Generate and retrieve credential report:\n    iam.generate_credential_report()\n    response = iam.get_credential_report()\n    csv_content = base64.b64decode(\n        response['Content']).decode('utf-8')\n\n    reader = csv.DictReader(io.StringIO(csv_content))\n    critical_findings = []\n\n    for user in reader:\n        # Flag users with console access and no MFA:\n        if (user['password_enabled'] == 'true'\n                and user['mfa_active'] == 'false'):\n            critical_findings.append({\n                'user': user['user'],\n                'issue': 'Console access with NO MFA'\n            })\n\n        # Flag stale access keys (unused 90+ days):\n        for key_num in ['1', '2']:\n            last_used = user.get(f'access_key_{key_num}_last_used_date')\n            if last_used and last_used != 'N/A':\n                # Add date comparison logic here\n                pass\n\n    return critical_findings\n\nfindings = audit_iam_credentials()\nfor f in findings:\n    print(f\"CRITICAL: {f['user']} — {f['issue']}\")"}
+        ],
+        "note": "**Lambda free tier:** 1 million invocations per month, permanently free. The S3 auditor and IAM credential report both run comfortably within the free tier when deployed as scheduled Lambda functions.",
+        "time": "25 min · Run the IAM credential report automation against your account"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 82 Learning Targets",
+        "heading": "Day 82 Checklist",
+        "steps": [
+          "**Build** the S3 Security Auditor — run it against every bucket in your account — export to CSV",
+          "**Build** the IAM credential report script — flag every user with console access and no MFA",
+          "**Push** both scripts to your GitHub cybersecurity-tools repo with a detailed README",
+          "**Understand** the EventBridge → Lambda auto-remediation pattern — draw the architecture",
+          "**Test** the auto-remediation concept: manually open a security group → Lambda reverts it within seconds"
+        ],
+        "time": "Total Day 82 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 82",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Docs", "name": "boto3 — Complete AWS Python SDK Reference", "url": "boto3.amazonaws.com/v1/documentation/api/latest"},
+          {"label": "📖 Docs", "name": "GCP Python SDK — google-cloud Documentation", "url": "cloud.google.com/python/docs"},
+          {"label": "🔧 Source", "name": "Prowler Source Code — Python AWS Security Auditor", "url": "github.com/toniblyx/prowler"},
+          {"label": "📖 Docs", "name": "Azure Python SDK — azure-identity Documentation", "url": "azure.microsoft.com/en-us/develop/python"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 82",
+        "heading": "Your Hands-On __Task__ for Day 82",
+        "steps": [
+          "**Build** the S3 Security Auditor: list all buckets → check public access block → check encryption → check versioning → export CSV",
+          "**Build** the IAM credential audit: generate report → parse CSV → flag no-MFA console users and stale keys",
+          "**Push** both scripts to GitHub with a README — 'Security automation tools — Python + boto3'",
+          "**Document** the findings from your own account — note how many buckets and users each script flagged"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 82",
+        "quote": "Python + cloud SDK automation is what separates a $70k cloud security analyst from a $120k cloud security engineer. The ability to write tools that continuously enforce security policy at scale — rather than manually clicking through consoles — is a categorically different skill level. The S3 auditor built today can be deployed as an AWS Lambda on a daily schedule for $0, running automated compliance checks every 24 hours forever.",
+        "sub": "The S3 auditor script in your GitHub repo is a real portfolio artifact that demonstrates both Python proficiency and cloud security knowledge simultaneously in a single concrete deliverable. When applying for cloud security roles, this is the kind of project to reference specifically: 'I built a Python boto3 script that audits every S3 bucket in an AWS account for public access configuration, encryption status, and versioning — runs as a scheduled Lambda at zero cost.' That one sentence describes a real security engineering project, not a certification.",
+        "mistake": "Granting Lambda functions AdministratorAccess for simplicity. A Lambda with admin permissions that has a code vulnerability or injection flaw becomes an attack tool against your own AWS account. An attacker who exploits the Lambda can use its permissions to do anything in your account. Always grant Lambda execution roles the minimum permissions needed for the specific task — a Lambda that only needs to list S3 buckets and call GetPublicAccessBlock needs exactly those two permissions and nothing else."
+      }
+    ]
+  },
+
+  {
+    "day": 83,
+    "cover": {
+      "title": "Cloud Security Certifications & __Career Paths__",
+      "hook": "Cloud security certs are the highest-ROI certifications in all of cybersecurity right now. Here's the exact path to take.",
+      "tags": ["#CloudCertifications", "#CloudSecurityCareer", "#Day83of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "AWS Certification Path",
+        "tag": "AWS Track",
+        "method": "WHAT — AWS Security Certification Roadmap",
+        "heading": "AWS Certs: __Three Steps to Security Specialist__",
+        "body": [
+          {"type": "para", "text": "**AWS Cloud Practitioner** ($100, approximately 2 weeks study) — cloud fundamentals, shared responsibility, service overview. The foundation for non-technical stakeholders and a credibility baseline for technical candidates who want to prove they know AWS beyond hands-on usage. Free study via AWS Skill Builder."},
+          {"type": "para", "text": "**AWS Solutions Architect Associate** ($300) — the most popular AWS certification globally. Covers architecture fundamentals, service selection, cost optimisation, and security at the design level. Recommended before the Security Specialty — the architecture knowledge makes security decisions significantly more intuitive."},
+          {"type": "para", "text": "**AWS Security Specialty SCS-C02** ($300) — the highest-value cloud security certification for AWS-focused roles. Tests: IAM and access control, infrastructure security, data protection, incident response, and threat detection. Average salary for holders: $120k+. Free study: AWS Skill Builder + freeCodeCamp YouTube courses for all three levels."}
+        ],
+        "pills": [
+          {"text": "AWS Security Specialty", "t": "r"},
+          {"text": "SC-200", "t": "y"},
+          {"text": "CCSP", "t": "o"}
+        ],
+        "time": "20 min · aws.amazon.com/certification"
+      },
+      {
+        "type": "red",
+        "label": "Azure Certification Path",
+        "tag": "Azure Track",
+        "method": "WHAT — Microsoft Cloud Security Certification Roadmap",
+        "heading": "Azure Certs: __SC-200 is the Hottest Cert Right Now__",
+        "body": [
+          {"type": "bullet", "text": "**AZ-900 Azure Fundamentals** ($165) — cloud concepts, Azure services overview, pricing and SLA. The fastest credential to baseline Azure knowledge. Free complete study path on Microsoft Learn with no lab subscription needed."},
+          {"type": "bullet", "text": "**AZ-500 Azure Security Engineer Associate** — hands-on security engineering exam covering Entra ID, network security, data and application security, and security operations. Recommended for practitioners who want technical depth before the SC-200."},
+          {"type": "bullet", "text": "**SC-200 Security Operations Analyst** — Sentinel and Defender XDR focused. The most in-demand Microsoft security certification right now. KQL is the key skill gap most candidates have. Salary range: $80–120k for roles requiring this certification."},
+          {"type": "para", "text": "**Every Azure certification has a completely free study path with sandbox labs on learn.microsoft.com.** No Azure subscription needed. The free sandbox environments provide real Azure access for the duration of each learning module."}
+        ],
+        "time": "15 min · learn.microsoft.com — check the SC-200 learning path"
+      },
+      {
+        "type": "dark",
+        "label": "GCP and Vendor-Neutral Paths",
+        "tag": "GCP + Enterprise Certs",
+        "method": "WHAT — GCP and Premium Vendor-Neutral Options",
+        "heading": "GCP + CCSP: __Premium Certs for Senior Roles__",
+        "body": [
+          {"type": "para", "text": "**GCP Certification path:** Google Cloud Digital Leader (business-focused foundations) → Associate Cloud Engineer (practical hands-on engineering) → **Professional Cloud Security Engineer** (architecture-level, most valued GCP security cert, commands $130k+ average). Google Cloud Skills Boost provides free guided learning paths with monthly lab credits."},
+          {"type": "para", "text": "**CCSP (Certified Cloud Security Professional)** by ISC2 — the premium vendor-neutral cloud security certification. $599 exam, requires 5 years of work experience (with ISC2 associate path available for those without experience). Widely required for senior cloud security architect roles at enterprise companies and government contractors. The gold standard certification for cloud security leadership roles."},
+          {"type": "para", "text": "**CCSK (Certificate of Cloud Security Knowledge)** by CSA — $395, the most accessible advanced cloud certification for candidates building toward CCSP. Vendor-neutral, covers cloud architecture, governance, compliance, and operations. A strong addition to any cloud security resume alongside a platform-specific certification."}
+        ],
+        "time": "20 min · cloudskillsboost.google — review Professional Cloud Security Engineer requirements"
+      },
+      {
+        "type": "white",
+        "label": "Cloud Security Career Roles",
+        "tag": "Career Map",
+        "method": "WHAT — Five Cloud Security Career Paths and Salaries",
+        "heading": "Cloud Security Roles: __Five Paths, All Actively Hiring__",
+        "body": [
+          {"type": "para", "text": "**Cloud Security Engineer ($110–150k)** — builds and maintains security controls in cloud environments. Day-to-day: implementing IAM policies, security group rules, logging configurations, automated compliance checks. Entry into this role typically requires one cloud certification and hands-on lab experience."},
+          {"type": "para", "text": "**Cloud Penetration Tester ($100–145k)** — offensive testing of cloud environments. Requires deep knowledge of cloud architecture combined with attack technique knowledge. CloudGoat and flaws.cloud experience is directly relevant. Commands a 30–50% salary premium over traditional pentesting."},
+          {"type": "para", "text": "**Cloud Security Architect ($140–200k)** — designs security at organisational scale. Requires 5+ years of combined cloud and security experience, communication skills for executive stakeholders, and the ability to make security design decisions that scale across hundreds of teams. The long-term target role."},
+          {"type": "para", "text": "**DevSecOps Engineer ($120–160k)** — integrates security into CI/CD pipelines. Checkov in GitHub Actions, container scanning in build pipelines, secrets management for deployment pipelines. The intersection of development workflow knowledge and security engineering."}
+        ],
+        "time": "15 min · Research open roles for each of these titles on LinkedIn"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 83 Learning Targets",
+        "heading": "Day 83 Checklist",
+        "steps": [
+          "**Choose** one certification to pursue after this 90-day series — research exam cost, domains, and passing score",
+          "**Create** a 30-day study plan with daily hours, specific resources per domain, and practice exam schedule",
+          "**Post** your study plan publicly on LinkedIn — public accountability dramatically increases completion rates",
+          "**Identify** 10 cloud security job postings that match your target role — note every tool and certification mentioned",
+          "**Compare** those requirements against your current skill set — note the specific gaps to close first"
+        ],
+        "time": "Total Day 83 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 83",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🎓 AWS", "name": "AWS Certification — Official Exam Guides and Study Paths", "url": "aws.amazon.com/certification"},
+          {"label": "🎓 Azure", "name": "Microsoft Learn — SC-200 Free Path with Sandbox Labs", "url": "learn.microsoft.com/training/paths/sc-200-mitigate-threats-using-microsoft-sentinel"},
+          {"label": "🎓 GCP", "name": "Google Cloud Skills Boost — Free Labs and Learning Paths", "url": "cloudskillsboost.google"},
+          {"label": "📖 Study", "name": "TutorialsDojo — Best Free AWS Certification Cheat Sheets", "url": "tutorialsdojo.com"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 83",
+        "heading": "Your Hands-On __Task__ for Day 83",
+        "steps": [
+          "**Research** your target certification: exam guide → domain breakdown → question count → passing score → recommended experience",
+          "**Build** a 30-day study plan: Day 1–7 (Domain 1), Day 8–14 (Domain 2), Day 15–21 (Domain 3), Day 22–28 (practice exams), Day 29–30 (review gaps)",
+          "**Post** the study plan on LinkedIn — tag the certification and use relevant hashtags — this creates accountability",
+          "**Add** cloud security skills to your LinkedIn profile: AWS IAM, Elastic Security, CloudTrail, GuardDuty, Docker Security, Kubernetes Security, Python boto3"
+        ],
+        "time": "Hands-On Task: 60 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 83",
+        "quote": "The highest-ROI certification decision based on your target environment: working at a Microsoft-heavy enterprise → SC-200 first. Targeting AWS-focused startups or wanting the richest lab ecosystem → AWS Security Specialty. Wanting maximum long-term salary ceiling in large enterprises → CCSP after 2+ years of hands-on cloud experience. Choose based on your specific target environment, not just certification popularity rankings.",
+        "sub": "Cloud certifications expire. AWS and Azure require renewal every 3 years. GCP every 2 years. Factor renewal exam costs and continuing education into your long-term certification strategy from the beginning. The best approach: set a calendar reminder 6 months before expiry, use that window to catch up on new service features that were added since you originally certified, then renew. Treating renewal as ongoing professional development — rather than an annoying administrative task — keeps your knowledge current and your credential valid.",
+        "mistake": "Choosing a certification based on which one is cheapest or fastest to pass rather than which one aligns with your specific target job market. The AWS Cloud Practitioner is the easiest AWS certification — but it does not qualify you for security engineer roles. The SC-200 requires real KQL proficiency — but it opens doors that AZ-900 does not. Invest study time in the certification that matches the role you actually want, not the one that looks most achievable right now."
+      }
+    ]
+  },
+
+  {
+    "day": 84,
+    "cover": {
+      "title": "Cloud Security Phase Recap & __Portfolio Project__",
+      "hook": "2 weeks of cloud security COMPLETE. 84 days in. Document everything and build your portfolio. Ethical Hacking starts tomorrow.",
+      "tags": ["#CloudSecurityRecap", "#SecurityPortfolio", "#Day84of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Phase 8 Full Recap",
+        "tag": "Summary",
+        "method": "WHAT — 14 Days of Cloud Security Covered",
+        "heading": "14 Days of Cloud Security: __What You Built__",
+        "body": [
+          {"type": "bullet", "text": "**Day 71:** Shared responsibility model — IaaS/PaaS/SaaS security boundaries, top cloud attack vectors, CSPM tools (Prowler, Scout Suite), cloud platform selection."},
+          {"type": "bullet", "text": "**Day 72:** AWS IAM — users, roles, policies, least privilege, IAM Access Analyzer, flaws.cloud hands-on lab, credential report audit."},
+          {"type": "bullet", "text": "**Day 73:** S3 bucket security, Block Public Access, VPC architecture (public/private subnets, NAT Gateway), security groups, CLI audit commands."},
+          {"type": "bullet", "text": "**Day 74:** CloudTrail audit logging, GuardDuty ML threat detection, Security Hub CIS Benchmark compliance — the minimum viable AWS monitoring stack."},
+          {"type": "bullet", "text": "**Day 75:** GCP IAM hierarchy, service accounts, Cloud Logging and audit logs, Security Command Center, IAM Recommender, firewall rules."},
+          {"type": "bullet", "text": "**Day 76:** Azure Entra ID, Conditional Access, PIM, Defender for Cloud Secure Score, Microsoft Sentinel, KQL queries for security analysis."},
+          {"type": "bullet", "text": "**Day 77:** Zero Trust principles (NIST SP 800-207), cloud secrets management, WAF deployment, defence in depth seven-layer architecture."},
+          {"type": "bullet", "text": "**Day 78:** Docker container security model, privileged flag and docker.sock risks, Trivy image scanning, Docker Bench CIS audit, image hardening."},
+          {"type": "bullet", "text": "**Day 79:** Kubernetes RBAC, network policies for pod isolation, kube-bench CIS audit, six common K8s attack paths, minikube lab."},
+          {"type": "bullet", "text": "**Day 80:** Cloud pentest legal requirements, SSRF to IMDS attack, CloudGoat deliberately vulnerable AWS, IAM privilege escalation paths, Pacu framework."},
+          {"type": "bullet", "text": "**Day 81:** CIS Benchmarks, NIST CSF, SOC 2 cloud controls, Checkov IaC scanning, GitHub Actions DevSecOps pipeline."},
+          {"type": "bullet", "text": "**Day 82:** Python boto3 automation, S3 security auditor, IAM credential report automation, Lambda + EventBridge auto-remediation pattern."},
+          {"type": "bullet", "text": "**Day 83:** Cloud certification roadmaps (AWS, Azure, GCP, CCSP), five cloud security career roles and salary ranges, study plan creation."}
+        ],
+        "pills": [
+          {"text": "SIEM Built", "t": "r"},
+          {"text": "Portfolio Live", "t": "y"},
+          {"text": "Next: Ethical Hacking", "t": "o"}
+        ],
+        "time": "30 min · Review your notes from all 14 days before building the portfolio project"
+      },
+      {
+        "type": "red",
+        "label": "Portfolio Project — Secure Cloud Architecture",
+        "tag": "Portfolio Centerpiece",
+        "method": "HOW — Building Your Cloud Security Portfolio on GitHub",
+        "heading": "Portfolio Project: __The GitHub Repo That Wins Interviews__",
+        "body": [
+          {"type": "para", "text": "**Build and document a securely architected cloud environment on GitHub.** This single repository — with working Terraform, a professional README, an architecture diagram, and documented security controls — demonstrates more practical capability to a cloud security hiring manager than most training certificates."},
+          {"type": "para", "text": "**Required components:** VPC with public and private subnets · EC2 in private subnet with no public IP · S3 with encryption and versioning and all public access blocked · IAM role for EC2 with minimum required permissions · CloudTrail enabled with S3 logging and integrity validation · Security group with minimal open ports · All infrastructure defined as Terraform code passing a full Checkov scan with zero CRITICAL findings."},
+          {"type": "para", "text": "**The Security Controls section of your README must:** list every implemented control, map it to the specific threat it mitigates, and cite the relevant CIS Benchmark control number. This section demonstrates that you understand why each control exists — not just how to configure it."}
+        ],
+        "time": "90+ min · This is today's primary deliverable — allocate most of your session here"
+      },
+      {
+        "type": "dark",
+        "label": "Architecture Diagram Requirement",
+        "tag": "Visual Communication",
+        "method": "HOW — Creating Professional Cloud Architecture Diagrams",
+        "heading": "Architecture Diagram: __Draw It Before You Present It__",
+        "body": [
+          {"type": "para", "text": "**Every cloud security portfolio project needs a visual architecture diagram.** Free tools with cloud icon libraries built in: draw.io (cloud-native, supports official AWS/GCP/Azure icon sets, exports to PNG/SVG) · Excalidraw (clean hand-drawn style, excellent for whiteboard-style architecture presentations) · Lucidchart free tier."},
+          {"type": "para", "text": "**Your diagram must show:** VPC boundary and subnet divisions with CIDR labels · security group boundaries drawn around the EC2 instances they protect · data flow direction arrows showing where traffic can and cannot go · encryption indicators (lock icon) on S3 and any encrypted data stores · NAT Gateway positioned on the public subnet with arrow showing outbound-only direction from private."},
+          {"type": "para", "text": "**Embed the diagram directly in your GitHub README** using a PNG export. GitHub renders images inline in README files. The diagram should be visible immediately when anyone opens your repository without clicking into any subdirectory. Engineers who can draw infrastructure from memory in interviews consistently outperform those who only know console clicks."}
+        ],
+        "time": "30 min · draw.io — build your VPC architecture diagram before writing any Terraform"
+      },
+      {
+        "type": "white",
+        "label": "LinkedIn Update for Phase 8",
+        "tag": "Career Documentation",
+        "method": "HOW — Documenting Your Cloud Security Achievement",
+        "heading": "LinkedIn Update: __Make Your Portfolio Discoverable__",
+        "body": [
+          {"type": "para", "text": "**Add 'Cloud Security' to your LinkedIn Skills section** and endorse the specific tools you used this phase: AWS IAM, Amazon GuardDuty, AWS CloudTrail, Docker Security, Kubernetes Security, Python boto3, Terraform, Checkov, Microsoft Sentinel, KQL."},
+          {"type": "para", "text": "**Write a LinkedIn post with your architecture diagram** — include a 3-paragraph write-up: what you built, which specific security controls you implemented and why, and one concrete lesson from the phase. Tag: #CloudSecurity #AWS #DevSecOps #Cybersecurity #InfrastructureAsCode. Cloud security hiring managers at top firms actively search and monitor these exact tags."},
+          {"type": "para", "text": "**The resume bullet point to add today:** 'Built and documented a securely architected cloud environment using AWS — implemented IAM least privilege, VPC network segmentation, CloudTrail audit logging, GuardDuty threat detection, and IaC security scanning with Checkov in a CI/CD pipeline. All infrastructure defined in Terraform with zero CRITICAL security findings.'"}
+        ],
+        "note": "**Run `terraform destroy`** on all cloud lab resources before starting Phase 9. Do a complete billing review across all three cloud providers you used this phase.",
+        "time": "30 min · Post the LinkedIn update before moving to Phase 9"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 84 Learning Targets",
+        "heading": "Day 84 Checklist",
+        "steps": [
+          "**Build** the secure cloud architecture Terraform code — VPC, EC2 in private subnet, S3, IAM role, CloudTrail, security groups",
+          "**Run** `checkov -d .` — confirm zero CRITICAL findings — fix anything that fails before pushing",
+          "**Create** the architecture diagram in draw.io — export as PNG — embed in GitHub README",
+          "**Write** the Security Controls README section — list every control, the threat it mitigates, and the CIS Benchmark control number",
+          "**Post** the GitHub link on LinkedIn with a 3-paragraph write-up — your phase complete announcement"
+        ],
+        "time": "Total Day 84 Study Time: 180 – 240 minutes (portfolio build day)"
+      },
+      {
+        "type": "resources_white",
+        "label": "Portfolio Tools",
+        "tag": "Free Resources",
+        "method": "WHERE — Tools for Building Your Portfolio",
+        "heading": "Free Tools for __Your Portfolio Project__",
+        "resources": [
+          {"label": "🎨 Diagram", "name": "draw.io — Free Cloud Architecture Diagramming (AWS/GCP/Azure Icons)", "url": "draw.io"},
+          {"label": "🔧 Scanner", "name": "Checkov — IaC Security Scanner, run before final push", "url": "checkov.io"},
+          {"label": "🔧 Audit", "name": "Prowler — Run a Final Full Cloud Security Audit", "url": "github.com/prowler-cloud/prowler"},
+          {"label": "🧪 Lab", "name": "flaws.cloud — Complete Any Remaining Levels Before Moving On", "url": "flaws.cloud"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Complete",
+        "method": "HOW — Step-by-Step for Day 84",
+        "heading": "Your __Final Cloud Phase__ Task",
+        "steps": [
+          "**Draw** the architecture diagram first — VPC, subnets, security groups, data flows, encryption indicators — export as PNG",
+          "**Write** Terraform for all components — run Checkov after each resource block — fix immediately rather than accumulating failures",
+          "**Push** to GitHub with a full README: architecture diagram, component list, security controls table, Checkov all-pass screenshot",
+          "**Post** on LinkedIn: architecture diagram + 3-paragraph write-up + GitHub link — use the hashtags above"
+        ],
+        "time": "Hands-On Task: 180 – 240 minutes (the most important lab day of Phase 8)"
+      },
+      {
+        "type": "stats",
+        "label": "Phase 8 Complete",
+        "tag": "Progress Stats",
+        "method": "WHY — The Value of Phase 8",
+        "heading": "Phase 8 __Complete__ — Your Progress",
+        "stats": [
+          {"value": "84", "label": "Days of consistent learning — 93% of the journey done"},
+          {"value": "3", "label": "Cloud platforms covered — AWS, GCP, and Azure security stacks"},
+          {"value": "14", "label": "Days of hands-on cloud labs — IAM, detection, containers, pentesting, automation"},
+          {"value": "6", "label": "Days remaining — Ethical Hacking phase starts tomorrow"}
+        ]
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 84",
+        "quote": "A GitHub repo with working Terraform deploying a securely architected cloud environment — all-pass Checkov scan results, a professional README, a clear architecture diagram, and a documented security controls section — demonstrates more practical capability to a cloud security hiring manager than most training certificates. It proves you can build and secure cloud infrastructure, not just study about it.",
+        "sub": "Phase 9 — Ethical Hacking — is where everything converges. Networking from Phase 1 tells you what traffic looks like. Linux from Phase 3 tells you how systems work internally. Python from Phase 4 gives you automation for custom tools. Traffic analysis from Phase 5 shows you what attacks look like on the wire. Cloud knowledge from Phase 8 gives you the defensive context. You understand what defenders see. Now you learn how attackers think and move. Everything you built matters for what comes next.",
+        "mistake": "Leaving cloud lab resources running when Phase 9 starts. Check every cloud account you used this phase: AWS Cost Explorer, GCP Billing dashboard, Azure Cost Management. Delete every EC2 instance, NAT Gateway, RDS instance, and any other paid service. Unused cloud resources accumulate charges silently and indefinitely — they do not stop billing when you stop using them. Run `terraform destroy` on every CloudGoat deployment and any other Terraform-managed infrastructure before starting Day 85."
+      }
+    ]
+  }
+]

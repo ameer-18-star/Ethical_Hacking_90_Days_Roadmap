@@ -1,0 +1,1725 @@
+[
+  {
+    "day": 43,
+    "cover": {
+      "title": "Wireshark Introduction & __Setup__",
+      "hook": "See every packet on your network. Wireshark is the analyst's microscope.",
+      "tags": ["#Wireshark", "#TrafficAnalysis", "#Day43of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Wireshark?",
+        "tag": "Foundation",
+        "method": "WHAT — Wireshark Explained",
+        "heading": "Wireshark: The __Analyst's Microscope__",
+        "body": [
+          {"type": "para", "text": "**Wireshark** is the world's most widely used free, open-source packet analyser. It captures live network traffic in real-time or reads saved `.pcap` files — showing you every single byte that crosses a network interface."},
+          {"type": "para", "text": "**Who uses Wireshark:** SOC analysts investigating incidents, penetration testers analysing traffic, network engineers troubleshooting, forensic investigators recovering evidence, and malware analysts understanding attack behaviour."},
+          {"type": "para", "text": "**Why it matters:** Every network attack — every exploit, every C2 beacon, every data exfiltration — leaves traces in network traffic. Wireshark lets you see those traces with complete detail at every layer of the OSI model."}
+        ],
+        "pills": [
+          {"text": "Packet Capture", "t": "r"},
+          {"text": ".pcap files", "t": "y"},
+          {"text": "Protocol Analysis", "t": "o"}
+        ],
+        "time": "20 min · wireshark.org/#educationalContent — Free Wireshark University"
+      },
+      {
+        "type": "red",
+        "label": "Installation",
+        "tag": "Setup",
+        "method": "HOW — Installing Wireshark",
+        "heading": "Installing __Wireshark__: All Platforms",
+        "body": [
+          {"type": "code", "text": "# Ubuntu/Kali Linux:\nsudo apt install wireshark\n\n# Add user to wireshark group (capture without root):\nsudo usermod -aG wireshark $USER\nnewgrp wireshark  # Apply group change immediately"},
+          {"type": "code", "text": "# Verify installation:\nwireshark --version\n\n# CLI alternative (no GUI required):\nsudo apt install tshark  # Terminal version of Wireshark"},
+          {"type": "para", "text": "**Windows/Mac:** Download installer from wireshark.org/download.html — includes WinPcap/Npcap driver automatically. Must have a physical or virtual network interface card to capture live traffic."}
+        ],
+        "time": "15 min · wireshark.org/download.html"
+      },
+      {
+        "type": "dark",
+        "label": "Interface Overview",
+        "tag": "Navigation",
+        "method": "WHAT — Wireshark Interface Layout",
+        "heading": "Wireshark Interface: __3 Panels__",
+        "body": [
+          {"type": "bullet", "text": "**Packet List (top panel):** Every captured packet in chronological order. Columns: No., Time, Source, Destination, Protocol, Length, Info. Colour-coded by protocol type."},
+          {"type": "bullet", "text": "**Packet Details (middle panel):** Layer-by-layer breakdown of the selected packet. Expands each protocol header — Frame (L2) → IP (L3) → TCP (L4) → Application (L7). Click any field to inspect it."},
+          {"type": "bullet", "text": "**Hex Dump (bottom panel):** Raw bytes of the packet in hexadecimal. When you click a field in the details panel, its corresponding bytes highlight here. Essential for malware payload analysis."},
+          {"type": "para", "text": "**Filter bar** at the top turns green for valid filters, red for invalid. The **blue shark fin button** starts/stops live capture. The **Statistics menu** provides instant traffic profiling."}
+        ],
+        "time": "15 min · Explore each panel in your first capture"
+      },
+      {
+        "type": "white",
+        "label": "First Packet Capture",
+        "tag": "Hands-On",
+        "method": "HOW — Your First Live Capture",
+        "heading": "Your First __Live Capture__: Step by Step",
+        "body": [
+          {"type": "step", "num": "1", "text": "**Launch Wireshark** → you see a list of network interfaces with traffic sparklines. Select your active NIC (usually eth0 or wlan0 — the one with activity)."},
+          {"type": "step", "num": "2", "text": "**Click the blue fin** to start capture. Open a browser and navigate to google.com. Stop capture after 30 seconds with the red square button."},
+          {"type": "step", "num": "3", "text": "**Observe the protocols:** You will see DNS (resolving google.com), TCP (connection establishment), TLS (encrypted HTTPS). Layer 1–7 all visible in one capture."},
+          {"type": "step", "num": "4", "text": "**Right-click any packet field** → 'Apply as Filter' → instantly filter to only packets matching that value. This is the most powerful Wireshark workflow shortcut."}
+        ],
+        "time": "20 min · Perform your first live capture right now"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 43 Learning Targets",
+        "heading": "Day 43 Checklist",
+        "steps": [
+          "**Install Wireshark** and verify capture works — you can see packets flowing on your interface",
+          "**Start a 30-second capture** — browse to 3 different websites — stop and examine the packets",
+          "**Apply the `dns` filter** — see every domain your computer is resolving in real-time",
+          "**Expand a DNS packet** in the details panel — identify the query name and response IP",
+          "**Download a practice pcap** from malware-traffic-analysis.net — open and explore it"
+        ],
+        "time": "Total Day 43 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 43",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🎓 Official", "name": "Wireshark University — Free Official Training", "url": "wireshark.org/#educationalContent"},
+          {"label": "📺 Video", "name": "Chris Greer — Wireshark Tutorial for Beginners (YouTube)", "url": "youtube.com/watch?v=NjvR4LmwcMU"},
+          {"label": "🧪 PCAPs", "name": "malware-traffic-analysis.net — Free Malware PCAPs", "url": "malware-traffic-analysis.net"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Wireshark: The Basics' Room (free)", "url": "tryhackme.com/room/wiresharkthebasics"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 43",
+        "heading": "Your Hands-On __Task__ for Day 43",
+        "steps": [
+          "**Capture** 30 seconds of traffic on your network — browse multiple sites during capture",
+          "**Apply** the `dns` filter — list every domain your computer contacted — note any unexpected ones",
+          "**Expand** one DNS packet fully — identify: query name, query type (A/AAAA/MX), response IP",
+          "**Download** a pcap from malware-traffic-analysis.net — open it and note the first 3 protocols in Protocol Hierarchy"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 43",
+        "quote": "The fastest way to learn Wireshark is practising with pre-made pcap files. malware-traffic-analysis.net has hundreds of real malware pcaps with answer keys for safe, legal analysis practice.",
+        "sub": "Save your first pcap file immediately after capture. File → Save As → `first_capture_YYYYMMDD.pcap`. Build a library of captures from different scenarios — normal traffic, your own Nmap scans, web browsing. Comparing normal traffic against malicious pcaps is how analysts develop intuition.",
+        "mistake": "Capturing on public networks, corporate networks, or any network you do not own without explicit written permission. Packet capture intercepts traffic from all devices on the network segment — not just your own. This is illegal in most jurisdictions even if you only analyse your own data. Always capture on your own lab network."
+      }
+    ]
+  },
+
+  {
+    "day": 44,
+    "cover": {
+      "title": "Wireshark Filters & __Display Techniques__",
+      "hook": "1,000 packets. Find the attack in 30 seconds. Wireshark filters are the key.",
+      "tags": ["#Wireshark", "#DisplayFilters", "#Day44of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Capture vs Display Filters",
+        "tag": "Foundation",
+        "method": "WHAT — Two Types of Wireshark Filters",
+        "heading": "Two Filter Types: __Capture vs Display__",
+        "body": [
+          {"type": "para", "text": "**Capture Filters (BPF):** Applied BEFORE and DURING capture. Use Berkeley Packet Filter syntax. Reduces noise at collection time — fewer packets stored. More efficient for targeted capture. Cannot be changed after capture starts."},
+          {"type": "code", "text": "# Capture filter examples (BPF syntax):\ntcp port 80          # Only HTTP traffic\nhost 192.168.1.100   # Only traffic to/from this IP\nnot arp              # Exclude ARP broadcast noise\nport 53              # Only DNS traffic"},
+          {"type": "para", "text": "**Display Filters:** Applied AFTER capture to an existing file. Wireshark's own filter language — more powerful and flexible than BPF. Turn green when valid, red when invalid. Can be changed freely without losing captured data."}
+        ],
+        "pills": [
+          {"text": "BPF", "t": "r"},
+          {"text": "Display Filters", "t": "y"},
+          {"text": "Follow Stream", "t": "o"}
+        ],
+        "time": "20 min · Wireshark University · Guru99 Wireshark tutorial"
+      },
+      {
+        "type": "red",
+        "label": "Security Filter Cheat Sheet",
+        "tag": "Essential Filters",
+        "method": "WHAT — Critical Security Display Filters",
+        "heading": "Security Filter __Cheat Sheet__",
+        "body": [
+          {"type": "code", "text": "tcp.flags.syn==1 && tcp.flags.ack==0  # SYN scan detection"},
+          {"type": "code", "text": "icmp                                   # Ping sweep activity"},
+          {"type": "code", "text": "http.request.uri contains \"passwd\"      # LFI attempt"},
+          {"type": "code", "text": "http.request.uri contains \"SELECT\"      # SQL injection attempt"},
+          {"type": "code", "text": "ftp                                    # Cleartext FTP (credentials!)"},
+          {"type": "code", "text": "telnet                                 # Insecure remote access"},
+          {"type": "code", "text": "dns.qry.name contains \"evil\"           # Suspicious DNS query"},
+          {"type": "code", "text": "http.response.code == 404              # Directory brute-force"},
+          {"type": "code", "text": "ip.src == 192.168.1.100 && tcp.flags.syn==1  # Specific IP scan"}
+        ],
+        "time": "25 min · Apply each filter against a practice pcap"
+      },
+      {
+        "type": "dark",
+        "label": "Follow Stream",
+        "tag": "Conversation Reconstruction",
+        "method": "HOW — Reconstructing Full Conversations",
+        "heading": "Follow Stream: __Reconstruct Conversations__",
+        "body": [
+          {"type": "para", "text": "**Follow TCP Stream** is one of Wireshark's most powerful features. Right-click any TCP packet → 'Follow' → 'TCP Stream'. Wireshark reassembles the entire conversation and shows it in a readable window."},
+          {"type": "bullet", "text": "**HTTP sessions:** See full GET/POST requests, headers, and response bodies — including credentials submitted in web forms on unencrypted sites."},
+          {"type": "bullet", "text": "**FTP sessions:** See complete file transfer with the username and password in cleartext — FTP never encrypts credentials."},
+          {"type": "bullet", "text": "**SMTP emails:** Reconstruct full email content including attachments transmitted over unencrypted mail servers."},
+          {"type": "para", "text": "**Colour coding:** Client-to-server traffic shown in red. Server-to-client shown in blue. Instantly visualise the direction of each communication in the reconstructed stream."}
+        ],
+        "time": "20 min · Follow a TCP stream in your practice pcap"
+      },
+      {
+        "type": "white",
+        "label": "Statistics Menu",
+        "tag": "Traffic Profiling",
+        "method": "WHAT — Using Statistics for Rapid Triage",
+        "heading": "Statistics Menu: __3-Click Traffic Profile__",
+        "body": [
+          {"type": "bullet", "text": "**Protocol Hierarchy:** Statistics → Protocol Hierarchy. Shows percentage breakdown of all protocols in the capture. Unexpected high-volume protocols (like DNS or ICMP when you expect HTTP) = immediate red flag."},
+          {"type": "bullet", "text": "**Conversations:** Statistics → Conversations. Top talking IP pairs, bytes transferred, packet counts. Identifies the noisiest hosts — attackers and C2 beacons appear here."},
+          {"type": "bullet", "text": "**I/O Graph:** Statistics → I/O Graph. Traffic volume over time — attack spikes, beaconing intervals, and DDoS patterns visible instantly."},
+          {"type": "bullet", "text": "**Endpoints:** Statistics → Endpoints. All unique IPs and their traffic volume. External IPs your internal hosts contacted — identify unexpected cloud infrastructure or C2 servers."}
+        ],
+        "time": "20 min · Apply all 4 statistics views to a malware pcap"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 44 Learning Targets",
+        "heading": "Day 44 Checklist",
+        "steps": [
+          "Apply the **SYN scan filter** — `tcp.flags.syn==1 && tcp.flags.ack==0` — understand what you see",
+          "Build your **personal filter library** — save 10 security filters using Analyze → Display Filters",
+          "Use **Follow TCP Stream** on an HTTP connection — identify what data was transmitted",
+          "Run all **4 Statistics views** on a malware pcap — write a 3-sentence traffic profile",
+          "Download a CTF pcap from malware-traffic-analysis.net and **write a 5-sentence incident summary**"
+        ],
+        "time": "Total Day 44 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 44",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Reference", "name": "Wireshark Display Filter Reference — Complete List", "url": "wireshark.org/docs/dfref"},
+          {"label": "🧪 PCAPs", "name": "malware-traffic-analysis.net — Free Malware PCAPs", "url": "malware-traffic-analysis.net"},
+          {"label": "📖 Tutorial", "name": "Guru99 — Wireshark Tutorial for Beginners", "url": "guru99.com/wireshark-tutorial.html"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Wireshark: Packet Operations' Room", "url": "tryhackme.com/room/wiresharkpacketoperations"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 44",
+        "heading": "Your Hands-On __Task__ for Day 44",
+        "steps": [
+          "**Download** a malware pcap from malware-traffic-analysis.net — open in Wireshark",
+          "**Apply** these 3 filters in sequence: `http` → `dns` → `tcp.flags.syn==1` — document findings each time",
+          "**Follow a TCP stream** — reconstruct the full HTTP conversation and describe what happened",
+          "**Write** a 5-sentence incident summary: what protocol, what attack type, source IP, destination IP, severity"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 44",
+        "quote": "Build a personal filter library in Wireshark: Analyze → Display Filters → save your security filters. You will use the same 10–15 filters 90% of the time in real investigations.",
+        "sub": "Enable Coloring Rules immediately (View → Coloring Rules). Different protocol conversations get different colours — HTTP in green, TCP SYN in red, DNS in blue. Colour-coded packets let your eyes immediately spot anomalies before you apply a single filter. It is the fastest triage technique in Wireshark.",
+        "mistake": "Applying display filters without first running Protocol Hierarchy and Conversations statistics. Jumping straight to filtering means you might miss the actual attack — which could be in a protocol you did not think to filter for. Always start with 2 minutes of statistics to understand what is IN the capture before filtering."
+      }
+    ]
+  },
+
+  {
+    "day": 45,
+    "cover": {
+      "title": "TCP/IP Deep Dive with __Wireshark__",
+      "hook": "See TCP's 3-way handshake in real packets. Theory becomes reality.",
+      "tags": ["#Wireshark", "#TCPIP", "#Day45of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "3-Way Handshake in Wireshark",
+        "tag": "Foundation",
+        "method": "WHAT — Seeing TCP Handshake in Packets",
+        "heading": "3-Way Handshake: __Theory Becomes Reality__",
+        "body": [
+          {"type": "para", "text": "The TCP 3-way handshake you learned in Day 2 is now visible as real packets. Filter: `tcp && ip.addr==target`. You will see the exact SYN → SYN-ACK → ACK sequence with timestamps."},
+          {"type": "code", "text": "# Filter to see handshake for specific connection:\ntcp && ip.addr==192.168.1.1\n\n# In the packet list:\n# Packet 1: SYN      flags=0x002  Client → Server\n# Packet 2: SYN-ACK  flags=0x012  Server → Client\n# Packet 3: ACK      flags=0x010  Client → Server\n# Packet 4+: Data exchange begins"},
+          {"type": "para", "text": "**The Delta Time column** shows latency between packets. Add it via: View → Column Preferences → + → Delta Time Displayed. High latency between SYN and SYN-ACK reveals slow or distant servers."}
+        ],
+        "pills": [
+          {"text": "SYN/ACK", "t": "r"},
+          {"text": "TCP Flags", "t": "y"},
+          {"text": "Retransmissions", "t": "o"}
+        ],
+        "time": "25 min · Wireshark University · Guru99 TCP analysis"
+      },
+      {
+        "type": "red",
+        "label": "TCP Flags in Packets",
+        "tag": "Flag Analysis",
+        "method": "WHAT — Understanding TCP Flags",
+        "heading": "TCP Flags: __6 Flags__, Many Attack Patterns",
+        "body": [
+          {"type": "code", "text": "# TCP Flag values (hexadecimal):\nSYN   = 0x002  # Initiate connection\nACK   = 0x010  # Acknowledge\nFIN   = 0x001  # Graceful close\nRST   = 0x004  # Abrupt reset\nPSH   = 0x008  # Push data immediately\nURG   = 0x020  # Urgent data"},
+          {"type": "code", "text": "# Wireshark filter for each:\ntcp.flags == 0x002           # Pure SYN (new connection or scan)\ntcp.flags == 0x012           # SYN-ACK (open port response)\ntcp.flags.reset == 1         # All RST packets (resets)\ntcp.flags == 0x029           # URG+SYN+ACK (unusual — investigate)"},
+          {"type": "para", "text": "**Attack detection:** A single source IP sending SYN packets to hundreds of different ports = **port scan**. Many SYN packets with no ACK completions = **SYN flood DoS**. Unexpected RST packets in established sessions = **TCP session injection**."}
+        ],
+        "time": "20 min · Apply each flag filter against your practice pcap"
+      },
+      {
+        "type": "dark",
+        "label": "Spotting Port Scans",
+        "tag": "Attack Detection",
+        "method": "HOW — Identifying Nmap Scans in Wireshark",
+        "heading": "Detecting __Port Scans__ in Wireshark",
+        "body": [
+          {"type": "code", "text": "# Filter to detect SYN scan from single IP:\ntcp.flags.syn==1 && tcp.flags.ack==0 && ip.src==192.168.1.100\n# Shows: IP sending SYN to many ports (Nmap -sS)"},
+          {"type": "code", "text": "# See the responses — open vs closed ports:\ntcp.flags.syn==1 && tcp.flags.ack==1  # SYN-ACK = port OPEN\ntcp.flags.reset==1                    # RST = port CLOSED"},
+          {"type": "code", "text": "# Connect scan detection (full 3-way handshake):\ntcp.flags == 0x002  # then filter by source IP\n# Nmap -sT = completes handshake then sends RST"},
+          {"type": "para", "text": "**Expert tip:** Run `nmap -sS localhost` in one terminal while Wireshark is capturing in another. Watch your own scan appear in real-time — you will see exactly what a victim's IDS sees when they are being scanned."}
+        ],
+        "time": "25 min · Capture your own Nmap scan and analyse it"
+      },
+      {
+        "type": "white",
+        "label": "HTTP in Wireshark",
+        "tag": "Web Traffic Analysis",
+        "method": "WHAT — Analysing HTTP Traffic",
+        "heading": "HTTP Analysis: __Web Attacks Visible__",
+        "body": [
+          {"type": "code", "text": "# HTTP request filtering:\nhttp.request              # All HTTP requests\nhttp.request.method==\"GET\"  # Only GET requests\nhttp.request.method==\"POST\" # Form submissions, logins\nhttp.request.uri contains \"/admin\"  # Admin panel access"},
+          {"type": "code", "text": "# Response filtering:\nhttp.response.code == 200  # Successful responses\nhttp.response.code == 404  # Not found (brute force!)\nhttp.response.code == 403  # Forbidden (access control)"},
+          {"type": "code", "text": "# Credential exposure detection:\nhttp contains \"password\"   # Password in cleartext\nhttp contains \"login\"      # Login form submissions\n# Follow TCP Stream on any POST → may see credentials!"}
+        ],
+        "time": "20 min · Analyse HTTP traffic in a practice pcap"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 45 Learning Targets",
+        "heading": "Day 45 Checklist",
+        "steps": [
+          "Identify the **3-way handshake** (SYN/SYN-ACK/ACK) in a live capture — expand each packet",
+          "Capture your **own Nmap -sS scan** on localhost and observe it in Wireshark simultaneously",
+          "Use **`tcp.flags.syn==1 && tcp.flags.ack==0`** — count how many ports were scanned",
+          "Filter **`http.response.code == 404`** — identify any directory brute-force activity",
+          "Use **Expert Information** (Analyze menu) — identify all retransmissions and resets"
+        ],
+        "time": "Total Day 45 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 45",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Video", "name": "Chris Greer — TCP Analysis with Wireshark (YouTube)", "url": "youtube.com/watch?v=NjvR4LmwcMU"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Wireshark' Room (free)", "url": "tryhackme.com/room/wireshark"},
+          {"label": "📖 Guide", "name": "Wireshark TCP Analysis Documentation", "url": "wireshark.org/docs/wsug_html_chunked"},
+          {"label": "🧪 PCAPs", "name": "PacketLife.net — Free Sample Packet Captures", "url": "packetlife.net/captures"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 45",
+        "heading": "Your Hands-On __Task__ for Day 45",
+        "steps": [
+          "**Run** `nmap -sS localhost` in one terminal while Wireshark is capturing on loopback interface",
+          "**Apply** `tcp.flags.syn==1 && tcp.flags.ack==0` — count SYN packets from your scan",
+          "**Compare** SYN-ACK responses (open ports) vs RST responses (closed ports) — list open ports found",
+          "**Use** Expert Information (Analyze → Expert Information) — note all anomalies flagged automatically"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 45",
+        "quote": "Wireshark's Expert Information automatically flags anomalies — retransmissions, resets, malformed packets. Start every pcap analysis there. It is your automated first-pass triage.",
+        "sub": "The most valuable skill in TCP analysis is knowing what NORMAL looks like. Capture your baseline traffic now — an hour of normal browsing, normal downloads, normal DNS. Save it. Every future investigation starts by comparing suspicious traffic against this baseline. Anomalies only exist relative to normal.",
+        "mistake": "Ignoring TCP RST storms. A flood of RST packets in a capture is almost always either malicious (TCP session injection, port scan, DoS) or severely misconfigured. RSTs are the network equivalent of a slammed phone — something went wrong. Every RST in an investigation warrants examination of the source, destination, and timing."
+      }
+    ]
+  },
+
+  {
+    "day": 46,
+    "cover": {
+      "title": "DNS Analysis & __DNS Attack Detection__",
+      "hook": "DNS is the most abused protocol for attacks and the most overlooked in defence.",
+      "tags": ["#DNS", "#TrafficAnalysis", "#Day46of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "DNS in Wireshark",
+        "tag": "Foundation",
+        "method": "WHAT — Reading DNS Traffic",
+        "heading": "DNS in Wireshark: __Every Query Visible__",
+        "body": [
+          {"type": "para", "text": "**Filter: `dns`** — instantly shows every DNS query and response in the capture. DNS uses UDP port 53 for most queries (small packets) and TCP port 53 for large responses and zone transfers."},
+          {"type": "code", "text": "# DNS display filters:\ndns                           # All DNS traffic\ndns.flags.response == 0       # Only queries (QR=0)\ndns.flags.response == 1       # Only responses (QR=1)\ndns.qry.type == 1             # A record queries only\ndns.qry.type == 16            # TXT record queries\ndns.flags.rcode == 3          # NXDomain (failed lookups)"},
+          {"type": "para", "text": "**Normal DNS behaviour:** UDP, small packets (< 512 bytes), fast response times (< 100ms), simple domain names, mostly A and AAAA record types. Any deviation from this pattern warrants investigation."}
+        ],
+        "pills": [
+          {"text": "DNS Tunneling", "t": "r"},
+          {"text": "NXDomain", "t": "y"},
+          {"text": "DGA", "t": "o"}
+        ],
+        "time": "20 min · Wireshark University · Guru99 DNS analysis tutorial"
+      },
+      {
+        "type": "red",
+        "label": "DNS Tunneling",
+        "tag": "Attack Detection",
+        "method": "WHAT — DNS Tunneling Explained",
+        "heading": "DNS Tunneling: __Data Exfiltration via DNS__",
+        "body": [
+          {"type": "para", "text": "**DNS tunneling** encodes data inside DNS queries — allowing attackers to exfiltrate sensitive information or establish C2 communications even through firewalls that block all other outbound traffic. DNS port 53 is almost never blocked."},
+          {"type": "code", "text": "# Example DNS tunnel query:\nd2hhdGV2ZXJkYXRh.evil-c2-domain.com\n# The subdomain is base64-encoded stolen data:\n# d2hhdGV2ZXJkYXRh = base64('whateverdata')"},
+          {"type": "bullet", "text": "**Sign 1:** Unusually long subdomains (normal = < 20 chars, tunneling = 50+ chars)"},
+          {"type": "bullet", "text": "**Sign 2:** High volume of DNS queries — tunneling tools send hundreds per minute"},
+          {"type": "bullet", "text": "**Sign 3:** High rate of TXT record queries — used for bidirectional tunnel communication"},
+          {"type": "bullet", "text": "**Sign 4:** Queries to uncommon TLDs or newly registered domains"}
+        ],
+        "time": "25 min · Download a DNS tunneling pcap and analyse"
+      },
+      {
+        "type": "dark",
+        "label": "Detecting DNS Tunneling",
+        "tag": "Detection Filters",
+        "method": "HOW — Identifying DNS Tunneling in Wireshark",
+        "heading": "DNS Tunnel __Detection__ Filters",
+        "body": [
+          {"type": "code", "text": "# Detect unusually long domain names (tunneling sign):\ndns.qry.name.len > 52"},
+          {"type": "code", "text": "# High volume of TXT queries (bidirectional tunnel):\ndns.qry.type == 16  # TXT record type"},
+          {"type": "code", "text": "# Failed lookups for random-looking domains (DGA/tunnel):\ndns.flags.rcode == 3  # NXDomain responses"},
+          {"type": "code", "text": "# Statistics → DNS shows query type distribution:\n# Normal: mostly A/AAAA records\n# Tunneling: unusually high TXT or abnormal types"},
+          {"type": "para", "text": "**Tools that create DNS tunnels:** iodine, dnscat2, dns2tcp. If you see base64-looking strings in subdomain labels combined with high query volume to a single domain — that is textbook DNS tunneling. Extract the subdomains, base64 decode them, and see the exfiltrated data."}
+        ],
+        "time": "20 min · Apply tunnel detection filters to a sample pcap"
+      },
+      {
+        "type": "white",
+        "label": "DGA & Passive DNS",
+        "tag": "Advanced DNS Analysis",
+        "method": "WHAT — DGA and Threat Intelligence",
+        "heading": "DGA Domains & __Passive DNS__ Intelligence",
+        "body": [
+          {"type": "para", "text": "**DGA (Domain Generation Algorithm):** Malware generates hundreds of pseudo-random domain names daily. Only one is actually registered — the C2 server. All others fail (NXDomain). In Wireshark, DGA creates a flood of NXDomain responses."},
+          {"type": "code", "text": "# DGA detection in Wireshark:\ndns.flags.rcode == 3  # Filter NXDomain failures\n# Look for: many different random-looking domains\n# like: xk3mp2v.com, b8jqz9n.net, mq7rk9p.org\n# All from the same infected internal host"},
+          {"type": "para", "text": "**Passive DNS** tracks historical domain→IP mappings over time. Tools like SecurityTrails, RiskIQ, and VirusTotal passive DNS reveal if a domain has changed IPs rapidly (fast-flux) — a C2 server evasion technique. Always check suspicious domains against passive DNS during an investigation."}
+        ],
+        "time": "20 min · Search a suspicious domain in VirusTotal passive DNS"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 46 Learning Targets",
+        "heading": "Day 46 Checklist",
+        "steps": [
+          "Apply `dns.qry.name.len > 52` to a tunneling pcap — count unusually long domain names",
+          "Identify **NXDomain floods** with `dns.flags.rcode == 3` — potential DGA malware",
+          "Use **Statistics → DNS** to see the query type distribution — spot abnormal TXT record volume",
+          "Download a DNS tunneling pcap from PacketLife.net or malware-traffic-analysis.net — identify the tunnel domain",
+          "Understand why **blocking DNS to unauthorised servers** at the firewall is a critical control"
+        ],
+        "time": "Total Day 46 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 46",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Video", "name": "SANS — DNS-Based Threat Detection (YouTube, free)", "url": "youtube.com"},
+          {"label": "🧪 PCAPs", "name": "malware-traffic-analysis.net — DNS Attack PCAPs", "url": "malware-traffic-analysis.net"},
+          {"label": "🔍 Intel", "name": "VirusTotal — Passive DNS and Domain Intelligence", "url": "virustotal.com"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Wireshark: Traffic Analysis' Room", "url": "tryhackme.com/room/wiresharktrafficanalysis"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 46",
+        "heading": "Your Hands-On __Task__ for Day 46",
+        "steps": [
+          "**Download** a DNS tunneling pcap from PacketLife.net or malware-traffic-analysis.net",
+          "**Apply** `dns.qry.name.len > 40` — list all unusually long domain names found",
+          "**Count** unique domains queried — compare the ratio of NXDomain vs successful lookups",
+          "**Compare** to a normal DNS capture from yesterday — document 3 specific differences"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 46",
+        "quote": "DNS is the most overlooked protocol in security monitoring. Adding a simple DNS anomaly detection rule to your SIEM catches 30% of malware C2 traffic that every other control misses.",
+        "sub": "The most powerful DNS security control is also the simplest: block outbound DNS to any server except your authorised resolvers at the firewall. Force all DNS through your monitoring resolver. This single firewall rule eliminates DNS tunneling and ensures every DNS query is visible in your logs.",
+        "mistake": "Overlooking DNS during traffic analysis because 'it is just DNS.' DNS carries no payload data in normal use — which makes any anomaly in DNS volume, query types, or domain name length immediately suspicious. An attacker who can exfiltrate data via DNS needs no other network path. Monitor DNS like it is your most critical protocol."
+      }
+    ]
+  },
+
+  {
+    "day": 47,
+    "cover": {
+      "title": "HTTP/HTTPS Analysis & __Web Attack Detection__",
+      "hook": "Web traffic is 80% of enterprise network. Learn to read and analyse it.",
+      "tags": ["#HTTP", "#WebAttacks", "#Day47of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "HTTP in Wireshark",
+        "tag": "Foundation",
+        "method": "WHAT — HTTP Traffic Structure",
+        "heading": "HTTP Structure: __Every Request Visible__",
+        "body": [
+          {"type": "code", "text": "# HTTP display filters:\nhttp                          # All HTTP traffic\nhttp.request                  # Requests only\nhttp.response                 # Responses only\nhttp.request.method == \"POST\" # Form submissions, logins\nhttp.request.method == \"GET\"  # Page/resource requests\nhttp.host == \"target.com\"     # Specific domain only"},
+          {"type": "para", "text": "**File extraction from pcap:** Wireshark can extract files transferred over HTTP. File → Export Objects → HTTP. This extracts images, documents, executables, and scripts downloaded by the victim — critical for malware analysis."},
+          {"type": "para", "text": "**HTTP request structure visible in details panel:** Method, URI, HTTP version, all headers (User-Agent, Host, Cookie, Authorization), and the request body (form data, JSON payloads)."}
+        ],
+        "pills": [
+          {"text": "SQL Injection", "t": "r"},
+          {"text": "Brute Force", "t": "y"},
+          {"text": "TLS Decrypt", "t": "o"}
+        ],
+        "time": "20 min · Wireshark University · Guru99 Wireshark HTTP guide"
+      },
+      {
+        "type": "red",
+        "label": "Web Attack Detection",
+        "tag": "Attack Patterns",
+        "method": "WHAT — Detecting Attacks in HTTP Traffic",
+        "heading": "Web Attacks: __Visible in HTTP Traffic__",
+        "body": [
+          {"type": "code", "text": "# SQL Injection attempts:\nhttp.request.uri contains \"SELECT\"\nhttp.request.uri contains \"%27\"   # URL-encoded quote (')\nhttp.request.uri contains \"UNION%20SELECT\""},
+          {"type": "code", "text": "# Directory brute force (mass 404s):\nhttp.response.code == 404\n# Combined with high request rate from single IP"},
+          {"type": "code", "text": "# Path traversal (LFI) attempts:\nhttp.request.uri contains \"../\"\nhttp.request.uri contains \"etc/passwd\""},
+          {"type": "code", "text": "# Credential submission in cleartext:\nhttp.request.method == \"POST\"\n# Follow TCP Stream → search for 'password=' in body"},
+          {"type": "code", "text": "# Command injection in parameters:\nhttp.request.uri contains \";\"\nhttp.request.uri contains \"|\""}
+        ],
+        "time": "25 min · Apply each filter against a web attack pcap"
+      },
+      {
+        "type": "dark",
+        "label": "HTTPS Decryption",
+        "tag": "Encrypted Traffic",
+        "method": "HOW — Decrypting Your Own HTTPS Traffic",
+        "heading": "TLS Decryption: __Decrypt Your Own HTTPS__",
+        "body": [
+          {"type": "para", "text": "**SSLKEYLOGFILE technique:** Modern browsers can log TLS session keys to a file as connections are made. Wireshark reads this file to decrypt the traffic — revealing the plaintext even though it was encrypted on the wire."},
+          {"type": "code", "text": "# Step 1: Set environment variable before opening browser:\nexport SSLKEYLOGFILE=/tmp/sslkeys.log   # Linux/Mac\n# Windows: System Properties → Environment Variables"},
+          {"type": "code", "text": "# Step 2: Open browser AFTER setting the variable\n# Browse to target sites — keys are logged automatically\n# Step 3: In Wireshark:\n# Edit → Preferences → Protocols → TLS\n# → (Pre)-Master-Secret log filename: /tmp/sslkeys.log"},
+          {"type": "para", "text": "**Use cases:** Debugging your own web applications, malware analysis in a controlled lab environment, understanding what your own browser sends in HTTPS requests. **Only decrypt traffic you own or have explicit permission to decrypt.**"}
+        ],
+        "time": "25 min · Decrypt your own browser HTTPS traffic"
+      },
+      {
+        "type": "white",
+        "label": "HTTP Export Objects",
+        "tag": "Evidence Extraction",
+        "method": "HOW — Extracting Files from HTTP Traffic",
+        "heading": "Export Objects: __Extract Files from PCAPs__",
+        "body": [
+          {"type": "para", "text": "**File → Export Objects → HTTP** extracts all files transferred over HTTP in the capture. This is one of the most important forensic techniques for malware analysis — you can recover the exact executable or document that infected a victim."},
+          {"type": "step", "num": "1", "text": "Open a malware pcap → File → Export Objects → HTTP → you see a list of all downloaded files"},
+          {"type": "step", "num": "2", "text": "Note the filenames, content types, and sizes — executables (.exe, .dll) and scripts (.vbs, .ps1) are immediately suspicious"},
+          {"type": "step", "num": "3", "text": "Save suspicious files → upload their SHA256 hash to VirusTotal → confirm malware family"},
+          {"type": "step", "num": "4", "text": "The file you extracted IS the malware that infected the victim — you now have your primary forensic artefact"}
+        ],
+        "time": "20 min · Extract and hash files from a malware pcap"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 47 Learning Targets",
+        "heading": "Day 47 Checklist",
+        "steps": [
+          "Apply **SQL injection detection filters** — identify any URI containing SELECT, UNION, or URL-encoded quotes",
+          "Filter for **mass 404 responses** from a single IP — confirm directory brute-force activity",
+          "Use **File → Export Objects → HTTP** to extract files from a malware pcap — hash and check on VirusTotal",
+          "Set **SSLKEYLOGFILE** and decrypt your own browser HTTPS traffic — see what github.com sends in plaintext",
+          "Follow a **POST request TCP stream** — identify any credentials or sensitive data in the request body"
+        ],
+        "time": "Total Day 47 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 47",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Reference", "name": "Wireshark HTTP Wiki — HTTP Analysis Guide", "url": "wiki.wireshark.org/HTTP"},
+          {"label": "🏋️ Labs", "name": "PortSwigger Web Academy — Free HTTP Security Labs", "url": "portswigger.net/web-security/learning-paths"},
+          {"label": "🧪 PCAPs", "name": "malware-traffic-analysis.net — HTTP Malware PCAPs", "url": "malware-traffic-analysis.net"},
+          {"label": "📖 Guide", "name": "OWASP Web Security Testing Guide — Traffic Analysis", "url": "owasp.org/www-project-web-security-testing-guide"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 47",
+        "heading": "Your Hands-On __Task__ for Day 47",
+        "steps": [
+          "**Set** SSLKEYLOGFILE environment variable — open Firefox — browse to github.com — capture in Wireshark",
+          "**Load** the key log file in Wireshark TLS settings — confirm you can now read decrypted HTTPS",
+          "**Download** a web attack pcap — apply SQL injection filter — document all injection attempts found",
+          "**Extract** HTTP objects from a malware pcap — hash the suspicious files — check on VirusTotal"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 47",
+        "quote": "The SSLKEYLOGFILE technique is used by analysts to investigate encrypted malware C2 traffic in controlled lab environments. Understanding it also means understanding how enterprise SSL inspection appliances work.",
+        "sub": "Mass 404 errors from a single source IP in a short time window is one of the clearest signatures of directory brute-forcing. Rate threshold: anything above 50 requests per minute from a single IP to a single server generating mostly 404s should trigger an alert. Document this threshold when you write Suricata rules in Day 49.",
+        "mistake": "Only decrypting your own traffic. The SSLKEYLOGFILE method requires access to the browser generating the traffic — which means it only works for traffic YOU generate or traffic from a controlled lab environment. In real incident response, you cannot retroactively decrypt enterprise HTTPS traffic without a network SSL inspection appliance that was capturing keys at the time."
+      }
+    ]
+  },
+
+  {
+    "day": 48,
+    "cover": {
+      "title": "tcpdump: __Command-Line Packet Analysis__",
+      "hook": "No GUI? No problem. tcpdump is the analyst's terminal sniffer.",
+      "tags": ["#tcpdump", "#TrafficAnalysis", "#Day48of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "tcpdump Basics",
+        "tag": "Foundation",
+        "method": "WHAT — tcpdump Explained",
+        "heading": "tcpdump: __CLI Packet Capture__",
+        "body": [
+          {"type": "code", "text": "# Basic capture on interface:\nsudo tcpdump -i eth0"},
+          {"type": "code", "text": "# Essential flags:\ntcpdump -i eth0   # Specific interface\ntcpdump -n        # Don't resolve IPs to hostnames (faster)\ntcpdump -v        # Verbose — more packet detail\ntcpdump -vv       # Very verbose — full packet decode\ntcpdump -c 100    # Capture only 100 packets then stop"},
+          {"type": "code", "text": "# Write to file (for Wireshark analysis later):\nsudo tcpdump -i eth0 -w /tmp/capture.pcap\n\n# Read from file:\ntcpdump -r /tmp/capture.pcap"},
+          {"type": "para", "text": "**Pre-installed on:** every Linux and macOS system. No installation required. This is why it is the answer when interviewers ask 'how would you capture traffic on a remote server with no GUI?'"}
+        ],
+        "pills": [
+          {"text": "BPF Filters", "t": "r"},
+          {"text": "One-Liners", "t": "y"},
+          {"text": "pcap workflow", "t": "o"}
+        ],
+        "time": "20 min · danielmiessler.com/study/tcpdump — definitive guide"
+      },
+      {
+        "type": "red",
+        "label": "Essential tcpdump Filters",
+        "tag": "BPF Syntax",
+        "method": "WHAT — tcpdump Filter Syntax",
+        "heading": "tcpdump Filters: __BPF Syntax Mastery__",
+        "body": [
+          {"type": "code", "text": "# Filter by port:\ntcpdump port 80                    # HTTP\ntcpdump port 443                   # HTTPS\ntcpdump port 22                    # SSH"},
+          {"type": "code", "text": "# Filter by host:\ntcpdump host 192.168.1.100         # To/from specific IP\ntcpdump src 192.168.1.100          # From this IP only\ntcpdump dst 8.8.8.8                # To this IP only"},
+          {"type": "code", "text": "# Filter by protocol:\ntcpdump tcp                        # TCP only\ntcpdump udp                        # UDP only\ntcpdump arp                        # ARP only\ntcpdump icmp                       # ICMP/ping only"},
+          {"type": "code", "text": "# Combine filters with boolean operators:\ntcpdump -i eth0 port 443 and host 8.8.8.8\ntcpdump -i any 'tcp dst port 22 and not src 192.168.1.1'"}
+        ],
+        "time": "25 min · Practice each filter combination in your terminal"
+      },
+      {
+        "type": "dark",
+        "label": "Security Monitoring One-Liners",
+        "tag": "SOC Techniques",
+        "method": "HOW — tcpdump for Live Monitoring",
+        "heading": "Security One-Liners: __Real SOC Commands__",
+        "body": [
+          {"type": "code", "text": "# Monitor SSH brute-force in real-time:\nsudo tcpdump -i any -n \\\n  'tcp dst port 22 and tcp[tcpflags] & tcp-syn != 0'"},
+          {"type": "code", "text": "# Watch all DNS queries live:\nsudo tcpdump -i any -n port 53"},
+          {"type": "code", "text": "# Monitor ARP activity (detect ARP spoofing):\nsudo tcpdump -i eth0 arp"},
+          {"type": "code", "text": "# Capture HTTP traffic with full packet content:\nsudo tcpdump -i any -A port 80\n# -A prints packet in ASCII — reveals cleartext data"},
+          {"type": "code", "text": "# Capture TCP SYN packets only (new connections):\nsudo tcpdump -i any \\\n  'tcp[tcpflags] & tcp-syn != 0 and tcp[tcpflags] & tcp-ack == 0'"}
+        ],
+        "time": "25 min · Run each one-liner on your Linux system"
+      },
+      {
+        "type": "white",
+        "label": "tcpdump → Wireshark Workflow",
+        "tag": "Enterprise Workflow",
+        "method": "HOW — Remote Capture + Local Analysis",
+        "heading": "Remote Capture Workflow: __The Enterprise Standard__",
+        "body": [
+          {"type": "step", "num": "1", "text": "**SSH into remote server** where the traffic is occurring — a web server, a compromised host, or a network chokepoint."},
+          {"type": "step", "num": "2", "text": "**Start tcpdump capture:** `sudo tcpdump -i eth0 -w /tmp/incident_$(date +%Y%m%d_%H%M).pcap -c 10000`"},
+          {"type": "step", "num": "3", "text": "**Copy pcap to your local machine:** `scp user@server:/tmp/incident_*.pcap ~/investigations/`"},
+          {"type": "step", "num": "4", "text": "**Open in Wireshark** on your local machine with full GUI capabilities — apply all filters, follow streams, export objects. This is how 90% of enterprise incident response traffic analysis is performed."}
+        ],
+        "time": "20 min · Practise the full remote capture → local analysis workflow"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 48 Learning Targets",
+        "heading": "Day 48 Checklist",
+        "steps": [
+          "Run **`sudo tcpdump -i any -n -w /tmp/test.pcap -c 200`** — capture 200 packets and open in Wireshark",
+          "Use **`tcpdump port 53 -n`** to watch DNS queries live for 30 seconds — document what you see",
+          "Practice the **tcpdump → SCP → Wireshark workflow** between two VMs in your lab",
+          "Know the **interview answer** for 'how do you capture traffic on a headless server?'",
+          "Understand **when to use tcpdump vs Wireshark** — different tools for different contexts"
+        ],
+        "time": "Total Day 48 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 48",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Guide", "name": "Daniel Miessler — tcpdump Primer (definitive guide)", "url": "danielmiessler.com/study/tcpdump"},
+          {"label": "📄 Reference", "name": "SANS DFIR — tcpdump Cheat Sheet (free PDF)", "url": "sans.org/posters"},
+          {"label": "📖 Man Page", "name": "tcpdump Man Page — Complete Flag Reference", "url": "man7.org/linux/man-pages/man1/tcpdump.1.html"},
+          {"label": "🧪 Lab", "name": "LabEx — Linux Networking Labs with tcpdump", "url": "labex.io/free-labs/linux"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 48",
+        "heading": "Your Hands-On __Task__ for Day 48",
+        "steps": [
+          "**Run** `sudo tcpdump -i any -n -w /tmp/test.pcap -c 200` — wait 30 seconds — open in Wireshark",
+          "**Watch live DNS:** `sudo tcpdump -i any port 53 -n` — browse 3 websites — note every domain queried",
+          "**Practice** `tcpdump -i any -A port 80` — visit an HTTP-only site — see the cleartext request in terminal",
+          "**Write** your interview answer: 'How would you capture traffic on a remote Linux server with no GUI?'"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 48",
+        "quote": "Many hiring managers ask 'how would you capture traffic on a server with no GUI?' The answer is: tcpdump to capture, SCP to transfer, Wireshark to analyse. A practised, specific answer wins interviews.",
+        "sub": "Always document the exact tcpdump command you ran during an incident — including interface, filter, output file, and capture count. This documentation becomes part of the chain of custody in any investigation with legal implications. The command, timestamp, and who ran it must all be recorded.",
+        "mistake": "Running tcpdump without the `-n` flag on production systems. Without `-n`, tcpdump performs reverse DNS lookups for every IP — generating massive DNS traffic that can overwhelm DNS servers, alter the packet timing in your capture, and appear suspicious in your own logs. Always use `-n` on production captures unless hostname resolution is specifically needed."
+      }
+    ]
+  },
+
+  {
+    "day": 49,
+    "cover": {
+      "title": "Suricata IDS/IPS __Setup & Rules__",
+      "hook": "Automate threat detection. Suricata watches your network 24/7.",
+      "tags": ["#Suricata", "#IDS", "#Day49of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Suricata?",
+        "tag": "Foundation",
+        "method": "WHAT — Suricata IDS/IPS/NSM",
+        "heading": "Suricata: __Free Enterprise IDS/IPS__",
+        "body": [
+          {"type": "para", "text": "**Suricata** is a free, open-source, high-performance Intrusion Detection System (IDS), Intrusion Prevention System (IPS), and Network Security Monitor (NSM). It inspects all network packets in real-time against a library of threat signatures."},
+          {"type": "para", "text": "**Enterprise-grade:** Processes 10Gbps+ traffic on modern hardware. Used in commercial SOC environments, cloud security platforms, and network security appliances worldwide. The same engine that powers pfSense IDS."},
+          {"type": "para", "text": "**Three operating modes:** IDS (alert only, out-of-band), IPS (inline, blocks traffic), NSM (network security monitor, full logging). Most home labs start with IDS mode — alerting without blocking."}
+        ],
+        "pills": [
+          {"text": "IDS Rules", "t": "r"},
+          {"text": "EVE JSON", "t": "y"},
+          {"text": "ET Rules", "t": "o"}
+        ],
+        "time": "20 min · youtube.com — Suricata IDS/IPS Tutorial"
+      },
+      {
+        "type": "red",
+        "label": "Installation & Setup",
+        "tag": "Setup",
+        "method": "HOW — Installing Suricata",
+        "heading": "Suricata __Installation__ and Configuration",
+        "body": [
+          {"type": "code", "text": "# Install Suricata:\nsudo apt install suricata\n\n# Update to Emerging Threats ruleset:\nsudo suricata-update\n\n# Test configuration:\nsuricata -T -c /etc/suricata/suricata.yaml\n# Output should end with: 'Configuration provided was good.'"},
+          {"type": "code", "text": "# Start Suricata on live interface:\nsudo systemctl start suricata\nsudo systemctl enable suricata  # Start on boot\n\n# Monitor live alerts:\nsudo tail -f /var/log/suricata/fast.log"},
+          {"type": "code", "text": "# Run against existing pcap file:\nsudo suricata -r malware.pcap \\\n  -c /etc/suricata/suricata.yaml \\\n  -l /tmp/suricata-logs/\n# Then check: cat /tmp/suricata-logs/fast.log"}
+        ],
+        "time": "25 min · Install and run against a malware pcap"
+      },
+      {
+        "type": "dark",
+        "label": "Suricata Rule Anatomy",
+        "tag": "Rule Writing",
+        "method": "WHAT — Understanding Rule Structure",
+        "heading": "Rule Anatomy: __Every Field Explained__",
+        "body": [
+          {"type": "code", "text": "# Complete Suricata rule:\nalert tcp any any -> $HOME_NET 22 (\n  msg:\"SSH Brute Force Attempt\";\n  flow:established;\n  threshold:type both,\n    track by_src,\n    count 5,\n    seconds 60;\n  classtype:attempted-admin;\n  sid:9001;\n  rev:1;\n)"},
+          {"type": "bullet", "text": "**alert** — action (alert/drop/reject/pass). IDS mode uses alert only."},
+          {"type": "bullet", "text": "**tcp any any → $HOME_NET 22** — protocol, source IP, source port, direction, dest IP, dest port"},
+          {"type": "bullet", "text": "**msg:** — human-readable alert name shown in logs"},
+          {"type": "bullet", "text": "**threshold:** — prevents alert storm — only fire after 5 attempts in 60 seconds"},
+          {"type": "bullet", "text": "**sid:** — unique rule identifier. Custom rules use sid > 9000000"}
+        ],
+        "time": "25 min · Write 3 custom rules for common attack patterns"
+      },
+      {
+        "type": "white",
+        "label": "Emerging Threats Rules",
+        "tag": "Rule Management",
+        "method": "WHAT — Free Rulesets for Suricata",
+        "heading": "Emerging Threats: __30,000+ Free Rules__",
+        "body": [
+          {"type": "para", "text": "**Emerging Threats (ET)** by Proofpoint provides free, daily-updated Suricata rules covering known malware families, exploit kits, C2 communication, and attack techniques. Over 30,000 rules updated every 24 hours."},
+          {"type": "code", "text": "# Update ET rules automatically:\nsudo suricata-update\n\n# List available rule sources:\nsudo suricata-update list-sources\n\n# Enable additional sources:\nsudo suricata-update enable-source et/open\nsudo suricata-update enable-source ptresearch/attackdetection"},
+          {"type": "para", "text": "**EVE JSON log format** is what SIEMs ingest. Every Suricata alert is logged to `/var/log/suricata/eve.json` as structured JSON — timestamp, alert signature, source/destination IPs and ports, protocol, packet payload. Feed this directly into Elasticsearch or Splunk for enterprise detection."}
+        ],
+        "time": "20 min · Run suricata-update and review rule categories"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 49 Learning Targets",
+        "heading": "Day 49 Checklist",
+        "steps": [
+          "**Install Suricata** and run `suricata -T` to validate your configuration",
+          "Run `sudo suricata-update` and count how many rules were downloaded",
+          "Run Suricata against a **malware pcap** — count alerts in fast.log — identify top rule names",
+          "**Write one custom rule** — detect SSH brute force (5+ connections from same IP in 60 seconds)",
+          "Understand **EVE JSON format** — open eve.json and identify the key fields for SIEM integration"
+        ],
+        "time": "Total Day 49 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 49",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Official", "name": "Suricata — Official Documentation", "url": "suricata.io/docs"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Suricata' Room (free)", "url": "tryhackme.com/room/surricata"},
+          {"label": "📦 Rules", "name": "Emerging Threats — Free Suricata Rules", "url": "proofpoint.com/us/products/et-intelligence"},
+          {"label": "📺 Video", "name": "YouTube — Suricata IDS/IPS Complete Tutorial", "url": "youtube.com/watch?v=S0-vsjhPDN0"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 49",
+        "heading": "Your Hands-On __Task__ for Day 49",
+        "steps": [
+          "**Install** Suricata: `sudo apt install suricata` → run `suricata-update` → test with `-T` flag",
+          "**Run** against a malware pcap: `sudo suricata -r malware.pcap -l /tmp/logs/` — check fast.log",
+          "**Count** alerts: `wc -l /tmp/logs/fast.log` — identify the top 3 rule names that fired",
+          "**Write** a custom SSH brute-force rule — test it by replaying a brute-force pcap"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 49",
+        "quote": "Writing custom Suricata rules is a valued, rare skill — it is how SOC teams tune detection to their specific environment. Start by modifying existing rules before writing from scratch.",
+        "sub": "The most important Suricata tuning skill is the threshold option. Without it, a single attacker sending 10,000 SYN packets generates 10,000 alerts — burying analysts in noise. Threshold-based rules (fire only after N events in X seconds) is what makes IDS practical in real environments. Never deploy a detection rule without considering its alert volume.",
+        "mistake": "Enabling too many rules without tuning. A default Suricata deployment with all ET rules enabled will fire thousands of alerts per hour in any real network — most of them false positives. Start with a minimal ruleset, tune for your network baseline, then add rules incrementally. Alert fatigue is the most common reason IDS deployments fail in enterprise."
+      }
+    ]
+  },
+
+  {
+    "day": 50,
+    "cover": {
+      "title": "Analysing __Malware Traffic__ Patterns",
+      "hook": "Day 50 of 90! Halfway there. Let us analyse real malware network traffic.",
+      "tags": ["#MalwareAnalysis", "#TrafficAnalysis", "#Day50of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "C2 Traffic Patterns",
+        "tag": "Foundation",
+        "method": "WHAT — Command & Control Traffic",
+        "heading": "C2 Traffic: __How Malware Phones Home__",
+        "body": [
+          {"type": "para", "text": "**Command & Control (C2)** traffic is how malware communicates with its operator after infecting a victim. Identifying C2 traffic is the core skill of malware traffic analysis — find the C2 and you have identified the threat."},
+          {"type": "bullet", "text": "**Periodic beaconing:** C2 malware checks in every N seconds. Regular, clockwork-like connection intervals — not human browsing patterns. Statistics → I/O Graph reveals regular spikes."},
+          {"type": "bullet", "text": "**Unusual User-Agents:** Malware often sends fake User-Agent strings. Common: `Mozilla/4.0 (compatible)`, `curl/7.68.0`, random strings, or empty UA fields. Filter: `http.user_agent`."},
+          {"type": "bullet", "text": "**Non-standard ports:** HTTP traffic on port 8080, 8443, or completely random ports. HTTPS on non-443 ports."},
+          {"type": "bullet", "text": "**Encoded/encrypted payloads:** Base64 in HTTP bodies, random-looking binary data in TCP streams."}
+        ],
+        "pills": [
+          {"text": "Beaconing", "t": "r"},
+          {"text": "DGA", "t": "y"},
+          {"text": "Lateral Movement", "t": "o"}
+        ],
+        "time": "25 min · malware-traffic-analysis.net — free practice pcaps"
+      },
+      {
+        "type": "red",
+        "label": "Beaconing Detection",
+        "tag": "Detection Technique",
+        "method": "HOW — Identifying C2 Beacons",
+        "heading": "Beaconing: __Find the Heartbeat__",
+        "body": [
+          {"type": "para", "text": "**Beaconing detection in Wireshark:** Statistics → I/O Graph. Regular spikes at fixed intervals (every 30s, 60s, 5min) are the hallmark of C2 malware beaconing. Human browsing is irregular — malware is clockwork-precise."},
+          {"type": "code", "text": "# Wireshark filters for beaconing investigation:\nip.addr == suspected_c2_ip      # All traffic to C2\nhttp.user_agent                  # Check all UA strings\ntcp.stream eq N                  # Follow specific stream"},
+          {"type": "para", "text": "**Statistics → Conversations** for beaconing: Look for an internal host with dozens or hundreds of short connections to a single external IP, all at regular time intervals. The external IP is your C2 server."},
+          {"type": "para", "text": "**Beacon jitter:** Sophisticated malware adds random jitter to beacon intervals to evade exact-interval detection. Instead of every 60 seconds, it beacons every 57–63 seconds. Look for near-regular intervals, not just exact ones."}
+        ],
+        "time": "25 min · Identify beaconing in a malware pcap"
+      },
+      {
+        "type": "dark",
+        "label": "DGA Domains",
+        "tag": "Advanced Detection",
+        "method": "WHAT — Domain Generation Algorithms",
+        "heading": "DGA: __Random Domains__, Real Malware",
+        "body": [
+          {"type": "para", "text": "**Domain Generation Algorithms (DGA)** create hundreds of pseudo-random domain names daily. The malware author registers only one — the rest generate NXDomain failures. This makes C2 infrastructure extremely resilient — block one domain and the malware tries the next 200."},
+          {"type": "code", "text": "# DGA detection in Wireshark:\ndns.flags.rcode == 3  # Filter NXDomain failures\n# Signs:\n# - Many different random-looking domains from same host\n# - Like: xk3mp2v.com, b8jqz9n.net, mq7rk9p.org\n# - All from ONE infected internal IP\n# - Eventually ONE domain resolves successfully = C2"},
+          {"type": "para", "text": "**DGA families:** CryptoLocker, Conficker, Zeus, Dridex all use DGA. Threat intelligence feeds contain known DGA patterns. When you see a flood of NXDomain responses from a single internal host — you have found your patient zero."}
+        ],
+        "time": "20 min · Identify DGA activity in a malware pcap"
+      },
+      {
+        "type": "white",
+        "label": "Lateral Movement",
+        "tag": "Post-Compromise Activity",
+        "method": "WHAT — Identifying Internal Spread",
+        "heading": "Lateral Movement: __Inside the Network__",
+        "body": [
+          {"type": "para", "text": "After initial compromise, malware spreads internally. **Lateral movement in Wireshark** involves unusual internal-to-internal traffic patterns that do not match normal business communication."},
+          {"type": "code", "text": "# Lateral movement indicators:\nsmb                         # SMB traffic between internal hosts\ntcp.port == 445             # SMB (EternalBlue territory)\ntcp.port == 5985            # WinRM (PowerShell remoting)\ntcp.port == 3389            # RDP (remote desktop)\ntcp.port == 135             # WMI (Windows management)"},
+          {"type": "para", "text": "**Key question:** Have these two internal hosts ever communicated before? A workstation connecting to 50 other internal servers via SMB within 10 minutes = **WannaCry-style worm propagation**. Normal workstations only talk to a few servers. Unusual internal traffic volumes = immediate investigation priority."}
+        ],
+        "time": "20 min · Identify lateral movement in a malware pcap"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 50 Learning Targets",
+        "heading": "Day 50 Checklist — __Halfway There!__",
+        "steps": [
+          "Download **3 malware pcaps** from malware-traffic-analysis.net — identify the C2 domain in each",
+          "Use **Statistics → I/O Graph** to spot beaconing — identify the beacon interval",
+          "Filter **`dns.flags.rcode == 3`** — count NXDomain failures — identify potential DGA activity",
+          "Filter **SMB and RDP** traffic — identify any internal lateral movement patterns",
+          "Write a **Suricata rule** that would detect the beaconing pattern you identified"
+        ],
+        "time": "Total Day 50 Study Time: 120 – 150 minutes (milestone day)"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 50",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🧪 PCAPs", "name": "malware-traffic-analysis.net — Brad Duncan's Gold Standard", "url": "malware-traffic-analysis.net"},
+          {"label": "🔬 Sandbox", "name": "Any.run — Online Malware Sandbox with PCAP Downloads", "url": "any.run"},
+          {"label": "📚 Course", "name": "SANS Malware Traffic Analysis — Free Online Course", "url": "youtube.com"},
+          {"label": "🔍 Intel", "name": "MalwareBazaar — Malware Samples and Traffic Intel", "url": "bazaar.abuse.ch"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 50",
+        "heading": "Your Hands-On __Task__ for Day 50",
+        "steps": [
+          "**Download** 3 exercise pcaps from malware-traffic-analysis.net — attempt them before reading the answer",
+          "**Identify** for each: C2 domain, malware family name (check the site's answer after your attempt)",
+          "**Write** what Suricata rule would detect the C2 communication in each pcap",
+          "**Document** your analysis using the 5-step investigation framework from Day 52 preview"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 50",
+        "quote": "Brad Duncan's malware-traffic-analysis.net exercises come with answer keys. Do the exercise first, then check answers. This is the single best free resource for real-world malware pcap analysis training.",
+        "sub": "Day 50 is the halfway point. Pause and compare your skill level today against Day 1. You now read network packets, write detection rules, script automation, and analyse malware traffic. None of that existed 50 days ago. The second half builds on everything in the first half — the learning compounds from here.",
+        "mistake": "Running malware samples outside of an isolated virtual machine. Malware pcaps are safe — they are just network captures, not executables. But actual malware samples from Any.run or MalwareBazaar must ONLY be handled in a completely isolated lab VM with no network access to your host or real network. Snapshot before, restore after, every single time."
+      }
+    ]
+  },
+
+  {
+    "day": 51,
+    "cover": {
+      "title": "Zeek (Bro) __Network Security Monitor__",
+      "hook": "Zeek turns raw packets into structured security logs. Enterprise-level monitoring.",
+      "tags": ["#Zeek", "#NSM", "#Day51of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Zeek?",
+        "tag": "Foundation",
+        "method": "WHAT — Zeek NSM Explained",
+        "heading": "Zeek: Packets In, __Structured Logs Out__",
+        "body": [
+          {"type": "para", "text": "**Zeek** (formerly Bro) is a powerful Network Security Monitor that processes raw packets and generates high-level, structured log files automatically. Rather than alerting on specific signatures, Zeek creates a complete audit trail of all network activity."},
+          {"type": "para", "text": "**The key difference from Suricata:** Suricata fires alerts on known bad patterns. Zeek creates comprehensive logs of ALL activity — letting analysts hunt for unknown threats that no signature covers yet."},
+          {"type": "para", "text": "**Zeek automatically generates:** conn.log (every connection), dns.log (all DNS), http.log (all URLs), ssl.log (all TLS certificates), files.log (all file transfers), weird.log (protocol anomalies) — without any configuration."}
+        ],
+        "pills": [
+          {"text": "conn.log", "t": "r"},
+          {"text": "http.log", "t": "y"},
+          {"text": "Zeek scripts", "t": "o"}
+        ],
+        "time": "20 min · zeek.org/documentation"
+      },
+      {
+        "type": "red",
+        "label": "Installation & Running Zeek",
+        "tag": "Setup",
+        "method": "HOW — Installing and Running Zeek",
+        "heading": "Zeek __Setup__: Analyse Any PCAP",
+        "body": [
+          {"type": "code", "text": "# Install Zeek:\nsudo apt install zeek\n\n# Verify installation:\nzeek --version"},
+          {"type": "code", "text": "# Analyse a pcap file (no live capture needed):\nzeek -r malware.pcap\n# Generates log files in current directory:\n# conn.log dns.log http.log ssl.log files.log weird.log"},
+          {"type": "code", "text": "# Run on live interface (requires root):\nsudo zeekctl deploy  # Uses /etc/zeek/node.cfg config\n\n# Or direct interface capture:\nsudo zeek -i eth0"},
+          {"type": "code", "text": "# View logs immediately:\ncat conn.log | head -5\ncat dns.log | head -5\ncat http.log | head -5"}
+        ],
+        "time": "25 min · Run Zeek against a malware pcap now"
+      },
+      {
+        "type": "dark",
+        "label": "Key Log Files",
+        "tag": "Log Analysis",
+        "method": "WHAT — Zeek's Auto-Generated Logs",
+        "heading": "Zeek Logs: __Complete Network Audit Trail__",
+        "body": [
+          {"type": "code", "text": "# conn.log — every TCP/UDP connection:\n# Fields: ts, uid, id.orig_h, id.resp_h, id.resp_p,\n#         proto, duration, orig_bytes, resp_bytes\n\n# Top talkers by bytes transferred:\ncat conn.log | zeek-cut id.orig_h id.resp_h resp_bytes \\\n  | sort -k3 -rn | head -10"},
+          {"type": "code", "text": "# http.log — every HTTP request:\n# Fields: ts, uid, id.orig_h, host, uri, method,\n#         status_code, user_agent, resp_mime_types\n\n# Extract all URLs visited:\ncat http.log | zeek-cut host uri | head -20"},
+          {"type": "code", "text": "# dns.log — every DNS query:\n# Extract unique domains queried:\ncat dns.log | zeek-cut query qtype_name answers \\\n  | sort | uniq | head -20"},
+          {"type": "code", "text": "# weird.log — protocol anomalies:\n# If this log has content = investigate immediately"}
+        ],
+        "time": "25 min · Analyse all log files from your malware pcap"
+      },
+      {
+        "type": "white",
+        "label": "Zeek vs Wireshark",
+        "tag": "Tool Comparison",
+        "method": "WHAT — When to Use Each Tool",
+        "heading": "Zeek vs Wireshark: __Different Jobs__",
+        "body": [
+          {"type": "para", "text": "**Wireshark:** Packet-level detail. GUI-based. Best for deep protocol analysis, following individual streams, decrypting traffic, and extracting specific artefacts. Difficult to scale to large captures."},
+          {"type": "para", "text": "**Zeek:** Session-level summary logs. CLI-based. Best for large-scale traffic analysis, hunting across millions of events, long-term logging, and integration with SIEMs. Cannot show individual packet bytes."},
+          {"type": "para", "text": "**Professional workflow:** Zeek for initial triage and hunting → Wireshark for deep-dive investigation of specific sessions. A Zeek conn.log entry includes a `uid` field — use it with `zeek-cut` to extract the specific packets for Wireshark analysis."},
+          {"type": "para", "text": "**Zeek + Elastic Stack = open-source SIEM.** Many organisations run this combination instead of paid SIEM solutions — saving tens of thousands annually while maintaining enterprise-grade detection capability."}
+        ],
+        "time": "15 min · Compare Zeek and Wireshark output on the same pcap"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 51 Learning Targets",
+        "heading": "Day 51 Checklist",
+        "steps": [
+          "**Install Zeek** and run `zeek -r malware.pcap` — list all log files generated",
+          "Use **`zeek-cut`** to extract top talkers from conn.log by bytes transferred",
+          "Extract all **unique DNS queries** from dns.log — compare to the Wireshark DNS filter from Day 46",
+          "Check **weird.log** — if it has any entries, investigate every single one",
+          "Compare investigation speed: **Zeek vs Wireshark** for the same malware pcap — which was faster?"
+        ],
+        "time": "Total Day 51 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 51",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Official", "name": "Zeek — Official Documentation", "url": "zeek.org/documentation"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Zeek' Room (free)", "url": "tryhackme.com/room/zeek"},
+          {"label": "📦 Packages", "name": "Zeek Package Manager — Community Scripts", "url": "packages.zeek.org"},
+          {"label": "📺 Webcast", "name": "SANS — Zeek for the Security Analyst (free, YouTube)", "url": "youtube.com"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 51",
+        "heading": "Your Hands-On __Task__ for Day 51",
+        "steps": [
+          "**Run** `zeek -r malware.pcap` in your lab — list all generated log files with `ls -la`",
+          "**Extract** top 10 destination IPs from conn.log by connection count — identify the C2 server",
+          "**Extract** all unique domains from dns.log — compare to what you found in Wireshark",
+          "**Check** weird.log and files.log — document any suspicious findings in each"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 51",
+        "quote": "Zeek + Elastic Stack is a powerful open-source SIEM substitute. Many organisations run this stack instead of paid SIEMs. Knowing Zeek makes you valuable in any company with an open-source security stack.",
+        "sub": "The `weird.log` is Zeek's anomaly detector. It logs any protocol behaviour that deviates from the RFC specification — unexpected flag combinations, malformed packets, protocol version mismatches. Security professionals treat every entry in weird.log as a priority investigation item. An empty weird.log means nothing unusual happened; a populated one means something did.",
+        "mistake": "Trying to read Zeek's tab-separated log files directly in a text editor for large captures. Zeek logs for a busy 1-hour capture can be millions of lines. Use `zeek-cut` to extract specific fields, pipe to `sort | uniq -c | sort -rn` for frequency analysis, and use `awk` for filtering. The Linux text processing tools from Phase 3 apply directly here."
+      }
+    ]
+  },
+
+  {
+    "day": 52,
+    "cover": {
+      "title": "Network Forensics __Investigation Workflow__",
+      "hook": "A breach happened. The pcap is your crime scene. Here is the full investigation workflow.",
+      "tags": ["#NetworkForensics", "#DFIR", "#Day52of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Investigation Framework",
+        "tag": "Foundation",
+        "method": "WHAT — The 5-Step Investigation Process",
+        "heading": "Investigation Framework: __5 Steps__",
+        "body": [
+          {"type": "para", "text": "Every professional network forensics investigation follows a consistent framework regardless of the incident type. Skipping steps leads to missed evidence, incorrect conclusions, and incomplete reports."},
+          {"type": "bullet", "text": "**Step 1 — Define scope:** What timeframe? Which systems? Which network segments? Narrow scope = faster analysis and more precise findings."},
+          {"type": "bullet", "text": "**Step 2 — Profile normal traffic:** What does baseline look like? Protocol distribution, top talkers, connection patterns. Anomalies only exist relative to normal."},
+          {"type": "bullet", "text": "**Step 3 — Identify anomalies:** Deviations from baseline. Unknown external IPs, unusual protocols, unexpected ports, traffic spikes."},
+          {"type": "bullet", "text": "**Step 4 — Reconstruct attack timeline:** First contact → exploitation → C2 → lateral movement → exfiltration. Minute-by-minute narrative."},
+          {"type": "bullet", "text": "**Step 5 — Extract IOCs:** All C2 IPs, domains, file hashes, URLs. Feed into threat intel for blocking and hunting."}
+        ],
+        "pills": [
+          {"text": "5-Step Process", "t": "r"},
+          {"text": "IOC Extraction", "t": "y"},
+          {"text": "Incident Report", "t": "o"}
+        ],
+        "time": "25 min · Wireshark University · SANS Network Forensics"
+      },
+      {
+        "type": "red",
+        "label": "Initial Triage",
+        "tag": "Step 1 & 2",
+        "method": "HOW — Rapid Triage Techniques",
+        "heading": "Initial Triage: __2 Minutes of Statistics__",
+        "body": [
+          {"type": "para", "text": "Before applying any filters, spend exactly 2 minutes on statistics. This gives you a complete traffic overview and prevents the tunnel-vision of jumping straight to filtering."},
+          {"type": "step", "num": "1", "text": "**Statistics → Protocol Hierarchy:** What protocols are present? Any unusual ones (Tor, IRC, unusual tunnels)? What percentage is each protocol?"},
+          {"type": "step", "num": "2", "text": "**Statistics → Conversations:** Top IP pairs by bytes. Any internal→external connections with massive data transfer? Potential exfiltration?"},
+          {"type": "step", "num": "3", "text": "**Statistics → Endpoints:** All unique IPs. Any internal IPs you do not recognise? New hosts that appeared post-compromise?"},
+          {"type": "step", "num": "4", "text": "**Statistics → I/O Graph:** Traffic spikes at specific times. Identify the exact moment the attack began — visible as a traffic pattern change."}
+        ],
+        "time": "20 min · Run full triage on 3 malware pcaps"
+      },
+      {
+        "type": "dark",
+        "label": "IOC Extraction",
+        "tag": "Evidence Collection",
+        "method": "HOW — Extracting Indicators of Compromise",
+        "heading": "IOC Extraction: __Document the Evidence__",
+        "body": [
+          {"type": "code", "text": "# In Wireshark — export HTTP objects (malware downloads):\nFile → Export Objects → HTTP\n# Hash all extracted files with sha256sum\n# Check hashes against VirusTotal"},
+          {"type": "code", "text": "# Extract unique external IPs from Zeek conn.log:\ncat conn.log | zeek-cut id.resp_h \\\n  | sort | uniq > external_ips.txt\n# Check each against VirusTotal, AbuseIPDB, Shodan"},
+          {"type": "code", "text": "# Extract all DNS queries from Zeek dns.log:\ncat dns.log | zeek-cut query \\\n  | sort | uniq > domains_queried.txt\n# Check against VirusTotal domain intel"},
+          {"type": "para", "text": "**Final IOC list format:** {type: 'ip', value: '45.33.32.156', source: 'conn.log', confidence: 'high'} — structured for import into MISP, OpenCTI, or your SIEM blocklist."}
+        ],
+        "time": "25 min · Extract and enrich IOCs from a malware pcap"
+      },
+      {
+        "type": "white",
+        "label": "Incident Report Writing",
+        "tag": "Communication",
+        "method": "HOW — Writing Professional Reports",
+        "heading": "Incident Report: __Communicate Your Findings__",
+        "body": [
+          {"type": "para", "text": "**DFIR report structure** — same format used by every major incident response firm:"},
+          {"type": "bullet", "text": "**Executive Summary:** 3–5 sentences. What happened, when, what was impacted, what was done. Non-technical management reads ONLY this."},
+          {"type": "bullet", "text": "**Timeline of Events:** Minute-by-minute attack narrative from first packet to last. Shows the attack progression."},
+          {"type": "bullet", "text": "**Technical Analysis:** Detailed findings with evidence — Wireshark screenshots, Zeek log excerpts, file hashes, PCAP references."},
+          {"type": "bullet", "text": "**IOC List:** All IPs, domains, file hashes, URLs, email addresses identified. Table format for easy import into security tools."},
+          {"type": "bullet", "text": "**Recommendations:** 3–5 specific, actionable remediation steps with priority levels."}
+        ],
+        "time": "25 min · Write a report for your Day 50 malware pcap analysis"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 52 Learning Targets",
+        "heading": "Day 52 Checklist",
+        "steps": [
+          "Apply the **5-step investigation framework** to a malware pcap — document each step",
+          "Run **all 4 Statistics views** in the first 2 minutes before any filtering — record findings",
+          "**Extract all IOCs** — unique external IPs, domains, file hashes from a malware pcap",
+          "Check extracted IOCs against **VirusTotal and AbuseIPDB** — enrich with threat intelligence",
+          "Write a **1-page incident report** with all 5 sections — this is a direct career skill builder"
+        ],
+        "time": "Total Day 52 Study Time: 120 – 150 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 52",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🔧 Tool", "name": "NetworkMiner — Free Network Forensics Tool", "url": "netresec.com/?page=NetworkMiner"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Network Forensics' Room (free)", "url": "tryhackme.com/room/networkforensics"},
+          {"label": "📺 Videos", "name": "SANS DFIR Summit — Free Recordings (YouTube)", "url": "youtube.com"},
+          {"label": "🧪 PCAPs", "name": "malware-traffic-analysis.net — With Answer Keys", "url": "malware-traffic-analysis.net"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 52",
+        "heading": "Your Hands-On __Task__ for Day 52",
+        "steps": [
+          "**Select** a malware pcap from malware-traffic-analysis.net — one you have not analysed before",
+          "**Apply** the 5-step framework — spend exactly 2 minutes on statistics before any filtering",
+          "**Extract** all IOCs — create a structured list with type, value, and confidence level",
+          "**Write** a 1-page incident report with all 5 sections — executive summary through recommendations"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 52",
+        "quote": "Practise writing incident reports. The ability to clearly communicate technical findings to non-technical management is what separates $60k from $90k+ security analysts. Technical skill alone is not enough.",
+        "sub": "The Executive Summary is the most important section of any incident report — and the hardest to write. A CTO or CEO will read only those 5 sentences and make resource allocation decisions based on them. Write it last, after you understand the full picture. Every word must earn its place: what happened, who was affected, what was done, what remains.",
+        "mistake": "Writing technical incident reports that only other security analysts can understand. Real incident reports serve multiple audiences: the executive summary for leadership, the technical analysis for your peers, the IOC list for security tools. Each section must be written for its specific audience. A report that only technical people can understand fails its primary purpose."
+      }
+    ]
+  },
+
+  {
+    "day": 53,
+    "cover": {
+      "title": "Python + Wireshark: __Parsing PCAPs__",
+      "hook": "Python meets Wireshark. Automate pcap analysis with Scapy and PyShark.",
+      "tags": ["#Python", "#PCAP", "#Day53of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Reading PCAPs with Scapy",
+        "tag": "Foundation",
+        "method": "WHAT — Programmatic Packet Analysis",
+        "heading": "Scapy: __Read Any PCAP__ Programmatically",
+        "body": [
+          {"type": "code", "text": "from scapy.all import rdpcap, IP, TCP, DNS, DNSQR\n\n# Load entire pcap into memory:\npackets = rdpcap('malware_capture.pcap')\nprint(f'Total packets: {len(packets)}')\n\n# Print summary of each packet:\nfor pkt in packets:\n    print(pkt.summary())"},
+          {"type": "code", "text": "# Filter for specific layer types:\ntcp_packets = [p for p in packets if p.haslayer(TCP)]\ndns_packets = [p for p in packets if p.haslayer(DNS)]\n\nprint(f'TCP packets: {len(tcp_packets)}')\nprint(f'DNS packets: {len(dns_packets)}')"},
+          {"type": "code", "text": "# Extract DNS queries (what domains were queried?):\nfor pkt in dns_packets:\n    if pkt.haslayer(DNSQR):  # DNS query record\n        domain = pkt[DNSQR].qname.decode('utf-8')\n        print(f'DNS Query: {domain}')"}
+        ],
+        "pills": [
+          {"text": "rdpcap", "t": "r"},
+          {"text": "PyShark", "t": "y"},
+          {"text": "Auto-Analyser", "t": "o"}
+        ],
+        "time": "25 min · scapy.net docs · realpython.com Scapy guide"
+      },
+      {
+        "type": "red",
+        "label": "PyShark for App-Layer Analysis",
+        "tag": "Advanced Parsing",
+        "method": "WHAT — PyShark Wireshark Dissectors in Python",
+        "heading": "PyShark: __Wireshark Dissectors__ in Python",
+        "body": [
+          {"type": "code", "text": "import pyshark\n# pip install pyshark  (requires Wireshark/tshark installed)\n\n# Load pcap with display filter:\ncap = pyshark.FileCapture(\n    'malware.pcap',\n    display_filter='http'\n)\n\nfor pkt in cap:\n    try:\n        src = pkt.ip.src\n        host = pkt.http.host\n        uri  = pkt.http.request_uri\n        ua   = pkt.http.user_agent\n        print(f'{src} → {host}{uri} [{ua}]')\n    except AttributeError:\n        pass  # Not all HTTP packets have all fields"},
+          {"type": "para", "text": "**PyShark vs Scapy:** PyShark uses Wireshark's dissectors — it understands every protocol Wireshark understands. Scapy is faster for raw packet manipulation. PyShark is better for application-layer analysis where you need fields like `http.user_agent` or `dns.qry.name`."}
+        ],
+        "time": "25 min · Build the PyShark HTTP analyser"
+      },
+      {
+        "type": "dark",
+        "label": "Automated PCAP Analyser",
+        "tag": "Automation Project",
+        "method": "HOW — Building an Automated Triage Script",
+        "heading": "Auto-Analyser: __30-Line Triage Script__",
+        "body": [
+          {"type": "code", "text": "import pyshark\nfrom collections import Counter\n\nblocklist = ['evil.com', 'malware.ru', 'c2-server.net']\n\ndef analyse_pcap(pcap_file):\n    cap = pyshark.FileCapture(pcap_file,\n                              display_filter='dns')\n    dns_queries = []\n    for pkt in cap:\n        try:\n            domain = pkt.dns.qry_name\n            dns_queries.append(domain)\n        except AttributeError:\n            pass\n    \n    # Count and find suspicious domains:\n    counter = Counter(dns_queries)\n    print('\\nTop 10 Queried Domains:')\n    for domain, count in counter.most_common(10):\n        flag = ' ⚠️ BLOCKLISTED' if domain in blocklist else ''\n        print(f'  {domain}: {count}{flag}')"}
+        ],
+        "time": "30 min · Build and test the auto-analyser against a malware pcap"
+      },
+      {
+        "type": "white",
+        "label": "IOC Auto-Extraction",
+        "tag": "IOC Pipeline",
+        "method": "HOW — Automated IOC Extraction",
+        "heading": "IOC Extraction: __Automated Pipeline__",
+        "body": [
+          {"type": "code", "text": "import pyshark, json\nfrom datetime import datetime\n\ndef extract_iocs(pcap_file):\n    iocs = {'ips': set(), 'domains': set(),\n            'urls': set(), 'user_agents': set()}\n    \n    # Extract IPs from all packets:\n    for pkt in pyshark.FileCapture(pcap_file):\n        try:\n            iocs['ips'].add(pkt.ip.dst)\n        except: pass\n    \n    # Extract DNS domains:\n    for pkt in pyshark.FileCapture(pcap_file,\n                                   display_filter='dns'):\n        try:\n            iocs['domains'].add(pkt.dns.qry_name)\n        except: pass\n    \n    # Convert sets to sorted lists for JSON export:\n    output = {k: sorted(v) for k, v in iocs.items()}\n    output['timestamp'] = datetime.now().isoformat()\n    \n    with open('iocs.json', 'w') as f:\n        json.dump(output, f, indent=2)\n    return output"}
+        ],
+        "time": "20 min · Run IOC extraction and feed results into VirusTotal API"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 53 Learning Targets",
+        "heading": "Day 53 Checklist",
+        "steps": [
+          "Use **Scapy rdpcap()** to load a pcap and count total packets by protocol type",
+          "Use **PyShark** to extract all HTTP host headers and URIs from a malware pcap",
+          "Build the **auto-analyser** — DNS query counter with blocklist matching",
+          "Build the **IOC extraction pipeline** — output all IPs, domains, URLs to a JSON file",
+          "Feed extracted IOCs into your **VirusTotal API script** from Day 39 — automate enrichment"
+        ],
+        "time": "Total Day 53 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 53",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Official", "name": "Scapy Documentation — rdpcap and Packet Analysis", "url": "scapy.net/doc"},
+          {"label": "📦 Library", "name": "PyShark — Python Wrapper for Wireshark (GitHub)", "url": "github.com/KimiNewt/pyshark"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Python for Pentesters' Room (free)", "url": "tryhackme.com/room/pythonforcybersecurity"},
+          {"label": "📖 Guide", "name": "Real Python — Scapy for Python Guide", "url": "realpython.com/python-scapy"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 53",
+        "heading": "Your Hands-On __Task__ for Day 53",
+        "steps": [
+          "**Load** a malware pcap with Scapy rdpcap() — count packets per protocol type",
+          "**Build** the PyShark analyser — extract all DNS queries and HTTP user agents",
+          "**Check** each domain against your 5-entry blocklist — print ALERT for matches",
+          "**Export** all IOCs to iocs.json — feed to VirusTotal API from Day 39 for enrichment"
+        ],
+        "time": "Hands-On Task: 60 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 53",
+        "quote": "Combining Python with pcap analysis means automated malware traffic analysis. This is what SIEM products like Splunk do internally. Understanding the foundation makes you a better security engineer at every level.",
+        "sub": "The combination of Zeek logs + Python analysis is extremely powerful. Zeek processes the raw pcap into structured TSV logs. Python reads those logs with pandas, applies analysis logic, enriches with threat intel APIs, and generates reports. This pipeline processes millions of packets in seconds — no GUI required, fully automatable, infinitely scalable.",
+        "mistake": "Processing large pcap files by loading them entirely into RAM with rdpcap(). A 1GB pcap will consume several GB of RAM when loaded into Scapy. For large files, use Scapy's PcapReader as an iterator: `with PcapReader('large.pcap') as reader: for pkt in reader:` — this processes one packet at a time and never loads the full file into memory."
+      }
+    ]
+  },
+
+  {
+    "day": 54,
+    "cover": {
+      "title": "Security Onion: __Open Source NDR Platform__",
+      "hook": "Security Onion is a free enterprise network monitoring platform. Install it today.",
+      "tags": ["#SecurityOnion", "#NDR", "#Day54of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Security Onion?",
+        "tag": "Foundation",
+        "method": "WHAT — Security Onion Platform",
+        "heading": "Security Onion: __Free Enterprise SIEM__",
+        "body": [
+          {"type": "para", "text": "**Security Onion** is a free, open-source Linux distribution for threat hunting, enterprise security monitoring, and log management. It bundles a complete security operations stack into a single ISO — eliminating the need to configure each tool individually."},
+          {"type": "bullet", "text": "**Detection:** Suricata IDS — alerts on known attack signatures with ATT&CK mapping"},
+          {"type": "bullet", "text": "**Traffic Analysis:** Zeek NSM — structured logs for every network event"},
+          {"type": "bullet", "text": "**Storage & Search:** Elasticsearch + Kibana — search billions of events instantly"},
+          {"type": "bullet", "text": "**Forensics:** CyberChef built-in — decode, decrypt, analyse artefacts in browser"},
+          {"type": "bullet", "text": "**Case Management:** Built-in ticketing for tracking incidents"},
+          {"type": "para", "text": "**Cost:** $0. This exact stack is used in real enterprise SOC environments. 'Security Onion' on a resume is an immediate signal of operational experience."}
+        ],
+        "pills": [
+          {"text": "Zeek + Suricata", "t": "r"},
+          {"text": "Elasticsearch", "t": "y"},
+          {"text": "ATT&CK", "t": "o"}
+        ],
+        "time": "20 min · securityonionsolutions.com/docs"
+      },
+      {
+        "type": "red",
+        "label": "Setup & Installation",
+        "tag": "Installation",
+        "method": "HOW — Setting Up Security Onion",
+        "heading": "Security Onion __Setup__: Home Lab",
+        "body": [
+          {"type": "step", "num": "1", "text": "**Download ISO** from securityonionsolutions.com — Security Onion 2.4 (latest). File size approximately 6GB."},
+          {"type": "step", "num": "2", "text": "**Create VM:** Minimum 4GB RAM (8GB recommended), 80GB disk, 2 CPUs. Add two NICs: one for management (NAT), one for monitoring (Host-Only or promiscuous mode)."},
+          {"type": "step", "num": "3", "text": "**Boot from ISO** → follow setup wizard → choose 'Standalone' mode for home lab → set admin credentials → wait approximately 45 minutes for full installation."},
+          {"type": "step", "num": "4", "text": "**Access web UI** at https://localhost (or VM IP) → login with credentials set during install → you are now looking at a full enterprise SOC platform."}
+        ],
+        "time": "45–60 min · securityonionsolutions.com — download and install"
+      },
+      {
+        "type": "dark",
+        "label": "Alerts & Hunt Module",
+        "tag": "Core Features",
+        "method": "WHAT — Using Security Onion's Core Features",
+        "heading": "Alerts & Hunt: __Point-and-Click Investigation__",
+        "body": [
+          {"type": "para", "text": "**Alerts view:** Shows all Suricata detections with severity levels, source/destination IPs, ATT&CK technique mappings, and one-click pivot to the raw packet that triggered the alert. Every alert is a case you can track."},
+          {"type": "para", "text": "**Hunt module:** Query all data by IP, domain, hash, or any field across Zeek and Suricata logs simultaneously. No SIEM query language required — point-and-click pivoting between related evidence. Find all connections to a suspicious IP, all DNS queries for a domain, all files with a hash."},
+          {"type": "para", "text": "**PCAP import:** Security Onion supports direct pcap import through the interface. Upload any malware pcap → it processes through Zeek and Suricata automatically → all findings appear in Alerts and Hunt within minutes."}
+        ],
+        "time": "20 min · Import a malware pcap and explore the alerts"
+      },
+      {
+        "type": "white",
+        "label": "MITRE ATT&CK Integration",
+        "tag": "ATT&CK Mapping",
+        "method": "WHAT — ATT&CK Framework in Security Onion",
+        "heading": "ATT&CK Integration: __Know Your Coverage__",
+        "body": [
+          {"type": "para", "text": "**Every Suricata alert in Security Onion is mapped to a MITRE ATT&CK technique.** When an alert fires, you can immediately see: which tactic, which technique, and how it fits in the overall attack kill chain."},
+          {"type": "para", "text": "**ATT&CK Navigator view** shows your detection coverage as a heatmap overlaid on the full ATT&CK matrix. Green cells = you have detection for that technique. Empty cells = detection gaps where an attacker could operate undetected."},
+          {"type": "para", "text": "**Professional value:** Being able to say 'our Suricata ruleset covers 67% of ATT&CK techniques in the Initial Access and Execution tactics' is exactly the kind of metric security leadership wants to see. Security Onion makes this measurable."}
+        ],
+        "time": "15 min · View the ATT&CK coverage map in Security Onion"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 54 Learning Targets",
+        "heading": "Day 54 Checklist",
+        "steps": [
+          "**Install Security Onion** standalone in VirtualBox — minimum 4GB RAM, 80GB disk",
+          "**Import a malware pcap** using the pcap import feature in the web UI",
+          "**Navigate to Alerts** — count how many Suricata detections fired — note the top 3 rule names",
+          "**Click one alert** → pivot to the raw PCAP evidence — verify the detection makes sense",
+          "**Use Hunt module** to search for the C2 IP across all log sources simultaneously"
+        ],
+        "time": "Total Day 54 Study Time: 120 – 180 minutes (installation day)"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 54",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Official", "name": "Security Onion — Official Documentation", "url": "securityonionsolutions.com/docs"},
+          {"label": "📺 Videos", "name": "Security Onion Solutions — YouTube Channel", "url": "youtube.com/@securityonionsolutions"},
+          {"label": "💾 Download", "name": "Security Onion — Free ISO Download", "url": "securityonionsolutions.com"},
+          {"label": "🎓 Course", "name": "SANS SEC503 — Network Forensics (uses Security Onion)", "url": "sans.org/courses/intrusion-detection-in-depth"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 54",
+        "heading": "Your Hands-On __Task__ for Day 54",
+        "steps": [
+          "**Download** Security Onion ISO from securityonionsolutions.com — start the VirtualBox install",
+          "**While installing** (45 min wait) — review the Security Onion YouTube channel for feature overview",
+          "**After install** — import a malware pcap — navigate to Alerts — count detections",
+          "**Click one alert** — note the ATT&CK technique mapping — pivot to raw PCAP — document the finding"
+        ],
+        "time": "Hands-On Task: 90 – 150 minutes (includes installation time)"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 54",
+        "quote": "Security Onion on your resume is immediately impressive to enterprise SOC hiring managers. It shows enterprise-class monitoring knowledge that most candidates only claim theoretically.",
+        "sub": "Security Onion's pcap import feature is the fastest way to demonstrate the full Zeek + Suricata pipeline to a hiring manager during an interview. Upload a malware pcap, show Suricata alerts firing with ATT&CK mappings, pivot to Zeek conn.log for context, show the raw packet evidence. That 5-minute demo replaces an hour of explaining.",
+        "mistake": "Trying to run Security Onion with less than 4GB RAM. Security Onion runs Elasticsearch, Zeek, Suricata, Kibana, and several other services simultaneously. Below 4GB, the system will swap constantly and become unusable. Use 8GB if possible. If RAM is limited, use Security Onion's import mode (pcap analysis only) instead of live capture mode."
+      }
+    ]
+  },
+
+  {
+    "day": 55,
+    "cover": {
+      "title": "Network __Threat Hunting__ Techniques",
+      "hook": "Threat hunters do not wait for alerts. They go looking for hidden attackers. Here is how.",
+      "tags": ["#ThreatHunting", "#ATTACKFramework", "#Day55of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Threat Hunting?",
+        "tag": "Foundation",
+        "method": "WHAT — Threat Hunting Explained",
+        "heading": "Threat Hunting: __Proactive, Not Reactive__",
+        "body": [
+          {"type": "para", "text": "**Threat hunting** is a proactive, analyst-driven search for threats that have already bypassed automated detection. The core assumption is: 'We have already been breached somewhere — where is the attacker hiding?'"},
+          {"type": "para", "text": "**Reactive vs Proactive:** A SOC analyst waits for alerts to come to them — that is reactive. A threat hunter generates hypotheses, collects data, and searches for evidence — that is proactive. Same skills, different mindset."},
+          {"type": "para", "text": "**Why it exists:** Advanced attackers specifically design their tools and techniques to evade automated detection. Signature-based IDS misses what it has never seen. A skilled human analyst hunting with the right data catches what automation cannot."}
+        ],
+        "pills": [
+          {"text": "Hypothesis", "t": "r"},
+          {"text": "ATT&CK", "t": "y"},
+          {"text": "Long-Tail", "t": "o"}
+        ],
+        "time": "20 min · SANS Threat Hunting free intro · attack.mitre.org"
+      },
+      {
+        "type": "red",
+        "label": "Hypothesis-Based Hunting",
+        "tag": "Methodology",
+        "method": "HOW — Hypothesis-Driven Investigation",
+        "heading": "Hypothesis Hunting: __ATT&CK → Evidence__",
+        "body": [
+          {"type": "para", "text": "**The structured process:** MITRE ATT&CK technique → form a hypothesis → identify what network evidence would confirm it → collect that data → analyse → confirm or deny. Structured curiosity, not random searching."},
+          {"type": "bullet", "text": "**Technique:** T1071 (Application Layer Protocol) — adversaries use standard protocols (HTTP, DNS, SMTP) for C2 to blend in with normal traffic."},
+          {"type": "bullet", "text": "**Hypothesis:** 'Is there malware using HTTP beaconing to a C2 server, blending in with normal web traffic?'"},
+          {"type": "bullet", "text": "**Evidence to collect:** HTTP connections to unusual destinations at regular intervals, unusual User-Agent strings, small regular HTTP POST requests."},
+          {"type": "bullet", "text": "**Filter to apply:** `http.request.method==POST && http.content_length < 100` — small regular POSTs from internal hosts to external IPs."},
+          {"type": "para", "text": "**Result:** Either you confirm the hypothesis (found the threat) or deny it (confirmed that specific technique is not present) — both are valuable outcomes."}
+        ],
+        "time": "25 min · attack.mitre.org — explore the Lateral Movement tactic"
+      },
+      {
+        "type": "dark",
+        "label": "Baseline Deviation Hunting",
+        "tag": "Technique",
+        "method": "HOW — Finding Anomalies Against Baselines",
+        "heading": "Baseline Deviation: __Spot What Changed__",
+        "body": [
+          {"type": "para", "text": "**Know normal to spot abnormal.** Establish baselines for your environment — normal DNS query rate per host, normal number of external connections, normal protocols in use, normal working hours traffic patterns."},
+          {"type": "code", "text": "# In Zeek conn.log analysis with Python/Pandas:\n# Normal: each workstation makes ~50 external connections/hour\n# Anomaly: one workstation making 5000/hour\n# = possible beaconing, DGA, or exfiltration in progress"},
+          {"type": "code", "text": "# DNS baseline example:\n# Normal: 5 DNS queries per minute per host\n# Anomaly: 500 queries per minute = DGA malware or DNS tunnel\n# Action: filter dns.flags.rcode==3 for that host\n#         — look for NXDomain flood pattern"},
+          {"type": "para", "text": "**Statistical threshold:** Flag any value beyond 2 standard deviations from the mean as worthy of investigation. Not every anomaly is malicious — but every attack IS anomalous relative to baseline."}
+        ],
+        "time": "20 min · Establish and document baselines from your own captures"
+      },
+      {
+        "type": "white",
+        "label": "Long-Tail Analysis",
+        "tag": "Advanced Technique",
+        "method": "HOW — Finding Rare Events",
+        "heading": "Long-Tail Analysis: __Hunt in the Rare Events__",
+        "body": [
+          {"type": "para", "text": "**The long-tail principle:** In any large dataset, the most common events are almost certainly benign — thousands of hosts make the same DNS queries, visit the same websites, use the same applications. The rare, unique events are where attackers hide."},
+          {"type": "code", "text": "# Long-tail analysis with Zeek + Linux tools:\n# Find LEAST common external IPs (attackers hide here):\ncat conn.log | zeek-cut id.resp_h \\\n  | sort | uniq -c | sort -n | head -20\n# The IPs at the TOP (smallest count) = investigate first"},
+          {"type": "code", "text": "# Rarest User-Agents (malware blends in poorly):\ncat http.log | zeek-cut user_agent \\\n  | sort | uniq -c | sort -n | head -10\n# Agents appearing only once = immediate investigation"},
+          {"type": "para", "text": "**Why it works:** Your standard browser connects to the same CDNs, ad networks, and analytics services as thousands of other machines — generating massive frequency counts. Malware C2 traffic is unique — appears only in the rarest events."}
+        ],
+        "time": "20 min · Run long-tail analysis on a Zeek conn.log"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 55 Learning Targets",
+        "heading": "Day 55 Checklist",
+        "steps": [
+          "Pick **3 ATT&CK techniques** from the Lateral Movement tactic — write a hunting hypothesis for each",
+          "Identify **what network evidence** would confirm or deny each hypothesis",
+          "Write a **Wireshark filter or Zeek query** for each hypothesis",
+          "Run **long-tail analysis** on a Zeek conn.log — identify the rarest external IPs and User-Agents",
+          "Understand the **PEAK framework** (Prepare, Execute, Act, Knowledge) — the interview answer for hunting methodology"
+        ],
+        "time": "Total Day 55 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 55",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🎯 Framework", "name": "MITRE ATT&CK Navigator — Free ATT&CK Visualisation", "url": "attack.mitre.org"},
+          {"label": "📖 Framework", "name": "TaHiTI — Threat Hunting Methodology (free PDF)", "url": "betaalvereniging.nl/en/safety/tahiti"},
+          {"label": "📄 Poster", "name": "SANS Threat Hunting Poster (free PDF)", "url": "sans.org/posters"},
+          {"label": "🛠️ Tool", "name": "HELK — Hunting ELK Project (GitHub, free)", "url": "github.com/Cyb3rWard0g/HELK"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 55",
+        "heading": "Your Hands-On __Task__ for Day 55",
+        "steps": [
+          "**Visit** attack.mitre.org → Lateral Movement tactic → pick 3 techniques",
+          "**Write** a hunting hypothesis for each: 'Is [technique] present in my network traffic?'",
+          "**Write** a Wireshark display filter OR Zeek query that would detect evidence of each",
+          "**Run** long-tail analysis on a Zeek conn.log — document the 5 rarest external IPs and investigate each"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 55",
+        "quote": "Threat hunting roles pay 20–40% more than reactive SOC analyst roles. Same skills, applied proactively instead of reactively. The career ceiling is dramatically higher.",
+        "sub": "The PEAK framework is the interview answer for 'explain your hunting methodology': Prepare (define scope, collect data, identify data sources) → Execute (run the hunt, analyse data) → Act on findings (document, escalate, remediate, create detections from confirmed threats) → Knowledge (update baselines, share findings with team). Four words that demonstrate operational maturity.",
+        "mistake": "Hunting without a documented hypothesis. Random data exploration occasionally finds threats by luck — but it is not repeatable, not scalable, and cannot be taught. Hypothesis-driven hunting produces documented, reproducible processes that can be refined over time. If you cannot write down your hypothesis before starting, you are not hunting — you are browsing."
+      }
+    ]
+  },
+
+  {
+    "day": 56,
+    "cover": {
+      "title": "Traffic Analysis __Phase Recap__ & Certification Path",
+      "hook": "Traffic Analysis phase complete. You are a packet-reading, threat-hunting analyst.",
+      "tags": ["#TrafficAnalysis", "#Recap", "#Day56of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Phase 5 Recap",
+        "tag": "Summary",
+        "method": "WHAT — 14 Days of Traffic Analysis",
+        "heading": "14 Days of Traffic Analysis: __Everything Covered__",
+        "body": [
+          {"type": "bullet", "text": "**Days 43–44:** Wireshark setup, interface navigation, capture vs display filters, Follow Stream, Statistics"},
+          {"type": "bullet", "text": "**Days 45–46:** TCP/IP deep dive (handshake, flags, scans), DNS analysis, DNS tunneling, DGA detection"},
+          {"type": "bullet", "text": "**Days 47–48:** HTTP/HTTPS analysis, web attack detection, HTTPS decryption, tcpdump CLI capture"},
+          {"type": "bullet", "text": "**Days 49–50:** Suricata IDS rule writing, malware traffic patterns (C2, beaconing, DGA, lateral movement)"},
+          {"type": "bullet", "text": "**Days 51–52:** Zeek NSM log analysis, 5-step investigation framework, IOC extraction, incident reporting"},
+          {"type": "bullet", "text": "**Days 53–54:** Python pcap automation (Scapy + PyShark), Security Onion enterprise platform"},
+          {"type": "bullet", "text": "**Day 55:** Network threat hunting methodology, ATT&CK-based hypotheses, long-tail analysis"}
+        ],
+        "pills": [
+          {"text": "Wireshark", "t": "r"},
+          {"text": "Zeek + Suricata", "t": "y"},
+          {"text": "Next: Git", "t": "o"}
+        ],
+        "time": "30 min · Review all 14 days of notes"
+      },
+      {
+        "type": "red",
+        "label": "Traffic Analysis Certifications",
+        "tag": "Career Path",
+        "method": "WHAT — Relevant Certifications",
+        "heading": "Relevant __Certifications__ for Your Skills",
+        "body": [
+          {"type": "bullet", "text": "**CompTIA CySA+** — directly tests traffic analysis, IDS/IPS management, threat hunting, and incident response. Everything from this phase is exam content. Moderate difficulty."},
+          {"type": "bullet", "text": "**GIAC GCIA (Intrusion Analyst)** — the network forensics gold standard. Heavy focus on pcap analysis, Zeek, Suricata, and IDS tuning. Premium certification, respected by SOC leadership."},
+          {"type": "bullet", "text": "**Wireshark Certified Network Analyst (WCNA)** — vendor-neutral Wireshark certification. Validates the skills from Days 43–47 specifically. Good for network-focused roles."},
+          {"type": "bullet", "text": "**GIAC GNFA (Network Forensic Analyst)** — specialises in network forensics investigation — exactly the workflow from Day 52. Premium, rare, highly valued in DFIR roles."}
+        ],
+        "time": "15 min · Compare certification requirements at giac.org"
+      },
+      {
+        "type": "dark",
+        "label": "Career Paths",
+        "tag": "Career Options",
+        "method": "WHAT — Jobs Using Traffic Analysis",
+        "heading": "Career Paths: __Traffic Analysis Skills Pay__",
+        "body": [
+          {"type": "bullet", "text": "**SOC Analyst (Tier 1–3):** Daily pcap analysis, Suricata alert triage, Zeek log investigation. Entry level uses all skills from this phase. $55–85k range depending on tier."},
+          {"type": "bullet", "text": "**Threat Hunter:** Proactive ATT&CK-based hunting as a full-time role. Uses everything from Day 55 daily. Senior role, $90–130k+ range."},
+          {"type": "bullet", "text": "**Incident Responder:** Network forensics is a core DFIR skill. The 5-step framework from Day 52 is the daily job. $80–120k+ range."},
+          {"type": "bullet", "text": "**Network Security Engineer:** Designs and tunes IDS/IPS systems. Writes custom Suricata rules. Deploys Zeek and Security Onion. $90–130k+ range."},
+          {"type": "bullet", "text": "**Malware Analyst:** Network traffic analysis combined with reverse engineering. Uses Wireshark + Zeek to understand malware behaviour. $85–130k+ range."}
+        ],
+        "time": "15 min · Research job descriptions on LinkedIn for each role"
+      },
+      {
+        "type": "white",
+        "label": "Traffic Analysis Portfolio",
+        "tag": "Portfolio",
+        "method": "HOW — Building Your Portfolio",
+        "heading": "Your Traffic Analysis __Portfolio__",
+        "steps": [
+          "**Document 5 malware pcap investigations** as case study reports — Markdown format, professional quality",
+          "**Include** for each: attack timeline, C2 domain identified, malware family, MITRE ATT&CK mapping, Wireshark screenshots",
+          "**Upload** all 5 reports to GitHub in a `network-forensics` repository with a professional README",
+          "**Tag** the repository: `network-forensics`, `wireshark`, `malware-analysis`, `zeek`, `suricata`",
+          "**Link** your portfolio from LinkedIn and your resume — employers search GitHub for this exact content"
+        ],
+        "time": "45 min · Create the GitHub portfolio repository today"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 56 Learning Targets",
+        "heading": "Day 56 Checklist",
+        "steps": [
+          "**Rate your skills** honestly: Wireshark, tcpdump, Suricata, Zeek, Python pcap — Beginner/Intermediate/Advanced",
+          "Write **3 malware analysis reports** from malware-traffic-analysis.net — formatted as Markdown",
+          "Create a **GitHub repository** for your traffic analysis portfolio — upload all reports",
+          "Research **GCIA and CySA+ exam content** — identify how much of this phase appears on each exam",
+          "Install **Wireshark on every device you own** — analysing your own traffic daily builds intuition faster than any course"
+        ],
+        "time": "Total Day 56 Study Time: 120 – 150 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Practice",
+        "tag": "Ongoing Resources",
+        "method": "WHERE — Keep Practising After Day 56",
+        "heading": "Practice Resources to __Bookmark Forever__",
+        "resources": [
+          {"label": "🧪 PCAPs", "name": "malware-traffic-analysis.net — New exercises weekly", "url": "malware-traffic-analysis.net"},
+          {"label": "🧪 PCAPs", "name": "PacketLife.net — Sample packet captures by protocol", "url": "packetlife.net/captures"},
+          {"label": "🏆 Challenges", "name": "HackTheBox Sherlocks — DFIR Challenges (free tier)", "url": "hackthebox.com/sherlocks"},
+          {"label": "🔬 Sandbox", "name": "Any.run — Interactive Malware Analysis with PCAPs", "url": "any.run"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Complete",
+        "method": "HOW — Step-by-Step for Day 56",
+        "heading": "Your __Final Traffic Analysis__ Task",
+        "steps": [
+          "**Write** analysis reports for 3 malware pcaps — use the 5-step framework from Day 52",
+          "**Format** as professional Markdown with IOC tables, screenshots, ATT&CK technique references",
+          "**Create** GitHub repo `network-forensics` — upload all reports with a clear README",
+          "**Install** Wireshark on your personal machine — start capturing your daily traffic for passive learning"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes"
+      },
+      {
+        "type": "stats",
+        "label": "Phase 5 Complete",
+        "tag": "Progress Stats",
+        "method": "WHY — The Value of Phase 5",
+        "heading": "Phase 5 __Complete__ — Your Progress",
+        "stats": [
+          {"value": "56", "label": "Days of consistent learning completed"},
+          {"value": "7+", "label": "Traffic analysis tools mastered: Wireshark, Zeek, Suricata, tcpdump, Security Onion, PyShark, Scapy"},
+          {"value": "5+", "label": "Malware pcap investigations documented as portfolio reports"},
+          {"value": "34", "label": "Days remaining — Git and advanced topics start tomorrow"}
+        ]
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 56",
+        "quote": "Security+ plus Wireshark skills plus Python automation equals the top 10% of entry-level candidates. Most applicants have the cert. Almost none have demonstrated practical skills backed by GitHub evidence.",
+        "sub": "Keep practising malware pcap analysis after Day 56 — at least one pcap per week from malware-traffic-analysis.net. Wireshark intuition compounds over time in a way that is impossible to rush. The analyst who has seen 200 malware pcaps recognises attack patterns in seconds. That pattern recognition is the career-defining skill.",
+        "mistake": "Stopping traffic analysis practice after Day 56. Unlike knowledge-based skills that can be memorised, pcap analysis is a perceptual skill — like reading music or recognising chess patterns. It requires thousands of hours of practice to become truly fast and accurate. Keep practising beyond this phase and your skills will compound dramatically over the next 12 months."
+      }
+    ]
+  }
+]

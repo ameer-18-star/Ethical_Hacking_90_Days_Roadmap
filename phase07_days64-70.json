@@ -1,0 +1,870 @@
+[
+  {
+    "day": 64,
+    "cover": {
+      "title": "ELK Stack Introduction & __Architecture__",
+      "hook": "The world's most popular open-source SIEM costs $0. ELK Stack week starts now.",
+      "tags": ["#ELKStack", "#SIEM", "#Day64of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is the ELK Stack?",
+        "tag": "Foundation",
+        "method": "WHAT — ELK Stack Explained",
+        "heading": "ELK Stack: __Free Enterprise SIEM__",
+        "body": [
+          {"type": "para", "text": "**ELK Stack** = Elasticsearch (search + storage) + Logstash (ingestion + parsing) + Kibana (visualisation + dashboards). Now called the **Elastic Stack** with the addition of Beats (lightweight log shippers). Used by Netflix, Uber, LinkedIn, and thousands of enterprise SOC teams worldwide."},
+          {"type": "para", "text": "**Why ELK for security:** It is the most widely deployed open-source SIEM on the planet. ELK appears in 60%+ of SOC analyst job postings. Learning it on a home lab gives you the exact operational experience enterprise roles require — at zero cost."},
+          {"type": "para", "text": "**Elastic Security** — the built-in SIEM app inside Kibana — includes 2,000+ pre-built MITRE ATT&CK-aligned detection rules, endpoint detection, case management, and timeline investigation. All included in the free basic tier."}
+        ],
+        "pills": [
+          {"text": "Elasticsearch", "t": "r"},
+          {"text": "Logstash", "t": "y"},
+          {"text": "Kibana", "t": "o"}
+        ],
+        "time": "20 min · logz.io/learn/complete-elk-stack-tutorial"
+      },
+      {
+        "type": "red",
+        "label": "Data Flow Architecture",
+        "tag": "Architecture",
+        "method": "WHAT — How Data Flows Through ELK",
+        "heading": "Data Flow: __Log Source to Dashboard__",
+        "body": [
+          {"type": "bullet", "text": "**Step 1 — Log Source:** Linux server, Windows host, firewall, web server, or any device generating logs — the raw data origin."},
+          {"type": "bullet", "text": "**Step 2 — Filebeat Agent:** Ultra-lightweight log shipper installed on the source. Reads log files and ships them to Logstash or directly to Elasticsearch. Uses ~50MB RAM."},
+          {"type": "bullet", "text": "**Step 3 — Logstash:** Receives raw logs, parses unstructured text into named fields using grok patterns, enriches with GeoIP, and forwards structured JSON to Elasticsearch."},
+          {"type": "bullet", "text": "**Step 4 — Elasticsearch:** Distributed search engine that indexes and stores all structured log documents. Every field is instantly searchable. Scales from one node to thousands."},
+          {"type": "bullet", "text": "**Step 5 — Kibana:** Visualisation and investigation layer. Dashboards, KQL queries, detection rules, alert management, timeline investigations, and case management all live here."}
+        ],
+        "time": "20 min · elastic.co/learn — free official ELK courses"
+      },
+      {
+        "type": "dark",
+        "label": "Elasticsearch Basics",
+        "tag": "Core Component",
+        "method": "WHAT — Elasticsearch Fundamentals",
+        "heading": "Elasticsearch: __Every Log Instantly Searchable__",
+        "body": [
+          {"type": "para", "text": "**Elasticsearch** is a distributed search engine built on Apache Lucene. All data is stored as JSON documents inside indices. Every operation uses a REST API — every query, every index operation, every configuration change is an HTTP call."},
+          {"type": "code", "text": "# Check cluster health:\ncurl http://localhost:9200/_cluster/health\n\n# List all indices:\ncurl http://localhost:9200/_cat/indices?v\n\n# Search all log indices:\ncurl http://localhost:9200/logs-*/_search\n\n# Count documents in an index:\ncurl http://localhost:9200/ssh-auth-logs/_count"},
+          {"type": "para", "text": "**Index naming convention:** Use date suffixes — `security-logs-2026.04.23`. Daily rotation keeps search performance high and enables easy data retention policies. Old indices are deleted automatically based on age."}
+        ],
+        "time": "20 min · elastic.co/guide/en/elasticsearch/reference/current"
+      },
+      {
+        "type": "white",
+        "label": "Installation Options",
+        "tag": "Setup",
+        "method": "HOW — Getting ELK Running",
+        "heading": "Installation: __3 Ways to Run ELK__",
+        "body": [
+          {"type": "step", "num": "1", "text": "**Docker Compose (recommended for home lab):** Single command starts the entire stack. Clone elastic/stack-docker from GitHub → `docker-compose up` → Kibana at localhost:5601 in 3 minutes. Requires 6–8GB RAM allocated to Docker."},
+          {"type": "step", "num": "2", "text": "**Elastic Cloud free trial:** 14-day fully managed cloud deployment. No local setup required. Ideal for testing without RAM constraints. Perfect if your machine has less than 8GB RAM."},
+          {"type": "step", "num": "3", "text": "**Manual VM install:** Install each component separately on a dedicated Ubuntu VM. Most learning value — you understand every configuration file. Requires 8GB+ RAM and 50GB+ disk."}
+        ],
+        "note": "**Minimum for home lab:** 8GB total RAM. Set Docker Desktop memory limit to at least 6GB. Less than that causes Elasticsearch to crash silently with no error message.",
+        "time": "45–60 min · Install ELK via Docker Compose today"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 64 Learning Targets",
+        "heading": "Day 64 Checklist",
+        "steps": [
+          "**Install ELK** via Docker Compose — clone elastic/stack-docker → `docker-compose up`",
+          "**Open Kibana** at localhost:5601 — log in with elastic/changeme — explore the interface",
+          "**Navigate** to the Security app in Kibana — note the Alerts, Rules, and Cases sections",
+          "**Check** Elasticsearch is running: `curl http://localhost:9200` — should return cluster info JSON",
+          "Understand the **5-step data flow** — log source → Filebeat → Logstash → Elasticsearch → Kibana"
+        ],
+        "time": "Total Day 64 Study Time: 120 – 150 minutes (installation day)"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 64",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Guide", "name": "Logz.io — Complete ELK Stack Tutorial (free)", "url": "logz.io/learn/complete-elk-stack-tutorial"},
+          {"label": "🎓 Courses", "name": "Elastic — Free Official Training Courses", "url": "elastic.co/learn"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'ELK 101' Room (free)", "url": "tryhackme.com/room/investigatingwithelk101"},
+          {"label": "🐳 Docker", "name": "elastic/stack-docker — Official Docker Compose Setup", "url": "github.com/elastic/stack-docker"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 64",
+        "heading": "Your Hands-On __Task__ for Day 64",
+        "steps": [
+          "**Clone** elastic/stack-docker from GitHub → run `docker-compose up -d` → wait 3 minutes",
+          "**Open** localhost:5601 in browser → log in → screenshot your running Kibana home screen",
+          "**Navigate** Security → Detections → Rules — count how many pre-built rules are available",
+          "**Run** `curl http://localhost:9200/_cat/indices?v` — see the default indices created by ELK"
+        ],
+        "time": "Hands-On Task: 90 – 120 minutes (includes installation)"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 64",
+        "quote": "Being able to say 'I built and operated a home ELK SIEM, ingested real logs, created detection rules, and investigated simulated incidents' is a genuine differentiator at the entry level — not theoretical knowledge.",
+        "sub": "ELK, Splunk, and Microsoft Sentinel are the three SIEMs that appear in 90% of SOC job descriptions. You are learning ELK this week. Splunk free training is at trailhead.splunk.com. Sentinel has free sandbox labs at learn.microsoft.com. Complete all three and you cover the entire enterprise SIEM market — a combination almost no entry-level candidate has.",
+        "mistake": "Starting ELK with less than 8GB RAM allocated to Docker. Elasticsearch requires significant memory — it will start without error, appear to run normally, then crash silently when it runs out of heap space. Always set Docker Desktop memory limit to at least 6GB before starting. Check with `docker stats` after startup to verify Elasticsearch is stable."
+      }
+    ]
+  },
+
+  {
+    "day": 65,
+    "cover": {
+      "title": "Logstash Pipelines & __Log Ingestion__",
+      "hook": "Raw logs in. Structured intelligence out. Logstash is the pipeline that makes it happen.",
+      "tags": ["#Logstash", "#LogIngestion", "#Day65of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Logstash Pipeline Structure",
+        "tag": "Foundation",
+        "method": "WHAT — How Logstash Pipelines Work",
+        "heading": "Logstash Pipeline: __Input → Filter → Output__",
+        "body": [
+          {"type": "para", "text": "Every Logstash pipeline has exactly three sections: **input** (where data comes from), **filter** (parse, transform, enrich), and **output** (where enriched data goes). Config files live in `/etc/logstash/conf.d/` and are automatically loaded on startup."},
+          {"type": "code", "text": "# Basic pipeline structure:\ninput {\n  file {\n    path => \"/var/log/auth.log\"\n    start_position => \"beginning\"\n    sincedb_path => \"/dev/null\"  # Re-read from start\n  }\n}\n\nfilter {\n  # Parse, transform, enrich here\n}\n\noutput {\n  elasticsearch {\n    hosts => [\"localhost:9200\"]\n    index => \"ssh-auth-logs-%{+YYYY.MM.dd}\"\n  }\n}"}
+        ],
+        "pills": [
+          {"text": "grok", "t": "r"},
+          {"text": "GeoIP", "t": "y"},
+          {"text": "mutate", "t": "o"}
+        ],
+        "time": "20 min · elastic.co/guide/en/logstash/current"
+      },
+      {
+        "type": "red",
+        "label": "Input Plugins",
+        "tag": "Data Sources",
+        "method": "WHAT — Where Logstash Gets Its Data",
+        "heading": "Input Plugins: __Where Data Comes From__",
+        "body": [
+          {"type": "code", "text": "# Read local log files:\ninput {\n  file { path => \"/var/log/*.log\" }\n}"},
+          {"type": "code", "text": "# Receive from Filebeat agents (most common in production):\ninput {\n  beats { port => 5044 }\n}"},
+          {"type": "code", "text": "# Receive syslog from network devices:\ninput {\n  syslog { port => 514 }  # UDP by default\n}"},
+          {"type": "code", "text": "# TCP input (custom log sources):\ninput {\n  tcp {\n    port => 5000\n    codec => json_lines\n  }\n}"},
+          {"type": "para", "text": "**Production deployments** almost always use Beats agents → Logstash. Filebeat runs on each monitored system, handles buffering and backpressure, and ships reliably to Logstash's beats input on port 5044."}
+        ],
+        "time": "15 min · elastic.co/guide/en/logstash/current/input-plugins.html"
+      },
+      {
+        "type": "dark",
+        "label": "grok Filter",
+        "tag": "Most Important Filter",
+        "method": "WHAT — Parsing Unstructured Logs",
+        "heading": "grok: __Parse Any Log__ into Named Fields",
+        "body": [
+          {"type": "code", "text": "# grok parses unstructured text using named patterns:\nfilter {\n  grok {\n    match => {\n      \"message\" => \"%{SYSLOGTIMESTAMP:timestamp} %{HOSTNAME:hostname} sshd\\[%{NUMBER:pid}\\]: Failed password for %{USERNAME:username} from %{IP:src_ip} port %{NUMBER:src_port}\"\n    }\n  }\n}"},
+          {"type": "code", "text": "# Before grok: raw string\n# \"Apr 23 14:22:01 server sshd[1234]: Failed password for root from 45.33.32.156 port 52341\"\n\n# After grok: structured fields\n# timestamp: \"Apr 23 14:22:01\"\n# hostname:  \"server\"\n# username:  \"root\"\n# src_ip:    \"45.33.32.156\"\n# src_port:  \"52341\""},
+          {"type": "para", "text": "**200+ built-in patterns** cover Apache, SSH, syslog, Cisco, Windows Event Log, and more. **Always test patterns at grokdebugger.com before deploying.** A broken pattern silently tags every event as `_grokparsefailure` and fills Elasticsearch with unstructured, unsearchable data."}
+        ],
+        "time": "30 min · grokdebugger.com — test your SSH pattern now"
+      },
+      {
+        "type": "white",
+        "label": "Enrichment Filters",
+        "tag": "Intelligence Addition",
+        "method": "HOW — Adding Intelligence to Raw Logs",
+        "heading": "Enrichment: __Turn IPs into Intelligence__",
+        "body": [
+          {"type": "code", "text": "filter {\n  grok {\n    # ... parse SSH failed login as above ...\n  }\n  \n  # Add geographic location to every source IP:\n  geoip {\n    source => \"src_ip\"\n    # Adds: src_ip.geo.country_name, city_name, location\n  }\n  \n  # Resolve IP to hostname:\n  dns {\n    reverse => [\"src_ip\"]\n    action => \"replace\"\n  }\n  \n  # Rename fields to ECS standard:\n  mutate {\n    rename => {\n      \"src_ip\"   => \"source.ip\"\n      \"username\" => \"user.name\"\n    }\n  }\n}"}
+        ],
+        "note": "**GeoIP enrichment** is the key to Kibana's geographic map visualisations. Every IP gets latitude, longitude, country, and city automatically — enabling the world map attack visualisation in dashboards.",
+        "time": "20 min · Add GeoIP enrichment to your auth.log pipeline"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 65 Learning Targets",
+        "heading": "Day 65 Checklist",
+        "steps": [
+          "Write a Logstash pipeline that **reads /var/log/auth.log** using the file input plugin",
+          "Use **grok** to parse SSH failed login events — extract timestamp, username, and source IP",
+          "Add **GeoIP enrichment** to the source IP field — verify geo fields appear in Elasticsearch",
+          "**Output** to Elasticsearch with index name `ssh-auth-logs-YYYY.MM.dd`",
+          "**Verify** data in Kibana Discover — search the index and confirm all fields are parsed correctly"
+        ],
+        "time": "Total Day 65 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 65",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🔧 Tool", "name": "grokdebugger.com — Test grok Patterns Before Deploying", "url": "grokdebugger.com"},
+          {"label": "📖 Docs", "name": "Elastic — Logstash Official Documentation", "url": "elastic.co/guide/en/logstash/current"},
+          {"label": "📖 Tutorial", "name": "Logz.io — Logstash Tutorial with Examples", "url": "logz.io/learn/complete-elk-stack-tutorial"},
+          {"label": "📺 Videos", "name": "Elastic YouTube — Logstash Deep-Dive Playlist", "url": "youtube.com/@elastic"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 65",
+        "heading": "Your Hands-On __Task__ for Day 65",
+        "steps": [
+          "**Test** your SSH grok pattern at grokdebugger.com — paste a sample auth.log line and iterate until all fields parse",
+          "**Write** the complete Logstash pipeline config — input, grok filter, GeoIP, mutate, output",
+          "**Restart** Logstash: `systemctl restart logstash` — check logs for errors: `journalctl -u logstash -f`",
+          "**Verify** in Kibana Discover: create an index pattern for `ssh-auth-logs-*` — confirm fields appear"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 65",
+        "quote": "Always validate grok patterns at grokdebugger.com before writing a pipeline config. A single broken pattern silently tags ALL events as `_grokparsefailure` — destroying every dashboard that depends on those fields.",
+        "sub": "Set Logstash JVM heap in `/etc/logstash/jvm.options` to `-Xmx2g` (2GB maximum). Without this cap, Logstash will consume all available RAM as it processes logs — starving Elasticsearch and Kibana of memory and causing the entire stack to become unresponsive. Always cap Logstash heap explicitly in home lab environments.",
+        "mistake": "Skipping the grok pattern test step and writing pipelines directly in the config file. The iteration cycle for a broken grok pattern is: edit config → restart Logstash (60+ seconds) → wait for events → check if parsed correctly → repeat. At grokdebugger.com, the same iteration takes 5 seconds. Use the debugger for every new pattern, every time."
+      }
+    ]
+  },
+
+  {
+    "day": 66,
+    "cover": {
+      "title": "Kibana: Dashboards, KQL & __Visualisations__",
+      "hook": "Turn millions of raw log events into actionable visual intelligence in minutes. Welcome to Kibana.",
+      "tags": ["#Kibana", "#KQL", "#Day66of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Kibana Discover & KQL",
+        "tag": "Foundation",
+        "method": "WHAT — KQL for Security Analysis",
+        "heading": "KQL: The __Language of SOC Analysis__",
+        "body": [
+          {"type": "para", "text": "**Kibana Discover** is your primary raw log exploration workspace. It uses **KQL (Kibana Query Language)** for filtering — a powerful, readable query syntax that will become second nature within a week of daily use."},
+          {"type": "code", "text": "# Essential KQL patterns for security analysts:\nevent.outcome: \"failure\"                     # Failed events only\nsource.ip: \"10.0.0.*\"                        # IP range\nprocess.name: \"cmd.exe\" AND user.name: \"SYSTEM\"  # Multi-field\nNOT event.type: \"info\"                       # Exclusion\nhttp.response.status_code: 404               # HTTP 404s\n@timestamp > \"now-1h\"                        # Last hour\nuser.name: (\"admin\" OR \"root\" OR \"Administrator\")  # Multiple values\nhttp.request.body.content: \"SELECT *\"        # SQL injection"},
+          {"type": "para", "text": "**KQL is what you type hundreds of times per day in a SOC role.** Every investigation starts with a KQL query. Master it now and every future platform — Elastic, Splunk SPL, Microsoft Sentinel KQL — becomes easier."}
+        ],
+        "pills": [
+          {"text": "KQL", "t": "r"},
+          {"text": "Visualise", "t": "y"},
+          {"text": "Dashboard", "t": "o"}
+        ],
+        "time": "20 min · elastic.co/guide/en/kibana/current/kuery-query.html"
+      },
+      {
+        "type": "red",
+        "label": "Creating Visualisations with Lens",
+        "tag": "Visualisation",
+        "method": "HOW — Building Security Visuals",
+        "heading": "Kibana Lens: __Drag-and-Drop Visualisations__",
+        "body": [
+          {"type": "step", "num": "1", "text": "**Open Lens:** Kibana → Visualise Library → Create visualisation → Lens (recommended for all new dashboards)."},
+          {"type": "step", "num": "2", "text": "**Bar chart — Failed logins per source IP:** X-axis = `source.ip` (top values) · Y-axis = Count of records · Filter: `event.outcome: failure` → shows top attacking IPs."},
+          {"type": "step", "num": "3", "text": "**Line chart — Events over time:** X-axis = `@timestamp` (auto-date histogram) · Y-axis = Count → shows traffic spikes and beaconing patterns."},
+          {"type": "step", "num": "4", "text": "**Metric panel — Alert count:** Single metric, Count of records, filter by `kibana.alert.severity: high OR critical` → real-time high/critical alert count for your monitoring header."}
+        ],
+        "time": "30 min · Build all 4 visualisations from your auth.log data"
+      },
+      {
+        "type": "dark",
+        "label": "Building a SOC Dashboard",
+        "tag": "Dashboard",
+        "method": "HOW — Creating Your Monitoring Homepage",
+        "heading": "SOC Dashboard: __Your Monitoring Homepage__",
+        "body": [
+          {"type": "para", "text": "**Kibana → Dashboards → Create dashboard.** Add your saved visualisations by clicking 'Add from library'. Arrange panels by drag-and-drop. Resize each panel to fit."},
+          {"type": "bullet", "text": "**Authentication failures by IP** (bar chart) — who is attacking?"},
+          {"type": "bullet", "text": "**Events over time** (line chart) — when did the spike occur?"},
+          {"type": "bullet", "text": "**Top 10 source IPs** (data table) — exact IP addresses with counts"},
+          {"type": "bullet", "text": "**Geographic map of connections** (Maps layer) — where in the world?"},
+          {"type": "bullet", "text": "**Alert count by severity** (metric panel) — how many critical alerts right now?"},
+          {"type": "para", "text": "**Save the dashboard** as 'SOC Monitoring — Home'. Set it as your Kibana default homepage. Every time Kibana opens, you see the current security status of your monitored systems instantly."}
+        ],
+        "time": "30 min · Build and save your 5-panel SOC dashboard"
+      },
+      {
+        "type": "white",
+        "label": "Maps & Saved Searches",
+        "tag": "Advanced Features",
+        "method": "WHAT — Geographic Maps and Saved Queries",
+        "heading": "Maps & Saved Searches: __Persistence and Geography__",
+        "body": [
+          {"type": "para", "text": "**Kibana Maps:** Analytics → Maps → Add layer → Documents → select your index. Plots source IPs on a world map using GeoIP data from your Logstash pipeline. SSH brute-force visualised geographically creates a compelling visual for incident reports and management briefings."},
+          {"type": "para", "text": "**Saved searches in Discover:** Set a KQL filter → click Save → name it 'Failed SSH logins last 24h'. Saved searches are reusable in dashboards and shareable with teammates. Build a library of saved searches for your most common investigation starting points."},
+          {"type": "code", "text": "# Build your saved search library:\n'Failed SSH logins last 24h'\n  → event.outcome: failure AND process.name: sshd\n\n'HTTP 404 mass scanning'\n  → http.response.status_code: 404 AND @timestamp > now-1h\n\n'New user accounts created'\n  → event.action: user-created\n\n'Privileged command execution'\n  → process.name: (sudo OR su) AND event.outcome: success"}
+        ],
+        "time": "20 min · Create the 4 saved searches above"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 66 Learning Targets",
+        "heading": "Day 66 Checklist",
+        "steps": [
+          "Write **5 KQL queries** in Kibana Discover — multi-field, exclusion, IP range, time range, multiple values",
+          "Build **4 visualisations** using Lens: bar chart, line chart, metric panel, data table",
+          "Assemble a **5-panel SOC dashboard** — save it as your Kibana default homepage",
+          "Create a **geographic map layer** from your SSH auth data — see where attacks originate",
+          "Save **4 named searches** in Discover — these become your daily investigation starting points"
+        ],
+        "time": "Total Day 66 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 66",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Reference", "name": "Elastic — Full KQL Query Reference", "url": "elastic.co/guide/en/kibana/current/kuery-query.html"},
+          {"label": "📖 Docs", "name": "Elastic — Kibana Official Documentation", "url": "elastic.co/guide/en/kibana/current"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'ELK 101' Room (Kibana investigations)", "url": "tryhackme.com/room/investigatingwithelk101"},
+          {"label": "📺 Videos", "name": "Elastic YouTube — Kibana Tutorials Playlist", "url": "youtube.com/@elastic"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 66",
+        "heading": "Your Hands-On __Task__ for Day 66",
+        "steps": [
+          "**Load** Kibana's built-in sample web logs: Home → Try sample data → Sample web logs → Add data",
+          "**Build** a 4-panel dashboard: request count over time, top 10 IPs, HTTP response code distribution, geographic map",
+          "**Save** it as 'Web Traffic Monitor' — use it to practise dashboard navigation",
+          "**Create** 3 saved searches in Discover using KQL — one for failures, one for 404s, one for POST requests"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 66",
+        "quote": "Master KQL deeply — it is what you type hundreds of times per day in a SOC role. `field: *` checks if a field exists · `field: (val1 OR val2)` matches either · `NOT field: value` excludes · `@timestamp > now-1h` for relative time.",
+        "sub": "Never hardcode absolute timestamps in saved dashboards. Always use relative time ranges like 'last 24 hours' or 'last 7 days' so dashboards remain permanently relevant without manual updates. An absolute timestamp (`@timestamp: [2026-04-01 TO 2026-04-02]`) is useful only in historical investigations — never in operational monitoring dashboards.",
+        "mistake": "Building dashboards before verifying data quality in Discover. If your grok parsing failed and fields are not correctly extracted, every visualisation built on those fields will be wrong — showing raw message strings instead of parsed IPs, counts of 1 per message, or empty charts. Always verify field structure in Discover first before building any visualisation."
+      }
+    ]
+  },
+
+  {
+    "day": 67,
+    "cover": {
+      "title": "Filebeat & __Log Shipping__ from Real Sources",
+      "hook": "Filebeat is how logs travel from 1,000 servers to your SIEM in real time. Here is how it works.",
+      "tags": ["#Filebeat", "#LogShipping", "#Day67of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Filebeat?",
+        "tag": "Foundation",
+        "method": "WHAT — Filebeat Log Shipper",
+        "heading": "Filebeat: __Lightweight Log Shipper__",
+        "body": [
+          {"type": "para", "text": "**Filebeat** is an ultra-lightweight log shipping agent that runs on monitored systems. It reads log files, handles backpressure, retries on failure, and ships reliably to Logstash or directly to Elasticsearch. It uses approximately 50MB RAM — negligible impact on production systems."},
+          {"type": "para", "text": "**The Beats family** — a collection of lightweight shippers for different data sources:"},
+          {"type": "bullet", "text": "**Filebeat** — reads log files (the most common Beat)"},
+          {"type": "bullet", "text": "**Winlogbeat** — reads Windows Event Log"},
+          {"type": "bullet", "text": "**Auditbeat** — reads Linux auditd events with file integrity monitoring"},
+          {"type": "bullet", "text": "**Packetbeat** — reads network packets (like a lightweight Zeek)"},
+          {"type": "bullet", "text": "**Elastic Agent** — the modern unified agent replacing all individual Beats"}
+        ],
+        "pills": [
+          {"text": "Filebeat", "t": "r"},
+          {"text": "Winlogbeat", "t": "y"},
+          {"text": "Modules", "t": "o"}
+        ],
+        "time": "20 min · elastic.co/beats/filebeat"
+      },
+      {
+        "type": "red",
+        "label": "Filebeat Modules",
+        "tag": "Pre-built Parsers",
+        "method": "WHAT — Modules for Common Log Sources",
+        "heading": "Filebeat Modules: __One Command Setup__",
+        "body": [
+          {"type": "code", "text": "# Enable pre-built modules for common log sources:\nfilebeat modules enable system\nfilebeat modules enable nginx\nfilebeat modules enable apache\nfilebeat modules enable mysql\nfilebeat modules enable suricata\nfilebeat modules enable zeek\nfilebeat modules enable auditd"},
+          {"type": "code", "text": "# Deploy all dashboards to Kibana automatically:\nfilebeat setup\n# Creates index patterns, visualisations, and dashboards\n# for every enabled module in one command"},
+          {"type": "code", "text": "# Start Filebeat:\nsystemctl start filebeat\nsystemctl enable filebeat\n\n# Verify shipping:\ntail -f /var/log/filebeat/filebeat.log"},
+          {"type": "para", "text": "**Why modules matter:** Within 5 minutes of enabling the system module and running `filebeat setup`, you have pre-built Kibana dashboards for SSH login monitoring, sudo usage, and system authentication events — with zero manual configuration."}
+        ],
+        "time": "25 min · Enable system module and run filebeat setup"
+      },
+      {
+        "type": "dark",
+        "label": "Winlogbeat for Windows Security",
+        "tag": "Windows Monitoring",
+        "method": "WHAT — Critical Windows Event IDs",
+        "heading": "Winlogbeat: __Windows Security Events__",
+        "body": [
+          {"type": "para", "text": "**Winlogbeat** ships Windows Event Log to ELK. Install on any Windows machine to get real-time Windows security monitoring in your Kibana dashboard."},
+          {"type": "code", "text": "# Critical Windows Security Event IDs:\n4624 — Successful logon (who logged in, from where)\n4625 — Failed logon (brute force detection)\n4688 — New process created (execution monitoring)\n4698 — Scheduled task created (persistence detection)\n4776 — NTLM authentication attempt\n7045 — New service installed (malware persistence)"},
+          {"type": "para", "text": "**These 6 Event IDs cover 80% of Windows attack detection.** A Winlogbeat deployment shipping these events to your ELK stack — combined with Elastic Security detection rules — creates real Windows threat detection in your home lab."},
+          {"type": "para", "text": "**Configuration:** Edit winlogbeat.yml — set Elasticsearch or Logstash output — run `.\\ winlogbeat.exe setup` — start the service. Takes 10 minutes from download to shipping."}
+        ],
+        "time": "20 min · Install Winlogbeat on a Windows VM if available"
+      },
+      {
+        "type": "white",
+        "label": "Auditbeat for Linux",
+        "tag": "Linux Deep Monitoring",
+        "method": "WHAT — Linux System Activity Monitoring",
+        "heading": "Auditbeat: __Deep Linux Monitoring__",
+        "body": [
+          {"type": "para", "text": "**Auditbeat** ships Linux auditd events to ELK — providing detailed process execution, file integrity monitoring, user session tracking, and per-process network connections. More granular than Filebeat's system module."},
+          {"type": "code", "text": "# auditbeat.yml — key modules:\nauditbeat.modules:\n  - module: auditd\n    audit_rules: |\n      -w /etc/passwd -p wa -k identity_changes\n      -w /etc/shadow -p wa -k identity_changes\n      -w /etc/sudoers -p wa -k privilege_changes\n      -a always,exit -F arch=b64 -S execve -k exec\n  \n  - module: file_integrity\n    paths:\n      - /etc\n      - /usr/bin\n      - /usr/sbin\n      - /bin\n      - /sbin"},
+          {"type": "para", "text": "**Compliance use:** Auditbeat satisfies PCI DSS, HIPAA, and SOC2 file integrity monitoring requirements. The file_integrity module detects changes to critical system files — the same monitoring capability that commercial FIM products charge thousands for annually."}
+        ],
+        "time": "20 min · Install and configure Auditbeat on your Linux VM"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 67 Learning Targets",
+        "heading": "Day 67 Checklist",
+        "steps": [
+          "**Install Filebeat** on your Linux VM — enable the `system` module — run `filebeat setup`",
+          "**Start Filebeat** and verify logs are flowing: open Kibana → Dashboards → search 'Filebeat System'",
+          "**Understand** the 6 critical Windows Event IDs — when each fires and what attack it detects",
+          "**Configure Auditbeat** — add audit rules to monitor /etc/passwd and /etc/sudoers for changes",
+          "Verify your **dual-OS monitoring** concept: Linux via Filebeat + Windows via Winlogbeat = enterprise coverage"
+        ],
+        "time": "Total Day 67 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 67",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Docs", "name": "Elastic — Filebeat Official Documentation", "url": "elastic.co/guide/en/beats/filebeat/current"},
+          {"label": "📖 Modules", "name": "Elastic — Filebeat Module Reference List", "url": "elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'ELK 101' Room (Filebeat config)", "url": "tryhackme.com/room/investigatingwithelk101"},
+          {"label": "📺 Videos", "name": "Elastic Blog — Getting Started with Filebeat", "url": "elastic.co/blog"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 67",
+        "heading": "Your Hands-On __Task__ for Day 67",
+        "steps": [
+          "**Install** Filebeat: `sudo apt install filebeat` — enable system module: `filebeat modules enable system`",
+          "**Run** `sudo filebeat setup` — wait for dashboard deployment — check Kibana Dashboards",
+          "**Start** Filebeat: `sudo systemctl start filebeat` — verify with `journalctl -u filebeat -f`",
+          "**Open** Kibana → Dashboards → 'Filebeat System — SSH login attempts' — verify your own auth.log is showing"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 67",
+        "quote": "With Filebeat on your Linux VM and Winlogbeat on a Windows VM, you now monitor both operating systems — exactly what enterprise SOC teams do at scale. This dual-OS monitoring setup is worth explicitly stating in interviews.",
+        "sub": "In filebeat.yml, always configure either `output.logstash` OR `output.elasticsearch` — never both simultaneously. Having both outputs enabled causes Filebeat to silently drop events without any error in the logs. It appears to be working normally but data never arrives. This is one of the most common and frustrating Filebeat misconfiguration issues.",
+        "mistake": "Not running `filebeat test config` and `filebeat test output` before starting the service. These two commands validate your configuration file syntax AND verify the connection to your output (Logstash or Elasticsearch) before any events are processed. Running them before `systemctl start filebeat` saves hours of debugging dropped events."
+      }
+    ]
+  },
+
+  {
+    "day": 68,
+    "cover": {
+      "title": "Elastic Security: __Detection Rules & Alerts__",
+      "hook": "Your ELK stack becomes a real SIEM the moment you turn on detection rules. Here is how.",
+      "tags": ["#ElasticSecurity", "#DetectionRules", "#Day68of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Elastic Security Detection Engine",
+        "tag": "Foundation",
+        "method": "WHAT — Built-in SIEM Detection",
+        "heading": "Elastic Security: __2000+ Free Detection Rules__",
+        "body": [
+          {"type": "para", "text": "**Kibana → Security → Rules** contains 2,000+ pre-built detection rules included free in the Elastic Stack basic tier. Every rule is mapped to MITRE ATT&CK techniques. Enable with a single click — no configuration required to start detecting threats."},
+          {"type": "para", "text": "**Rule coverage:** Credential access, lateral movement, persistence, privilege escalation, exfiltration, command and control, discovery, initial access — every ATT&CK tactic has dedicated rules out of the box."},
+          {"type": "para", "text": "**github.com/elastic/detection-rules** — the community rules repository. All 2,000+ rules are open source, viewable, forkable, and contributable. The same rules that protect enterprise environments are available for your home lab and your career learning."}
+        ],
+        "pills": [
+          {"text": "Query Rules", "t": "r"},
+          {"text": "EQL Sequences", "t": "y"},
+          {"text": "Threshold Rules", "t": "o"}
+        ],
+        "time": "20 min · elastic.co/guide/en/security/current/detection-engine-overview.html"
+      },
+      {
+        "type": "red",
+        "label": "Rule Types",
+        "tag": "Detection Methods",
+        "method": "WHAT — 5 Rule Types Explained",
+        "heading": "Rule Types: __5 Ways to Detect Threats__",
+        "body": [
+          {"type": "bullet", "text": "**Query (KQL/EQL):** Evaluates a KQL or EQL condition on a schedule. Fires when matching events exist. Most common rule type — covers 80% of detection use cases."},
+          {"type": "bullet", "text": "**Threshold:** Fires when the count of matching events exceeds N within a time window, grouped by a field. Perfect for brute force detection: more than 5 failures from the same IP in 60 seconds."},
+          {"type": "bullet", "text": "**Event Correlation (EQL):** Detects sequences of events — the most powerful rule type for catching multi-step attacks that individual event rules miss entirely."},
+          {"type": "bullet", "text": "**Machine Learning:** Uses Elastic's anomaly detection on log data — identifies statistically unusual behaviour without predefined signatures. Catches novel attacks."},
+          {"type": "bullet", "text": "**Indicator Match:** Matches ingested logs against a threat intelligence feed (IOC list). Automatically alerts when a known-malicious IP, domain, or file hash appears in your logs."}
+        ],
+        "time": "20 min · Explore each rule type in Kibana Security → Rules"
+      },
+      {
+        "type": "dark",
+        "label": "Creating a Custom Rule",
+        "tag": "Rule Creation",
+        "method": "HOW — Writing Your First Detection Rule",
+        "heading": "Custom Rule: __SSH Brute Force Detection__",
+        "body": [
+          {"type": "code", "text": "# Custom Threshold Rule in Kibana Security:\n# Security → Rules → Create Rule → Threshold\n\nName:     SSH Brute Force Detected\nIndex:    filebeat-*\nQuery:    event.category: authentication\n          AND event.outcome: failure\n\nThreshold:\n  Group by:  source.ip\n  Count:     > 5\n  Within:    1 minute\n\nSeverity:  High\nRisk Score: 73\n\nATT&CK:   Credential Access / Brute Force (T1110)\n\nActions:  Create alert + Create case automatically"},
+          {"type": "para", "text": "**Save and enable the rule.** It now evaluates every minute. When more than 5 failed SSH logins from the same source IP occur within 60 seconds, it fires an alert — exactly the brute-force pattern you have been studying since Day 22."}
+        ],
+        "time": "25 min · Create this custom rule in your Kibana instance"
+      },
+      {
+        "type": "white",
+        "label": "EQL Sequence Detection",
+        "tag": "Advanced Detection",
+        "method": "WHAT — Multi-Step Attack Chain Detection",
+        "heading": "EQL: __Detect Multi-Step Attack Chains__",
+        "body": [
+          {"type": "para", "text": "**EQL (Event Query Language)** is Elastic's powerful language for detecting sequences of events across time. It catches attackers that individual event rules completely miss — because attackers deliberately spread their actions across multiple events."},
+          {"type": "code", "text": "# EQL Sequence — Detect recon → enumeration → C2:\nsequence by host.name\n  [process where process.name == \"whoami\"]\n  [process where process.name in (\"net.exe\", \"netstat.exe\")]\n  [network where destination.port == 4444\n   and not destination.ip: \"192.168.0.0/16\"]"},
+          {"type": "code", "text": "# EQL Sequence — PowerShell spawning cmd.exe spawning network:\nsequence by process.entity_id\n  [process where process.name == \"powershell.exe\"]\n  [process where process.name == \"cmd.exe\"\n   and process.parent.name == \"powershell.exe\"]\n  [network where destination.port != 443\n   and not destination.ip: \"10.0.0.0/8\"]"},
+          {"type": "para", "text": "**EQL sequences are the most powerful Elastic Security feature and the least understood by most candidates.** Demonstrate one in an interview and you stand out from 95% of applicants."}
+        ],
+        "time": "25 min · Build and test one EQL sequence rule"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 68 Learning Targets",
+        "heading": "Day 68 Checklist",
+        "steps": [
+          "**Enable 10 pre-built rules** in Kibana Security → filter by 'Linux' and 'Authentication'",
+          "**Create** the SSH brute-force threshold rule exactly as described above",
+          "**Simulate** a brute force: `hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://localhost` — watch alerts fire",
+          "**Build** one EQL sequence rule — recon → enumeration → outbound connection",
+          "Configure an **alert action** — route high-severity alerts to a Slack webhook"
+        ],
+        "time": "Total Day 68 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 68",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Docs", "name": "Elastic Security — Detection Engine Documentation", "url": "elastic.co/guide/en/security/current/detection-engine-overview.html"},
+          {"label": "📦 Rules", "name": "elastic/detection-rules — 2000+ Open Source Rules", "url": "github.com/elastic/detection-rules"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Elastic SIEM' Room (free)", "url": "tryhackme.com/room/investigatingwithelk101"},
+          {"label": "📺 Video", "name": "Elastic — EQL Tutorial (YouTube)", "url": "youtube.com/@elastic"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 68",
+        "heading": "Your Hands-On __Task__ for Day 68",
+        "steps": [
+          "**Enable** 10 pre-built Linux authentication rules in Security → Rules → filter and enable",
+          "**Create** the custom SSH brute-force threshold rule with MITRE ATT&CK tag T1110",
+          "**Run** `hydra -l root -P rockyou.txt ssh://localhost` on your own VM — watch Security → Alerts",
+          "**Investigate** one fired alert — click through to the raw event — document what you see"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 68",
+        "quote": "EQL sequence detection is the most powerful Elastic feature and the least understood. Build and demo one EQL sequence rule in an interview and you will stand out from 95% of applicants.",
+        "sub": "Run Hydra ONLY against your own localhost or an isolated lab VM — never against any other system, even accidentally. Hydra is loud — it fires thousands of authentication attempts rapidly. Running it against any system you do not own or have explicit written permission to test is unauthorised access under cybercrime law, regardless of intent. Always verify your target IP is your own machine before running.",
+        "mistake": "Enabling all 2,000+ pre-built rules simultaneously on a home lab with limited RAM. Each enabled rule runs on a schedule and consumes CPU and memory. Enabling hundreds at once causes Elasticsearch to become overloaded with rule evaluations, degrading performance across the entire stack. Enable rules selectively — 20–30 at a time — and monitor resource usage with `docker stats`."
+      }
+    ]
+  },
+
+  {
+    "day": 69,
+    "cover": {
+      "title": "SIEM Investigation Workflow: __Alert to Report__",
+      "hook": "An alert fires at 2am. Walk through a complete SOC investigation from alert to written report — inside ELK.",
+      "tags": ["#SIEM", "#SOCWorkflow", "#Day69of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "The SOC Alert Workflow",
+        "tag": "Foundation",
+        "method": "WHAT — Complete Investigation Process",
+        "heading": "SOC Workflow: __Alert to Case Closed__",
+        "body": [
+          {"type": "para", "text": "Every SOC investigation follows the same structured workflow — regardless of company, SIEM platform, or alert type. Knowing this workflow cold, and being able to execute it entirely within Kibana, is the Tier 1 analyst's core job description."},
+          {"type": "bullet", "text": "**1. Alert triggers** → Kibana Security detects rule match → alert created with severity, timestamp, affected hosts"},
+          {"type": "bullet", "text": "**2. Triage** → Tier 1 analyst reviews — is this a true positive or false positive? Is it high priority?"},
+          {"type": "bullet", "text": "**3. Case created** → formal tracking begins — title, severity, assignee, description"},
+          {"type": "bullet", "text": "**4. Timeline investigation** → pivot through related events — build the attack narrative"},
+          {"type": "bullet", "text": "**5. IOC enrichment** → check IPs, hashes, domains against threat intel"},
+          {"type": "bullet", "text": "**6. Escalate or close** → hand to Tier 2 with full context, OR close with documented disposition"}
+        ],
+        "pills": [
+          {"text": "Timeline", "t": "r"},
+          {"text": "Pivoting", "t": "y"},
+          {"text": "Case Management", "t": "o"}
+        ],
+        "time": "20 min · elastic.co/guide/en/security/current"
+      },
+      {
+        "type": "red",
+        "label": "Timeline Investigation",
+        "tag": "Core Skill",
+        "method": "HOW — Building Investigation Timelines",
+        "heading": "Timeline: __Your Forensic Workbench__",
+        "body": [
+          {"type": "step", "num": "1", "text": "**Open Timeline:** Security → Timelines → New Timeline. Give it a descriptive name: 'SSH Brute Force — 45.33.32.156 — 2026-04-23'."},
+          {"type": "step", "num": "2", "text": "**Add events:** From Alerts or Discover, click 'Add to Timeline' on relevant events. Pin the critical ones — the first failed login, the successful authentication, the first command executed after login."},
+          {"type": "step", "num": "3", "text": "**Add analyst notes:** Click any pinned event → Add note. Document why this event matters: 'This is the first successful login after 847 failed attempts from this IP — 4 minutes after attacks began.'"},
+          {"type": "step", "num": "4", "text": "**Save and share:** Save Timeline → attach it to your Case. Every significant investigation produces a named, saved Timeline as the forensic record."}
+        ],
+        "time": "25 min · Build a Timeline from yesterday's simulated brute-force"
+      },
+      {
+        "type": "dark",
+        "label": "Analyst Pivoting",
+        "tag": "Investigation Technique",
+        "method": "HOW — Click-Through Pivoting in Kibana",
+        "heading": "Pivoting: __Connect Every Evidence Piece__",
+        "body": [
+          {"type": "para", "text": "**Pivoting** is the core daily skill of a SOC analyst — following evidence connections from one piece of data to the next. In Kibana, every field value is clickable — filter for it or filter it out with one click."},
+          {"type": "step", "num": "1", "text": "**Alert shows suspicious source IP** → click the IP → 'Filter for this value' → see ALL events from that IP in the last 24 hours."},
+          {"type": "step", "num": "2", "text": "**Find associated hostname** → click the destination hostname → filter → see all services that host was running when the connection occurred."},
+          {"type": "step", "num": "3", "text": "**Find processes running at that time** → switch to Auditbeat data → filter by host + timestamp → see every process execution during the attack window."},
+          {"type": "step", "num": "4", "text": "**Find suspicious parent-child process chains** → filter for the suspicious process → check its parent_process.name → is cmd.exe spawning from Excel? That is malicious macro execution."}
+        ],
+        "time": "20 min · Practise the 4-step pivot chain on your brute-force data"
+      },
+      {
+        "type": "white",
+        "label": "Cases Management",
+        "tag": "Documentation",
+        "method": "HOW — Creating and Managing Investigation Cases",
+        "heading": "Cases: __Full Audit Trail per Incident__",
+        "body": [
+          {"type": "para", "text": "**Security → Cases → Create case.** Every significant alert generates a case — the formal record of the investigation from first detection to final disposition."},
+          {"type": "code", "text": "# Case fields to fill:\nTitle:       SSH Brute Force — 45.33.32.156 — 2026-04-23\nSeverity:    High\nAssignee:    Your Name\nTags:        brute-force, SSH, T1110, credential-access\nDescription: Automated SSH brute-force attack detected.\n             847 failed attempts from 45.33.32.156 over\n             4 minutes. One successful login at 14:22:01."},
+          {"type": "para", "text": "**Add evidence:** Attach the Timeline, add screenshots, link the original alert. **Add notes** at each investigation step — what you found, what you checked, what you concluded. **Close with disposition:** True Positive (attack confirmed), False Positive (benign activity), or Indeterminate (insufficient evidence)."},
+          {"type": "para", "text": "**Cases create the compliance audit trail** — required for PCI DSS, HIPAA, and SOC2. Every alert reviewed, every investigation documented, every closure with justification."}
+        ],
+        "time": "20 min · Create a complete case for your simulated brute-force"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 69 Learning Targets",
+        "heading": "Day 69 Checklist",
+        "steps": [
+          "**Open** the brute-force alert from Day 68 — triage it in Kibana Security",
+          "**Create** a new Timeline — add 5 pinned events with analyst notes at each",
+          "**Pivot** through the investigation: source IP → destination host → running processes → parent processes",
+          "**Create** a Case titled 'SSH Brute Force — Lab Simulation' — fill all fields and attach Timeline",
+          "**Close** the case as True Positive with a 4-sentence written summary — this is exactly what Tier 1 analysts produce every shift"
+        ],
+        "time": "Total Day 69 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 69",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Docs", "name": "Elastic Security — Investigation and Cases Docs", "url": "elastic.co/guide/en/security/current"},
+          {"label": "📄 Guide", "name": "SANS — Incident Handler's Handbook (free PDF)", "url": "sans.org/white-papers/incident-handlers-handbook"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Elastic SIEM' Investigation Room", "url": "tryhackme.com/room/investigatingwithelk101"},
+          {"label": "🔧 Tool", "name": "TheHive Project — Free Case Management Alternative", "url": "thehive-project.org"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 69",
+        "heading": "Your Hands-On __Task__ for Day 69",
+        "steps": [
+          "**Open** the SSH brute-force alert in Kibana Security — triage: is this real or a false positive?",
+          "**Create** Timeline 'SSH Brute Force — Lab' — pin 5 events — add a note explaining each",
+          "**Create** Case 'SSH Brute Force — Lab Simulation' — attach Timeline — fill all fields",
+          "**Write** the 4-sentence incident summary: attack type, source, timeline, disposition — this is your written deliverable"
+        ],
+        "time": "Hands-On Task: 75 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 69",
+        "quote": "The ability to walk an interviewer through 'how I investigate a SIEM alert' step by step — with specific Kibana views, pivoting techniques, case creation, and a written summary — places you above almost every other entry-level candidate.",
+        "sub": "Practise narrating the investigation workflow out loud until it feels completely natural. Record yourself explaining it. Watch the recording. Refine until you can walk through alert → triage → timeline → pivot → case → report in under 3 minutes with specific, confident details. That narration is what separates a technically competent candidate from one who actually gets the job offer.",
+        "mistake": "Closing alerts as False Positive without documenting WHY they are benign. Undocumented FP closures are how real attacks get missed during incident review. Every FP closure must explain: 'This alert fired because of X. I investigated by checking Y and Z. I determined it was benign because of W.' That documentation protects you professionally and builds institutional knowledge for your team."
+      }
+    ]
+  },
+
+  {
+    "day": 70,
+    "cover": {
+      "title": "ELK Week __Recap__ & SIEM Certifications",
+      "hook": "ELK week done. You built a real SIEM from scratch. 70 days in. Phase 8 preview: Cloud Security.",
+      "tags": ["#ELKStack", "#Recap", "#Day70of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "ELK Week Full Recap",
+        "tag": "Summary",
+        "method": "WHAT — 7 Days of ELK Covered",
+        "heading": "7 Days of ELK: __What You Built__",
+        "body": [
+          {"type": "bullet", "text": "**Day 64:** ELK architecture — Elasticsearch, Logstash, Kibana, Beats data flow. Docker Compose deployment. Elastic Security overview."},
+          {"type": "bullet", "text": "**Day 65:** Logstash pipelines — input plugins, grok parsing, GeoIP enrichment, mutate transforms, Elasticsearch output with daily index rotation."},
+          {"type": "bullet", "text": "**Day 66:** Kibana Discover — KQL queries, Lens visualisations, 5-panel SOC dashboard, geographic maps, saved searches library."},
+          {"type": "bullet", "text": "**Day 67:** Filebeat modules (system, nginx, auditd), Winlogbeat for Windows Event IDs, Auditbeat for file integrity, Elastic Agent as the future."},
+          {"type": "bullet", "text": "**Day 68:** Elastic Security detection engine — 2,000+ pre-built rules, 5 rule types, custom threshold rule, EQL sequence detection, alert actions and routing."},
+          {"type": "bullet", "text": "**Day 69:** Full SOC investigation workflow — Timeline forensic workbench, 4-step analyst pivoting, Case management with disposition, written incident summary."}
+        ],
+        "pills": [
+          {"text": "SIEM Built", "t": "r"},
+          {"text": "Certifications", "t": "y"},
+          {"text": "Next: Cloud", "t": "o"}
+        ],
+        "time": "30 min · elastic.co/learn — complete free courses this week"
+      },
+      {
+        "type": "red",
+        "label": "Elastic Certifications",
+        "tag": "Career Credentials",
+        "method": "WHAT — Elastic Stack Certifications",
+        "heading": "Elastic Certifications: __Validate Your Skills__",
+        "body": [
+          {"type": "bullet", "text": "**Elastic Certified Analyst (ECA)** — the most relevant certification for security analysts. Tests Kibana investigation, detection rule creation, alert triage, and incident investigation. Directly validates exactly the skills built this week."},
+          {"type": "bullet", "text": "**Elastic Certified Engineer (ECE)** — cluster management, pipeline engineering, performance tuning. More DevOps-oriented. For security engineers who deploy and maintain ELK infrastructure."},
+          {"type": "bullet", "text": "**Both are proctored, practical exams** — not multiple choice. You perform real tasks in a live Kibana environment. No memorisation tricks — actual operational skill is tested."},
+          {"type": "para", "text": "**Strategy:** Complete Elastic's free training at elastic.co/learn first — especially 'Getting Started with Elastic Stack' and 'Elastic Security Fundamentals'. Then practise in your home lab until ECA tasks feel effortless. The ECA exam directly mirrors what you built in Days 64–69."}
+        ],
+        "time": "20 min · elastic.co/learn — review certification requirements"
+      },
+      {
+        "type": "dark",
+        "label": "Splunk — The Market Leader",
+        "tag": "Next SIEM to Learn",
+        "method": "WHAT — Splunk for Career Value",
+        "heading": "Splunk: The __Market Leader__ Worth Learning",
+        "body": [
+          {"type": "para", "text": "**Splunk** is the most widely deployed enterprise SIEM globally. Average salary for Splunk-skilled SOC analysts: **$90–110k**. It is the single most mentioned SIEM in job postings — by a significant margin over ELK."},
+          {"type": "para", "text": "**Splunk uses SPL (Search Processing Language)** — conceptually similar to KQL but with different syntax. ELK knowledge transfers directly — the concepts of ingestion, parsing, searching, alerting, and dashboards are identical. The syntax is the main learning curve."},
+          {"type": "code", "text": "# KQL vs SPL comparison:\n# KQL (Kibana):\nevent.outcome: failure AND source.ip: *\n\n# Splunk SPL equivalent:\nindex=main event_outcome=failure | stats count by src_ip\n\n# Both achieve the same investigation — different syntax"},
+          {"type": "para", "text": "**Free training:** trailhead.splunk.com — complete the 'Intro to Splunk' and 'Splunk Core User' paths. Both are free. The Splunk Core User certification validates foundational SPL skills."}
+        ],
+        "time": "Start Splunk free training at trailhead.splunk.com today"
+      },
+      {
+        "type": "white",
+        "label": "Microsoft Sentinel",
+        "tag": "Cloud SIEM",
+        "method": "WHAT — The Third Major SIEM Platform",
+        "heading": "Microsoft Sentinel: __Cloud-Native SIEM__",
+        "body": [
+          {"type": "para", "text": "**Microsoft Sentinel** is a cloud-native SIEM/SOAR platform built on Azure. It uses **KQL (Kusto Query Language)** — nearly identical to Kibana's KQL — making the transition straightforward after this week."},
+          {"type": "para", "text": "**Job market reality:** Azure + Sentinel skills command $95–125k in the current market. The SC-200 (Microsoft Security Operations Analyst) certification covers Sentinel deeply and is highly valued in enterprise environments that run Microsoft infrastructure."},
+          {"type": "para", "text": "**The three SIEMs to know:** ELK (built this week) + Splunk (learn next) + Sentinel (after Splunk). Together they cover 85%+ of enterprise SIEM deployments globally. Knowing all three places you in the top 5% of security operations candidates — a combination almost no entry-level candidate has."},
+          {"type": "para", "text": "**Free sandbox:** learn.microsoft.com provides free Sentinel lab environments. The SC-200 study guide includes hands-on labs at no cost."}
+        ],
+        "time": "Review SC-200 exam objectives at microsoft.com/learning"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 70 Learning Targets",
+        "heading": "Day 70 Checklist",
+        "steps": [
+          "**Complete** Elastic's free 'Getting Started with Elastic Stack' course at elastic.co/learn — save completion",
+          "**Sign up** for Splunk free training at trailhead.splunk.com — complete 'Intro to Splunk' module",
+          "**Write** the resume bullet point: 'Built and operated a home SIEM using Elastic Stack — ingested Linux logs via Filebeat, created 10 custom KQL/EQL detection rules mapped to MITRE ATT&CK, and conducted complete incident investigations using Kibana Timeline and Case management'",
+          "**Document** your ELK home lab setup on GitHub — README with architecture diagram, components, and detection rules built",
+          "**Research** SC-200 and ECA certification requirements — plan which to pursue first"
+        ],
+        "time": "Total Day 70 Study Time: 120 – 150 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn Next",
+        "tag": "Multi-SIEM Path",
+        "method": "WHERE — Three SIEM Learning Paths",
+        "heading": "Your __3-SIEM__ Learning Path",
+        "resources": [
+          {"label": "🎓 ELK", "name": "elastic.co/learn — Free Official Elastic Certifications Prep", "url": "elastic.co/learn"},
+          {"label": "🎓 Splunk", "name": "trailhead.splunk.com — Free Splunk Core User Training", "url": "trailhead.splunk.com"},
+          {"label": "🎓 Sentinel", "name": "learn.microsoft.com — Free SC-200 Sentinel Labs", "url": "learn.microsoft.com/azure/sentinel"},
+          {"label": "🧪 Path", "name": "TryHackMe — SOC Level 1 Learning Path (all 3 SIEMs)", "url": "tryhackme.com/path/outline/soclevel1"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Complete",
+        "method": "HOW — Step-by-Step for Day 70",
+        "heading": "Your __Final ELK Week__ Task",
+        "steps": [
+          "**Complete** Elastic free course at elastic.co/learn — 'Getting Started with Elastic Stack' (2–3 hours)",
+          "**Start** Splunk at trailhead.splunk.com — complete 'Intro to Splunk' (1 hour) — dual SIEM experience begins",
+          "**Document** your ELK home lab on GitHub — architecture, components, detection rules — link from LinkedIn",
+          "**Write and save** your ELK resume bullet point — 'Built and operated a home SIEM...' — ready to paste into applications"
+        ],
+        "time": "Hands-On Task: 120 – 150 minutes"
+      },
+      {
+        "type": "stats",
+        "label": "Phase 7 Complete",
+        "tag": "Progress Stats",
+        "method": "WHY — The Value of Phase 7",
+        "heading": "Phase 7 __Complete__ — Your Progress",
+        "stats": [
+          {"value": "70", "label": "Days of consistent learning — 78% of the journey done"},
+          {"value": "1", "label": "Fully operational home SIEM built from scratch at zero cost"},
+          {"value": "10+", "label": "Custom detection rules created and tested against simulated attacks"},
+          {"value": "20", "label": "Days remaining — Cloud Security starts tomorrow"}
+        ]
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 70",
+        "quote": "Write this resume bullet now: 'Built and operated a home SIEM using Elastic Stack — ingested Linux authentication logs via Filebeat, created 10 custom KQL/EQL detection rules mapped to MITRE ATT&CK, and conducted complete incident investigations using Kibana Timeline and Case management.' That single bullet wins interviews.",
+        "sub": "ELK is not the only SIEM you will encounter. The concepts — ingest, parse, search, alert, investigate — transfer identically to Splunk, Sentinel, QRadar, and every other platform. The person who understands why each step exists will adapt to any new SIEM platform in days. The person who only memorised Kibana clicks will struggle every time the tool changes. Learn concepts deeply.",
+        "mistake": "Treating the three SIEM platforms as separate things to learn from scratch. ELK, Splunk, and Sentinel all do the same thing — collect logs, parse them, search them, alert on them, and help you investigate. The workflows are identical. The syntax differs. Master the workflow once on ELK, then the other two are just vocabulary lessons."
+      }
+    ]
+  }
+]

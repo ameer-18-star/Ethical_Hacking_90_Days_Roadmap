@@ -11,23 +11,23 @@
    CSS CUSTOM PROPERTIES
 ═══════════════════════════════════════ */
 :root {
-  --bg:          #0a0c10;
-  --bg2:         #0f1218;
-  --bg3:         #151a24;
-  --surface:     #1a2030;
-  --surface2:    #202840;
-  --border:      #252e42;
-  --border2:     #2d3a58;
+  --bg:          #000000;
+  --bg2:         #0a0a0a;
+  --bg3:         #141414;
+  --surface:     #161616;
+  --surface2:    #1f1f1f;
+  --border:      #2a2a2a;
+  --border2:     #3a3a3a;
 
-  --accent:      #00d4ff;
-  --accent2:     #ff3a6e;
-  --accent3:     #f5a623;
-  --accent4:     #7fff6a;
-  --accent5:     #c67cff;
+  --accent:      #FFD700;
+  --accent2:     #FF5252;
+  --accent3:     #FFD700;
+  --accent4:     #F5F5F3;
+  --accent5:     #FF5252;
 
-  --text:        #e8edf5;
-  --text2:       #9aa5c0;
-  --text3:       #5a6680;
+  --text:        #F5F5F3;
+  --text2:       #9a9a97;
+  --text3:       #6b6b68;
 
   --font-display: 'Syne', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
@@ -38,7 +38,7 @@
   --shadow:      0 4px 24px rgba(0,0,0,0.5);
   --shadow2:     0 8px 48px rgba(0,0,0,0.7);
 
-  --phase-colors: #00d4ff, #ff3a6e, #7fff6a, #f5a623, #c67cff, #ff6b35, #00e5c8, #ff9fd8, #ffd700;
+  --phase-colors: #FFD700, #FF5252, #F5F5F3, #FFD700, #FF5252, #F5F5F3, #FFD700, #FF5252, #F5F5F3;
 }
 
 /* ═══════════════════════════════════════
@@ -64,8 +64,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0,212,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.02) 1px, transparent 1px);
+    linear-gradient(rgba(255,215,0,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,215,0,0.02) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
@@ -117,7 +117,7 @@ body::before {
   transform: translateX(-50%);
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -194,7 +194,7 @@ body::before {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10,12,16,0.92);
+  background: rgba(0,0,0,0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 12px 0;
@@ -530,15 +530,15 @@ body::before {
   flex-shrink: 0;
 }
 
-/* Slide type colours */
-.type-dark   { background: rgba(0,212,255,0.15); color: var(--accent); border: 1px solid rgba(0,212,255,0.3); }
-.type-red    { background: rgba(255,58,110,0.15); color: var(--accent2); border: 1px solid rgba(255,58,110,0.3); }
-.type-white  { background: rgba(232,237,245,0.08); color: var(--text2); border: 1px solid var(--border); }
-.type-yellow { background: rgba(245,166,35,0.15); color: var(--accent3); border: 1px solid rgba(245,166,35,0.3); }
-.type-layers { background: rgba(127,255,106,0.12); color: var(--accent4); border: 1px solid rgba(127,255,106,0.3); }
-.type-stats  { background: rgba(198,124,255,0.15); color: var(--accent5); border: 1px solid rgba(198,124,255,0.3); }
-.type-quote  { background: rgba(255,107,53,0.12); color: #ff6b35; border: 1px solid rgba(255,107,53,0.3); }
-.type-resources_white { background: rgba(0,229,200,0.1); color: #00e5c8; border: 1px solid rgba(0,229,200,0.3); }
+/* Slide type colours — cycled strictly through black / yellow / white / red */
+.type-dark   { background: rgba(255,215,0,0.15); color: var(--accent); border: 1px solid rgba(255,215,0,0.3); }
+.type-red    { background: rgba(255,82,82,0.15); color: var(--accent2); border: 1px solid rgba(255,82,82,0.3); }
+.type-white  { background: rgba(245,245,243,0.08); color: var(--text2); border: 1px solid var(--border); }
+.type-yellow { background: rgba(255,215,0,0.15); color: var(--accent3); border: 1px solid rgba(255,215,0,0.3); }
+.type-layers { background: rgba(245,245,243,0.12); color: var(--accent4); border: 1px solid rgba(245,245,243,0.3); }
+.type-stats  { background: rgba(255,82,82,0.15); color: var(--accent5); border: 1px solid rgba(255,82,82,0.3); }
+.type-quote  { background: rgba(245,245,243,0.12); color: #F5F5F3; border: 1px solid rgba(245,245,243,0.3); }
+.type-resources_white { background: rgba(255,215,0,0.1); color: #FFD700; border: 1px solid rgba(255,215,0,0.3); }
 
 .slide-label {
   font-family: var(--font-display);
@@ -665,7 +665,7 @@ body::before {
 
 .layer-row.highlight {
   border-color: var(--accent);
-  background: rgba(0,212,255,0.05);
+  background: rgba(255,215,0,0.05);
 }
 
 .layer-num {
@@ -729,7 +729,7 @@ body::before {
   border-left: 3px solid var(--accent3);
   padding: 10px 14px;
   margin-bottom: 8px;
-  background: rgba(245,166,35,0.05);
+  background: rgba(255,215,0,0.05);
   border-radius: 0 var(--radius) var(--radius) 0;
 }
 
@@ -750,8 +750,8 @@ body::before {
 .mistake-block {
   margin-top: 8px;
   padding: 8px 12px;
-  background: rgba(255,58,110,0.08);
-  border: 1px solid rgba(255,58,110,0.2);
+  background: rgba(255,82,82,0.08);
+  border: 1px solid rgba(255,82,82,0.2);
   border-radius: var(--radius);
   font-size: 11px;
   color: var(--text2);
@@ -783,12 +783,12 @@ body::before {
   text-decoration: none;
 }
 
-.resource-item:hover { border-color: #00e5c8; }
+.resource-item:hover { border-color: #FFD700; }
 
 .resource-label {
   font-family: var(--font-mono);
   font-size: 9px;
-  color: #00e5c8;
+  color: #FFD700;
   white-space: nowrap;
   flex-shrink: 0;
   padding-top: 1px;
@@ -821,9 +821,9 @@ body::before {
   border: 1px solid;
 }
 
-.pill-r { color: var(--accent2); border-color: rgba(255,58,110,0.4); background: rgba(255,58,110,0.08); }
-.pill-y { color: var(--accent3); border-color: rgba(245,166,35,0.4); background: rgba(245,166,35,0.08); }
-.pill-o { color: #ff6b35;        border-color: rgba(255,107,53,0.4); background: rgba(255,107,53,0.08); }
+.pill-r { color: var(--accent2); border-color: rgba(255,82,82,0.4); background: rgba(255,82,82,0.08); }
+.pill-y { color: var(--accent3); border-color: rgba(255,215,0,0.4); background: rgba(255,215,0,0.08); }
+.pill-o { color: #F5F5F3;        border-color: rgba(245,245,243,0.4); background: rgba(245,245,243,0.08); }
 
 /* Time badge */
 .time-badge {
@@ -853,7 +853,7 @@ body::before {
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--accent5));
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
   width: 0;
   transition: width 0.1s linear;
 }
